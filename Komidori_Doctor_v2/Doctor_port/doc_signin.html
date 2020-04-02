@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>登陆</title>
+<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+  
+  	<link href="../assets/css/Base.css" rel="stylesheet" />
+		
+	</head>
+<body>
+	
+<!-- header -->
+ 		<!-- Start header 最顶部：登陆、注册、医生端 -->
+        <div id="head"></div>
+<!-- //header -->
+
+<!-- banner -->
+		<section class="inner-banner-top">
+			<div class="container">
+			</div>
+		</section>
+<!-- //banner -->
+
+
+<!-- 登陆 -->
+<section class="signin py-5">
+	<div class="container">
+		<div class="row main-content-agile">
+			
+			<div class="col-md-6 mx-auto col-md-push-3">	
+				<div class="sub-main-w3 text-center">	
+					<h3>医生端登陆</h3>
+					<!--提示-->
+					<p class="mt-2 mb-4">请输入账号和密码登陆</p>
+					<form action="#" method="post">
+						<!--账号-->
+						<div class="icon1">
+							<label for="tel">账号</label>
+							<input placeholder="用户名|手机号码" id="username" name="username" type="text" required="">
+						</div>
+						<!--密码-->
+						<div class="icon2">
+							<label for="password">密码</label>
+							<input  placeholder="密码" id="password" type="password" required="">
+						</div>
+						<!--验证区域-->						
+						<div id="slider" class="">
+						        <div id="slider_bg"></div>
+						        <span id="label">>></span> 
+						        <span id="labelTip">拖动滑块验证</span>
+						</div>
+						   						
+						<label class="anim">
+						<input type="checkbox" class="checkbox">
+							<span>记住我</span> 
+							<a href="#">忘记密码</a>
+						</label> 
+							<div class="clearfix"></div>
+						<input type="submit" class="submit" value="登陆">
+						<p>还没有账号 ? <a href="register.html" class="ml-2"><strong style="color: #6F9E75;">加入小翠医生</strong></a></p>
+					</form>
+				</div>
+			</div>			
+			<div style="width:100%;height: 10px;"></div>
+			<div class="col-lg-1"></div>
+			
+		</div>
+	</div>
+</section>
+<!-- //signin -->
+
+		<section class="inner-banner">
+			<div class="container">
+			</div>
+		</section>
+
+<!-- footer -->
+<!-- start site-footer -->
+        <!--<div id="foot"></div>-->
+        <div id="foot"></div>
+        <!-- end site-footer -->
+<!-- //footer -->
+	
+	</div>
+
+
+    <!-- js -->
+	<!-- All JavaScript files
+    ================================================== -->
+   <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!--滑动-->
+	<script src="../assets/js/smoothscroll.js" ></script>
+
+	<script src="../assets/js/jquery.slideunlock.js"></script> 
+
+<script>
+$("#head").load("doc_logobar.html");
+$("#foot").load("low_footer.html");	
+	
+$(function () {
+    var slider = new SliderUnlock("#slider",{
+			successLabelTip : "验证成功"	
+		},function(){
+			alert("验证成功,即将跳转至#");
+        	window.location.href="#";
+			//以下四行设置恢复初始，不需要可以删除
+			setTimeout(function(){
+		        $("#labelTip").html("拖动滑块验证");
+				$("#labelTip").css("color","#787878");
+				},2000);
+			slider.init();
+		});
+    slider.init();
+})
+</script> 
+
+</body>
+</html>

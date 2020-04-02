@@ -1,0 +1,384 @@
+.nbox{
+	width: 100%;
+}
+
+.book_doctor .dbox{
+	margin-top:-60px ;
+}
+
+@media (max-width: 767px) {
+  .nbox{
+  	width: auto; 	
+  }
+  
+}
+.content-panel {
+	background: #ffffff;
+	/*box-shadow: 0px 3px 2px #aab2bd;*/
+	padding-top: 15px;
+	padding-bottom: 5px;
+	
+}
+/* PROFILE PAGE CONF */
+.profile-pic img {
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border: 10px solid #f1f2f7;
+	margin-top: 20px;
+}
+
+.profile-text h5{
+	font-size: 17px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	color: #6c6c6c;
+	text-align: left;
+}
+.rank{
+	padding-left: 10px;
+}
+.profile-text h6 {
+	margin-top: 1px;
+	margin-bottom: 20px;
+	color: #6c6c6c;
+	text-align: left;
+}
+
+.profile-text h3 {
+	font-weight: 700;
+	color: #6F9E75;
+	text-align: left;
+}
+
+.label1{
+	font-size: 14px;
+	display: inline-block;
+	padding: 5px;
+	margin: 0px 8px;
+	border-radius:10px;	
+	
+}
+
+.hospital{
+	margin-left: 10px;
+	font-size: 15px;
+	color: #6c6c6c;
+	font-weight: normal;
+}
+
+.profile-text h4 {
+	color: #6F9E75;
+	text-align: left;
+}
+
+.profile-text p {
+	/*margin-left: 5px;*/
+	text-align: left;
+}
+
+.right-divider {
+	/*border-right: 1px solid #d3d3d3;*/
+	height: 100%;
+	
+}
+
+.mt {
+	margin-top: 25px;
+}
+
+.mb {
+	margin-bottom: 25px;
+}
+
+.centered {
+	text-align: center;
+}
+
+/*button*/
+.btn-theme {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+.btn-theme02 {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme02:hover,
+.btn-theme02:focus,
+.btn-theme02:active,
+.btn-theme02.active,
+.open .dropdown-toggle.btn-theme02 {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+.btn1{
+	
+	margin-left: -10px;
+	border-radius: 5px;
+	border: none;
+	background-color: transparent;
+	padding: 3px;
+}
+.btn1:hover{
+	color: #6F9E75;
+}
+
+
+caption{
+	text-align: center;
+}
+
+.n_table table{
+  	width: 98%;  	
+  }
+
+
+@media (max-width: 767px) {
+  .n_table table{
+  	width: 100%;
+  	padding-right: 0;
+  }
+}
+
+.right-divider h4,.right-divider h5,.profile-text h6{
+	text-align: center;
+}
+
+.comments-title{
+	width: 100px;	
+	text-align: center;
+	border-bottom: 3px #6F9E75 solid;
+}
+.comments-title2{
+	width: 150px;	
+	text-align: center;
+	border-bottom: 3px #6F9E75 solid;
+}
+.comments{
+	width: 98%;
+	height: 400px;
+	overflow-y: scroll;
+}
+
+.comments-reply span{
+	color: #FFFFFF;	
+}
+
+.nurse_list{
+	height: 500px;
+	overflow-y: scroll ;
+}
+
+/*modal 样式*/
+/*使用Bootstrap Modal实现用户资料修改，由于用户信息过多，
+ * 默认Modal出现页面滚动条，为了用户体验，不使用页面滚动条，
+ * 在Modal body部分加垂直滚动条，Modal header和footer固定位置。*/
+.modal-dialog { 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+} 
+
+.modal-content { 
+    /*overflow-y: scroll; */ 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    width: 100%; 
+} 
+
+.modal-body { 
+    overflow-y: scroll; 
+    position: absolute; 
+    top: 55px; 
+    bottom: 65px; 
+    width: 100%; 
+} 
+.modal-body::-webkit-scrollbar{
+	width: 0px;
+	background-color: transparent;
+}
+
+.modal-header .close {margin-right: 15px;} 
+
+.modal-footer {
+    position: absolute; 
+    width: 100%; 
+    bottom: 0; 
+}
+/*详情分隔条*/
+.greenbar{
+	height: 35px;
+	width: 7px;
+	background-color:#6F9E75 ;
+	float: left;
+}
+.centerbar{
+	
+	padding-left: 10px;
+	float: left;
+	
+}
+.centerbar p{
+	/*width: 90px;*/
+	font-size: 18px;
+	font-weight:bold ;
+	line-height: 35px;
+}
+
+.rightbar {	
+	padding-left: 5px;
+}
+.rightbar button{
+	line-height: 33px;
+	color: #6F9E75 ;
+	font-weight: bold;
+	border: none;
+	background-color: transparent;
+}
+.rightbar button:hover{	
+	color: #71C671;
+}
+
+
+.doc_center_box{
+	border-left:1px solid #d3d3d3;
+}
+
+.label_box{
+	margin-bottom: 10px;
+}
+
+
+@media (max-width: 767px) {
+  	.doc_center_box {
+    border: 1px solid #d3d3d3;     
+    margin-top: 10px;
+     }     
+     .right-divider h4,.right-divider h6{
+     	display: inline-block;     	
+     }
+     .right-divider h6{
+     	margin-right: 10px;
+     }
+}
+
+@media (max-width: 767px) {
+  .profile-text h5,.profile-text h3,
+  .profile-text h4,.profile-text p{
+    text-align: center;  }
+  .centent{
+  	text-align: left;
+  } 
+}
+
+.doc_contentbox{
+	padding: 10px 25px;
+}
+
+.smbox{
+	display: none;
+}
+.commentbox li{
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.text_green{
+	color: #71C671 ;
+}
+.commentsmbox{
+	padding: 5px;
+	border-radius: 15px;
+	border: 1px solid #6F9E75;	
+}
+
+/*预约医生*/
+.date_input{
+	margin: 0px;
+	/*margin-left: 6px;*/
+}
+
+input{
+	font-size: 15px;
+	display: inline-block;
+	margin-right: 6px;
+	padding: 5px;
+	border-radius: 5px!important;
+	height: 30px;
+	border: 1px solid #C0C0C0;
+	/**/
+	/*border: ;*/	
+}
+#to{
+	display: inline-block;
+	margin-top: -3px;
+	border: none;
+	height: 31px;
+}
+
+/*城市选择*/
+.city_box{
+	height: 50px;
+}
+
+#city-picker3{
+	width: auto;
+	min-width: 200px;
+}
+
+#city_select2 .modal-dialog{
+	margin-top: 20px;
+	height: auto;
+	max-height: 500px;
+}
+
+
+.values{
+	font-size: 0.9em;
+	color: #6F9E75;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+#sandbox-container label{
+	display: block;
+}
+
+.#sandbox-container table{
+	border: none;
+}
+
+@media  (max-width:767px ) {
+	.date_input{
+		margin-left: 0px;
+	}
+}
+
+.datetimepicker{
+	background-color:#FFFFFF;
+}
+
+.timer{
+	display: inline-block;
+	width:35px;
+	margin-top: -2px!important;
+}

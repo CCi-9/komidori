@@ -1,0 +1,290 @@
+.preg_list_item{
+	color: #6C6C6C;
+	
+}
+.preg_list_item:hover{
+	color: #659A72;
+	text-decoration: underline;
+}
+
+/*列表*/
+.tdl-content{
+	overflow-y:scroll ;
+	height: 260px;
+	
+}
+
+/*==============================================*/
+.card {
+  /*background-color: #FFFFFF;*/
+  margin: -30px 0px 15px 0px;
+  padding: 20px;
+  border: 1px solid #6F9E75;
+  /*background-color: #f8f8f8;*/
+  border-radius:10px;
+  /*-webkit-box-shadow: 0 0 10px 5px #e7e7e7;
+          box-shadow: 0 0 10px 5px #e7e7e7; */
+          }
+          
+.card-header{
+	margin-bottom: 5px;
+}
+
+.card-header h4 {
+  display: inline-block; }
+.card-header p {
+  /*font-family: "Quicksand", sans-serif;*/
+  margin-bottom: 12px; }
+  
+.card-header-right-icon {
+  display: inline-block;
+  float: right; }
+  
+.card-header-right-icon li {
+    float: right;
+    padding-left: 14px;
+    color: #878787;
+    cursor: pointer;
+    vertical-align: middle;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    display: inline-block; }
+    
+.card-header-right-icon li .ti-close {
+      font-size: 12px; }
+      
+.doc-link {
+  float: right;
+  position: relative;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
+.doc-link:hover:after, .doc-link:focus:after {
+    opacity: 1;
+    visibility: visible; }
+.doc-link:after {
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    content: "Documentation";
+    font-size: 12px;
+    padding: 5px 10px;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
+    
+.tdl-holder {
+  margin: 0px auto; 
+  }
+  
+.tdl-holder ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    
+.tdl-holder li {
+   /* background-color: #f8f8f8;*/
+    border-bottom: 1px dashed #6F9E75;
+    color: #878787;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0; 
+    /*border-radius: 20px;*/
+    }
+    
+.tdl-holder li .name {
+	  /*display: inline-block;*/
+	  width:300px ;
+	  padding-top: 15px;
+      margin-left: 40px;
+      /*font-family: "Quicksand", sans-serif;*/
+      vertical-align: middle;
+      -webkit-transition: all .2s linear;
+      transition: all .2s linear; 
+      }
+      
+.tdl-holder label {
+    /*cursor: pointer;*/
+    display: block;
+    line-height: 52px;
+    padding: 0 15px;
+    position: relative;
+    margin: 0px !important; 
+    
+    }
+    
+.tdl-holder label:hover {
+      background-color: #f5f5f5;
+       }
+      
+.tdl-holder label:hover button {
+        display: block; }
+        
+.tdl-holder label button {
+	  background-color: transparent;
+	  border: none;
+      /*border-radius: 20%;*/
+      color: #878787;
+      display: none;
+      float: right;
+      font-weight: bold;
+      line-height: normal;
+      height: 16px;
+      padding-right: 20px;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      width: 16px;
+      -webkit-transition: all .2s linear;
+      transition: all .2s linear; }
+      
+.vaccine_list label button{
+	margin-top: -50px;
+}      
+      
+      
+.tdl-holder input[type="checkbox"] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute; }
+    
+.tdl-holder input[type="checkbox"] + i {
+      background-color: #fff;
+      border: 1px solid #e7e7e7;
+      display: block;
+      /*height: 18px;*/
+      position: absolute;
+      top: 16px;
+      width: 25px;
+      height: 25px;
+      z-index: 1; 
+      border-radius: 13px;
+      cursor: pointer;
+      /*background-color: #C1E2B3;*/
+      }
+      
+.tdl-holder input[type="checkbox"]:checked + i::after {
+      content: "\e64c";
+      font-family: 'themify';
+      display: block;
+      left: 0px;
+      position: absolute;
+      top: -18px;
+      z-index: 2; 
+      font-size: 22px;
+      color: #6F9E75;
+      
+      }
+      
+.tdl-holder input[type="checkbox"]:checked ~ a {
+      color: #659A72;
+      text-decoration: line-through; }
+
+.tdl-holder input[type="text"] {
+    background-color: #f5f5f5;
+    height: 50px;
+    margin-top: 40px; }
+    
+/*产检表详情*/
+.data_box{
+	margin-top: 20px;
+}
+fieldset {
+	padding: 0px 20px 20px 20px;
+	border-radius:10px ;
+	background-color: #FFFFF0;
+	/*height: 490px;*/
+	border: 1px solid #6F9E75;
+	/*opacity: 0.75;*/
+}
+legend{
+	/*border: 1px solid #6F9E75;*/
+	/*background-color: #C1E2B3;
+	 */
+	border-bottom:1px dashed #6F9E75 ;
+}
+
+fieldset label{
+	display: block;
+	margin-top: 10px;
+	text-align: left;
+}
+
+fieldset p{
+	/*color: #6F9E75;*/
+	font-size: 14px;
+	margin-bottom:5px;
+	text-align: left;
+	/*text-align: left;*/
+	}
+/*结果表格*/
+.result_box{
+	/*margin: 50px 20px 20px 30px;*/
+	margin-top: 45px;
+	margin-left:20px ;
+	margin-right: 20px;
+	padding: 20px 20px 20px 20px;
+	border-radius:10px ;
+	background-color: #D6E9C6;
+}
+.result_box h4{
+	text-align: center;
+}
+
+.data_box h5{
+	color: #333333;
+}
+
+
+table{
+	margin-top: 10px;
+	/*border: 2px solid #F5F5DC;*/
+	border-collapse: collapse;
+	border-top: none;
+}
+
+caption{
+	text-align: center;
+	background-color: #FAF2CC;
+}
+
+.data_box th{
+	border: 1px solid #FAF2CC;
+	width: 130px;
+	text-align: center;
+	
+}
+.data_box td{
+	border: 1px solid #FAF2CC;
+	text-align: center;
+	color: #6F9E75;
+	font-weight: bold;
+}
+
+.whitebox{
+	padding: 5px;
+	background-color: #FAF2CC;
+	border-radius:10px ;
+	margin-top: 10px;
+}
+
+.whitebox p{
+	
+	text-align: left;
+	color: #6C6C6C;
+}
+
+/*疫苗接种*/
+.times{
+	padding-left: 35px;
+	vertical-align: middle;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear; 
+	margin-left: 5px;
+	margin-top:-10px ;
+	font-weight: normal;
+	font-size: 14px;
+	color: #6C6C6C;
+}

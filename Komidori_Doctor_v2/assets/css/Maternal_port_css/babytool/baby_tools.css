@@ -1,0 +1,147 @@
+/*页面头部胎儿数据示意图*/
+
+
+@media (min-width: 991px ) {
+	.baby_pic{
+	margin-top: -50px;
+	padding-left: 80px;
+	}
+	.warning_box{
+	margin-top: -40px;
+	
+	}
+}
+
+@media (max-width: 767px ) {
+	.baby_pic{
+	margin-top: -30px;
+	}
+	
+}
+
+.baby_pic img{
+	width: 450px;
+	display: inline-block;
+	margin: auto auto;
+}
+.baby_pic{
+	text-justify:inter-ideograph;
+}
+.title_box p{
+	color: #6C6C6C;
+	margin: 5px auto;
+	
+}
+.title_box{
+	margin-left:10px;
+	margin-right: 10px;
+	margin-top: -50px;
+	margin-bottom: 30px;
+	border-radius: 10px;
+	background-color: #D6E9C6;
+	/*box-shadow: 0px 2px 1px #6F9E75;*/
+	/*opacity: 0.75;*/
+}
+
+.warning_box{
+	
+	font-size: 15px;
+}
+.warning_box h4,{
+	font-size: 16px;
+}
+.panel-title a{
+	font-size: 15px;
+	color: #6C6C6C;
+}
+.alert{
+	padding-top:30px;
+}
+
+.data_box{
+	margin-top: 30px;
+}
+
+fieldset {
+	padding: 0px 20px 20px 20px;
+	border-radius:10px ;
+	background-color: #D6E9C6;
+	height: 490px;
+}
+fieldset label{
+	
+	display: block;
+	margin-top: 10px;
+	text-align: left;
+}
+
+fieldset p{
+	color: #6F9E75;
+	font-size: 14px;
+	margin-bottom:5px;
+	/*text-align: left;*/
+	}
+
+.sub_btn{
+	/*display: inline-block;
+	margin: auto auto;*/
+	background-color: #6F9E75;
+	color: #FCF8E3;
+	width: 100px;
+}
+
+/*结果表格*/
+.result_box{
+	/*margin: 50px 20px 20px 30px;*/
+	margin-top: 45px;
+	margin-left:20px ;
+	margin-right: 20px;
+	padding: 20px 20px 20px 20px;
+	border-radius:10px ;
+	background-color: #D6E9C6;
+}
+.result_box h4{
+	
+	text-align: center;
+}
+
+table{
+	margin-top: 10px;
+	border: 2px solid #F5F5DC;
+	border-collapse: collapse;
+}
+
+caption{
+	text-align: center;
+	background-color: #F5F5DC;
+}
+
+.data_box th{
+	border: 1px solid #F5F5DC;
+	width: 130px;
+	text-align: center;
+}
+.data_box td{
+	border: 1px solid #F5F5DC;
+	
+}
+
+.whitebox{
+	padding: 5px;
+	background-color: #FFFFFF;
+	border-radius:10px ;
+}
+.whitebox h4{
+	color: #6C6C6C;
+	font-size: 16px;
+}
+
+.weight_rank{
+	color: #CE8483;
+}
+
+.whitebox p{
+	color: #6C6C6C;
+	text-align: left;
+}
+

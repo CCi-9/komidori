@@ -1,0 +1,403 @@
+
+/*head*/
+.sign li
+{
+	display: inline-block;
+	
+}
+.sign a{
+	font-size: 14px;
+}
+/*登陆注册*/
+
+/*.sub-main-w3 h3{
+	margin-top: -20px;
+}*/
+
+.log{
+	text-align: center;	
+	line-height: 30px;
+	font-size: 16px;
+  	font-size: 1rem;
+  	text-decoration: none;
+  	color: #6c6c6c;
+  	display: inline-block;
+
+  	width: 90px;
+}
+/*医生入口*/
+#doc_entry{
+	float: right;
+}
+/*按钮样式*/
+.theme-btn3{
+  background-color:#6F9E75;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 30px;
+  width: 120px;
+  ttext-align: center;
+  line-height: 30px;
+  color: #fff;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 5px;
+  display: inline-block;
+  text-transform: capitalize;
+  border:1px solid rgba(255, 255, 255, .3);
+  float: right;
+  
+}
+.theme-btn3:hover, .theme-btn3:focus, .theme-btn3:active {
+  background-color:  #71C671;
+  color: #fff;
+}
+/*button*/
+.btn-theme {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+.btn-theme02 {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme02:hover,
+.btn-theme02:focus,
+.btn-theme02:active,
+.btn-theme02.active,
+.open .dropdown-toggle.btn-theme02 {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+
+
+/*登录注册事件*/
+.log:hover, .log:focus, .log:active {
+  background-color:  #71C671;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/*head*/
+
+/*验证*/
+#demo {
+    width: 600px;
+    margin: 150px auto;
+    padding: 10px;
+    border: 0px dashed #d5d4ff;
+    border-radius: 10px;
+    text-align: left;  
+}
+/*注册*/
+#btnSendCode1{
+				width: 100%;
+				height: 48px;  
+				padding: 0 5px;
+				/*margin-top: 20px;*/
+				font-size: 14px;
+				text-align: center;
+				background: transparent;
+				border-radius: 8px;
+				color: #a07941;
+				border-color: #9BCD9B;
+				/*background-color: #9BCD9B;*/
+				/*padding-bottom: 5px;*/
+				color: #6F9E75;
+				line-height: 48px;
+				font-weight: bold;
+				/*margin-left: 5px;*/
+								 
+			}
+#tel{
+	width: 100%;	
+}
+
+.tel-left{
+	margin-left: 2%;
+	float: left;
+	width: 20%;
+}
+.tel-left label{	
+	line-height: 50px;
+	width: 100%;
+}
+
+.tel_center{
+	float: left;
+	width: 44%;
+}
+.tel_center input{
+	margin-left: 2%;
+	/*float: left;*/
+	width: 100%;
+	margin-right: 10px;
+}
+
+.tel_right{	
+	float: left;
+	width: 30%;
+	margin-left: 5px;	
+}
+.tel_right button{
+	
+}
+/*协议*/
+#note{
+	color: #6F9E75;
+}
+.admin{
+	float: right;
+}
+
+.admin li{
+	margin:5px 0 ;
+	
+}
+
+.admin hr{
+	margin:10px 0;
+}
+
+.re_pwd_box{
+	
+}
+
+.reset_tip{
+	float: left;
+}
+
+
+#pwdrank p{
+	font-size: 12px;
+}
+.logobar_content ul li {
+	display: inline-block;
+	/*margin-top: 20px;*/
+}
+.logobar_content ul li a{
+	margin-top: 7px;
+}
+.logobar_left ul li img{
+	margin: 0;
+	padding: 0;
+}
+/*个人中心*/
+.img-holder .box {
+	float: none;
+   	display: inline-block;
+   	vertical-align: middle;
+	height: 0;
+	padding-bottom:100%;
+	margin-top: 5px;
+	
+}
+
+.img-holder{
+	background-color: #FFF;
+	border-radius: 10px;
+	padding: 8px;
+}
+
+/*个人中心 内容展示*/
+.per_con_box{
+	margin-top: 20px;
+	
+}
+
+/*个人中心-基本信息-表格*/
+.p_table th{
+	width:100px;
+}
+
+
+.order_num p{
+	display: inline-block;
+}
+.order_num span{
+	
+}
+
+.comment-image img{
+	width: 50px;
+	height: 50px;
+}
+.comments-area{
+	text-align: left;
+}
+
+.inq_rec_list{
+	height: 500px;
+	overflow-y: scroll;
+}
+
+.inq_rec_list::-webkit-scrollbar{
+    width: 0px;
+    background: none;
+}
+/*评论区域滚动条去除*/
+.comments::-webkit-scrollbar{
+    width: 0px;
+    background: none;
+}
+
+/*文本颜色*/
+.text_red{
+	color: darkred;
+}
+
+
+/*人物档案card*/
+.card-profile2 {
+    /*background: #D6E9C6;*/
+    padding: 10px;
+	margin-bottom:20px;
+	text-align:center;
+	float: left;
+}
+.nurse_card,.doc_card{
+	padding: 15px 20px 5px 20px;
+	/*border: 1px solid #D6E9C6;*/
+	/*background: #F4F8F3;*/
+	border: 1px solid #6F9E75;
+	border-radius: 20px;
+	/*height: 350px;*/
+}
+
+.nurse_card:hover,.doc_card:hover{
+	-webkit-box-shadow: 0 0 10px 5px #e7e7e7;
+          box-shadow: 0 0 10px 5px #e7e7e7; 
+}
+
+.nurse_card p{
+	margin:8px auto;
+	color: ##6C6C6C;
+	font-weight: 550;
+}
+.nurse_card p span{
+	color: #6F9E75;
+	font-weight: normal;
+}
+.card-profile2 .profile-photo {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+}
+ul.social-info {
+    margin: 10px 0px 20px;
+}
+
+.nurse_card h4 {
+	color: #6C6C6C;
+	margin-bottom: 0px;
+}
+.card-profile2 ul.social-info li a {
+    color: #FFF;
+    font-size: 16px;
+}
+.card-profile2 ul.social-info li{
+	color: ##6C6C6C;
+	font-weight: 550;
+}
+.card-profile2 ul.social-info li span{
+	color: #6F9E75;
+	font-weight: normal;
+}
+.card-profile2 .btn {
+	color: #FFF;
+    margin: 5px 0px 20px;
+    padding: 6px 20px;
+    background-color: #6F9E75;
+}
+
+/*分页*/
+.pg-pagination{
+	margin-left: 20px;
+}
+
+
+/*normal text*/
+.normal_text p{
+	text-align: left;
+	color: #6C6C6C;
+	font-size: 15px;
+}
+
+.normal_text h5{
+	color: #6C6C6C;
+	font-size:16px;
+}
+
+.normal_text span{
+	display: inline-block;
+	margin-top: -10px;
+}
+
+.normal_text li{
+	margin-bottom: 20px;
+}
+
+/*育儿工具*/
+.tools_box{
+	display: inline-block;
+	float: left;
+	padding: 10px;
+	width: 120px ;
+	text-align: center;
+	margin-right: 20px;
+	border-radius: 10%;
+	height: 100px;
+}
+.tools_box:hover{
+	/*border: 1px solid #6F9E75;*/
+	background-color: #D6E9C6;
+	
+}
+.topbox{
+	width: 60px;
+	height: 60px;
+	background-color: #FCF8E3;
+	padding: 3px;
+	border-radius: 10%;
+	margin: auto auto;
+}
+.downbox{
+	margin-top: 5px;
+	text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    border: 6px solid rgba(0, 0, 0, 0);
+    box-shadow: 8px 0 0 #A5ADB7 inset;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 8px 0 0 #6F9E75 inset;
+}
+
+/*主页*/
+.index_professor{
+	margin-left: 5px;
+}

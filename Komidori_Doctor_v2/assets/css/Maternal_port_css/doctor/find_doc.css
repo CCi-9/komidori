@@ -1,0 +1,106 @@
+/*标签选择*/
+.select_bar{
+	margin-top: -50px;
+}
+.headpic{
+	width: 50px;
+	height: 50px;
+}
+
+.img-holder{
+	padding: 2px;
+}
+
+.img-holder img{
+	
+	width: 100px;
+	height: 50px;
+}
+h4.author{
+	
+	padding-bottom: 10px;
+}
+
+.table_select th{
+	text-align: center;
+	width:80px;
+	
+}
+.table_select td{
+	padding-left: 10px;
+	/*max-width: 100%;*/
+}
+
+.disease_list li,.service_list li,.strength li{
+	display: inline-block;
+	margin-right: 20px;
+	
+}
+.disease_list a,.service_list a,.strength a{
+	color: #6C6C6C;
+}
+
+.disease_list input,.service_list input,.strength input{
+	display: none;
+}
+
+.disease_list label,.service_list label,.strength label{
+	font-size: 0.9em;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.disease_list input:checked + label,.service_list input:checked + label,.strength input:checked + label {
+	color: #6F9E75;
+	/*text-decoration: blink;*/
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/*医生资料卡 在Lcycss*/
+
+
+.doc_title{
+	color: #6C6C6C;
+	font-size: ;
+	padding-left:10px ;
+	font-weight: normal;	
+}
+
+.doc_card .label{
+	font-size: 13.5px;
+}
+
+.doc_card p{
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/*城市选择*/
+.city_box{
+	height: 50px;
+}
+
+#city {
+	/*width: 300px;*/
+}
+
+#city-picker3{
+	width: auto;
+	min-width: 200px;
+}
+
+.modal-dialog{
+	margin-top: 100px;
+}
+.values{
+	font-size: 0.9em;
+	color: #6F9E75;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="themepresss">
+	<title>上门医生</title>
+	<link href="../../assets/css/index_Base.css" rel="stylesheet" />
+	<!--<link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css"/>-->
+	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/doctor/find_doc.css"/>
+	<link href="../../assets/css/city/city-picker.css" rel="stylesheet" />
+	
+	</head>
+	<body class="card-no-border">
+		
+		<div class="page-wrapper">			
+		<!-- start preloader -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- end preloader -->
+        
+		<!--头部-->
+		<header id="header" class="site-header header-style-1 header-style-3">
+            <div class="topbar">
+                <div class="container">
+                    <div class="separator"></div>
+                    <div class="row">
+                        <div class="col col-sm-3">
+                            <div class="contact-info">
+                                <ul>
+                                    <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="contact-info">
+                                <ul>
+                                    <li><i class="ti-mobile"></i>502015889@qq.com</li>
+                                    <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--登陆注册入口-->
+                        <div class="col col-sm-4 hidden">
+                            <div class="sign">
+                            	<ul>
+                            		<li><a href="signin.html" class="log">登陆</a></li>
+                            		<li><a href="register.html" class="log">注册</a></li>
+                            		<li id="doc_entry"><a href="#"  class="log">医生入口</a></li>                            			
+                            	</ul>
+                            </div>
+                        </div>
+                        <!--登陆后显示-->
+                        <div class="col col-sm-4 ">
+                            <div class="admin">
+                            	<ul>
+                            		<li>
+                            			<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            				<img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px" />
+                            				Komidori Li
+                            				<span class="caret"></span>
+                        				</a>
+                        				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+				                          <li> <a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a> </li>
+				                          <li> <a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a> </li>
+				                          <li> <a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息 </a> </li>
+				                          <hr />
+				                          <li> <a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a> </li>
+                        				</ul>                      				
+                            		</li>
+                            	</ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar -->
+
+            <nav class="navigation navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="open-btn">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--logo-->
+                        <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
+                    </div>
+                    <!--导航条-->
+                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                        <button class="close-navbar"><i class="ti-close"></i></button>
+                        <ul class="nav navbar-nav">
+                        	
+                            <li class="menu-item-has-children">
+                                <a href="../index.html">主页</a>
+                               
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">线上咨询服务</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../doctor/find_doctors.html">找医生</a></li>
+                                    <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">线下预约服务</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
+                                    <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">经验交流社区</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../mom_public/expert_course.html">专家课程</a></li>
+                                    <li><a href="../expert/find_experts.html">找专家</a></li>
+                                    <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">育儿工具</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../baby_tools/production_list.html">产检表</a></li>
+                                    <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
+                                    <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="../about.html">关于我们</a></li>
+                            
+                        </ul>
+                    </div><!-- end of nav-collapse -->
+					<!--导航条//-->
+					<!--搜索-->
+                    <div class="side-info">
+                        <div class="header-search-form-wrapper">
+                            <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
+                            <div class="header-search-form">
+                                <form>
+                                    <div>
+                                        <input type="text" class="form-control" placeholder="在此处搜索...">
+                                        <button type="submit"><i class="fi flaticon-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                      	
+                    <!--搜索//-->
+                </div><!-- end of container -->
+            </nav>
+        </header>
+        		       
+		<!--导航-->
+		<div class="breadcumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>预约医生</h2>
+                            <!--导航-->
+                            <ul>
+                                <li><a href="../index.html">主页</a></li>
+                                <li><a href="../user/personal_center.html">线下服务</a></li>
+                                <li><span>线下预约医生</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="blog-single-section section-padding">
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px"
+                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+            
+            <div class="container">
+            	 <!--筛选-->
+            <div class="row select_bar">
+            	
+            	<div class="col col-md-12 col-xs-12">
+            		<table class="table table-bordered table_select">
+            			<tr>
+            				<th>疾病</th>
+            				<td class="scroll">
+            					<button class="btn btn-sm" data-toggle="modal" data-target="#disease_select">选择疾病</button>
+            					<span id="disease_check" class="values"></span>
+            					
+            				</td>
+            			</tr>
+            			<tr>
+            				<th>科室</th>
+            				<td>
+            					<form action="" method="post">
+            						<ul class="service_list">
+            						<li><input id="all_service" type="radio" name="service_type" checked="checked"></input><label for="all_age">所有</label></li>
+            						<li><input id="fk" type="radio" name="service_type"></input><label for="fk">妇科</label></li>
+            						<li><input id="ck" type="radio" name="service_type"></input><label for="ck">产科</label></li>
+            						<li><input id="xsek" type="radio" name="service_type"></input><label for="xsek">新生儿科</label></li>
+            						<li><input id="jhsy" type="radio" name="service_type"></input><label for="jhsy">计划生育科</label></li>
+            						<li><input id="fybj" type="radio" name="service_type"></input><label for="fybj">妇幼保健科</label></li>
+            					</ul>
+            					</form>
+            				</td>
+            			</tr>
+            			<tr>
+            				<th>地区</th>
+            				<td class="city_box">
+            					<button class="btn btn-sm" data-toggle="modal" data-target="#city_select">选择城市</button>
+            					<span id="city_check" class="values"></span>
+            				</td>
+            			</tr>
+            		</table>
+            	</div>
+
+            </div>
+            
+            
+            <div class="row">
+            	
+            	<div class="doc_list col-md-12">
+                    
+            		<div class="card-profile2 col-md-3 col-xs-12">
+            				<div class="doc_card">
+                              	<a href="#" class="doc_info">
+            						<img src="../../assets/images/heads.jpg" class="profile-photo"  alt=""/>
+                              		<h4>菜大姐<span class="doc_title">主治医师</span></h4>
+                              		<p>湛江市中心人民医院</p>
+                              		<span class="label label-default">妇产科</span>
+                              	</a>
+	                            <ul class="list-inline social-info">
+	                            	<li>点赞 : <span>55</span></li>
+	                            	<li>服务 : <span>23</span>户</li>
+	                            </ul>
+	                            <p class="text-left">擅长：擅长各种妇产科常见病、多发病及急重症的诊治，青春期、生育期、围绝经期内分泌失调引起的月经不规则，女性生殖系统炎性疾</p>
+	                            <button href="" class="btn">预约</button>
+	                            <!--<p><span class="label label-danger">可咨询</span></p>-->
+            				</div>
+                    </div>
+            		<div class="card-profile2 col-md-3 col-xs-12">
+            				<div class="doc_card">
+                              	<a href="#" class="doc_info">
+            						<img src="../../assets/images/heads.jpg" class="profile-photo"  alt=""/>
+                              		<h4>菜大姐<span class="doc_title">主治医师</span></h4>
+                              		<p>湛江市中心人民医院</p>
+                              		<span class="label label-default">妇产科</span>
+                              	</a>
+	                            <ul class="list-inline social-info">
+	                            	<li>点赞 : <span>55</span></li>
+	                            	<li>服务 : <span>23</span>户</li>
+	                            </ul>
+	                            <p class="text-left">擅长：擅长各种妇产科常见病、多发病及急重症的诊治，青春期、生育期、围绝经期内分泌失调引起的月经不规则，女性生殖系统炎性疾</p>
+	                            <button href="" class="btn">预约</button>
+	                            <!--<p><span class="label label-danger">可咨询</span></p>-->
+            				</div>
+                    </div>
+            		<div class="card-profile2 col-md-3 col-xs-12">
+            				<div class="doc_card">
+                              	<a href="#" class="doc_info">
+            						<img src="../../assets/images/heads.jpg" class="profile-photo"  alt=""/>
+                              		<h4>菜大姐<span class="doc_title">主治医师</span></h4>
+                              		<p>湛江市中心人民医院</p>
+                              		<span class="label label-default">妇产科</span>
+                              	</a>
+	                            <ul class="list-inline social-info">
+	                            	<li>点赞 : <span>55</span></li>
+	                            	<li>服务 : <span>23</span>户</li>
+	                            </ul>
+	                            <p class="text-left">擅长：擅长各种妇产科常见病、多发病及急重症的诊治，青春期、生育期、围绝经期内分泌失调引起的月经不规则，女性生殖系统炎性疾</p>
+	                            <button href="" class="btn">预约</button>
+	                            <!--<p><span class="label label-danger">可咨询</span></p>-->
+            				</div>
+                    </div>
+            		<div class="card-profile2 col-md-3 col-xs-12">
+            				<div class="doc_card">
+                              	<a href="#" class="doc_info">
+            						<img src="../../assets/images/heads.jpg" class="profile-photo"  alt=""/>
+                              		<h4>菜大姐<span class="doc_title">主治医师</span></h4>
+                              		<p>湛江市中心人民医院</p>
+                              		<span class="label label-default">妇产科</span>
+                              	</a>
+	                            <ul class="list-inline social-info">
+	                            	<li>点赞 : <span>55</span></li>
+	                            	<li>服务 : <span>23</span>户</li>
+	                            </ul>
+	                            <p class="text-left">擅长：擅长各种妇产科常见病、多发病及急重症的诊治，青春期、生育期、围绝经期内分泌失调引起的月经不规则，女性生殖系统炎性疾</p>
+	                            <button href="" class="btn">预约</button>
+	                            <!--<p><span class="label label-danger">可咨询</span></p>-->
+            				</div>
+                    </div>
+                    
+            		
+            		
+            	</div>
+            	
+
+            </div>
+            
+	            
+        	</div>
+             <!-- end container -->
+
+        </section>
+		
+		<!--城市选择-->
+		<div class="modal fade" id="city_select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">选择城市</h4>
+		            </div>
+		            <div class="modal-body">
+		            	
+		            	<div class="form-group">
+							<form  class="">
+								<div id="city">
+									<input id="city-picker3" class="form-control form-control-line" readonly type="text" value="广东省/湛江市/赤坎区" data-toggle="city-picker">	
+								</div>
+							</form>										
+						</div>
+						
+		            </div>
+		            <div class="modal-footer">
+		                <button id="confirm_city" type="button" class="btn btn-default" data-dismiss="modal" >确认</button>
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+		
+		<!--疾病选择-->	
+		<div class="modal fade" id="disease_select" tabindex="-1" role="dialog" aria-labelledby="disease" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="disease">选择疾病</h4>
+		            </div>
+		            <div class="modal-body">
+		            	<form action="" method="post">
+            				<ul class="disease_list">
+            					<li><input id="all_dise" type="radio" name="dise_type" checked="checked" value="所有"></input><label for="all_dise">所有</label></li>
+            					<li><input id="1" type="radio" name="dise_type" value="不孕不育"></input><label for="1">不孕不育</label></li>
+            					<li><input id="2" type="radio" name="dise_type" value="流产"></input><label for="2">流产</label></li>
+            					<li><input id="3" type="radio" name="dise_type" value="人流"></input><label for="3">人流</label></li>
+            					<li><input id="4" type="radio" name="dise_type" value="早孕"></input><label for="4">早孕</label></li>
+            					<li><input id="5" type="radio" name="dise_type" value="早产"></input><label for="5">早产</label></li>
+            					<li><input id="6" type="radio" name="dise_type" value="妇科病"></input><label for="6">妇科病</label></li>
+            				</ul>		
+            			</form>
+							
+						
+						
+		            </div>
+		            <div class="modal-footer">
+		                <button id="confirm_disease" type="button" class="btn btn-default" data-dismiss="modal" >确认</button>
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+			</div>
+		
+		
+								
+		<!--页尾-->
+		<div id="foot"></div>
+		
+	</div>	
+	</body>
+	
+
+
+<!-- All JavaScript files================================================== -->
+    
+    <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../../assets/js/script.js"></script>
+    
+    <!--滑动-->
+	<script src="../../assets/js/smoothscroll.js" ></script>
+    
+    <!--城市选择-->
+    <script src="../../assets/js/city/city-picker.data.js"></script>
+    <script src="../../assets/js/city/city-picker.js"></script>
+    
+<!-- JS files end===========================================================-->
+<script>
+//	$("#head").load("./user_head.html");
+	
+$(function(){
+	$("#foot").load("../low_footer.html");	
+   	});
+   	
+   	//点赞
+	$("#thumbup").click(function(){
+		$(this).css({"background-color":"#EBCCD1","border-color":"indianred","color":"white!"});
+	});
+	
+//	function check(){
+//		var a = $("#city-picker3").val();
+//		alert(a);
+//	}
+    
+    $("#confirm_city").click(function(){
+    	var city = $("#city-picker3").val();
+    	$("#city_check").text(city);
+    });
+    
+    $("#confirm_disease").click(function(){
+    	var disease = $("input[name='dise_type']:checked").val();
+    	$("#disease_check").text(disease);
+    });
+ 
+</script>
+
+	
+</html>

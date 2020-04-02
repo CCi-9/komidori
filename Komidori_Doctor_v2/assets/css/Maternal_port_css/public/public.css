@@ -1,0 +1,237 @@
+/*个人中心妈咪社区*/
+.nbox{
+	width: 98%;
+}
+
+@media (max-width: 767px) {
+  .nbox{
+  	width: auto; 	
+  }
+  
+}
+.content-panel {
+	background: #ffffff;
+	/*box-shadow: 0px 3px 2px #aab2bd;*/
+	padding-top: 15px;
+	padding-bottom: 5px;
+	
+}
+/* PROFILE PAGE CONF */
+.profile-pic img {
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border: 10px solid #f1f2f7;
+	margin-top: 20px;
+}
+
+.profile-text h6 {
+	margin-top: -5px;
+	margin-bottom: 20px;
+	color: #d3d3d3;
+	text-align: left;
+}
+
+.profile-text h3 {
+	font-weight: 700;
+	color: #6F9E75;
+	text-align: left;
+}
+
+.profile-text h4 {
+	color: #6F9E75;
+	text-align: left;
+}
+
+.profile-text p {
+	/*margin-left: 5px;*/
+	text-align: left;
+}
+
+.right-divider {
+	border-right: 1px solid #d3d3d3;
+	height: 100%;
+	
+}
+
+@media (max-width: 767px) {
+  .right-divider {
+    border: none;  }
+}
+
+@media (max-width: 767px) {
+  .profile-text h6,.profile-text h3,
+  .profile-text h4,.profile-text p{
+    text-align: center;  }
+  .centent{
+  	text-align: left;
+  } 
+}
+
+.mt {
+	margin-top: 25px;
+}
+
+.mb {
+	margin-bottom: 25px;
+}
+
+.centered {
+	text-align: center;
+}
+
+
+caption{
+	text-align: center;
+}
+
+.n_table table{
+  	width: 98%;  	
+  }
+
+
+@media (max-width: 767px) {
+  .n_table table{
+  	width: 100%;
+  	padding-right: 0;
+  }
+}
+
+.right-divider h4,.right-divider h6{
+	text-align: center;
+}
+
+.comments-title{
+	width: 100px;	
+	text-align: center;
+	border-bottom: 3px #6F9E75 solid;
+}
+.comments-title2{
+	width: 150px;	
+	text-align: center;
+	border-bottom: 3px #6F9E75 solid;
+}
+/*.comments{
+	width: 98%;
+	height: 500px;
+	overflow-y: scroll;
+}
+
+.comments::-webkit-scrollbar{
+	width: 0px;
+    background: none;
+}*/
+
+
+.comments-reply span{
+	color: #FFFFFF;	
+}
+
+
+
+/*妈咪社区*/
+.nav a{
+	font-size: 17px;
+	color:  #6F9E75;
+}
+.nav li{
+	margin-top:10px;
+}
+.tab-content{
+	padding-left: 5px;
+	margin-top: 20px;
+}
+
+
+@media (max-width: 767px) {
+ 
+  	#navbar_tag{
+  	width: 700px;
+  	/*height: 60px;*/
+  	/*background-color:#C9E2B3;*/
+  }
+  
+ 	#navbar_tag1{
+ 	margin-left: 10px;
+ 	margin-right: 10px;
+ 	width: 95%;	
+  	overflow-x: scroll;
+  	height: 75px; 
+  	padding-top: 5px;
+  	background-color:#C9E2B3;	
+ 	}
+  
+    #navbar_tag1::-webkit-scrollbar{
+    width: 0px;
+    background: none;
+	}
+		
+}
+
+.headpic{
+	width: 50px;
+	height: 50px;
+}
+
+.img-holder{
+	padding: 2px;
+}
+
+.img-holder img{
+	
+	width: 100px;
+	height: 50px;
+}
+h4.author{
+	
+	padding-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .recent-post-widget{
+	
+}
+}
+
+/*搜索框*/
+@media (min-device-width: 991px) {
+  .search-widget{
+	margin-top: 20px;
+	}
+	h4.author{
+	padding-top:5px;
+	
+}	
+}
+
+.social-link a { 
+	cursor: pointer;
+	padding: 8px 10px;
+	border-radius: 10px;
+	background-color: #C9E2B3;	
+	margin-top: 10px;
+	color: #6C6C6C!important;
+	/*background-color: indianred;*/	
+}
+.social-link a:hover{
+	color: #6F9E75!important;
+}
+
+.float_btn{
+	position: absolute;
+	/*float: ;*/
+	right: 10%;
+	z-index:1000;
+}
+.float_btn button{
+	/*color: #6C6C6C;*/
+	text-align: center;
+	width:60px;
+	height: 60px;
+	border-radius: 30px;
+	border: none;
+	box-shadow: 8px 8px 30px 10px rgba(193,226,179,0.5); 
+	opacity: 0.7;
+	}
+

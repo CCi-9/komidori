@@ -1,0 +1,47 @@
+.content{
+	
+	background-color: #EBEBEB;
+}
+
+.layout{
+	background-color: #FFFFFF;
+}
+
+.img{
+	width: 50px;
+	height: 50px;
+}
+/*div.btn{
+	padding-top: 20px;
+}*/
+.file_icon{
+	
+	margin-top: 8px;
+}
+
+/*chat head*/
+.doc_name{
+	display: inline-block;
+	margin-bottom: 5px;
+	/*margin-top: -10px;*/
+}
+.badge{
+	display: inline-block;
+	/*margin-top: -10px!important;*/
+	margin-left: 5px;
+	font-size: 13px;
+}
+.professor{
+	margin-left:10px;
+	margin-right: 5px;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.info{
+	margin-top: 5px;
+	font-size: 15px;
+	margin-bottom: 0px;
+}
+
+

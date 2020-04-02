@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>注册</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+	<!--<link href="/Komidori_Doctor/assets/css/Base.css" rel="stylesheet" />-->
+	<!--<link rel="stylesheet" type="text/css" href="../assets/css/index_Base.css"/>-->
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../assets/css/city/city-picker.css"/>
+	<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/jquery-steps/jquery.steps.css"/>
+	<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/sign_css/signup.css"/>
+</head>
+<body class="bodybox">
+
+<!-- header -->
+ <!-- Start header 最顶部：登陆、注册、医生端 -->
+  <div id="head"></div>
+<!-- //header -->
+
+<!-- banner -->
+	<section class="inner-banner-top">
+		<div class="container">
+		</div>
+	</section>
+<!-- //banner -->
+	
+	<section>
+		
+	</section>
+<!-- signup -->
+	<div class="row">
+		
+		<div class="col-sm-12 col-md-8 col-md-push-2">
+			<div class="white-box">
+				<h2 class="header-title">医生注册</h2>
+				<form id="example-form" action="#">
+					<div class="col col-md-12 col-xs-12">
+						<h3>账户</h3>
+						
+						<section class="formbox">
+							
+							<div class="form-group clearfix">
+								<label for="userName" class="col-md-2">姓名 *</label>
+								<div class="col-md-10">
+									<input id="userName" name="userName" type="text" class="required form-control">
+								</div>
+							</div>
+							
+							<div class="form-group clearfix">
+								<label for="password" class="col-md-2">密码 *</label>
+								<div class="col-md-10">
+									<input id="password" name="password" type="password" class="required form-control">
+								</div>
+							</div>
+							
+							<div class="form-group clearfix">
+								<label for="confirm" class="col-md-2">确认密码 *</label>
+								<div class="col-md-10">
+									<input id="confirm" name="confirm" type="password" class="required form-control">
+								</div>
+							</div>
+							
+							<div class="form-group clearfix">
+									<label class="col-md-2" for="doc_phone">手机 *</label>
+									<div class="col-md-10">
+										<input id="doc_phone" name="doc_phone" type="text" class="required form-control">
+									</div>
+							</div>
+							
+							<div class="form-group clearfix">
+									<label class="col-md-2" for="email">验证码 *</label>
+									<div class="col-md-10">
+										<input id="yzm" name="yzm" type="text" class="required yzm">
+										<div class="sendbox">
+											<button id="btnSendCode2" type="button" class="btn" value="">获取验证码</button>
+										</div>
+									</div>
+							</div>
+						
+							<p>(*) 必填项</p>
+							
+						</section>
+						
+						<h3>详情</h3>
+						<section class="formbox"> 
+							<div class="form-group clearfix">
+								
+								<div class="form-group clearfix">
+									<label for="name" class="col-md-2">性别 *</label>
+									<div class="col-md-10">
+										<label class="radio-inline">
+											<input type="radio" name="sex" id="sex" value="male" checked="checked"> 男
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="sex" id="sex" value="female"> 女
+										</label>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix">
+									<label for="doc_age" class="col-md-2">年龄 *</label>
+									<div class="col-md-10">
+										<input id="doc_age" name="doc_age" type="number" min="1" max="100" class="required form-control">
+									</div>
+								</div>
+								
+								<div class="form-group clearfix">
+									<label class="col-md-2" for="email">身份证号码 *</label>
+									<div class="col-md-10">
+										<input id="idcard" name="idcard" type="text" class="required form-control">
+									</div>
+								</div>
+								
+								<div class="form-group clearfix">
+									<label class="col-md-2" for="doc_city">所在城市</label>
+									<div class="col-md-10">
+										<input id="doc_city" name="doc_city" type="text" class="city required">
+										<div class="citybox">
+											<button class="btn btn-sm" data-toggle="modal" data-target="#doc_city_select">选择城市</button>
+										</div>
+									</div>
+								</div>
+								
+								<p>(*) 必填项</p>
+						</section>
+						
+						<h3>认证</h3>
+						<section class="formbox">
+							
+								<div class="form-group clearfix">
+									<label for="doc_hospital" class="col-md-2">所属医院 *</label>
+									<div class="col-md-10">
+										<input id="doc_hospital" name="doc_hospital" type="text" class="required form-control">
+									</div>
+								</div>
+								
+								<div class="form-group clearfix">
+									<label for="doc_dept" class="col-md-2">科室 *</label>
+									<div class="col-md-10">
+										<input id="doc_dept" name="doc_dept" type="text" class="required form-control">
+									</div>
+								</div>
+								
+								<div class="form-group clearfix">
+									<label for="doc_rank" class="col-md-2">职称 *</label>
+									<div class="col-md-10">
+										<input id="doc_rank" name="doc_rank" type="text" class="required form-control">
+									</div>
+								</div>
+								
+								<div class="form-group clearfix">
+									<label for="doc_file" class="col-md-2">相关材料 *</label>
+									<div class="col-md-10">
+										<input id="doc_file" name="doc_file" type="file" multiple class="required form-control">
+										<span id="filelist"></span>
+									</div>
+								</div>
+								
+								
+								
+						</section>
+						
+						<h3>完成</h3>
+						<section class="formbox agreebox">
+							<input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> 
+								<label for="acceptTerms">
+									我已阅读<a href="#" id="note" class="agreement">《小翠医生协议》</a>
+								</label>
+						</section>
+						
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+<!-- //signup -->
+
+<!-- banner -->
+<section class="inner-banner">
+	<div class="container">
+	</div>
+</section>
+<!-- //banner -->
+
+
+<!-- footer -->
+
+    <div id="foot"></div>    
+      
+<!-- //footer -->
+
+<!--城市选择-->
+		<div class="modal fade" id="doc_city_select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">选择城市</h4>
+		            </div>
+		            <div class="modal-body">
+		            	
+		            	<div class="form-group">
+							<form  class="">
+								<div id="city">
+									<input id="doc_city_picker" class="form-control form-control-line" readonly type="text" value="广东省/湛江市/赤坎区" data-toggle="city-picker">	
+								</div>
+							</form>										
+						</div>
+						
+		            </div>
+		            <div class="modal-footer">
+		                <button id="doc_confirm_city" type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+<!--================================================================-->
+
+    <!-- js -->
+    <!-- All JavaScript files
+    ================================================== -->
+    
+   <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+		<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!--滑动-->
+		<script src="../assets/js/smoothscroll.js" ></script>
+    
+    <!--城市选择-->
+    <script src="../assets/js/city/city-picker.data.js"></script>
+    <script src="../assets/js/city/city-picker.js"></script>
+    
+    <!--step-->
+    <script src="../assets/js/jquery-validation/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../assets/js/jquery-steps/jquery.steps.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!--发送短信-->
+    <script src="../assets/js/sendmessage/sendmsg.js" type="text/javascript" charset="utf-8"></script>
+    <!-- //js ===========================================-->
+
+<script>
+$("#head").load("doc_logobar.html");
+$("#foot").load("low_footer.html");
+$(function(){
+	$("#btnSendCode2").click(function(){
+				sendMessage1("#doc_phone","#btnSendCode2");
+			});
+	$("#doc_confirm_city").click(function(){
+			var city = $("#doc_city_picker").val();
+			$("#doc_city").val(city);
+	});
+	
+
+})
+
+$("#example-basic").steps({
+  headerTag: "h3",
+  bodyTag: "section",
+  autoFocus: true
+  });
+//steps with form
+  var form = $("#example-form");
+  form.validate({
+    errorPlacement: function errorPlacement(error, element) {
+      element.before(error);
+                																						},
+      rules: {
+        confirm: {
+          equalTo: "#password"
+                  }
+              }
+            		});
+            		
+  form.children("div").steps({
+    headerTag: "h3",
+    bodyTag: "section",
+    transitionEffect: "slideLeft",
+    onStepChanging: function (event, currentIndex, newIndex)
+      {
+        form.validate().settings.ignore = ":disabled,:hidden";
+        return form.valid();
+      },
+    onFinishing: function (event, currentIndex)
+      {
+        form.validate().settings.ignore = ":disabled";
+        return form.valid();
+      },
+        onFinished: function (event, currentIndex)
+      {
+        alert("成功!");
+      }
+            							});
+            							
+		
+			
+		
+		
+		
+</script>
+<!--获取验证码-->
+
+</body>
+</html>

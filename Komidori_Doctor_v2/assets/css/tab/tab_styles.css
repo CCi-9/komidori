@@ -1,0 +1,196 @@
+/*body{
+	margin:0;
+	color:#6c6c6c;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+}*/
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+/*a{color:inherit;text-decoration:none;}*/
+/*input, button {
+  outline: none;
+  border: none;
+}*/
+.tab_wrap{
+	width:100%;
+	margin:auto;
+	/*max-width:525px;*/
+	min-height:1100px;
+	height: auto;
+	/*padding-bottom: 100%;*/
+	position:relative;
+	/*background:url(../img/bg.jpg) no-repeat center;*/
+	/*box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);*/
+}
+/*手机端*/
+@media (max-width: 767px) {
+  .tab_wrap {
+    min-height:1200px;
+  }
+}
+
+.tab_box{	
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:10px 10px 30px 10px;
+	/*background:rgba(40,57,101,.9);*/
+}
+.tab_box table td {
+	text-align:left;
+}
+.tab_box p{
+	/*text-align: justify;*/
+}
+
+
+.tab_box .tab_1,
+.tab_box .tab_2{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+	-webkit-transform:rotateY(180deg);
+	        transform:rotateY(180deg);
+	-webkit-backface-visibility:hidden;
+	        backface-visibility:hidden;
+	-webkit-transition:all .4s linear;
+	        transition:all .4s linear;
+}
+.tab_box .service,
+.tab_box .order,
+.tab-form .group .check{
+	display:none;
+}
+.tab_box .tab,
+.tab-form .group .label,
+.tab-form .group .button{
+	text-transform:uppercase;
+}
+.tab_box .tab{
+	
+	font-size:22px;
+	margin-right:15px;
+	padding-bottom:5px;
+	margin:0 15px 10px 0;
+	display:inline-block;
+	border-bottom:2px solid transparent;
+}
+/*被选中后的样式*/
+.tab_box .service:checked + .tab,
+.tab_box .order:checked + .tab{
+	color:#6F9E75;
+	border-color:#6F9E75;
+}
+.tab-form{
+	min-height:345px;
+	position:relative;
+	-webkit-perspective:1000px;
+	        perspective:1000px;
+	-webkit-transform-style:preserve-3d;
+	        transform-style:preserve-3d;
+}
+
+/*group*/
+.tab-form .group{
+	margin-bottom:15px;
+}
+.tab-form .group .label,
+.tab-form .group .input,
+.tab-form .group .button{
+	width:100%;
+	color:#6F9E75;
+	display:block;
+}
+.tab-form .group .input,
+.tab-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+.tab-form .group input[data-type="password"]{
+	text-security:circle;
+	-webkit-text-security:circle;
+}
+.tab-form .group .label{
+	color:#aaa;
+	font-size:12px;
+}
+.tab-form .group .button{
+	background:#1161ee;
+}
+.tab-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+}
+.tab-form .group label .icon:before,
+.tab-form .group label .icon:after{
+	content:'';
+	width:10px;
+	height:2px;
+	background:#6F9E75;
+	position:absolute;
+	-webkit-transition:all .2s ease-in-out 0s;
+	        transition:all .2s ease-in-out 0s;
+}
+.tab-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	-webkit-transform:scale(0) rotate(0);
+	    -ms-transform:scale(0) rotate(0);
+	        transform:scale(0) rotate(0);
+}
+.tab-form .group label .icon:after{
+	top:6px;
+	right:0;
+	-webkit-transform:scale(0) rotate(0);
+	    -ms-transform:scale(0) rotate(0);
+	        transform:scale(0) rotate(0);
+}
+.tab-form .group .check:checked + label{
+	color:#6F9E75;
+}
+.tab-form .group .check:checked + label .icon{
+	background:#1161ee;
+}
+.tab-form .group .check:checked + label .icon:before{
+	-webkit-transform:scale(1) rotate(45deg);
+	    -ms-transform:scale(1) rotate(45deg);
+	        transform:scale(1) rotate(45deg);
+}
+.tab-form .group .check:checked + label .icon:after{
+	-webkit-transform:scale(1) rotate(-45deg);
+	    -ms-transform:scale(1) rotate(-45deg);
+	        transform:scale(1) rotate(-45deg);
+}
+.tab_box .service:checked + .tab + .order + .tab + .tab-form .tab_1{
+	-webkit-transform:rotate(0);
+	    -ms-transform:rotate(0);
+	        transform:rotate(0);
+}
+.tab_box .order:checked + .tab + .tab-form .tab_2{
+	-webkit-transform:rotate(0);
+	    -ms-transform:rotate(0);
+	        transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+	text-align:center;
+}
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}

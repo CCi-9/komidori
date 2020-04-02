@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>找回密码</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+	<link href="../assets/css/Base.css" rel="stylesheet" />
+    	
+</head>
+<body>
+		
+        <!-- end preloader -->
+<!-- header -->
+ <!-- Start header 最顶部：登陆、注册、医生端 -->
+        <div id="head">
+        	
+        </div>
+<!-- //header -->
+
+<!-- banner -->
+<section class="inner-banner-top">
+	<div class="container">
+	</div>
+</section>
+<!-- //banner -->
+
+
+<!-- 登陆 -->
+<section class="signin py-5">
+	<div class="container">
+		<div class="row main-content-agile">
+			<div class="col-md-6 mx-auto col-md-push-3">	
+				<div class="sub-main-w3 text-center">	
+					<h3>找回密码</h3>
+					<!--提示-->
+					<p class="mt-2 mb-4">请输入手机号码</p>
+					<form action="#" method="post">
+						<!--手机号码-->
+						<div class="icon2">
+							<label for="tel">手机号</label>
+							<input  id="phone1"placeholder="手机号码" name="tel" type="text" required="">
+						</div>
+						
+						<!--短信验证码-->
+						<div class="icon1">
+							<div class="tel-left">
+								<label for="username">验证码</label>
+							</div>
+							
+							<div class="tel_center">									
+								<input id="tel" placeholder="短信验证码" name="phone" type="text" required="">
+							</div>
+							
+							<div class="tel_right">
+								<button id="btnSendCode1" type="button" class="btn btn-default" onClick="sendMessage1()" value="">获取验证码</button>
+							</div>		
+						</div>
+						
+						<div class="clearfix"></div>
+						<!--验证区域-->						
+						<div id="slider" class="">
+						        <div id="slider_bg"></div>
+						        <span id="label">>></span> 
+						        <span id="labelTip">拖动滑块验证</span>
+						</div>
+						   						
+						<input type="submit" class="submit" value="提交">
+						<p>其他方式找回 ? <a href="register.html" class="ml-2"><strong style="color: #6F9E75;">通过邮箱找回</strong></a></p>
+					</form>
+				</div>
+			</div>
+			<div style="width:100%;height: 10px;"></div>
+			<!--图片-->
+			<div class="col-lg-6 col-md-8 mx-auto">
+				<img src="assets/images/banner.png" alt="" class="img-fluid"/>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //signin -->
+
+<section class="inner-banner">
+	<div class="container">
+	</div>
+</section>
+
+<!-- footer -->
+<!-- start site-footer -->
+        <div id="foot">
+        	
+        </div>
+        <!-- end site-footer -->
+<!-- //footer -->
+
+    <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!--滑动-->
+	<script src="../assets/js/smoothscroll.js" ></script>
+	
+	<!--滑动条-->
+	<script type="text/javascript" src="../assets/js/jquery.slideunlock.js"></script> 
+
+<script>
+	$("#head").load("logobar.html");
+	$("#foot").load("low_footer.html");
+$(function () {
+    var slider = new SliderUnlock("#slider",{
+			successLabelTip : "验证成功"	
+		},function(){
+			alert("验证成功,即将跳转至#");
+        	window.location.href="#";
+			//以下四行设置恢复初始，不需要可以删除
+			setTimeout(function(){
+		        $("#labelTip").html("拖动滑块验证");
+				$("#labelTip").css("color","#787878");
+				},2000);
+			slider.init();
+		});
+    slider.init();
+})
+</script> 
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+//js
+	<!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../../assets/js/script.js"></script>
+    
+    <!--滑动-->
+	<script src="../../assets/js/smoothscroll.js" ></script>
+    
+    <!--城市选择-->
+    <script src="../../assets/js/city/city-picker.data.js"></script>
+    <script src="../../assets/js/city/city-picker.js"></script>
+    
+    <!--时间段插件-->
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+    <script src="../../assets/js/time/bootstrap-datepicker.min.js"></script>
+    <script src="../../assets/js/time/bootstrap-datepicker.zh-CN.min.js"></script>
+   
+   	<!--时间(日期)段插件-->
+   	<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+   	<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+   	<script src="../../assets/js/time/bootstrap-datetimepicker.zh-CN.js"></script>
+   	
+   	<!-- 友好提示 -->
+	<script src="../../assets/js/sweetalert/sweet-alert.js"></script>
+    <script src="../../assets/js/sweetalert/jquery.sweet-alert.custom.js"></script>
+    
+    <!--文本编辑器-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script src="../assets/js/summernote/summernote-zh-CN.js"></script>
+    
+//css

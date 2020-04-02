@@ -1,0 +1,75 @@
+
+.headpic{
+	width: 50px;
+	height: 50px;
+}
+
+/*视频*/
+@media (max-width: 767px) {
+  .video_size{	
+	width: 100%;
+	height: 100%;
+}
+}
+
+@media (min-device-width: 991px) {
+  .video_size{	
+	vertical-align: middle;
+	width: 100%;
+	height: 450px;
+}
+}
+/*关注、收藏、点赞按钮*/
+a.link,a.buy { 
+	cursor: pointer;
+	padding: 8px 10px;
+	border-radius: 10px;
+	background-color: #C9E2B3;	
+	margin-top: 10px;
+	color: #6C6C6C!important;
+	/*background-color: indianred;*/	
+}
+
+
+a.link:hover{
+	color: #6F9E75!important;
+}
+
+/*作者信息块*/
+
+/*标题*/
+h4.course_title {
+	color: #262626;
+	font-weight: normal;
+}
+
+a.author{
+	font-size: 16px;
+	color: #6F9E75;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.badge{
+	margin-top:-5px;
+	background-color: darksalmon;
+}
+
+a.buy{
+	background-color: #F7ECB5;
+}
+
+/*购买课程*/
+.price{
+	color: darkred;
+	font-weight: 550;
+	text-decoration: underline;
+}
+
+/*点赞*/
+.thumbup{
+	cursor: pointer;
+	/*display: inline-block;
+	border-radius: 5px;*/
+	
+}

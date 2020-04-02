@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+/*icon*/
+@import url("/Komidori_Doctor_v2/assets/css/themify-icons.css");
+@import url("/Komidori_Doctor_v2/assets/css/font-awesome.min.css");
+@import url("/Komidori_Doctor_v2/assets/css/flaticon.css");
+
+/*自定义样式*/
+@import url("/Komidori_Doctor_v2/assets/css/lcy_css.css");
+/*bootstrap css*/
+@import url("/Komidori_Doctor_v2/assets/css/bootstrap.min.css");
+/*登录注册相关css*/
+@import url("/Komidori_Doctor_v2/assets/css/slide-unlock.css");
+
+/*模板的自定义样式*/
+@import url("/Komidori_Doctor_v2/assets/css/style.css");
+@import url("/Komidori_Doctor_v2/assets/css/responsive.css");
+
+/*登录注册*/
+@import url("/Komidori_Doctor_v2/assets/css/loginstyle.css");
+@import url("/Komidori_Doctor_v2/assets/css/pwd_rank_style.css");
+@import url("/Komidori_Doctor_v2/assets/css/font-awesome.min.css"");
+
+
+
+
+
+
+
+
+
+

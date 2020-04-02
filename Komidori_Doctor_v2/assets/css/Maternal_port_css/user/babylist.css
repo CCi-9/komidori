@@ -1,0 +1,181 @@
+.nbox{
+	width: 98%;
+}
+
+@media (max-width: 767px) {
+  .nbox{
+  	width: auto; 	
+  }
+  
+}
+.content-panel {
+	background: #ffffff;
+	box-shadow: 0px 3px 2px #aab2bd;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	
+}
+/* PROFILE PAGE CONF */
+.profile-pic img {
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border: 10px solid #f1f2f7;
+	margin-top: 20px;
+}
+
+.profile-text h6 {
+	margin-top: -5px;
+	margin-bottom: 20px;
+	color: #d3d3d3;
+	text-align: left;
+}
+
+.profile-text h3 {
+	font-weight: 700;
+	color: #6F9E75;
+	text-align: left;
+}
+
+.profile-text h4 {
+	color: #6F9E75;
+	text-align: left;
+}
+
+.profile-text p {
+	/*margin-left: 5px;*/
+	text-align: left;
+}
+
+.right-divider {
+	border-right: 1px solid #d3d3d3;
+	height: 100%;
+	
+}
+
+@media (max-width: 767px) {
+  .right-divider {
+    border: none;  }
+}
+
+@media (max-width: 767px) {
+  .profile-text h6,.profile-text h3,
+  .profile-text h4,.profile-text p{
+    text-align: center;  }
+  .centent{
+  	text-align: left;
+  } 
+}
+
+.mt {
+	margin-top: 25px;
+}
+
+.mb {
+	margin-bottom: 25px;
+}
+
+.centered {
+	text-align: center;
+}
+
+/*button*/
+.btn-theme {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+.btn-theme02 {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme02:hover,
+.btn-theme02:focus,
+.btn-theme02:active,
+.btn-theme02.active,
+.open .dropdown-toggle.btn-theme02 {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+caption{
+	text-align: center;
+}
+
+.n_table table{
+  	width: 98%;  	
+  }
+
+
+@media (max-width: 767px) {
+  .n_table table{
+  	width: 100%;
+  	padding-right: 0;
+  }
+}
+
+.right-divider h4,.right-divider h6{
+	text-align: center;
+}
+
+.comments-title{
+	width: 100px;	
+	text-align: center;	
+	border-bottom: 3px #6F9E75 solid;
+}
+.comments-title2{
+	width: 150px;	
+	text-align: center;
+	display: inline-block;
+	border-bottom: 3px #6F9E75 solid;
+}
+.comments{
+	width: 98%;
+	height: 400px;
+	overflow-y: scroll;
+}
+
+.comments-reply span{
+	color: #FFFFFF;	
+}
+
+.nurse_list{
+	height: 500px;
+	overflow-y: scroll ;
+}
+
+
+.add{
+	color: #fff;
+	border-radius: 5px;
+	display: inline-block;
+	width: 100px;
+	height:25px;
+	line-height: 25px;
+	text-align: center;
+	margin-left: 5px;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.add:hover,
+.add:focus,
+.add:active,
+.add.active,
+.open .dropdown-toggle.add {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}

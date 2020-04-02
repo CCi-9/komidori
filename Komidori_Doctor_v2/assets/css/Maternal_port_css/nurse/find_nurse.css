@@ -1,0 +1,55 @@
+.table_select th{
+	text-align: center;
+	width:80px;
+}
+.table_select td{
+	padding-left: 10px;
+}
+
+/*城市选择*/
+.city_box{
+	height: 50px;
+}
+
+#city {
+	/*width: 300px;*/
+}
+
+#city-picker3{
+	width: auto;
+	min-width: 200px;
+}
+
+.modal-dialog{
+	margin-top: 100px;
+}
+
+.type_list li{
+	display: inline-block;
+	margin-right: 20px;
+}
+.type_list a{
+	color: #6C6C6C;
+}
+
+.type_list input{
+	display: none;
+}
+
+.type_list label{
+	font-size: 0.9em;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.type_list input:checked + label{
+	color: #6F9E75;
+	text-decoration: blink;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/*月嫂个人卡片 在Lcycss*/
+
+
+

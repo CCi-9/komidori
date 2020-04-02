@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>重置密码</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+    <link href="../assets/css/Base.css" rel="stylesheet" />
+	
+</head>
+<body>
+		<!-- start preloader -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- end preloader -->
+<!-- header -->
+ <!-- Start header 最顶部：登陆、注册、医生端 -->
+        <div id="head">
+        	
+        </div>
+<!-- //header -->
+
+<!-- banner -->
+<section class="inner-banner-top">
+	<div class="container">
+	</div>
+</section>
+<!-- //banner -->
+
+
+<!-- 登陆 -->
+<section class="signin py-5">
+	<div class="container">
+		<div class="row main-content-agile">
+			<div class="col-md-6 mx-auto col-md-push-3">	
+				<div class="sub-main-w3 text-center">	
+					<h3>重置密码</h3>
+					<!--提示-->
+					<p class="mt-2 mb-4">请重新设置密码</p>
+					<form action="#" method="post">	
+						
+					<div id="app">
+ 						<!--新密码-->
+						 <div class="icon1">
+							<div class="input_container">
+								<label for="tel">密码</label>
+								<input @input="p_len" v-model="password" placeholder="密码" name="pwd" type="password"  required="">
+								<span v-bind:class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span> 
+							</div>
+						 </div>
+ 						<!--重复密码--> 						
+						<div class="icon1">
+							<label for="tel">重复</label>
+							<input name="pwd2" type="password"  required="required" placeholder="确认密码" />
+							<span hidden="hidden">密码不一致</span> 	
+						</div>
+ 						<!--密码强度-->
+						<div class="lnu_container" id="pwdrank">
+						    <p v-bind:class="{ lovercase_valid: contains_lovercase }">Lowercase</p>
+						    <p v-bind:class="{ number_valid: contains_number }">Number</p>
+						    <p v-bind:class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
+						</div>
+						<!--密码是否通过-->  
+						<div class="valid_password_container" v-bind:class="{show_valid_password_container : valid_password }">
+						    <svg width="100%" height="100%" viewBox="0 0 140 100">
+						      <path class="tick" v-bind:class="{checked: valid_password }" 
+						          d="M10,50 l25,40 l95,-70" />
+						    </svg>
+						</div>
+						
+					</div>
+						
+					
+						
+						<!--验证区域-->						
+						<div id="slider" class="">
+						        <div id="slider_bg"></div>
+						        <span id="label">>></span> 
+						        <span id="labelTip">拖动滑块验证</span>
+						</div>
+						   						
+						<input type="submit" class="submit" value="重置">
+					</form>
+				</div>
+			</div>
+			<div style="width:100%;height: 10px;"></div>
+			<!--图片-->
+			<div class="col-lg-6 col-md-8 mx-auto">
+				<img src="assets/images/banner.png" alt="" class="img-fluid"/>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //signin -->
+
+<section class="inner-banner">
+	<div class="container">
+	</div>
+</section>
+
+<!-- footer -->
+<!-- start site-footer -->
+        <div id="foot">
+        	
+        </div>
+        <!-- end site-footer -->
+<!-- //footer -->
+
+
+
+    <!-- js -->
+	<!-- All JavaScript files
+    ================================================== -->
+    <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!--滑动-->
+	<script src="../assets/js/smoothscroll.js" ></script>
+    
+    <!--密码等级-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../assets/js/pwd_rank.js"></script>
+    
+    <script type="text/javascript" src="../assets/js/jquery.slideunlock.js"></script> 
+    <!-- //js -->
+	
+	
+
+<script>
+	$("#head").load("logobar.html");
+	$("#foot").load("low_footer.html");
+$(function () {
+    var slider = new SliderUnlock("#slider",{
+			successLabelTip : "验证成功"	
+		},function(){
+			alert("验证成功,即将跳转至#");
+        	window.location.href="#";
+			//以下四行设置恢复初始，不需要可以删除
+			setTimeout(function(){
+		        $("#labelTip").html("拖动滑块验证");
+				$("#labelTip").css("color","#787878");
+				},2000);
+			slider.init();
+		});
+    slider.init();
+})
+</script> 
+
+</body>
+</html>

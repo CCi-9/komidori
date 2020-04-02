@@ -1,0 +1,184 @@
+/*专家课程*/
+
+.comments-title{
+	width: 100px;	
+	text-align: center;
+	border-bottom: 3px #6F9E75 solid;
+}
+.comments-title2{
+	width: 150px;	
+	text-align: center;
+	border-bottom: 3px #6F9E75 solid;
+}
+
+
+.comments-reply span{
+	color: #FFFFFF;	
+}
+
+
+
+/*妈咪社区*/
+.nav a{
+	font-size: 17px;
+	color:  #6F9E75;
+}
+.nav li{
+	margin-top:10px;
+}
+.tab-content{
+	padding-left: 5px;
+	margin-top: 20px;
+}
+
+
+@media (max-width: 767px) {
+ 
+  	#navbar_tag{
+  	width: 700px;
+  	/*height: 60px;*/
+  	/*background-color:#C9E2B3;*/
+  }
+  
+ 	#navbar_tag1{
+ 	margin-left: 10px;
+ 	margin-right: 10px;
+ 	width: 95%;	
+  	overflow-x: scroll;
+  	height: 75px; 
+  	padding-top: 5px;
+  	background-color:#C9E2B3;	
+ 	}
+  
+    #navbar_tag1::-webkit-scrollbar{
+    width: 0px;
+    background: none;
+	}
+		
+}
+
+.headpic{
+	width: 50px;
+	height: 50px;
+}
+
+.img-holder{
+	padding: 2px;
+}
+
+.img-holder img{
+	
+	width: 100px;
+	height: 50px;
+}
+
+
+
+@media (max-width: 767px) {
+  .recent-post-widget{
+}
+}
+
+.social-link a { 
+	padding: 8px 10px;
+	border-radius: 10px;
+	background-color: #C9E2B3;	
+	/*background-color: indianred;*/	
+}
+
+
+/*专家课程*/
+.post{
+	padding-top:10px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+.post:hover{
+	background-color: #D6E9C6;
+}
+
+
+.course_title a{
+	margin-top: 5px;
+	color: #262626!important;
+		/*font-weight: 550;*/
+}
+
+h4.date{
+	color: #6C6C6C;
+}
+
+.author{
+	/*padding-bottom: 0px;*/
+	display: inline-block;
+}
+h5.author{
+	color: #6C6C6C;
+	font-weight: normal;
+}
+/*课程价格*/
+.badge{
+	background-color: darksalmon;
+}
+
+/*搜索框*/
+@media (min-device-width: 991px) {
+  .search-widget{
+	margin-top: 20px;
+	}
+}
+
+
+
+
+/*button*/
+/*.btn-theme {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+.btn-theme02 {
+  color: #fff;
+  background-color: #6F9E75;
+  border-color: #6F9E75;
+}
+.btn-theme02:hover,
+.btn-theme02:focus,
+.btn-theme02:active,
+.btn-theme02.active,
+.open .dropdown-toggle.btn-theme02 {
+  color: #fff;
+  background-color: #71C671;
+  border-color: #71C671;
+}
+
+caption{
+	text-align: center;
+}
+
+.n_table table{
+  	width: 98%;  	
+  }
+
+
+@media (max-width: 767px) {
+  .n_table table{
+  	width: 100%;
+  	padding-right: 0;
+  }
+}*/
+
+/*.right-divider h4,.right-divider h6{
+	text-align: center;
+}*/
+
