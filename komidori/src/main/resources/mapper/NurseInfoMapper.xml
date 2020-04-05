@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.NurseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.NurseInfo" >
+    <id column="nurse_id" property="nurseId" jdbcType="INTEGER" />
+    <result column="nurse_name" property="nurseName" jdbcType="VARCHAR" />
+    <result column="nurse_age" property="nurseAge" jdbcType="INTEGER" />
+    <result column="nurse_tel" property="nurseTel" jdbcType="VARCHAR" />
+    <result column="nurse_idcard" property="nurseIdcard" jdbcType="VARCHAR" />
+    <result column="nurse_city" property="nurseCity" jdbcType="VARCHAR" />
+    <result column="nurse_race" property="nurseRace" jdbcType="VARCHAR" />
+    <result column="nurse_language" property="nurseLanguage" jdbcType="VARCHAR" />
+    <result column="nurse_follow" property="nurseFollow" jdbcType="INTEGER" />
+    <result column="nurse_orders" property="nurseOrders" jdbcType="INTEGER" />
+    <result column="nurse_good_review" property="nurseGoodReview" jdbcType="INTEGER" />
+    <result column="nurse_work_age" property="nurseWorkAge" jdbcType="INTEGER" />
+    <result column="nurse_email" property="nurseEmail" jdbcType="VARCHAR" />
+    <result column="nurse_img" property="nurseImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nurse_id, nurse_name, nurse_age, nurse_tel, nurse_idcard, nurse_city, nurse_race, 
+    nurse_language, nurse_follow, nurse_orders, nurse_good_review, nurse_work_age, nurse_email, 
+    nurse_img
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.NurseInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from nurse_info
+    where nurse_id = #{nurseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from nurse_info
+    where nurse_id = #{nurseId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.NurseInfoExample" >
+    delete from nurse_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.NurseInfo" >
+    insert into nurse_info (nurse_id, nurse_name, nurse_age, 
+      nurse_tel, nurse_idcard, nurse_city, 
+      nurse_race, nurse_language, nurse_follow, 
+      nurse_orders, nurse_good_review, nurse_work_age, 
+      nurse_email, nurse_img)
+    values (#{nurseId,jdbcType=INTEGER}, #{nurseName,jdbcType=VARCHAR}, #{nurseAge,jdbcType=INTEGER}, 
+      #{nurseTel,jdbcType=VARCHAR}, #{nurseIdcard,jdbcType=VARCHAR}, #{nurseCity,jdbcType=VARCHAR}, 
+      #{nurseRace,jdbcType=VARCHAR}, #{nurseLanguage,jdbcType=VARCHAR}, #{nurseFollow,jdbcType=INTEGER}, 
+      #{nurseOrders,jdbcType=INTEGER}, #{nurseGoodReview,jdbcType=INTEGER}, #{nurseWorkAge,jdbcType=INTEGER}, 
+      #{nurseEmail,jdbcType=VARCHAR}, #{nurseImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.NurseInfo" >
+    insert into nurse_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nurseId != null" >
+        nurse_id,
+      </if>
+      <if test="nurseName != null" >
+        nurse_name,
+      </if>
+      <if test="nurseAge != null" >
+        nurse_age,
+      </if>
+      <if test="nurseTel != null" >
+        nurse_tel,
+      </if>
+      <if test="nurseIdcard != null" >
+        nurse_idcard,
+      </if>
+      <if test="nurseCity != null" >
+        nurse_city,
+      </if>
+      <if test="nurseRace != null" >
+        nurse_race,
+      </if>
+      <if test="nurseLanguage != null" >
+        nurse_language,
+      </if>
+      <if test="nurseFollow != null" >
+        nurse_follow,
+      </if>
+      <if test="nurseOrders != null" >
+        nurse_orders,
+      </if>
+      <if test="nurseGoodReview != null" >
+        nurse_good_review,
+      </if>
+      <if test="nurseWorkAge != null" >
+        nurse_work_age,
+      </if>
+      <if test="nurseEmail != null" >
+        nurse_email,
+      </if>
+      <if test="nurseImg != null" >
+        nurse_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nurseId != null" >
+        #{nurseId,jdbcType=INTEGER},
+      </if>
+      <if test="nurseName != null" >
+        #{nurseName,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseAge != null" >
+        #{nurseAge,jdbcType=INTEGER},
+      </if>
+      <if test="nurseTel != null" >
+        #{nurseTel,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseIdcard != null" >
+        #{nurseIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseCity != null" >
+        #{nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseRace != null" >
+        #{nurseRace,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseLanguage != null" >
+        #{nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseFollow != null" >
+        #{nurseFollow,jdbcType=INTEGER},
+      </if>
+      <if test="nurseOrders != null" >
+        #{nurseOrders,jdbcType=INTEGER},
+      </if>
+      <if test="nurseGoodReview != null" >
+        #{nurseGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="nurseWorkAge != null" >
+        #{nurseWorkAge,jdbcType=INTEGER},
+      </if>
+      <if test="nurseEmail != null" >
+        #{nurseEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseImg != null" >
+        #{nurseImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.NurseInfoExample" resultType="java.lang.Integer" >
+    select count(*) from nurse_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurse_info
+    <set >
+      <if test="record.nurseId != null" >
+        nurse_id = #{record.nurseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseName != null" >
+        nurse_name = #{record.nurseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseAge != null" >
+        nurse_age = #{record.nurseAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseTel != null" >
+        nurse_tel = #{record.nurseTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseIdcard != null" >
+        nurse_idcard = #{record.nurseIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseCity != null" >
+        nurse_city = #{record.nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseRace != null" >
+        nurse_race = #{record.nurseRace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseLanguage != null" >
+        nurse_language = #{record.nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseFollow != null" >
+        nurse_follow = #{record.nurseFollow,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseOrders != null" >
+        nurse_orders = #{record.nurseOrders,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseGoodReview != null" >
+        nurse_good_review = #{record.nurseGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseWorkAge != null" >
+        nurse_work_age = #{record.nurseWorkAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseEmail != null" >
+        nurse_email = #{record.nurseEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseImg != null" >
+        nurse_img = #{record.nurseImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurse_info
+    set nurse_id = #{record.nurseId,jdbcType=INTEGER},
+      nurse_name = #{record.nurseName,jdbcType=VARCHAR},
+      nurse_age = #{record.nurseAge,jdbcType=INTEGER},
+      nurse_tel = #{record.nurseTel,jdbcType=VARCHAR},
+      nurse_idcard = #{record.nurseIdcard,jdbcType=VARCHAR},
+      nurse_city = #{record.nurseCity,jdbcType=VARCHAR},
+      nurse_race = #{record.nurseRace,jdbcType=VARCHAR},
+      nurse_language = #{record.nurseLanguage,jdbcType=VARCHAR},
+      nurse_follow = #{record.nurseFollow,jdbcType=INTEGER},
+      nurse_orders = #{record.nurseOrders,jdbcType=INTEGER},
+      nurse_good_review = #{record.nurseGoodReview,jdbcType=INTEGER},
+      nurse_work_age = #{record.nurseWorkAge,jdbcType=INTEGER},
+      nurse_email = #{record.nurseEmail,jdbcType=VARCHAR},
+      nurse_img = #{record.nurseImg,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.NurseInfo" >
+    update nurse_info
+    <set >
+      <if test="nurseName != null" >
+        nurse_name = #{nurseName,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseAge != null" >
+        nurse_age = #{nurseAge,jdbcType=INTEGER},
+      </if>
+      <if test="nurseTel != null" >
+        nurse_tel = #{nurseTel,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseIdcard != null" >
+        nurse_idcard = #{nurseIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseCity != null" >
+        nurse_city = #{nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseRace != null" >
+        nurse_race = #{nurseRace,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseLanguage != null" >
+        nurse_language = #{nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseFollow != null" >
+        nurse_follow = #{nurseFollow,jdbcType=INTEGER},
+      </if>
+      <if test="nurseOrders != null" >
+        nurse_orders = #{nurseOrders,jdbcType=INTEGER},
+      </if>
+      <if test="nurseGoodReview != null" >
+        nurse_good_review = #{nurseGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="nurseWorkAge != null" >
+        nurse_work_age = #{nurseWorkAge,jdbcType=INTEGER},
+      </if>
+      <if test="nurseEmail != null" >
+        nurse_email = #{nurseEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseImg != null" >
+        nurse_img = #{nurseImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where nurse_id = #{nurseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.NurseInfo" >
+    update nurse_info
+    set nurse_name = #{nurseName,jdbcType=VARCHAR},
+      nurse_age = #{nurseAge,jdbcType=INTEGER},
+      nurse_tel = #{nurseTel,jdbcType=VARCHAR},
+      nurse_idcard = #{nurseIdcard,jdbcType=VARCHAR},
+      nurse_city = #{nurseCity,jdbcType=VARCHAR},
+      nurse_race = #{nurseRace,jdbcType=VARCHAR},
+      nurse_language = #{nurseLanguage,jdbcType=VARCHAR},
+      nurse_follow = #{nurseFollow,jdbcType=INTEGER},
+      nurse_orders = #{nurseOrders,jdbcType=INTEGER},
+      nurse_good_review = #{nurseGoodReview,jdbcType=INTEGER},
+      nurse_work_age = #{nurseWorkAge,jdbcType=INTEGER},
+      nurse_email = #{nurseEmail,jdbcType=VARCHAR},
+      nurse_img = #{nurseImg,jdbcType=VARCHAR}
+    where nurse_id = #{nurseId,jdbcType=INTEGER}
+  </update>
+</mapper>

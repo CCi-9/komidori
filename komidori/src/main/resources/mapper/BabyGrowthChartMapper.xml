@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.BabyGrowthChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
+    <id column="baby_growth_id" property="babyGrowthId" jdbcType="INTEGER" />
+    <result column="baby_growth_date" property="babyGrowthDate" jdbcType="VARCHAR" />
+    <result column="BPD" property="bpd" jdbcType="INTEGER" />
+    <result column="AC" property="ac" jdbcType="INTEGER" />
+    <result column="FL" property="fl" jdbcType="INTEGER" />
+    <result column="minweight" property="minweight" jdbcType="REAL" />
+    <result column="maxwight" property="maxwight" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    baby_growth_id, baby_growth_date, BPD, AC, FL, minweight, maxwight
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from baby_growth_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from baby_growth_chart
+    where baby_growth_id = #{babyGrowthId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from baby_growth_chart
+    where baby_growth_id = #{babyGrowthId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChartExample" >
+    delete from baby_growth_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
+    insert into baby_growth_chart (baby_growth_id, baby_growth_date, BPD, 
+      AC, FL, minweight, maxwight
+      )
+    values (#{babyGrowthId,jdbcType=INTEGER}, #{babyGrowthDate,jdbcType=VARCHAR}, #{bpd,jdbcType=INTEGER}, 
+      #{ac,jdbcType=INTEGER}, #{fl,jdbcType=INTEGER}, #{minweight,jdbcType=REAL}, #{maxwight,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
+    insert into baby_growth_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="babyGrowthId != null" >
+        baby_growth_id,
+      </if>
+      <if test="babyGrowthDate != null" >
+        baby_growth_date,
+      </if>
+      <if test="bpd != null" >
+        BPD,
+      </if>
+      <if test="ac != null" >
+        AC,
+      </if>
+      <if test="fl != null" >
+        FL,
+      </if>
+      <if test="minweight != null" >
+        minweight,
+      </if>
+      <if test="maxwight != null" >
+        maxwight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="babyGrowthId != null" >
+        #{babyGrowthId,jdbcType=INTEGER},
+      </if>
+      <if test="babyGrowthDate != null" >
+        #{babyGrowthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bpd != null" >
+        #{bpd,jdbcType=INTEGER},
+      </if>
+      <if test="ac != null" >
+        #{ac,jdbcType=INTEGER},
+      </if>
+      <if test="fl != null" >
+        #{fl,jdbcType=INTEGER},
+      </if>
+      <if test="minweight != null" >
+        #{minweight,jdbcType=REAL},
+      </if>
+      <if test="maxwight != null" >
+        #{maxwight,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChartExample" resultType="java.lang.Integer" >
+    select count(*) from baby_growth_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update baby_growth_chart
+    <set >
+      <if test="record.babyGrowthId != null" >
+        baby_growth_id = #{record.babyGrowthId,jdbcType=INTEGER},
+      </if>
+      <if test="record.babyGrowthDate != null" >
+        baby_growth_date = #{record.babyGrowthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpd != null" >
+        BPD = #{record.bpd,jdbcType=INTEGER},
+      </if>
+      <if test="record.ac != null" >
+        AC = #{record.ac,jdbcType=INTEGER},
+      </if>
+      <if test="record.fl != null" >
+        FL = #{record.fl,jdbcType=INTEGER},
+      </if>
+      <if test="record.minweight != null" >
+        minweight = #{record.minweight,jdbcType=REAL},
+      </if>
+      <if test="record.maxwight != null" >
+        maxwight = #{record.maxwight,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update baby_growth_chart
+    set baby_growth_id = #{record.babyGrowthId,jdbcType=INTEGER},
+      baby_growth_date = #{record.babyGrowthDate,jdbcType=VARCHAR},
+      BPD = #{record.bpd,jdbcType=INTEGER},
+      AC = #{record.ac,jdbcType=INTEGER},
+      FL = #{record.fl,jdbcType=INTEGER},
+      minweight = #{record.minweight,jdbcType=REAL},
+      maxwight = #{record.maxwight,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
+    update baby_growth_chart
+    <set >
+      <if test="babyGrowthDate != null" >
+        baby_growth_date = #{babyGrowthDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bpd != null" >
+        BPD = #{bpd,jdbcType=INTEGER},
+      </if>
+      <if test="ac != null" >
+        AC = #{ac,jdbcType=INTEGER},
+      </if>
+      <if test="fl != null" >
+        FL = #{fl,jdbcType=INTEGER},
+      </if>
+      <if test="minweight != null" >
+        minweight = #{minweight,jdbcType=REAL},
+      </if>
+      <if test="maxwight != null" >
+        maxwight = #{maxwight,jdbcType=REAL},
+      </if>
+    </set>
+    where baby_growth_id = #{babyGrowthId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
+    update baby_growth_chart
+    set baby_growth_date = #{babyGrowthDate,jdbcType=VARCHAR},
+      BPD = #{bpd,jdbcType=INTEGER},
+      AC = #{ac,jdbcType=INTEGER},
+      FL = #{fl,jdbcType=INTEGER},
+      minweight = #{minweight,jdbcType=REAL},
+      maxwight = #{maxwight,jdbcType=REAL}
+    where baby_growth_id = #{babyGrowthId,jdbcType=INTEGER}
+  </update>
+</mapper>

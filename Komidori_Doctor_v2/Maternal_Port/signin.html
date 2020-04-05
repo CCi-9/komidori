@@ -35,10 +35,10 @@
 					<h3>登陆</h3>
 					<!--提示-->
 					<p class="mt-2 mb-4">请输入账号和密码登陆</p>
-					<form action="#" method="post">
+					<form action="#" onsubmit="return false">
 						<!--账号-->
 						<div class="icon1">
-							<label for="tel">账号</label>
+							<label for="username">账号</label>
 							<input placeholder="用户名|手机号码" id="username" name="username" type="text" required="">
 						</div>
 						<!--密码-->
@@ -59,7 +59,7 @@
 							<a href="forget_pwd.html">忘记密码</a>
 						</label> 
 							<div class="clearfix"></div>
-						<input type="submit" class="submit" value="登陆">
+						<input type="submit" onclick="signin()" class="submit" value="登陆">
 						<p>还没有账号 ? <a href="register.html" class="ml-2"><strong style="color: #6F9E75;">创建你的新账号</strong></a></p>
 					</form>
 				</div>
@@ -109,7 +109,8 @@
     <!--滑动-->
 	<script src="../assets/js/smoothscroll.js" ></script>
 
-	<script src="../assets/js/jquery.slideunlock.js"></script> 
+	<script src="../assets/js/jquery.slideunlock.js"></script>
+	<script src="../assets/js/GlobalVariables.js"></script>
 
 <script>
 $("#head").load("logobar.html");
@@ -130,6 +131,34 @@ $(function () {
 		});
     slider.init();
 })
+
+function signin() {
+	let username = $("#username").val()
+	let password = $("#password").val()
+
+	if((username == "") || (password == "")){
+		return
+	}
+	$.ajax({
+		url: "http://" + host + "/maternal/loginMaternal",
+		method:"post",
+		data:{
+			username:username,
+			password:password,
+		},
+		xhrFields:{
+			withCredentials:true  //带上cookie信息，解决sessionid不一致
+		},
+		success: function (result) {
+			let message = result.message
+			if(message != "success"){
+				alert(message)
+			} else {
+				window.location.href = 'index.html'
+			}
+		}
+	});
+}
 </script> 
 
 </body>

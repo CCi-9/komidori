@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.CommentChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.CommentChart" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="answer_id" property="answerId" jdbcType="INTEGER" />
+    <result column="comment_user_id" property="commentUserId" jdbcType="INTEGER" />
+    <result column="comment_status" property="commentStatus" jdbcType="INTEGER" />
+    <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.doctor.komidori_doctor.pojo.CommentChart" extends="BaseResultMap" >
+    <result column="comment_content" property="commentContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    comment_id, answer_id, comment_user_id, comment_status, comment_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.CommentChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.CommentChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from comment_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment_chart
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment_chart
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.CommentChartExample" >
+    delete from comment_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CommentChart" >
+    insert into comment_chart (comment_id, answer_id, comment_user_id, 
+      comment_status, comment_date, comment_content
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{answerId,jdbcType=INTEGER}, #{commentUserId,jdbcType=INTEGER}, 
+      #{commentStatus,jdbcType=INTEGER}, #{commentDate,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.CommentChart" >
+    insert into comment_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="answerId != null" >
+        answer_id,
+      </if>
+      <if test="commentUserId != null" >
+        comment_user_id,
+      </if>
+      <if test="commentStatus != null" >
+        comment_status,
+      </if>
+      <if test="commentDate != null" >
+        comment_date,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="answerId != null" >
+        #{answerId,jdbcType=INTEGER},
+      </if>
+      <if test="commentUserId != null" >
+        #{commentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="commentStatus != null" >
+        #{commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commentDate != null" >
+        #{commentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.CommentChartExample" resultType="java.lang.Integer" >
+    select count(*) from comment_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update comment_chart
+    <set >
+      <if test="record.commentId != null" >
+        comment_id = #{record.commentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.answerId != null" >
+        answer_id = #{record.answerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentUserId != null" >
+        comment_user_id = #{record.commentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentStatus != null" >
+        comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentDate != null" >
+        comment_date = #{record.commentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commentContent != null" >
+        comment_content = #{record.commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update comment_chart
+    set comment_id = #{record.commentId,jdbcType=INTEGER},
+      answer_id = #{record.answerId,jdbcType=INTEGER},
+      comment_user_id = #{record.commentUserId,jdbcType=INTEGER},
+      comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      comment_date = #{record.commentDate,jdbcType=TIMESTAMP},
+      comment_content = #{record.commentContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update comment_chart
+    set comment_id = #{record.commentId,jdbcType=INTEGER},
+      answer_id = #{record.answerId,jdbcType=INTEGER},
+      comment_user_id = #{record.commentUserId,jdbcType=INTEGER},
+      comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      comment_date = #{record.commentDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.CommentChart" >
+    update comment_chart
+    <set >
+      <if test="answerId != null" >
+        answer_id = #{answerId,jdbcType=INTEGER},
+      </if>
+      <if test="commentUserId != null" >
+        comment_user_id = #{commentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="commentStatus != null" >
+        comment_status = #{commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commentDate != null" >
+        comment_date = #{commentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.CommentChart" >
+    update comment_chart
+    set answer_id = #{answerId,jdbcType=INTEGER},
+      comment_user_id = #{commentUserId,jdbcType=INTEGER},
+      comment_status = #{commentStatus,jdbcType=INTEGER},
+      comment_date = #{commentDate,jdbcType=TIMESTAMP},
+      comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.CommentChart" >
+    update comment_chart
+    set answer_id = #{answerId,jdbcType=INTEGER},
+      comment_user_id = #{commentUserId,jdbcType=INTEGER},
+      comment_status = #{commentStatus,jdbcType=INTEGER},
+      comment_date = #{commentDate,jdbcType=TIMESTAMP}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

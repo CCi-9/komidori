@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.EmailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.EmailInfo" >
+    <id column="email_id" property="emailId" jdbcType="INTEGER" />
+    <result column="email_title" property="emailTitle" jdbcType="VARCHAR" />
+    <result column="email_from_id" property="emailFromId" jdbcType="INTEGER" />
+    <result column="email_to_id" property="emailToId" jdbcType="INTEGER" />
+    <result column="email_status" property="emailStatus" jdbcType="INTEGER" />
+    <result column="email_date" property="emailDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.doctor.komidori_doctor.pojo.EmailInfo" extends="BaseResultMap" >
+    <result column="email_content" property="emailContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    email_id, email_title, email_from_id, email_to_id, email_status, email_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    email_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.EmailInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from email_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.EmailInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from email_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from email_info
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from email_info
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.EmailInfoExample" >
+    delete from email_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
+    insert into email_info (email_id, email_title, email_from_id, 
+      email_to_id, email_status, email_date, 
+      email_content)
+    values (#{emailId,jdbcType=INTEGER}, #{emailTitle,jdbcType=VARCHAR}, #{emailFromId,jdbcType=INTEGER}, 
+      #{emailToId,jdbcType=INTEGER}, #{emailStatus,jdbcType=INTEGER}, #{emailDate,jdbcType=TIMESTAMP}, 
+      #{emailContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
+    insert into email_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="emailId != null" >
+        email_id,
+      </if>
+      <if test="emailTitle != null" >
+        email_title,
+      </if>
+      <if test="emailFromId != null" >
+        email_from_id,
+      </if>
+      <if test="emailToId != null" >
+        email_to_id,
+      </if>
+      <if test="emailStatus != null" >
+        email_status,
+      </if>
+      <if test="emailDate != null" >
+        email_date,
+      </if>
+      <if test="emailContent != null" >
+        email_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="emailId != null" >
+        #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="emailTitle != null" >
+        #{emailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="emailFromId != null" >
+        #{emailFromId,jdbcType=INTEGER},
+      </if>
+      <if test="emailToId != null" >
+        #{emailToId,jdbcType=INTEGER},
+      </if>
+      <if test="emailStatus != null" >
+        #{emailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="emailDate != null" >
+        #{emailDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emailContent != null" >
+        #{emailContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.EmailInfoExample" resultType="java.lang.Integer" >
+    select count(*) from email_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update email_info
+    <set >
+      <if test="record.emailId != null" >
+        email_id = #{record.emailId,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailTitle != null" >
+        email_title = #{record.emailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailFromId != null" >
+        email_from_id = #{record.emailFromId,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailToId != null" >
+        email_to_id = #{record.emailToId,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailStatus != null" >
+        email_status = #{record.emailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailDate != null" >
+        email_date = #{record.emailDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.emailContent != null" >
+        email_content = #{record.emailContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update email_info
+    set email_id = #{record.emailId,jdbcType=INTEGER},
+      email_title = #{record.emailTitle,jdbcType=VARCHAR},
+      email_from_id = #{record.emailFromId,jdbcType=INTEGER},
+      email_to_id = #{record.emailToId,jdbcType=INTEGER},
+      email_status = #{record.emailStatus,jdbcType=INTEGER},
+      email_date = #{record.emailDate,jdbcType=TIMESTAMP},
+      email_content = #{record.emailContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update email_info
+    set email_id = #{record.emailId,jdbcType=INTEGER},
+      email_title = #{record.emailTitle,jdbcType=VARCHAR},
+      email_from_id = #{record.emailFromId,jdbcType=INTEGER},
+      email_to_id = #{record.emailToId,jdbcType=INTEGER},
+      email_status = #{record.emailStatus,jdbcType=INTEGER},
+      email_date = #{record.emailDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
+    update email_info
+    <set >
+      <if test="emailTitle != null" >
+        email_title = #{emailTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="emailFromId != null" >
+        email_from_id = #{emailFromId,jdbcType=INTEGER},
+      </if>
+      <if test="emailToId != null" >
+        email_to_id = #{emailToId,jdbcType=INTEGER},
+      </if>
+      <if test="emailStatus != null" >
+        email_status = #{emailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="emailDate != null" >
+        email_date = #{emailDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emailContent != null" >
+        email_content = #{emailContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
+    update email_info
+    set email_title = #{emailTitle,jdbcType=VARCHAR},
+      email_from_id = #{emailFromId,jdbcType=INTEGER},
+      email_to_id = #{emailToId,jdbcType=INTEGER},
+      email_status = #{emailStatus,jdbcType=INTEGER},
+      email_date = #{emailDate,jdbcType=TIMESTAMP},
+      email_content = #{emailContent,jdbcType=LONGVARCHAR}
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
+    update email_info
+    set email_title = #{emailTitle,jdbcType=VARCHAR},
+      email_from_id = #{emailFromId,jdbcType=INTEGER},
+      email_to_id = #{emailToId,jdbcType=INTEGER},
+      email_status = #{emailStatus,jdbcType=INTEGER},
+      email_date = #{emailDate,jdbcType=TIMESTAMP}
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+</mapper>

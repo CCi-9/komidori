@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.BookNurseChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.BookNurseChart" >
+    <id column="bnurse_order_id" property="bnurseOrderId" jdbcType="INTEGER" />
+    <result column="bnurse_nurse_id" property="bnurseNurseId" jdbcType="INTEGER" />
+    <result column="bnurse_mat_id" property="bnurseMatId" jdbcType="INTEGER" />
+    <result column="bnurse_start_date" property="bnurseStartDate" jdbcType="DATE" />
+    <result column="bnurse_end_date" property="bnurseEndDate" jdbcType="DATE" />
+    <result column="bnurse_price" property="bnursePrice" jdbcType="REAL" />
+    <result column="bnurse_addr" property="bnurseAddr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bnurse_order_id, bnurse_nurse_id, bnurse_mat_id, bnurse_start_date, bnurse_end_date, 
+    bnurse_price, bnurse_addr
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book_nurse_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book_nurse_chart
+    where bnurse_order_id = #{bnurseOrderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book_nurse_chart
+    where bnurse_order_id = #{bnurseOrderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChartExample" >
+    delete from book_nurse_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChart" >
+    insert into book_nurse_chart (bnurse_order_id, bnurse_nurse_id, bnurse_mat_id, 
+      bnurse_start_date, bnurse_end_date, bnurse_price, 
+      bnurse_addr)
+    values (#{bnurseOrderId,jdbcType=INTEGER}, #{bnurseNurseId,jdbcType=INTEGER}, #{bnurseMatId,jdbcType=INTEGER}, 
+      #{bnurseStartDate,jdbcType=DATE}, #{bnurseEndDate,jdbcType=DATE}, #{bnursePrice,jdbcType=REAL}, 
+      #{bnurseAddr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChart" >
+    insert into book_nurse_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bnurseOrderId != null" >
+        bnurse_order_id,
+      </if>
+      <if test="bnurseNurseId != null" >
+        bnurse_nurse_id,
+      </if>
+      <if test="bnurseMatId != null" >
+        bnurse_mat_id,
+      </if>
+      <if test="bnurseStartDate != null" >
+        bnurse_start_date,
+      </if>
+      <if test="bnurseEndDate != null" >
+        bnurse_end_date,
+      </if>
+      <if test="bnursePrice != null" >
+        bnurse_price,
+      </if>
+      <if test="bnurseAddr != null" >
+        bnurse_addr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bnurseOrderId != null" >
+        #{bnurseOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="bnurseNurseId != null" >
+        #{bnurseNurseId,jdbcType=INTEGER},
+      </if>
+      <if test="bnurseMatId != null" >
+        #{bnurseMatId,jdbcType=INTEGER},
+      </if>
+      <if test="bnurseStartDate != null" >
+        #{bnurseStartDate,jdbcType=DATE},
+      </if>
+      <if test="bnurseEndDate != null" >
+        #{bnurseEndDate,jdbcType=DATE},
+      </if>
+      <if test="bnursePrice != null" >
+        #{bnursePrice,jdbcType=REAL},
+      </if>
+      <if test="bnurseAddr != null" >
+        #{bnurseAddr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChartExample" resultType="java.lang.Integer" >
+    select count(*) from book_nurse_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update book_nurse_chart
+    <set >
+      <if test="record.bnurseOrderId != null" >
+        bnurse_order_id = #{record.bnurseOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bnurseNurseId != null" >
+        bnurse_nurse_id = #{record.bnurseNurseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bnurseMatId != null" >
+        bnurse_mat_id = #{record.bnurseMatId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bnurseStartDate != null" >
+        bnurse_start_date = #{record.bnurseStartDate,jdbcType=DATE},
+      </if>
+      <if test="record.bnurseEndDate != null" >
+        bnurse_end_date = #{record.bnurseEndDate,jdbcType=DATE},
+      </if>
+      <if test="record.bnursePrice != null" >
+        bnurse_price = #{record.bnursePrice,jdbcType=REAL},
+      </if>
+      <if test="record.bnurseAddr != null" >
+        bnurse_addr = #{record.bnurseAddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update book_nurse_chart
+    set bnurse_order_id = #{record.bnurseOrderId,jdbcType=INTEGER},
+      bnurse_nurse_id = #{record.bnurseNurseId,jdbcType=INTEGER},
+      bnurse_mat_id = #{record.bnurseMatId,jdbcType=INTEGER},
+      bnurse_start_date = #{record.bnurseStartDate,jdbcType=DATE},
+      bnurse_end_date = #{record.bnurseEndDate,jdbcType=DATE},
+      bnurse_price = #{record.bnursePrice,jdbcType=REAL},
+      bnurse_addr = #{record.bnurseAddr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChart" >
+    update book_nurse_chart
+    <set >
+      <if test="bnurseNurseId != null" >
+        bnurse_nurse_id = #{bnurseNurseId,jdbcType=INTEGER},
+      </if>
+      <if test="bnurseMatId != null" >
+        bnurse_mat_id = #{bnurseMatId,jdbcType=INTEGER},
+      </if>
+      <if test="bnurseStartDate != null" >
+        bnurse_start_date = #{bnurseStartDate,jdbcType=DATE},
+      </if>
+      <if test="bnurseEndDate != null" >
+        bnurse_end_date = #{bnurseEndDate,jdbcType=DATE},
+      </if>
+      <if test="bnursePrice != null" >
+        bnurse_price = #{bnursePrice,jdbcType=REAL},
+      </if>
+      <if test="bnurseAddr != null" >
+        bnurse_addr = #{bnurseAddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bnurse_order_id = #{bnurseOrderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChart" >
+    update book_nurse_chart
+    set bnurse_nurse_id = #{bnurseNurseId,jdbcType=INTEGER},
+      bnurse_mat_id = #{bnurseMatId,jdbcType=INTEGER},
+      bnurse_start_date = #{bnurseStartDate,jdbcType=DATE},
+      bnurse_end_date = #{bnurseEndDate,jdbcType=DATE},
+      bnurse_price = #{bnursePrice,jdbcType=REAL},
+      bnurse_addr = #{bnurseAddr,jdbcType=VARCHAR}
+    where bnurse_order_id = #{bnurseOrderId,jdbcType=INTEGER}
+  </update>
+</mapper>

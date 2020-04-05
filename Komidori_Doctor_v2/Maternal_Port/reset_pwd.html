@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>重置密码</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+    <link href="../assets/css/Base.css" rel="stylesheet" />
+	
+</head>
+<body>
+		<!-- start preloader -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- end preloader -->
+<!-- header -->
+ <!-- Start header 最顶部：登陆、注册、医生端 -->
+        <header id="header" class="site-header header-style-1 header-style-3">
+            <div class="topbar">
+                <div class="container">
+                    <div class="separator"></div>
+                    <div class="row">
+                        <div class="col col-sm-3">
+                            <div class="contact-info">
+                                <ul>
+                                    <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="contact-info">
+                                <ul>
+                                    <li><i class="ti-mobile"></i>502015889@qq.com</li>
+                                    <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--登陆注册入口-->
+                        <div class="col col-sm-4 ">
+                            <div class="sign">
+                            	<ul>
+                            		<li><a href="signin.html" class="log">登陆</a></li>
+                            		<li><a href="register.html" class="log">注册</a></li>
+                            		<li id="doc_entry"><a href="#"  class="log">医生入口</a></li>                            			
+                            	</ul>
+                            </div>
+                        </div>
+                        <!--登陆后显示-->
+                        <div class="col col-sm-4 hidden">
+                            <div class="admin">
+                            	<ul>
+                            		<li>
+                            			<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            				<img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px" />
+                            				Komidori Li
+                            				<span class="caret"></span>
+                        				</a>
+                        				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+				                          <li> <a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a> </li>
+				                          <li> <a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a> </li>
+				                          <li> <a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息 </a> </li>
+				                          <hr />
+				                          <li> <a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a> </li>
+                        				</ul>                      				
+                            		</li>
+                            	</ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar -->
+
+            <nav class="navigation navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="open-btn">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--logo-->
+                        <a class="navbar-brand" href="index.html"><img src="../assets/images/l3.jpg" alt height="68px;"></a>
+                    </div>
+                    <!--导航条-->
+                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                        <button class="close-navbar"><i class="ti-close"></i></button>
+                        <ul class="nav navbar-nav">
+                        	
+                            <li class="menu-item-has-children">
+                                <a href="../index.html">主页</a>
+                               
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">线上咨询服务</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../doctor/find_doctors.html">找医生</a></li>
+                                    <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">线下预约服务</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
+                                    <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">经验交流社区</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../mom_public/expert_course.html">专家课程</a></li>
+                                    <li><a href="../expert/find_experts.html">找专家</a></li>
+                                    <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">育儿工具</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../baby_tools/production_list.html">产检表</a></li>
+                                    <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
+                                    <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="../about.html">关于我们</a></li>
+                            
+                        </ul>
+                    </div><!-- end of nav-collapse -->
+					<!--导航条//-->
+					<!--搜索-->
+                    <div class="side-info">
+                        <div class="header-search-form-wrapper">
+                            <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
+                            <div class="header-search-form">
+                                <form>
+                                    <div>
+                                        <input type="text" class="form-control" placeholder="在此处搜索...">
+                                        <button type="submit"><i class="fi flaticon-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                      	
+                    <!--搜索//-->
+                </div><!-- end of container -->
+            </nav>
+        </header>
+<!-- //header -->
+
+<!-- banner -->
+<section class="inner-banner-top">
+	<div class="container">
+	</div>
+</section>
+<!-- //banner -->
+
+
+<!-- 登陆 -->
+<section class="signin py-5">
+	<div class="container" >
+		<div class="row main-content-agile">
+			<div class="col-md-6 mx-auto col-md-push-3">	
+				<div class="sub-main-w3 text-center">	
+					<h3>重置密码</h3>
+					<!--提示-->
+					<p class="mt-2 mb-4">请重新设置密码</p>
+					<form action="#" onsubmit="return false">
+						
+					<div id="app">
+ 						<!--新密码-->
+						 <div class="icon1">
+							<div class="input_container">
+								<label for="pwd">密码</label>
+								<input @input="p_len" v-model="password" id="pwd" placeholder="密码" name="pwd" type="password"  required="">
+								<span :class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span>
+							</div>
+						 </div>
+ 						<!--重复密码--> 						
+						<div class="icon1">
+							<label for="pwd2">重复</label>
+							<input name="pwd2" type="password" id="pwd2" v-model="password2" required="required" placeholder="确认密码" />
+							<span hidden="hidden">密码不一致</span> 	
+						</div>
+ 						<!--密码强度-->
+						<div class="lnu_container" id="pwdrank">
+						    <p :class="{ lovercase_valid: contains_lovercase }">Lowercase</p>
+						    <p :class="{ number_valid: contains_number }">Number</p>
+						    <p :class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
+						</div>
+						<!--密码是否通过-->  
+						<div class="valid_password_container" :class="{show_valid_password_container : valid_password }">
+						    <svg width="100%" height="100%" viewBox="0 0 140 100">
+						      <path class="tick" :class="{checked: valid_password }"
+						          d="M10,50 l25,40 l95,-70" />
+						    </svg>
+						</div>
+						
+					</div>
+					
+						<!--验证区域-->						
+						<!--<div id="slider" class="">
+						        <div id="slider_bg"></div>
+						        <span id="label">>></span> 
+						        <span id="labelTip">拖动滑块验证</span>
+						</div>-->
+						   						
+						<input type="submit" onclick="resetPwd()" class="submit" value="重置">
+					</form>
+				</div>
+			</div>
+			<div style="width:100%;height: 10px;"></div>
+			<!--图片-->
+			
+		</div>
+	</div>
+</section>
+<!-- //signin -->
+
+<section class="inner-banner">
+	<div class="container">
+	</div>
+</section>
+
+<!-- footer -->
+<!-- start site-footer -->
+        <div id="foot"></div>
+        <!-- end site-footer -->
+<!-- //footer -->
+
+
+
+    <!-- js -->
+	<!-- All JavaScript files
+    ================================================== -->
+    <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+		<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!--滑动-->
+		<script src="../assets/js/smoothscroll.js" ></script>
+    
+    <!--密码等级-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../assets/js/pwd_rank.js"></script>
+
+    <script src="../assets/js/GlobalVariables.js"></script>
+
+    <script type="text/javascript" src="../assets/js/jquery.slideunlock.js"></script> 
+    <!-- //js -->
+	
+	
+
+<script>
+	
+	$("#foot").load("low_footer.html");
+
+    function resetPwd() {
+        if (app.valid_password == false) {
+            if (app.password == "")
+                return;
+            alert("密码格式不正确")
+            return
+        }
+
+        if (app.password != app.password2) {
+            if (app.password2 == "") return;
+            alert("密码不一致")
+            return
+        }
+
+        $.ajax({
+            url: "http://" + host + "/maternal/resetPwd",
+            method:"post",
+            data:{
+                password:app.password,
+            },
+            xhrFields:{
+                withCredentials:true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                let message = result.message
+                if(message != "success"){
+                    alert(message)
+                } else {
+                    window.location.href = 'signin.html'
+                }
+            }
+        });
+
+    }
+
+</script> 
+
+</body>
+</html>

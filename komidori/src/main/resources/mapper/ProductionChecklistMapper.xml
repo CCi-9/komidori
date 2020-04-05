@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.ProductionChecklistMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.ProductionChecklist" >
+    <id column="pro_list_id" property="proListId" jdbcType="INTEGER" />
+    <result column="pro_list_name" property="proListName" jdbcType="VARCHAR" />
+    <result column="pro_list_date" property="proListDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" extends="BaseResultMap" >
+    <result column="pro_list_aim" property="proListAim" jdbcType="LONGVARCHAR" />
+    <result column="pro_list_content" property="proListContent" jdbcType="LONGVARCHAR" />
+    <result column="pro_list_tip" property="proListTip" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pro_list_id, pro_list_name, pro_list_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    pro_list_aim, pro_list_content, pro_list_tip
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from production_checklist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from production_checklist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from production_checklist
+    where pro_list_id = #{proListId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from production_checklist
+    where pro_list_id = #{proListId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistExample" >
+    delete from production_checklist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+    insert into production_checklist (pro_list_id, pro_list_name, pro_list_date, 
+      pro_list_aim, pro_list_content, pro_list_tip
+      )
+    values (#{proListId,jdbcType=INTEGER}, #{proListName,jdbcType=VARCHAR}, #{proListDate,jdbcType=VARCHAR}, 
+      #{proListAim,jdbcType=LONGVARCHAR}, #{proListContent,jdbcType=LONGVARCHAR}, #{proListTip,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+    insert into production_checklist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proListId != null" >
+        pro_list_id,
+      </if>
+      <if test="proListName != null" >
+        pro_list_name,
+      </if>
+      <if test="proListDate != null" >
+        pro_list_date,
+      </if>
+      <if test="proListAim != null" >
+        pro_list_aim,
+      </if>
+      <if test="proListContent != null" >
+        pro_list_content,
+      </if>
+      <if test="proListTip != null" >
+        pro_list_tip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proListId != null" >
+        #{proListId,jdbcType=INTEGER},
+      </if>
+      <if test="proListName != null" >
+        #{proListName,jdbcType=VARCHAR},
+      </if>
+      <if test="proListDate != null" >
+        #{proListDate,jdbcType=VARCHAR},
+      </if>
+      <if test="proListAim != null" >
+        #{proListAim,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="proListContent != null" >
+        #{proListContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="proListTip != null" >
+        #{proListTip,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistExample" resultType="java.lang.Integer" >
+    select count(*) from production_checklist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update production_checklist
+    <set >
+      <if test="record.proListId != null" >
+        pro_list_id = #{record.proListId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proListName != null" >
+        pro_list_name = #{record.proListName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proListDate != null" >
+        pro_list_date = #{record.proListDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proListAim != null" >
+        pro_list_aim = #{record.proListAim,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.proListContent != null" >
+        pro_list_content = #{record.proListContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.proListTip != null" >
+        pro_list_tip = #{record.proListTip,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update production_checklist
+    set pro_list_id = #{record.proListId,jdbcType=INTEGER},
+      pro_list_name = #{record.proListName,jdbcType=VARCHAR},
+      pro_list_date = #{record.proListDate,jdbcType=VARCHAR},
+      pro_list_aim = #{record.proListAim,jdbcType=LONGVARCHAR},
+      pro_list_content = #{record.proListContent,jdbcType=LONGVARCHAR},
+      pro_list_tip = #{record.proListTip,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update production_checklist
+    set pro_list_id = #{record.proListId,jdbcType=INTEGER},
+      pro_list_name = #{record.proListName,jdbcType=VARCHAR},
+      pro_list_date = #{record.proListDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+    update production_checklist
+    <set >
+      <if test="proListName != null" >
+        pro_list_name = #{proListName,jdbcType=VARCHAR},
+      </if>
+      <if test="proListDate != null" >
+        pro_list_date = #{proListDate,jdbcType=VARCHAR},
+      </if>
+      <if test="proListAim != null" >
+        pro_list_aim = #{proListAim,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="proListContent != null" >
+        pro_list_content = #{proListContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="proListTip != null" >
+        pro_list_tip = #{proListTip,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pro_list_id = #{proListId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+    update production_checklist
+    set pro_list_name = #{proListName,jdbcType=VARCHAR},
+      pro_list_date = #{proListDate,jdbcType=VARCHAR},
+      pro_list_aim = #{proListAim,jdbcType=LONGVARCHAR},
+      pro_list_content = #{proListContent,jdbcType=LONGVARCHAR},
+      pro_list_tip = #{proListTip,jdbcType=LONGVARCHAR}
+    where pro_list_id = #{proListId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklist" >
+    update production_checklist
+    set pro_list_name = #{proListName,jdbcType=VARCHAR},
+      pro_list_date = #{proListDate,jdbcType=VARCHAR}
+    where pro_list_id = #{proListId,jdbcType=INTEGER}
+  </update>
+</mapper>

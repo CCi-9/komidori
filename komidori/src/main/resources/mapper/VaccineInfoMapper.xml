@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.VaccineInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.VaccineInfo" >
+    <id column="vaccine_id" property="vaccineId" jdbcType="INTEGER" />
+    <result column="vaccine_name" property="vaccineName" jdbcType="VARCHAR" />
+    <result column="vaccine_fit_date" property="vaccineFitDate" jdbcType="VARCHAR" />
+    <result column="vaccine_introduce" property="vaccineIntroduce" jdbcType="VARCHAR" />
+    <result column="vaccine_prevention" property="vaccinePrevention" jdbcType="VARCHAR" />
+    <result column="vaccine_immunity" property="vaccineImmunity" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    vaccine_id, vaccine_name, vaccine_fit_date, vaccine_introduce, vaccine_prevention, 
+    vaccine_immunity
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vaccine_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vaccine_info
+    where vaccine_id = #{vaccineId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vaccine_info
+    where vaccine_id = #{vaccineId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfoExample" >
+    delete from vaccine_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfo" >
+    insert into vaccine_info (vaccine_id, vaccine_name, vaccine_fit_date, 
+      vaccine_introduce, vaccine_prevention, vaccine_immunity
+      )
+    values (#{vaccineId,jdbcType=INTEGER}, #{vaccineName,jdbcType=VARCHAR}, #{vaccineFitDate,jdbcType=VARCHAR}, 
+      #{vaccineIntroduce,jdbcType=VARCHAR}, #{vaccinePrevention,jdbcType=VARCHAR}, #{vaccineImmunity,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfo" >
+    insert into vaccine_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vaccineId != null" >
+        vaccine_id,
+      </if>
+      <if test="vaccineName != null" >
+        vaccine_name,
+      </if>
+      <if test="vaccineFitDate != null" >
+        vaccine_fit_date,
+      </if>
+      <if test="vaccineIntroduce != null" >
+        vaccine_introduce,
+      </if>
+      <if test="vaccinePrevention != null" >
+        vaccine_prevention,
+      </if>
+      <if test="vaccineImmunity != null" >
+        vaccine_immunity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vaccineId != null" >
+        #{vaccineId,jdbcType=INTEGER},
+      </if>
+      <if test="vaccineName != null" >
+        #{vaccineName,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccineFitDate != null" >
+        #{vaccineFitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccineIntroduce != null" >
+        #{vaccineIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccinePrevention != null" >
+        #{vaccinePrevention,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccineImmunity != null" >
+        #{vaccineImmunity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfoExample" resultType="java.lang.Integer" >
+    select count(*) from vaccine_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update vaccine_info
+    <set >
+      <if test="record.vaccineId != null" >
+        vaccine_id = #{record.vaccineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.vaccineName != null" >
+        vaccine_name = #{record.vaccineName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vaccineFitDate != null" >
+        vaccine_fit_date = #{record.vaccineFitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vaccineIntroduce != null" >
+        vaccine_introduce = #{record.vaccineIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vaccinePrevention != null" >
+        vaccine_prevention = #{record.vaccinePrevention,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vaccineImmunity != null" >
+        vaccine_immunity = #{record.vaccineImmunity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update vaccine_info
+    set vaccine_id = #{record.vaccineId,jdbcType=INTEGER},
+      vaccine_name = #{record.vaccineName,jdbcType=VARCHAR},
+      vaccine_fit_date = #{record.vaccineFitDate,jdbcType=VARCHAR},
+      vaccine_introduce = #{record.vaccineIntroduce,jdbcType=VARCHAR},
+      vaccine_prevention = #{record.vaccinePrevention,jdbcType=VARCHAR},
+      vaccine_immunity = #{record.vaccineImmunity,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfo" >
+    update vaccine_info
+    <set >
+      <if test="vaccineName != null" >
+        vaccine_name = #{vaccineName,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccineFitDate != null" >
+        vaccine_fit_date = #{vaccineFitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccineIntroduce != null" >
+        vaccine_introduce = #{vaccineIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccinePrevention != null" >
+        vaccine_prevention = #{vaccinePrevention,jdbcType=VARCHAR},
+      </if>
+      <if test="vaccineImmunity != null" >
+        vaccine_immunity = #{vaccineImmunity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vaccine_id = #{vaccineId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.VaccineInfo" >
+    update vaccine_info
+    set vaccine_name = #{vaccineName,jdbcType=VARCHAR},
+      vaccine_fit_date = #{vaccineFitDate,jdbcType=VARCHAR},
+      vaccine_introduce = #{vaccineIntroduce,jdbcType=VARCHAR},
+      vaccine_prevention = #{vaccinePrevention,jdbcType=VARCHAR},
+      vaccine_immunity = #{vaccineImmunity,jdbcType=VARCHAR}
+    where vaccine_id = #{vaccineId,jdbcType=INTEGER}
+  </update>
+</mapper>

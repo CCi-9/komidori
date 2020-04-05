@@ -174,22 +174,22 @@
 					<h3>重置密码</h3>
 					<!--提示-->
 					<p class="mt-2 mb-4">请重新设置密码</p>
-					<form action="#" method="post">	
-						
+					<form action="#" method="post">
+
 					<div id="app">
  						<!--新密码-->
 						 <div class="icon1">
 							<div class="input_container">
 								<label for="tel">密码</label>
 								<input @input="p_len" v-model="password" placeholder="密码" name="pwd" type="password"  required="">
-								<span v-bind:class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span> 
+								<span v-bind:class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span>
 							</div>
 						 </div>
- 						<!--重复密码--> 						
+ 						<!--重复密码-->
 						<div class="icon1">
 							<label for="tel">重复</label>
 							<input name="pwd2" type="password"  required="required" placeholder="确认密码" />
-							<span hidden="hidden">密码不一致</span> 	
+							<span hidden="hidden">密码不一致</span>
 						</div>
  						<!--密码强度-->
 						<div class="lnu_container" id="pwdrank">
@@ -197,14 +197,14 @@
 						    <p v-bind:class="{ number_valid: contains_number }">Number</p>
 						    <p v-bind:class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
 						</div>
-						<!--密码是否通过-->  
+						<!--密码是否通过-->
 						<div class="valid_password_container" v-bind:class="{show_valid_password_container : valid_password }">
 						    <svg width="100%" height="100%" viewBox="0 0 140 100">
-						      <path class="tick" v-bind:class="{checked: valid_password }" 
+						      <path class="tick" v-bind:class="{checked: valid_password }"
 						          d="M10,50 l25,40 l95,-70" />
 						    </svg>
 						</div>
-						
+
 					</div>
 					
 						<!--验证区域-->						

@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-<!--    spring boot基本包      -->
+        <!--    spring boot基本包      -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -32,35 +32,35 @@
             <optional>true</optional>
         </dependency>
 
-<!--    数据库连接包     -->
+        <!--    数据库连接包     -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-<!--    mybatis驱动包    -->
+        <!--    mybatis驱动包    -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.2</version>
         </dependency>
 
-<!--     mybatis数据库字段类型映射   -->
+        <!--     mybatis数据库字段类型映射   -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-typehandlers-jsr310</artifactId>
             <version>1.0.1</version>
         </dependency>
 
-<!--    分页助手    -->
+        <!--    分页助手    -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.5</version>
         </dependency>
 
-<!--    spring boot工具包    -->
+        <!--    spring boot工具包    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -73,6 +73,19 @@
             </exclusions>
         </dependency>
 
+        <!--    短信通知    -->
+        <dependency>
+            <groupId>com.zhenzikj</groupId>
+            <artifactId>zhenzisms</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        <!--    json    -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.41</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.CourseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.CourseInfo" >
+    <id column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="course_type" property="courseType" jdbcType="INTEGER" />
+    <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
+    <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
+    <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
+    <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
+    <result column="course_price" property="coursePrice" jdbcType="REAL" />
+    <result column="course_img" property="courseImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    course_id, course_type, course_doc_id, course_class_id, course_date, course_good_review, 
+    course_price, course_img
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.CourseInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_info
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_info
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.CourseInfoExample" >
+    delete from course_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
+    insert into course_info (course_id, course_type, course_doc_id, 
+      course_class_id, course_date, course_good_review, 
+      course_price, course_img)
+    values (#{courseId,jdbcType=INTEGER}, #{courseType,jdbcType=INTEGER}, #{courseDocId,jdbcType=INTEGER}, 
+      #{courseClassId,jdbcType=INTEGER}, #{courseDate,jdbcType=TIMESTAMP}, #{courseGoodReview,jdbcType=INTEGER}, 
+      #{coursePrice,jdbcType=REAL}, #{courseImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
+    insert into course_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseType != null" >
+        course_type,
+      </if>
+      <if test="courseDocId != null" >
+        course_doc_id,
+      </if>
+      <if test="courseClassId != null" >
+        course_class_id,
+      </if>
+      <if test="courseDate != null" >
+        course_date,
+      </if>
+      <if test="courseGoodReview != null" >
+        course_good_review,
+      </if>
+      <if test="coursePrice != null" >
+        course_price,
+      </if>
+      <if test="courseImg != null" >
+        course_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=INTEGER},
+      </if>
+      <if test="courseDocId != null" >
+        #{courseDocId,jdbcType=INTEGER},
+      </if>
+      <if test="courseClassId != null" >
+        #{courseClassId,jdbcType=INTEGER},
+      </if>
+      <if test="courseDate != null" >
+        #{courseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseGoodReview != null" >
+        #{courseGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="coursePrice != null" >
+        #{coursePrice,jdbcType=REAL},
+      </if>
+      <if test="courseImg != null" >
+        #{courseImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.CourseInfoExample" resultType="java.lang.Integer" >
+    select count(*) from course_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update course_info
+    <set >
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseType != null" >
+        course_type = #{record.courseType,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseDocId != null" >
+        course_doc_id = #{record.courseDocId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseClassId != null" >
+        course_class_id = #{record.courseClassId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseDate != null" >
+        course_date = #{record.courseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.courseGoodReview != null" >
+        course_good_review = #{record.courseGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="record.coursePrice != null" >
+        course_price = #{record.coursePrice,jdbcType=REAL},
+      </if>
+      <if test="record.courseImg != null" >
+        course_img = #{record.courseImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update course_info
+    set course_id = #{record.courseId,jdbcType=INTEGER},
+      course_type = #{record.courseType,jdbcType=INTEGER},
+      course_doc_id = #{record.courseDocId,jdbcType=INTEGER},
+      course_class_id = #{record.courseClassId,jdbcType=INTEGER},
+      course_date = #{record.courseDate,jdbcType=TIMESTAMP},
+      course_good_review = #{record.courseGoodReview,jdbcType=INTEGER},
+      course_price = #{record.coursePrice,jdbcType=REAL},
+      course_img = #{record.courseImg,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
+    update course_info
+    <set >
+      <if test="courseType != null" >
+        course_type = #{courseType,jdbcType=INTEGER},
+      </if>
+      <if test="courseDocId != null" >
+        course_doc_id = #{courseDocId,jdbcType=INTEGER},
+      </if>
+      <if test="courseClassId != null" >
+        course_class_id = #{courseClassId,jdbcType=INTEGER},
+      </if>
+      <if test="courseDate != null" >
+        course_date = #{courseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseGoodReview != null" >
+        course_good_review = #{courseGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="coursePrice != null" >
+        course_price = #{coursePrice,jdbcType=REAL},
+      </if>
+      <if test="courseImg != null" >
+        course_img = #{courseImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
+    update course_info
+    set course_type = #{courseType,jdbcType=INTEGER},
+      course_doc_id = #{courseDocId,jdbcType=INTEGER},
+      course_class_id = #{courseClassId,jdbcType=INTEGER},
+      course_date = #{courseDate,jdbcType=TIMESTAMP},
+      course_good_review = #{courseGoodReview,jdbcType=INTEGER},
+      course_price = #{coursePrice,jdbcType=REAL},
+      course_img = #{courseImg,jdbcType=VARCHAR}
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+</mapper>

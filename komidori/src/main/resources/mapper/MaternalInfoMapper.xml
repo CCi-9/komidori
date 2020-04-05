@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.MaternalInfoMapper">
+    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.MaternalInfo">
+        <id column="maternal_id" property="maternalId" jdbcType="INTEGER"/>
+        <result column="maternal_name" property="maternalName" jdbcType="VARCHAR"/>
+        <result column="maternal_age" property="maternalAge" jdbcType="INTEGER"/>
+        <result column="maternal_nickname" property="maternalNickname" jdbcType="VARCHAR"/>
+        <result column="maternal_pwd" property="maternalPwd" jdbcType="VARCHAR"/>
+        <result column="maternal_tel" property="maternalTel" jdbcType="VARCHAR"/>
+        <result column="maternal_status" property="maternalStatus" jdbcType="INTEGER"/>
+        <result column="maternal_email" property="maternalEmail" jdbcType="VARCHAR"/>
+        <result column="maternal_city" property="maternalCity" jdbcType="VARCHAR"/>
+        <result column="pregnant_date" property="pregnantDate" jdbcType="DATE"/>
+        <result column="maternal_idcard" property="maternalIdcard" jdbcType="VARCHAR"/>
+        <result column="maternal_idcard_type" property="maternalIdcardType" jdbcType="INTEGER"/>
+        <result column="maternal_follow" property="maternalFollow" jdbcType="INTEGER"/>
+        <result column="maternal_preg_week" property="maternalPregWeek" jdbcType="INTEGER"/>
+        <result column="maternal_img" property="maternalImg" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    maternal_id, maternal_name, maternal_age, maternal_nickname, maternal_pwd, maternal_tel, 
+    maternal_status, maternal_email, maternal_city, pregnant_date, maternal_idcard, maternal_idcard_type, 
+    maternal_follow, maternal_preg_week, maternal_img
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.doctor.komidori_doctor.pojo.MaternalInfoExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from maternal_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from maternal_info
+        where maternal_id = #{maternalId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from maternal_info
+    where maternal_id = #{maternalId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.MaternalInfoExample">
+        delete from maternal_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+    insert into maternal_info (maternal_id, maternal_name, maternal_age, 
+      maternal_nickname, maternal_pwd, maternal_tel, 
+      maternal_status, maternal_email, maternal_city, 
+      pregnant_date, maternal_idcard, maternal_idcard_type, 
+      maternal_follow, maternal_preg_week, maternal_img
+      )
+    values (#{maternalId,jdbcType=INTEGER}, #{maternalName,jdbcType=VARCHAR}, #{maternalAge,jdbcType=INTEGER}, 
+      #{maternalNickname,jdbcType=VARCHAR}, #{maternalPwd,jdbcType=VARCHAR}, #{maternalTel,jdbcType=VARCHAR}, 
+      #{maternalStatus,jdbcType=INTEGER}, #{maternalEmail,jdbcType=VARCHAR}, #{maternalCity,jdbcType=VARCHAR}, 
+      #{pregnantDate,jdbcType=DATE}, #{maternalIdcard,jdbcType=VARCHAR}, #{maternalIdcardType,jdbcType=INTEGER}, 
+      #{maternalFollow,jdbcType=INTEGER}, #{maternalPregWeek,jdbcType=INTEGER}, #{maternalImg,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+        insert into maternal_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="maternalId != null">
+                maternal_id,
+            </if>
+            <if test="maternalName != null">
+                maternal_name,
+            </if>
+            <if test="maternalAge != null">
+                maternal_age,
+            </if>
+            <if test="maternalNickname != null">
+                maternal_nickname,
+            </if>
+            <if test="maternalPwd != null">
+                maternal_pwd,
+            </if>
+            <if test="maternalTel != null">
+                maternal_tel,
+            </if>
+            <if test="maternalStatus != null">
+                maternal_status,
+            </if>
+            <if test="maternalEmail != null">
+                maternal_email,
+            </if>
+            <if test="maternalCity != null">
+                maternal_city,
+            </if>
+            <if test="pregnantDate != null">
+                pregnant_date,
+            </if>
+            <if test="maternalIdcard != null">
+                maternal_idcard,
+            </if>
+            <if test="maternalIdcardType != null">
+                maternal_idcard_type,
+            </if>
+            <if test="maternalFollow != null">
+                maternal_follow,
+            </if>
+            <if test="maternalPregWeek != null">
+                maternal_preg_week,
+            </if>
+            <if test="maternalImg != null">
+                maternal_img,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="maternalId != null">
+                #{maternalId,jdbcType=INTEGER},
+            </if>
+            <if test="maternalName != null">
+                #{maternalName,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalAge != null">
+                #{maternalAge,jdbcType=INTEGER},
+            </if>
+            <if test="maternalNickname != null">
+                #{maternalNickname,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalPwd != null">
+                #{maternalPwd,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalTel != null">
+                #{maternalTel,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalStatus != null">
+                #{maternalStatus,jdbcType=INTEGER},
+            </if>
+            <if test="maternalEmail != null">
+                #{maternalEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalCity != null">
+                #{maternalCity,jdbcType=VARCHAR},
+            </if>
+            <if test="pregnantDate != null">
+                #{pregnantDate,jdbcType=DATE},
+            </if>
+            <if test="maternalIdcard != null">
+                #{maternalIdcard,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalIdcardType != null">
+                #{maternalIdcardType,jdbcType=INTEGER},
+            </if>
+            <if test="maternalFollow != null">
+                #{maternalFollow,jdbcType=INTEGER},
+            </if>
+            <if test="maternalPregWeek != null">
+                #{maternalPregWeek,jdbcType=INTEGER},
+            </if>
+            <if test="maternalImg != null">
+                #{maternalImg,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.MaternalInfoExample"
+            resultType="java.lang.Integer">
+        select count(*) from maternal_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update maternal_info
+        <set>
+            <if test="record.maternalId != null">
+                maternal_id = #{record.maternalId,jdbcType=INTEGER},
+            </if>
+            <if test="record.maternalName != null">
+                maternal_name = #{record.maternalName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.maternalAge != null">
+                maternal_age = #{record.maternalAge,jdbcType=INTEGER},
+            </if>
+            <if test="record.maternalNickname != null">
+                maternal_nickname = #{record.maternalNickname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.maternalPwd != null">
+                maternal_pwd = #{record.maternalPwd,jdbcType=VARCHAR},
+            </if>
+            <if test="record.maternalTel != null">
+                maternal_tel = #{record.maternalTel,jdbcType=VARCHAR},
+            </if>
+            <if test="record.maternalStatus != null">
+                maternal_status = #{record.maternalStatus,jdbcType=INTEGER},
+            </if>
+            <if test="record.maternalEmail != null">
+                maternal_email = #{record.maternalEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="record.maternalCity != null">
+                maternal_city = #{record.maternalCity,jdbcType=VARCHAR},
+            </if>
+            <if test="record.pregnantDate != null">
+                pregnant_date = #{record.pregnantDate,jdbcType=DATE},
+            </if>
+            <if test="record.maternalIdcard != null">
+                maternal_idcard = #{record.maternalIdcard,jdbcType=VARCHAR},
+            </if>
+            <if test="record.maternalIdcardType != null">
+                maternal_idcard_type = #{record.maternalIdcardType,jdbcType=INTEGER},
+            </if>
+            <if test="record.maternalFollow != null">
+                maternal_follow = #{record.maternalFollow,jdbcType=INTEGER},
+            </if>
+            <if test="record.maternalPregWeek != null">
+                maternal_preg_week = #{record.maternalPregWeek,jdbcType=INTEGER},
+            </if>
+            <if test="record.maternalImg != null">
+                maternal_img = #{record.maternalImg,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update maternal_info
+        set maternal_id = #{record.maternalId,jdbcType=INTEGER},
+        maternal_name = #{record.maternalName,jdbcType=VARCHAR},
+        maternal_age = #{record.maternalAge,jdbcType=INTEGER},
+        maternal_nickname = #{record.maternalNickname,jdbcType=VARCHAR},
+        maternal_pwd = #{record.maternalPwd,jdbcType=VARCHAR},
+        maternal_tel = #{record.maternalTel,jdbcType=VARCHAR},
+        maternal_status = #{record.maternalStatus,jdbcType=INTEGER},
+        maternal_email = #{record.maternalEmail,jdbcType=VARCHAR},
+        maternal_city = #{record.maternalCity,jdbcType=VARCHAR},
+        pregnant_date = #{record.pregnantDate,jdbcType=DATE},
+        maternal_idcard = #{record.maternalIdcard,jdbcType=VARCHAR},
+        maternal_idcard_type = #{record.maternalIdcardType,jdbcType=INTEGER},
+        maternal_follow = #{record.maternalFollow,jdbcType=INTEGER},
+        maternal_preg_week = #{record.maternalPregWeek,jdbcType=INTEGER},
+        maternal_img = #{record.maternalImg,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+        update maternal_info
+        <set>
+            <if test="maternalName != null">
+                maternal_name = #{maternalName,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalAge != null">
+                maternal_age = #{maternalAge,jdbcType=INTEGER},
+            </if>
+            <if test="maternalNickname != null">
+                maternal_nickname = #{maternalNickname,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalPwd != null">
+                maternal_pwd = #{maternalPwd,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalTel != null">
+                maternal_tel = #{maternalTel,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalStatus != null">
+                maternal_status = #{maternalStatus,jdbcType=INTEGER},
+            </if>
+            <if test="maternalEmail != null">
+                maternal_email = #{maternalEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalCity != null">
+                maternal_city = #{maternalCity,jdbcType=VARCHAR},
+            </if>
+            <if test="pregnantDate != null">
+                pregnant_date = #{pregnantDate,jdbcType=DATE},
+            </if>
+            <if test="maternalIdcard != null">
+                maternal_idcard = #{maternalIdcard,jdbcType=VARCHAR},
+            </if>
+            <if test="maternalIdcardType != null">
+                maternal_idcard_type = #{maternalIdcardType,jdbcType=INTEGER},
+            </if>
+            <if test="maternalFollow != null">
+                maternal_follow = #{maternalFollow,jdbcType=INTEGER},
+            </if>
+            <if test="maternalPregWeek != null">
+                maternal_preg_week = #{maternalPregWeek,jdbcType=INTEGER},
+            </if>
+            <if test="maternalImg != null">
+                maternal_img = #{maternalImg,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where maternal_id = #{maternalId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+    update maternal_info
+    set maternal_name = #{maternalName,jdbcType=VARCHAR},
+      maternal_age = #{maternalAge,jdbcType=INTEGER},
+      maternal_nickname = #{maternalNickname,jdbcType=VARCHAR},
+      maternal_pwd = #{maternalPwd,jdbcType=VARCHAR},
+      maternal_tel = #{maternalTel,jdbcType=VARCHAR},
+      maternal_status = #{maternalStatus,jdbcType=INTEGER},
+      maternal_email = #{maternalEmail,jdbcType=VARCHAR},
+      maternal_city = #{maternalCity,jdbcType=VARCHAR},
+      pregnant_date = #{pregnantDate,jdbcType=DATE},
+      maternal_idcard = #{maternalIdcard,jdbcType=VARCHAR},
+      maternal_idcard_type = #{maternalIdcardType,jdbcType=INTEGER},
+      maternal_follow = #{maternalFollow,jdbcType=INTEGER},
+      maternal_preg_week = #{maternalPregWeek,jdbcType=INTEGER},
+      maternal_img = #{maternalImg,jdbcType=VARCHAR}
+    where maternal_id = #{maternalId,jdbcType=INTEGER}
+  </update>
+</mapper>

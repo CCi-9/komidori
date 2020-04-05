@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.doctor.komidori_doctor.mapper.MaternalDao">
+
+
+    <update id="update">
+        update maternal_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="maternal.maternal_name != null">
+                 maternal_name = #{maternal.maternal_name},
+            </if>
+            <if test="maternal.maternal_age != null">
+                 maternal_age = #{maternal.maternal_age},
+            </if>
+            <if test="maternal.maternal_nickname != null">
+                 maternal_nickname = #{maternal.maternal_nickname},
+            </if>
+            <if test="maternal.maternal_pwd != null">
+                 maternal_pwd = #{maternal.maternal_pwd},
+            </if>
+            <if test="maternal.maternal_tel != null">
+                 maternal_tel = #{maternal.maternal_tel},
+            </if>
+            <if test="maternal.maternal_status != null">
+                 maternal_status = #{maternal.maternal_status},
+            </if>
+            <if test="maternal.maternal_email != null">
+                 maternal_email = #{maternal.maternal_email},
+            </if>
+            <if test="maternal.maternal_city != null">
+                 maternal_city = #{maternal.maternal_city},
+            </if>
+            <if test="maternal.pregnant_date != null">
+                 pregnant_date = #{maternal.pregnant_date},
+            </if>
+            <if test="maternal.maternal_idcard != null">
+                 maternal_idcard = #{maternal.maternal_idcard},
+            </if>
+            <if test="maternal.maternal_idcard_type != null">
+                 maternal_idcard_type = #{maternal.maternal_idcard_type},
+            </if>
+            <if test="maternal.maternal_follow != null">
+                 maternal_follow = #{maternal.maternal_follow},
+            </if>
+            <if test="maternal.maternal_preg_week != null">
+                 maternal_preg_week = #{maternal.maternal_preg_week},
+            </if>
+            <if test="maternal.maternal_img != null">
+                 maternal_img = #{maternal.maternal_img},
+            </if>
+        </trim>
+        where ${field} = #{field_Value}
+    </update>
+<!--
+    <update id="update">
+        update maternal_info set maternal_pwd = #{maternal.maternal_pwd} where ${field} = #{field_Value}
+    </update>
+    -->
+
+</mapper>

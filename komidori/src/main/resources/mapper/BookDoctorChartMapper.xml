@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.BookDoctorChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.BookDoctorChart" >
+    <id column="bdoc_order_id" property="bdocOrderId" jdbcType="INTEGER" />
+    <result column="bdoc_mat_id" property="bdocMatId" jdbcType="INTEGER" />
+    <result column="bdoc_doc_id" property="bdocDocId" jdbcType="INTEGER" />
+    <result column="bdoc_service_date" property="bdocServiceDate" jdbcType="TIMESTAMP" />
+    <result column="bdoc_book_date" property="bdocBookDate" jdbcType="TIMESTAMP" />
+    <result column="bdoc_addr" property="bdocAddr" jdbcType="VARCHAR" />
+    <result column="bdoc_price" property="bdocPrice" jdbcType="REAL" />
+    <result column="bdoc_remark" property="bdocRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bdoc_order_id, bdoc_mat_id, bdoc_doc_id, bdoc_service_date, bdoc_book_date, bdoc_addr, 
+    bdoc_price, bdoc_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from book_doctor_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book_doctor_chart
+    where bdoc_order_id = #{bdocOrderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from book_doctor_chart
+    where bdoc_order_id = #{bdocOrderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChartExample" >
+    delete from book_doctor_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChart" >
+    insert into book_doctor_chart (bdoc_order_id, bdoc_mat_id, bdoc_doc_id, 
+      bdoc_service_date, bdoc_book_date, bdoc_addr, 
+      bdoc_price, bdoc_remark)
+    values (#{bdocOrderId,jdbcType=INTEGER}, #{bdocMatId,jdbcType=INTEGER}, #{bdocDocId,jdbcType=INTEGER}, 
+      #{bdocServiceDate,jdbcType=TIMESTAMP}, #{bdocBookDate,jdbcType=TIMESTAMP}, #{bdocAddr,jdbcType=VARCHAR}, 
+      #{bdocPrice,jdbcType=REAL}, #{bdocRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChart" >
+    insert into book_doctor_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bdocOrderId != null" >
+        bdoc_order_id,
+      </if>
+      <if test="bdocMatId != null" >
+        bdoc_mat_id,
+      </if>
+      <if test="bdocDocId != null" >
+        bdoc_doc_id,
+      </if>
+      <if test="bdocServiceDate != null" >
+        bdoc_service_date,
+      </if>
+      <if test="bdocBookDate != null" >
+        bdoc_book_date,
+      </if>
+      <if test="bdocAddr != null" >
+        bdoc_addr,
+      </if>
+      <if test="bdocPrice != null" >
+        bdoc_price,
+      </if>
+      <if test="bdocRemark != null" >
+        bdoc_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bdocOrderId != null" >
+        #{bdocOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="bdocMatId != null" >
+        #{bdocMatId,jdbcType=INTEGER},
+      </if>
+      <if test="bdocDocId != null" >
+        #{bdocDocId,jdbcType=INTEGER},
+      </if>
+      <if test="bdocServiceDate != null" >
+        #{bdocServiceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bdocBookDate != null" >
+        #{bdocBookDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bdocAddr != null" >
+        #{bdocAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="bdocPrice != null" >
+        #{bdocPrice,jdbcType=REAL},
+      </if>
+      <if test="bdocRemark != null" >
+        #{bdocRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChartExample" resultType="java.lang.Integer" >
+    select count(*) from book_doctor_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update book_doctor_chart
+    <set >
+      <if test="record.bdocOrderId != null" >
+        bdoc_order_id = #{record.bdocOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bdocMatId != null" >
+        bdoc_mat_id = #{record.bdocMatId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bdocDocId != null" >
+        bdoc_doc_id = #{record.bdocDocId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bdocServiceDate != null" >
+        bdoc_service_date = #{record.bdocServiceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bdocBookDate != null" >
+        bdoc_book_date = #{record.bdocBookDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bdocAddr != null" >
+        bdoc_addr = #{record.bdocAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bdocPrice != null" >
+        bdoc_price = #{record.bdocPrice,jdbcType=REAL},
+      </if>
+      <if test="record.bdocRemark != null" >
+        bdoc_remark = #{record.bdocRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update book_doctor_chart
+    set bdoc_order_id = #{record.bdocOrderId,jdbcType=INTEGER},
+      bdoc_mat_id = #{record.bdocMatId,jdbcType=INTEGER},
+      bdoc_doc_id = #{record.bdocDocId,jdbcType=INTEGER},
+      bdoc_service_date = #{record.bdocServiceDate,jdbcType=TIMESTAMP},
+      bdoc_book_date = #{record.bdocBookDate,jdbcType=TIMESTAMP},
+      bdoc_addr = #{record.bdocAddr,jdbcType=VARCHAR},
+      bdoc_price = #{record.bdocPrice,jdbcType=REAL},
+      bdoc_remark = #{record.bdocRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChart" >
+    update book_doctor_chart
+    <set >
+      <if test="bdocMatId != null" >
+        bdoc_mat_id = #{bdocMatId,jdbcType=INTEGER},
+      </if>
+      <if test="bdocDocId != null" >
+        bdoc_doc_id = #{bdocDocId,jdbcType=INTEGER},
+      </if>
+      <if test="bdocServiceDate != null" >
+        bdoc_service_date = #{bdocServiceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bdocBookDate != null" >
+        bdoc_book_date = #{bdocBookDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bdocAddr != null" >
+        bdoc_addr = #{bdocAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="bdocPrice != null" >
+        bdoc_price = #{bdocPrice,jdbcType=REAL},
+      </if>
+      <if test="bdocRemark != null" >
+        bdoc_remark = #{bdocRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bdoc_order_id = #{bdocOrderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.BookDoctorChart" >
+    update book_doctor_chart
+    set bdoc_mat_id = #{bdocMatId,jdbcType=INTEGER},
+      bdoc_doc_id = #{bdocDocId,jdbcType=INTEGER},
+      bdoc_service_date = #{bdocServiceDate,jdbcType=TIMESTAMP},
+      bdoc_book_date = #{bdocBookDate,jdbcType=TIMESTAMP},
+      bdoc_addr = #{bdocAddr,jdbcType=VARCHAR},
+      bdoc_price = #{bdocPrice,jdbcType=REAL},
+      bdoc_remark = #{bdocRemark,jdbcType=VARCHAR}
+    where bdoc_order_id = #{bdocOrderId,jdbcType=INTEGER}
+  </update>
+</mapper>

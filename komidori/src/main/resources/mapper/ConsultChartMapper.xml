@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.ConsultChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.ConsultChart" >
+    <id column="consult_id" property="consultId" jdbcType="INTEGER" />
+    <result column="doc_id" property="docId" jdbcType="INTEGER" />
+    <result column="mat_id" property="matId" jdbcType="INTEGER" />
+    <result column="consult_date" property="consultDate" jdbcType="TIMESTAMP" />
+    <result column="consult_price" property="consultPrice" jdbcType="REAL" />
+    <result column="consult_content" property="consultContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    consult_id, doc_id, mat_id, consult_date, consult_price, consult_content
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.ConsultChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consult_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from consult_chart
+    where consult_id = #{consultId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from consult_chart
+    where consult_id = #{consultId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.ConsultChartExample" >
+    delete from consult_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.ConsultChart" >
+    insert into consult_chart (consult_id, doc_id, mat_id, 
+      consult_date, consult_price, consult_content
+      )
+    values (#{consultId,jdbcType=INTEGER}, #{docId,jdbcType=INTEGER}, #{matId,jdbcType=INTEGER}, 
+      #{consultDate,jdbcType=TIMESTAMP}, #{consultPrice,jdbcType=REAL}, #{consultContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.ConsultChart" >
+    insert into consult_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="consultId != null" >
+        consult_id,
+      </if>
+      <if test="docId != null" >
+        doc_id,
+      </if>
+      <if test="matId != null" >
+        mat_id,
+      </if>
+      <if test="consultDate != null" >
+        consult_date,
+      </if>
+      <if test="consultPrice != null" >
+        consult_price,
+      </if>
+      <if test="consultContent != null" >
+        consult_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="consultId != null" >
+        #{consultId,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null" >
+        #{docId,jdbcType=INTEGER},
+      </if>
+      <if test="matId != null" >
+        #{matId,jdbcType=INTEGER},
+      </if>
+      <if test="consultDate != null" >
+        #{consultDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consultPrice != null" >
+        #{consultPrice,jdbcType=REAL},
+      </if>
+      <if test="consultContent != null" >
+        #{consultContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.ConsultChartExample" resultType="java.lang.Integer" >
+    select count(*) from consult_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update consult_chart
+    <set >
+      <if test="record.consultId != null" >
+        consult_id = #{record.consultId,jdbcType=INTEGER},
+      </if>
+      <if test="record.docId != null" >
+        doc_id = #{record.docId,jdbcType=INTEGER},
+      </if>
+      <if test="record.matId != null" >
+        mat_id = #{record.matId,jdbcType=INTEGER},
+      </if>
+      <if test="record.consultDate != null" >
+        consult_date = #{record.consultDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.consultPrice != null" >
+        consult_price = #{record.consultPrice,jdbcType=REAL},
+      </if>
+      <if test="record.consultContent != null" >
+        consult_content = #{record.consultContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update consult_chart
+    set consult_id = #{record.consultId,jdbcType=INTEGER},
+      doc_id = #{record.docId,jdbcType=INTEGER},
+      mat_id = #{record.matId,jdbcType=INTEGER},
+      consult_date = #{record.consultDate,jdbcType=TIMESTAMP},
+      consult_price = #{record.consultPrice,jdbcType=REAL},
+      consult_content = #{record.consultContent,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.ConsultChart" >
+    update consult_chart
+    <set >
+      <if test="docId != null" >
+        doc_id = #{docId,jdbcType=INTEGER},
+      </if>
+      <if test="matId != null" >
+        mat_id = #{matId,jdbcType=INTEGER},
+      </if>
+      <if test="consultDate != null" >
+        consult_date = #{consultDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consultPrice != null" >
+        consult_price = #{consultPrice,jdbcType=REAL},
+      </if>
+      <if test="consultContent != null" >
+        consult_content = #{consultContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where consult_id = #{consultId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.ConsultChart" >
+    update consult_chart
+    set doc_id = #{docId,jdbcType=INTEGER},
+      mat_id = #{matId,jdbcType=INTEGER},
+      consult_date = #{consultDate,jdbcType=TIMESTAMP},
+      consult_price = #{consultPrice,jdbcType=REAL},
+      consult_content = #{consultContent,jdbcType=VARCHAR}
+    where consult_id = #{consultId,jdbcType=INTEGER}
+  </update>
+</mapper>

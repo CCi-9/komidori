@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="deac04a5-a7a0-44d5-87e2-efa2cea53bc7" name="Default Changelist" comment="" />
+    <list default="true" id="deac04a5-a7a0-44d5-87e2-efa2cea53bc7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/doctor/doctorinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/doctor/doctorinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/doctor/find_doctors.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/doctor/find_doctors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/forget_pwd.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/forget_pwd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/mom_public/expert_course.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/mom_public/expert_course.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/signin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maternal_Port/user/reset_pwd.html" beforeDir="false" afterPath="$PROJECT_DIR$/Maternal_Port/user/reset_pwd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/pwd_rank.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pwd_rank.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/sendmessage/sendmsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/sendmessage/sendmsg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/vue.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/vue.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../komidori/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../komidori/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../komidori/src/main/java/com/doctor/komidori_doctor/Configuration/MyConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../komidori/src/main/java/com/doctor/komidori_doctor/Configuration/MyConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../komidori/src/main/java/com/doctor/komidori_doctor/Controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../komidori/src/main/java/com/doctor/komidori_doctor/Controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../komidori/src/main/java/com/doctor/komidori_doctor/KomidoriDoctorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../komidori/src/main/java/com/doctor/komidori_doctor/KomidoriDoctorApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../komidori/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../komidori/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -14,6 +48,7 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1ZyPMa0ec5iDqZKMXJhZPi6hyvN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -21,14 +56,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/css" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\komidori\Komidori_Doctor_v2\assets\css" />
+      <recent name="E:\komidori\Komidori_Doctor_v2\assets\js" />
+      <recent name="E:\komidori\Komidori_Doctor_v2\Maternal_Port" />
+      <recent name="E:\komidori\Komidori_Doctor_v2\assets\js\vue" />
       <recent name="C:\Users\Administrator\Desktop\Komidori_Doctor_v2\assets\js" />
-      <recent name="C:\Users\Administrator\Desktop\Komidori_Doctor_v2\static" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -54,6 +93,11 @@
       <option name="presentableId" value="Default" />
       <updated>1585808313536</updated>
       <workItem from="1585808314933" duration="6312000" />
+      <workItem from="1585816710987" duration="4399000" />
+      <workItem from="1585837509209" duration="6338000" />
+      <workItem from="1585883644502" duration="131000" />
+      <workItem from="1585883798684" duration="45037000" />
+      <workItem from="1586003006328" duration="11057000" />
     </task>
     <servers />
   </component>
@@ -61,9 +105,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="272" y="58" key="SettingsEditor" timestamp="1585812508971">
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585840216851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="272" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585812508971" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585840216851" />
+    <state x="272" y="58" key="SettingsEditor" timestamp="1585883775339">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="272" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585883775339" />
   </component>
 </project>
