@@ -474,6 +474,66 @@ public class ConsultChartExample {
             addCriterion("consult_content not between", value1, value2, "consultContent");
             return (Criteria) this;
         }
+
+        public Criteria andConsultStatusIsNull() {
+            addCriterion("consult_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusIsNotNull() {
+            addCriterion("consult_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusEqualTo(Integer value) {
+            addCriterion("consult_status =", value, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusNotEqualTo(Integer value) {
+            addCriterion("consult_status <>", value, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusGreaterThan(Integer value) {
+            addCriterion("consult_status >", value, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("consult_status >=", value, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusLessThan(Integer value) {
+            addCriterion("consult_status <", value, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("consult_status <=", value, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusIn(List<Integer> values) {
+            addCriterion("consult_status in", values, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusNotIn(List<Integer> values) {
+            addCriterion("consult_status not in", values, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusBetween(Integer value1, Integer value2) {
+            addCriterion("consult_status between", value1, value2, "consultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("consult_status not between", value1, value2, "consultStatus");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

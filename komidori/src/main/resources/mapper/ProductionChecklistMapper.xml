@@ -5,11 +5,9 @@
     <id column="pro_list_id" property="proListId" jdbcType="INTEGER" />
     <result column="pro_list_name" property="proListName" jdbcType="VARCHAR" />
     <result column="pro_list_date" property="proListDate" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" extends="BaseResultMap" >
-    <result column="pro_list_aim" property="proListAim" jdbcType="LONGVARCHAR" />
-    <result column="pro_list_content" property="proListContent" jdbcType="LONGVARCHAR" />
-    <result column="pro_list_tip" property="proListTip" jdbcType="LONGVARCHAR" />
+    <result column="pro_list_aim" property="proListAim" jdbcType="VARCHAR" />
+    <result column="pro_list_content" property="proListContent" jdbcType="VARCHAR" />
+    <result column="pro_list_tip" property="proListTip" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,27 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    pro_list_id, pro_list_name, pro_list_date
+    pro_list_id, pro_list_name, pro_list_date, pro_list_aim, pro_list_content, pro_list_tip
   </sql>
-  <sql id="Blob_Column_List" >
-    pro_list_aim, pro_list_content, pro_list_tip
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from production_checklist
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistExample" >
     select
     <if test="distinct" >
@@ -105,11 +84,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from production_checklist
     where pro_list_id = #{proListId,jdbcType=INTEGER}
   </select>
@@ -123,15 +100,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklist" >
     insert into production_checklist (pro_list_id, pro_list_name, pro_list_date, 
       pro_list_aim, pro_list_content, pro_list_tip
       )
     values (#{proListId,jdbcType=INTEGER}, #{proListName,jdbcType=VARCHAR}, #{proListDate,jdbcType=VARCHAR}, 
-      #{proListAim,jdbcType=LONGVARCHAR}, #{proListContent,jdbcType=LONGVARCHAR}, #{proListTip,jdbcType=LONGVARCHAR}
+      #{proListAim,jdbcType=VARCHAR}, #{proListContent,jdbcType=VARCHAR}, #{proListTip,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklist" >
     insert into production_checklist
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="proListId != null" >
@@ -164,13 +141,13 @@
         #{proListDate,jdbcType=VARCHAR},
       </if>
       <if test="proListAim != null" >
-        #{proListAim,jdbcType=LONGVARCHAR},
+        #{proListAim,jdbcType=VARCHAR},
       </if>
       <if test="proListContent != null" >
-        #{proListContent,jdbcType=LONGVARCHAR},
+        #{proListContent,jdbcType=VARCHAR},
       </if>
       <if test="proListTip != null" >
-        #{proListTip,jdbcType=LONGVARCHAR},
+        #{proListTip,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -193,27 +170,15 @@
         pro_list_date = #{record.proListDate,jdbcType=VARCHAR},
       </if>
       <if test="record.proListAim != null" >
-        pro_list_aim = #{record.proListAim,jdbcType=LONGVARCHAR},
+        pro_list_aim = #{record.proListAim,jdbcType=VARCHAR},
       </if>
       <if test="record.proListContent != null" >
-        pro_list_content = #{record.proListContent,jdbcType=LONGVARCHAR},
+        pro_list_content = #{record.proListContent,jdbcType=VARCHAR},
       </if>
       <if test="record.proListTip != null" >
-        pro_list_tip = #{record.proListTip,jdbcType=LONGVARCHAR},
+        pro_list_tip = #{record.proListTip,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update production_checklist
-    set pro_list_id = #{record.proListId,jdbcType=INTEGER},
-      pro_list_name = #{record.proListName,jdbcType=VARCHAR},
-      pro_list_date = #{record.proListDate,jdbcType=VARCHAR},
-      pro_list_aim = #{record.proListAim,jdbcType=LONGVARCHAR},
-      pro_list_content = #{record.proListContent,jdbcType=LONGVARCHAR},
-      pro_list_tip = #{record.proListTip,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -222,12 +187,15 @@
     update production_checklist
     set pro_list_id = #{record.proListId,jdbcType=INTEGER},
       pro_list_name = #{record.proListName,jdbcType=VARCHAR},
-      pro_list_date = #{record.proListDate,jdbcType=VARCHAR}
+      pro_list_date = #{record.proListDate,jdbcType=VARCHAR},
+      pro_list_aim = #{record.proListAim,jdbcType=VARCHAR},
+      pro_list_content = #{record.proListContent,jdbcType=VARCHAR},
+      pro_list_tip = #{record.proListTip,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklist" >
     update production_checklist
     <set >
       <if test="proListName != null" >
@@ -237,30 +205,24 @@
         pro_list_date = #{proListDate,jdbcType=VARCHAR},
       </if>
       <if test="proListAim != null" >
-        pro_list_aim = #{proListAim,jdbcType=LONGVARCHAR},
+        pro_list_aim = #{proListAim,jdbcType=VARCHAR},
       </if>
       <if test="proListContent != null" >
-        pro_list_content = #{proListContent,jdbcType=LONGVARCHAR},
+        pro_list_content = #{proListContent,jdbcType=VARCHAR},
       </if>
       <if test="proListTip != null" >
-        pro_list_tip = #{proListTip,jdbcType=LONGVARCHAR},
+        pro_list_tip = #{proListTip,jdbcType=VARCHAR},
       </if>
     </set>
-    where pro_list_id = #{proListId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklistWithBLOBs" >
-    update production_checklist
-    set pro_list_name = #{proListName,jdbcType=VARCHAR},
-      pro_list_date = #{proListDate,jdbcType=VARCHAR},
-      pro_list_aim = #{proListAim,jdbcType=LONGVARCHAR},
-      pro_list_content = #{proListContent,jdbcType=LONGVARCHAR},
-      pro_list_tip = #{proListTip,jdbcType=LONGVARCHAR}
     where pro_list_id = #{proListId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.ProductionChecklist" >
     update production_checklist
     set pro_list_name = #{proListName,jdbcType=VARCHAR},
-      pro_list_date = #{proListDate,jdbcType=VARCHAR}
+      pro_list_date = #{proListDate,jdbcType=VARCHAR},
+      pro_list_aim = #{proListAim,jdbcType=VARCHAR},
+      pro_list_content = #{proListContent,jdbcType=VARCHAR},
+      pro_list_tip = #{proListTip,jdbcType=VARCHAR}
     where pro_list_id = #{proListId,jdbcType=INTEGER}
   </update>
 </mapper>

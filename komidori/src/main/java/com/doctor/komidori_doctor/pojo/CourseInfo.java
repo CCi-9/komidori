@@ -1,5 +1,6 @@
 package com.doctor.komidori_doctor.pojo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CourseInfo {
@@ -11,13 +12,29 @@ public class CourseInfo {
 
     private Integer courseClassId;
 
-    private Date courseDate;
+    private LocalDateTime courseDate;
 
     private Integer courseGoodReview;
 
     private Float coursePrice;
 
     private String courseImg;
+
+    private String courseTitle;
+
+    private String courseContent;
+
+    private String courseIntroduction;
+
+    private PublicCategoryChart publicCategoryChart;
+
+    public PublicCategoryChart getPublicCategoryChart() {
+        return publicCategoryChart;
+    }
+
+    public void setPublicCategoryChart(PublicCategoryChart publicCategoryChart) {
+        this.publicCategoryChart = publicCategoryChart;
+    }
 
     public Integer getCourseId() {
         return courseId;
@@ -51,11 +68,11 @@ public class CourseInfo {
         this.courseClassId = courseClassId;
     }
 
-    public Date getCourseDate() {
+    public LocalDateTime getCourseDate() {
         return courseDate;
     }
 
-    public void setCourseDate(Date courseDate) {
+    public void setCourseDate(LocalDateTime courseDate) {
         this.courseDate = courseDate;
     }
 
@@ -81,5 +98,29 @@ public class CourseInfo {
 
     public void setCourseImg(String courseImg) {
         this.courseImg = courseImg == null ? null : courseImg.trim();
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle == null ? null : courseTitle.trim();
+    }
+
+    public String getCourseContent() {
+        return courseContent;
+    }
+
+    public void setCourseContent(String courseContent) {
+        this.courseContent = courseContent == null ? null : courseContent.trim();
+    }
+
+    public String getCourseIntroduction() {
+        return courseIntroduction;
+    }
+
+    public void setCourseIntroduction(String courseIntroduction) {
+        this.courseIntroduction = courseIntroduction == null ? null : courseIntroduction.trim();
     }
 }

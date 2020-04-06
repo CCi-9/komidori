@@ -15,6 +15,8 @@ public class ConsultChart {
 
     private String consultContent;
 
+    private Integer consultStatus;
+
     public Integer getConsultId() {
         return consultId;
     }
@@ -61,5 +63,13 @@ public class ConsultChart {
 
     public void setConsultContent(String consultContent) {
         this.consultContent = consultContent == null ? null : consultContent.trim();
+    }
+
+    public Integer getConsultStatus() {
+        return consultStatus;
+    }
+
+    public void setConsultStatus(Integer consultStatus) {
+        this.consultStatus = consultStatus;
     }
 }

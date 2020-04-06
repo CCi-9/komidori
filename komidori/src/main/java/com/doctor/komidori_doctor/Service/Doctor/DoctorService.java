@@ -6,5 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface DoctorService {
-    Map<String,Object> getDoctor(int page, String city, String dept);
+    Map<String,Object> getDoctor(int page, String city, String dept, Integer strengthId);
+
+    DoctorInfo getDoctorByID(String doctorID);
 }

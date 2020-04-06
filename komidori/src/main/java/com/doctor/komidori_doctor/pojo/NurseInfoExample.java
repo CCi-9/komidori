@@ -1023,6 +1023,146 @@ public class NurseInfoExample {
             addCriterion("nurse_img not between", value1, value2, "nurseImg");
             return (Criteria) this;
         }
+
+        public Criteria andNurseIntroductionIsNull() {
+            addCriterion("nurse_introduction is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionIsNotNull() {
+            addCriterion("nurse_introduction is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionEqualTo(String value) {
+            addCriterion("nurse_introduction =", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionNotEqualTo(String value) {
+            addCriterion("nurse_introduction <>", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionGreaterThan(String value) {
+            addCriterion("nurse_introduction >", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionGreaterThanOrEqualTo(String value) {
+            addCriterion("nurse_introduction >=", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionLessThan(String value) {
+            addCriterion("nurse_introduction <", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionLessThanOrEqualTo(String value) {
+            addCriterion("nurse_introduction <=", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionLike(String value) {
+            addCriterion("nurse_introduction like", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionNotLike(String value) {
+            addCriterion("nurse_introduction not like", value, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionIn(List<String> values) {
+            addCriterion("nurse_introduction in", values, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionNotIn(List<String> values) {
+            addCriterion("nurse_introduction not in", values, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionBetween(String value1, String value2) {
+            addCriterion("nurse_introduction between", value1, value2, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseIntroductionNotBetween(String value1, String value2) {
+            addCriterion("nurse_introduction not between", value1, value2, "nurseIntroduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqIsNull() {
+            addCriterion("nurse_NVQ is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqIsNotNull() {
+            addCriterion("nurse_NVQ is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqEqualTo(String value) {
+            addCriterion("nurse_NVQ =", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqNotEqualTo(String value) {
+            addCriterion("nurse_NVQ <>", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqGreaterThan(String value) {
+            addCriterion("nurse_NVQ >", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqGreaterThanOrEqualTo(String value) {
+            addCriterion("nurse_NVQ >=", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqLessThan(String value) {
+            addCriterion("nurse_NVQ <", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqLessThanOrEqualTo(String value) {
+            addCriterion("nurse_NVQ <=", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqLike(String value) {
+            addCriterion("nurse_NVQ like", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqNotLike(String value) {
+            addCriterion("nurse_NVQ not like", value, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqIn(List<String> values) {
+            addCriterion("nurse_NVQ in", values, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqNotIn(List<String> values) {
+            addCriterion("nurse_NVQ not in", values, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqBetween(String value1, String value2) {
+            addCriterion("nurse_NVQ between", value1, value2, "nurseNvq");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseNvqNotBetween(String value1, String value2) {
+            addCriterion("nurse_NVQ not between", value1, value2, "nurseNvq");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

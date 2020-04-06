@@ -19,6 +19,8 @@ public class BookDoctorChart {
 
     private String bdocRemark;
 
+    private Integer bdocStatus;
+
     public Integer getBdocOrderId() {
         return bdocOrderId;
     }
@@ -81,5 +83,13 @@ public class BookDoctorChart {
 
     public void setBdocRemark(String bdocRemark) {
         this.bdocRemark = bdocRemark == null ? null : bdocRemark.trim();
+    }
+
+    public Integer getBdocStatus() {
+        return bdocStatus;
+    }
+
+    public void setBdocStatus(Integer bdocStatus) {
+        this.bdocStatus = bdocStatus;
     }
 }

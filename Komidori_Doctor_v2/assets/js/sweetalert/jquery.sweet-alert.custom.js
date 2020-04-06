@@ -12,6 +12,11 @@
         swal("Here's a message!");
     });
     
+    $('#sa-follow').click(function(){
+        swal("关注成功!");
+    });
+    
+    
     $('#sa-tel-error').click(function(){
         swal("请输入正确的手机号码！");
     });

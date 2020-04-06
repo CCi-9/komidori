@@ -7,7 +7,7 @@
     <result column="essay_author_id" property="essayAuthorId" jdbcType="INTEGER" />
     <result column="essay_date" property="essayDate" jdbcType="TIMESTAMP" />
     <result column="essay_category" property="essayCategory" jdbcType="INTEGER" />
-    <result column="essay_good_review" property="essayGoodReview" jdbcType="VARCHAR" />
+    <result column="essay_good_review" property="essayGoodReview" jdbcType="INTEGER" />
     <result column="essay_content" property="essayContent" jdbcType="VARCHAR" />
     <result column="essay_status" property="essayStatus" jdbcType="INTEGER" />
   </resultMap>
@@ -108,7 +108,7 @@
       essay_date, essay_category, essay_good_review, 
       essay_content, essay_status)
     values (#{essayId,jdbcType=INTEGER}, #{essayTitle,jdbcType=VARCHAR}, #{essayAuthorId,jdbcType=INTEGER}, 
-      #{essayDate,jdbcType=TIMESTAMP}, #{essayCategory,jdbcType=INTEGER}, #{essayGoodReview,jdbcType=VARCHAR}, 
+      #{essayDate,jdbcType=TIMESTAMP}, #{essayCategory,jdbcType=INTEGER}, #{essayGoodReview,jdbcType=INTEGER}, 
       #{essayContent,jdbcType=VARCHAR}, #{essayStatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.PublicEssayChart" >
@@ -156,7 +156,7 @@
         #{essayCategory,jdbcType=INTEGER},
       </if>
       <if test="essayGoodReview != null" >
-        #{essayGoodReview,jdbcType=VARCHAR},
+        #{essayGoodReview,jdbcType=INTEGER},
       </if>
       <if test="essayContent != null" >
         #{essayContent,jdbcType=VARCHAR},
@@ -191,7 +191,7 @@
         essay_category = #{record.essayCategory,jdbcType=INTEGER},
       </if>
       <if test="record.essayGoodReview != null" >
-        essay_good_review = #{record.essayGoodReview,jdbcType=VARCHAR},
+        essay_good_review = #{record.essayGoodReview,jdbcType=INTEGER},
       </if>
       <if test="record.essayContent != null" >
         essay_content = #{record.essayContent,jdbcType=VARCHAR},
@@ -211,7 +211,7 @@
       essay_author_id = #{record.essayAuthorId,jdbcType=INTEGER},
       essay_date = #{record.essayDate,jdbcType=TIMESTAMP},
       essay_category = #{record.essayCategory,jdbcType=INTEGER},
-      essay_good_review = #{record.essayGoodReview,jdbcType=VARCHAR},
+      essay_good_review = #{record.essayGoodReview,jdbcType=INTEGER},
       essay_content = #{record.essayContent,jdbcType=VARCHAR},
       essay_status = #{record.essayStatus,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -234,7 +234,7 @@
         essay_category = #{essayCategory,jdbcType=INTEGER},
       </if>
       <if test="essayGoodReview != null" >
-        essay_good_review = #{essayGoodReview,jdbcType=VARCHAR},
+        essay_good_review = #{essayGoodReview,jdbcType=INTEGER},
       </if>
       <if test="essayContent != null" >
         essay_content = #{essayContent,jdbcType=VARCHAR},
@@ -251,7 +251,7 @@
       essay_author_id = #{essayAuthorId,jdbcType=INTEGER},
       essay_date = #{essayDate,jdbcType=TIMESTAMP},
       essay_category = #{essayCategory,jdbcType=INTEGER},
-      essay_good_review = #{essayGoodReview,jdbcType=VARCHAR},
+      essay_good_review = #{essayGoodReview,jdbcType=INTEGER},
       essay_content = #{essayContent,jdbcType=VARCHAR},
       essay_status = #{essayStatus,jdbcType=INTEGER}
     where essay_id = #{essayId,jdbcType=INTEGER}

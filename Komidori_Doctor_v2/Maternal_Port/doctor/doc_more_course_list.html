@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="themepresss">
+	<title>医生课程</title>
+	
+	<link href="../../assets/css/index_Base.css" rel="stylesheet" />	
+	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/doctor/doctor.css"/>
+	<link href="../../assets/css/datepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link href="../../assets/css/city/city-picker.css" rel="stylesheet" />
+	
+	</head>
+	<body class="card-no-border">
+		
+		<div class="page-wrapper">
+		<!--头部-->
+		<header id="header" class="site-header header-style-1 header-style-3">
+            <div class="topbar">
+                <div class="container">
+                    <div class="separator"></div>
+                    <div class="row">
+                        <div class="col col-sm-3">
+                            <div class="contact-info">
+                                <ul>
+                                    <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-sm-5">
+                            <div class="contact-info">
+                                <ul>
+                                    <li><i class="ti-mobile"></i>502015889@qq.com</li>
+                                    <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--登陆注册入口-->
+                        <div class="col col-sm-4 hidden">
+                            <div class="sign">
+                            	<ul>
+                            		<li><a href="signin.html" class="log">登陆</a></li>
+                            		<li><a href="register.html" class="log">注册</a></li>
+                            		<li id="doc_entry"><a href="#"  class="log">医生入口</a></li>                            			
+                            	</ul>
+                            </div>
+                        </div>
+                        <!--登陆后显示-->
+                        <div class="col col-sm-4 ">
+                            <div class="admin">
+                            	<ul>
+                            		<li>
+                            			<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            				<img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px" />
+                            				Komidori Li
+                            				<span class="caret"></span>
+                        				</a>
+                        				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+				                          <li> <a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a> </li>
+				                          <li> <a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a> </li>
+				                          <li> <a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息 </a> </li>
+				                          <hr />
+				                          <li> <a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a> </li>
+                        				</ul>                      				
+                            		</li>
+                            	</ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar -->
+
+            <nav class="navigation navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="open-btn">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--logo-->
+                        <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
+                    </div>
+                    <!--导航条-->
+                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                        <button class="close-navbar"><i class="ti-close"></i></button>
+                        <ul class="nav navbar-nav">
+                        	
+                            <li class="menu-item-has-children">
+                                <a href="../index.html">主页</a>
+                               
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">线上咨询服务</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../doctor/find_doctors.html">找医生</a></li>
+                                    <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">线下预约服务</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
+                                    <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">经验交流社区</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../mom_public/expert_course.html">专家课程</a></li>
+                                    <li><a href="../expert/find_experts.html">找专家</a></li>
+                                    <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item-has-children">
+                                <a href="#">育儿工具</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../baby_tools/production_list.html">产检表</a></li>
+                                    <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
+                                    <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="../about.html">关于我们</a></li>
+                            
+                        </ul>
+                    </div><!-- end of nav-collapse -->
+					<!--导航条//-->
+					<!--搜索-->
+                    <div class="side-info">
+                        <div class="header-search-form-wrapper">
+                            <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
+                            <div class="header-search-form">
+                                <form>
+                                    <div>
+                                        <input type="text" class="form-control" placeholder="在此处搜索...">
+                                        <button type="submit"><i class="fi flaticon-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                      	
+                    <!--搜索//-->
+                </div><!-- end of container -->
+            </nav>
+        </header>
+        
+		<!--头部结束-->
+		<div class="preloader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- end preloader -->
+		
+		<div class="breadcumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcumb-wrap text-center">
+                            <h2>医生课程</h2>
+                            <!--导航-->
+                            <ul>
+                                <li><a href="../index.html">主页</a></li>
+                                <li>找医生</li>
+                                <li><span>医生更多课程</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<section class="blog-single-section section-padding">
+            <div class="ab-svg_color">
+                <svg x="0px" y="0px"
+                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+                <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
+                    z"/>
+               </svg>
+            </div>
+            
+            <div class="container">
+            	
+            	<div class="row">
+            		<div class="container book_doctor">
+            			<div class="col content-panel dbox">
+					            	
+					            	<!-- /col-md-4 -->
+						            <div class="col-md-4  centered">
+						                <div class="profile-pic">
+						                  <p><img src="../../assets/images/heads.jpg" class="img-circle"></p>
+						                  <p>
+						                    <button id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞</button>
+						                    <button class="btn btn-theme02"><i class="ti-plus"></i> 预约</button>
+						                  </p>
+						                </div>
+						            </div><!-- /col-md-4 -->
+					            	
+					            	<div class="col-md-4 profile-text doc_center_box">
+					                <h3>菜玉溪<span class="hospital">湛江中心人民</span></h3><!-- 姓名 -->
+					                <h5>妇产科
+					                	<span class="rank">主任医师</span>
+					                	<span class="label label-warning label1">已认证</span>
+					                	<button class="btn1" data-toggle="modal" data-target="#confirm">
+					                		<i class="glyphicon glyphicon-eye-open"></i>
+					                	</button>
+					                </h5><!-- 科室、等级 -->
+
+					                <p class="centent">
+					                	<span class="label label-success">知名医院</span>
+					                	<span class="label label-success">从业20年</span>
+					                	<span class="label label-success">汕头市</span>				               	
+					                </p>
+					                <br>
+					                <p>
+					                	<button class="btn btn-theme"><i class="ti-envelope"></i> 马上咨询</button>
+					                	<span class="label label-default">38￥/次</span>
+					                </p>
+					              	</div>
+					            						            					            
+					            	<!--点赞收藏情况-->           	
+						            <div class="col-md-4 profile-text mt mb centered">
+						                <div class="right-divider">
+						                  <h4>130</h4>
+						                  <h6>点赞</h6>
+						                  <h4>250</h4>
+						                  <h6>服务人次</h6>
+						                  <h4>55</h4>
+						                  <h6>评价</h6>
+						                </div>
+						            </div>
+					            
+					            	<!-- 姓名、简介 -->
+
+					            </div>
+            		</div>
+					 <!-- content-panel -->
+				</div>
+				<!--row end-->
+				
+				<!--预约-->
+				<div class="nurse_contentbox">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="greenbar"></div>
+								<div class="centerbar">
+									<p>课程</p>
+								</div>
+							<div class="rightbar"></div>
+						</div>
+					</div>
+								
+					<div class="row">
+						<div class="col-md-12 normal_text">
+							
+							<div class="table-responsive">
+            				<!--<div id="toolbar" class="toolbar">
+            					<button class="btn btn-theme02" onclick="" id="delbtn">批量删除</button>
+            				</div>-->
+            				<table id="doc_more_course_list" class="table table-hover">
+            				</table>
+            	</div>
+							
+						</div>
+					</div>
+					
+					
+					
+				</div>
+				
+            </div>
+            
+            <!--城市选择-->
+        
+            
+            
+       </section>    
+
+										
+		<!--页尾-->
+		<div id="foot"></div>
+		
+	</div>	
+	</body>
+	
+
+
+<!-- All JavaScript files================================================== -->
+    
+    <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+		<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../../assets/js/script.js"></script>
+    
+    <!--滑动-->
+		<script src="../../assets/js/smoothscroll.js" ></script>
+		
+		<!--table-->
+  	<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
+  
+    
+<!-- JS files end===========================================================-->
+<script>
+$(function(){
+	$("#foot").load("../low_footer.html")})
+</script>
+
+<script type="text/javascript">
+	
+	$('#doc_more_course_list').bootstrapTable({
+        columns: [
+
+            	{
+                field: 'id',
+                title: '序号',
+              	formatter: function (value, row, index) {
+                  return index+1;
+              																					},
+                halign:'center',
+                align:'center',
+                width: 50
+            },
+          	{
+              field: 'course_id',
+              title: '课程编号',
+              halign:'center',//表头居中显示
+              align:'center',
+              width: 80
+ 
+        		},
+            {
+                field: 'course_type',
+                title: '课程类型',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: '30px',
+                formatter: function (value, row, index) {   //传入数据
+ 									if(value==1)
+        					return '<span class="label label-success">视频</span>';
+        					else if(value==2)
+        					return '<span class="label label-info">音频</span>';
+        					else
+        					return '<span class="label label-warning">文章</span>';
+        					
+    						},
+ 
+          	},
+            {
+                field: 'course_class_id',
+                title: '课程分类',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 60,
+ 
+          	},
+            {
+                field: 'course_date',
+                title: '发布时间',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 100
+ 
+          	},
+            {
+                field: 'course_good_review',
+                title: '好评',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 50,
+                formatter: function (value, row, index) {   //传入数据
+ 									
+        					return '<span class="badge badge-good">'+value+'</span>';
+        					
+        					
+    						},
+ 
+          	},
+            {
+                field: 'course_price',
+                title: '价格',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 50,
+                
+ 
+          	},
+							],
+        data: [
+        {	
+        	'course_id':11,
+        	'course_type':1,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':12,
+        	'course_type':2,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':13,
+        	'course_type':3,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':14,
+        	'course_type':3,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':15,
+        	'course_type':2,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':16,
+        	'course_type':3,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        
+        
+        ],
+        url:'',
+        method: 'post',
+        pagination:true,  //设置为 true 会在表格底部显示分页条。
+        paginationLoop:false, //设置为 true 启用分页条无限循环的功能。
+        pageSize:3,//每页初始显示的条数
+        pageList:[5,10,15],
+        toolbar:'#toolbar',//工具栏
+        toolbarAlign:'right',//工具栏的位置
+        search: true,
+        showRefresh: true,
+        clickToSelect: true,   //是否启用点击选中行
+
+ 
+    });
+	
+	$("#doc_more_course_list").bootstrapTable('hideLoading');
+	
+	//table 双击事件
+	$("#doc_more_course_list")
+  .on('dbl-click-row.bs.table', function (e, row, ele,field) {
+  				
+  				//转跳到mom_public目录下的course_info
+  				alert("课程"+row.course_id+"的详情页");
+  				
+            })          
+	
+
+</script>
+
+</html>

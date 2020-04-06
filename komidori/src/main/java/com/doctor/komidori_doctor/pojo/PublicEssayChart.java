@@ -13,7 +13,7 @@ public class PublicEssayChart {
 
     private Integer essayCategory;
 
-    private String essayGoodReview;
+    private Integer essayGoodReview;
 
     private String essayContent;
 
@@ -59,12 +59,12 @@ public class PublicEssayChart {
         this.essayCategory = essayCategory;
     }
 
-    public String getEssayGoodReview() {
+    public Integer getEssayGoodReview() {
         return essayGoodReview;
     }
 
-    public void setEssayGoodReview(String essayGoodReview) {
-        this.essayGoodReview = essayGoodReview == null ? null : essayGoodReview.trim();
+    public void setEssayGoodReview(Integer essayGoodReview) {
+        this.essayGoodReview = essayGoodReview;
     }
 
     public String getEssayContent() {

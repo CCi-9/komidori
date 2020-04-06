@@ -6,10 +6,13 @@
     <result column="course_type" property="courseType" jdbcType="INTEGER" />
     <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
     <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
-    <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
+    <result column="course_date" property="courseDate" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler" jdbcType="OTHER" javaType="java.time.LocalDateTime" />
     <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
     <result column="course_price" property="coursePrice" jdbcType="REAL" />
     <result column="course_img" property="courseImg" jdbcType="VARCHAR" />
+    <result column="course_title" property="courseTitle" jdbcType="VARCHAR" />
+    <result column="course_content" property="courseContent" jdbcType="VARCHAR" />
+    <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List" >
     course_id, course_type, course_doc_id, course_class_id, course_date, course_good_review, 
-    course_price, course_img
+    course_price, course_img, course_title, course_content, course_introduction
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.CourseInfoExample" >
     select
@@ -106,10 +109,12 @@
   <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
     insert into course_info (course_id, course_type, course_doc_id, 
       course_class_id, course_date, course_good_review, 
-      course_price, course_img)
+      course_price, course_img, course_title, 
+      course_content, course_introduction)
     values (#{courseId,jdbcType=INTEGER}, #{courseType,jdbcType=INTEGER}, #{courseDocId,jdbcType=INTEGER}, 
       #{courseClassId,jdbcType=INTEGER}, #{courseDate,jdbcType=TIMESTAMP}, #{courseGoodReview,jdbcType=INTEGER}, 
-      #{coursePrice,jdbcType=REAL}, #{courseImg,jdbcType=VARCHAR})
+      #{coursePrice,jdbcType=REAL}, #{courseImg,jdbcType=VARCHAR}, #{courseTitle,jdbcType=VARCHAR}, 
+      #{courseContent,jdbcType=VARCHAR}, #{courseIntroduction,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
     insert into course_info
@@ -138,6 +143,15 @@
       <if test="courseImg != null" >
         course_img,
       </if>
+      <if test="courseTitle != null" >
+        course_title,
+      </if>
+      <if test="courseContent != null" >
+        course_content,
+      </if>
+      <if test="courseIntroduction != null" >
+        course_introduction,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseId != null" >
@@ -163,6 +177,15 @@
       </if>
       <if test="courseImg != null" >
         #{courseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTitle != null" >
+        #{courseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null" >
+        #{courseContent,jdbcType=VARCHAR},
+      </if>
+      <if test="courseIntroduction != null" >
+        #{courseIntroduction,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +222,15 @@
       <if test="record.courseImg != null" >
         course_img = #{record.courseImg,jdbcType=VARCHAR},
       </if>
+      <if test="record.courseTitle != null" >
+        course_title = #{record.courseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseContent != null" >
+        course_content = #{record.courseContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseIntroduction != null" >
+        course_introduction = #{record.courseIntroduction,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +245,10 @@
       course_date = #{record.courseDate,jdbcType=TIMESTAMP},
       course_good_review = #{record.courseGoodReview,jdbcType=INTEGER},
       course_price = #{record.coursePrice,jdbcType=REAL},
-      course_img = #{record.courseImg,jdbcType=VARCHAR}
+      course_img = #{record.courseImg,jdbcType=VARCHAR},
+      course_title = #{record.courseTitle,jdbcType=VARCHAR},
+      course_content = #{record.courseContent,jdbcType=VARCHAR},
+      course_introduction = #{record.courseIntroduction,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +277,15 @@
       <if test="courseImg != null" >
         course_img = #{courseImg,jdbcType=VARCHAR},
       </if>
+      <if test="courseTitle != null" >
+        course_title = #{courseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="courseContent != null" >
+        course_content = #{courseContent,jdbcType=VARCHAR},
+      </if>
+      <if test="courseIntroduction != null" >
+        course_introduction = #{courseIntroduction,jdbcType=VARCHAR},
+      </if>
     </set>
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
@@ -253,7 +297,10 @@
       course_date = #{courseDate,jdbcType=TIMESTAMP},
       course_good_review = #{courseGoodReview,jdbcType=INTEGER},
       course_price = #{coursePrice,jdbcType=REAL},
-      course_img = #{courseImg,jdbcType=VARCHAR}
+      course_img = #{courseImg,jdbcType=VARCHAR},
+      course_title = #{courseTitle,jdbcType=VARCHAR},
+      course_content = #{courseContent,jdbcType=VARCHAR},
+      course_introduction = #{courseIntroduction,jdbcType=VARCHAR}
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
 </mapper>

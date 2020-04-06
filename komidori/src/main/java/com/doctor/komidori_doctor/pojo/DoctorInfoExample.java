@@ -1553,6 +1553,246 @@ public class DoctorInfoExample {
             addCriterion("dcotor_strength not between", value1, value2, "dcotorStrength");
             return (Criteria) this;
         }
+
+        public Criteria andOnlinePriceIsNull() {
+            addCriterion("online_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceIsNotNull() {
+            addCriterion("online_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceEqualTo(Float value) {
+            addCriterion("online_price =", value, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceNotEqualTo(Float value) {
+            addCriterion("online_price <>", value, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceGreaterThan(Float value) {
+            addCriterion("online_price >", value, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("online_price >=", value, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceLessThan(Float value) {
+            addCriterion("online_price <", value, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceLessThanOrEqualTo(Float value) {
+            addCriterion("online_price <=", value, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceIn(List<Float> values) {
+            addCriterion("online_price in", values, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceNotIn(List<Float> values) {
+            addCriterion("online_price not in", values, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceBetween(Float value1, Float value2) {
+            addCriterion("online_price between", value1, value2, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOnlinePriceNotBetween(Float value1, Float value2) {
+            addCriterion("online_price not between", value1, value2, "onlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceIsNull() {
+            addCriterion("offline_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceIsNotNull() {
+            addCriterion("offline_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceEqualTo(Float value) {
+            addCriterion("offline_price =", value, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceNotEqualTo(Float value) {
+            addCriterion("offline_price <>", value, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceGreaterThan(Float value) {
+            addCriterion("offline_price >", value, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("offline_price >=", value, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceLessThan(Float value) {
+            addCriterion("offline_price <", value, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceLessThanOrEqualTo(Float value) {
+            addCriterion("offline_price <=", value, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceIn(List<Float> values) {
+            addCriterion("offline_price in", values, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceNotIn(List<Float> values) {
+            addCriterion("offline_price not in", values, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceBetween(Float value1, Float value2) {
+            addCriterion("offline_price between", value1, value2, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andOfflinePriceNotBetween(Float value1, Float value2) {
+            addCriterion("offline_price not between", value1, value2, "offlinePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableIsNull() {
+            addCriterion("consultable is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableIsNotNull() {
+            addCriterion("consultable is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableEqualTo(Integer value) {
+            addCriterion("consultable =", value, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableNotEqualTo(Integer value) {
+            addCriterion("consultable <>", value, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableGreaterThan(Integer value) {
+            addCriterion("consultable >", value, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableGreaterThanOrEqualTo(Integer value) {
+            addCriterion("consultable >=", value, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableLessThan(Integer value) {
+            addCriterion("consultable <", value, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableLessThanOrEqualTo(Integer value) {
+            addCriterion("consultable <=", value, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableIn(List<Integer> values) {
+            addCriterion("consultable in", values, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableNotIn(List<Integer> values) {
+            addCriterion("consultable not in", values, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableBetween(Integer value1, Integer value2) {
+            addCriterion("consultable between", value1, value2, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andConsultableNotBetween(Integer value1, Integer value2) {
+            addCriterion("consultable not between", value1, value2, "consultable");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeIsNull() {
+            addCriterion("doc_work_age is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeIsNotNull() {
+            addCriterion("doc_work_age is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeEqualTo(Integer value) {
+            addCriterion("doc_work_age =", value, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeNotEqualTo(Integer value) {
+            addCriterion("doc_work_age <>", value, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeGreaterThan(Integer value) {
+            addCriterion("doc_work_age >", value, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("doc_work_age >=", value, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeLessThan(Integer value) {
+            addCriterion("doc_work_age <", value, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeLessThanOrEqualTo(Integer value) {
+            addCriterion("doc_work_age <=", value, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeIn(List<Integer> values) {
+            addCriterion("doc_work_age in", values, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeNotIn(List<Integer> values) {
+            addCriterion("doc_work_age not in", values, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeBetween(Integer value1, Integer value2) {
+            addCriterion("doc_work_age between", value1, value2, "docWorkAge");
+            return (Criteria) this;
+        }
+
+        public Criteria andDocWorkAgeNotBetween(Integer value1, Integer value2) {
+            addCriterion("doc_work_age not between", value1, value2, "docWorkAge");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

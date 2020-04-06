@@ -247,13 +247,14 @@
                                 <th>擅长</th>
                                 <td class="city_box">
                                     <ul class="strength">
-                                        <li><input id="all_strength" type="radio" name="strengths" checked="checked"></input><label for="all_strength">所有</label></li>
-                                        <li><input id="1" type="radio" name="strengths" ></input><label for="1">怀孕·生活</label></li>
-                                        <li><input id="2" type="radio" name="strengths" ></input><label for="2">备孕·试管</label></li>
-                                        <li><input id="3" type="radio" name="strengths" ></input><label for="3">产后·调理</label></li>
-                                        <li><input id="4" type="radio" name="strengths" ></input><label for="4">育儿·经验</label></li>
-                                        <li><input id="5" type="radio" name="strengths" ></input><label for="5">情感·谈天</label></li>
-                                        <li><input id="6" type="radio" name="strengths" ></input><label for="6">早教·幼教</label></li>
+                                        <li><input id="all_strength" type="radio" name="strengths" checked="checked" value="0" @click="getStrength" /><label for="all_strength">所有</label></li>
+                                        <li><input id="1" type="radio" name="strengths" value="7001" @click="getStrength" /><label for="1">怀孕·生活</label></li>
+                                        <li><input id="2" type="radio" name="strengths" value="7002" @click="getStrength" /><label for="2">备孕·试管</label></li>
+                                        <li><input id="3" type="radio" name="strengths" value="7003" @click="getStrength" /><label for="3">产后·调理</label></li>
+                                        <li><input id="4" type="radio" name="strengths" value="7004" @click="getStrength" /><label for="4">育儿·经验</label></li>
+                                        <li><input id="5" type="radio" name="strengths" value="7005" @click="getStrength" /><label for="5">情感·谈天</label></li>
+                                        <li><input id="6" type="radio" name="strengths" value="7006" @click="getStrength" /><label for="6">早教·幼教</label></li>
+                                        <li><input id="7" type="radio" name="strengths" value="7007" @click="getStrength" /><label for="7">其他</label></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -288,7 +289,7 @@
                                     <li>服务 : <span>{{doctor.doctorOrders}}</span>户</li>
                                 </ul>
                                 <p class="text-left">{{doctor.dcotorStrength}}</p>
-                                <button onclick="advisory()" class="btn">咨询</button>
+                                <button @click="advisory(doctor.doctorId)" class="btn">咨询</button>
                                 <!--<p><span class="label label-danger">可咨询</span></p>-->
                             </div>
                         </div>
@@ -498,10 +499,6 @@
         $("#disease_check").text(disease);
     });
 
-    function advisory(){
-        window.location.href = 'doctorinfo.html'
-    }
-
     function test(obj) {
         console.log(obj)
     }
@@ -529,7 +526,7 @@
                 }
             },
             onPageClicked: function (event, originalEvent, type, page) {
-                getDoctor(page, app.city, app.service)
+                getDoctor(page, app.city, app.service, app.strength)
             }
 
 
@@ -537,7 +534,7 @@
 
     }
 
-    function getDoctor(page, city, dept) {
+    function getDoctor(page, city, dept, strength) {
         $.ajax({
             url: "http://" + host + "/doctor/getDoctor",
             method: "get",
@@ -545,6 +542,7 @@
                 page: page,
                 city: city,
                 dept: dept,
+                strengthId: strength,
             },
             xhrFields: {
                 withCredentials: true  //带上cookie信息，解决sessionid不一致
@@ -554,6 +552,8 @@
                 app.doctorList = result.data.list
                 app.pageTotal = result.data.pageTotal
                 app.currentPage = result.data.currentPage
+                console.log("currentPage:" + app.currentPage)
+                console.log("pageTotal:" + app.pageTotal)
                 showPage()
             }
         });
@@ -566,6 +566,7 @@
         el: "#app",
         data: {
             service: "",
+            strength: 0,
             city: "",
             doctorList: [],
             pageTotal: 0,
@@ -575,12 +576,24 @@
             getService(obj) {
                 console.log(obj.target.value)
                 this.service = obj.target.value
-                getDoctor(0, this.city, this.service)
+                getDoctor(0, this.city, this.service, this.strength)
 
+            },
+
+            getStrength(obj) {
+                console.log(obj.target.value)
+                this.strength = obj.target.value
+                getDoctor(0, this.city, this.service, this.strength)
+
+            },
+
+            advisory(id){
+                console.log(id)
+                window.location.href = 'doctorinfo.html?id=' + id
             }
         },
         mounted() {
-            getDoctor(0, null, null)
+            getDoctor(0, null, null,0)
         }
     })
 </script>

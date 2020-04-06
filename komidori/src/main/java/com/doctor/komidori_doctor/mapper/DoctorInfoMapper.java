@@ -27,6 +27,4 @@ public interface DoctorInfoMapper {
     int updateByPrimaryKeySelective(DoctorInfo record);
 
     int updateByPrimaryKey(DoctorInfo record);
-
-    List<DoctorInfo> selectByCondition(String city, String dept);
 }

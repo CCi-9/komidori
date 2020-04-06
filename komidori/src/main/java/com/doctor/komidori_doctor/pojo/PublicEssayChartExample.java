@@ -425,62 +425,52 @@ public class PublicEssayChartExample {
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewEqualTo(String value) {
+        public Criteria andEssayGoodReviewEqualTo(Integer value) {
             addCriterion("essay_good_review =", value, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewNotEqualTo(String value) {
+        public Criteria andEssayGoodReviewNotEqualTo(Integer value) {
             addCriterion("essay_good_review <>", value, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewGreaterThan(String value) {
+        public Criteria andEssayGoodReviewGreaterThan(Integer value) {
             addCriterion("essay_good_review >", value, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewGreaterThanOrEqualTo(String value) {
+        public Criteria andEssayGoodReviewGreaterThanOrEqualTo(Integer value) {
             addCriterion("essay_good_review >=", value, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewLessThan(String value) {
+        public Criteria andEssayGoodReviewLessThan(Integer value) {
             addCriterion("essay_good_review <", value, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewLessThanOrEqualTo(String value) {
+        public Criteria andEssayGoodReviewLessThanOrEqualTo(Integer value) {
             addCriterion("essay_good_review <=", value, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewLike(String value) {
-            addCriterion("essay_good_review like", value, "essayGoodReview");
-            return (Criteria) this;
-        }
-
-        public Criteria andEssayGoodReviewNotLike(String value) {
-            addCriterion("essay_good_review not like", value, "essayGoodReview");
-            return (Criteria) this;
-        }
-
-        public Criteria andEssayGoodReviewIn(List<String> values) {
+        public Criteria andEssayGoodReviewIn(List<Integer> values) {
             addCriterion("essay_good_review in", values, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewNotIn(List<String> values) {
+        public Criteria andEssayGoodReviewNotIn(List<Integer> values) {
             addCriterion("essay_good_review not in", values, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewBetween(String value1, String value2) {
+        public Criteria andEssayGoodReviewBetween(Integer value1, Integer value2) {
             addCriterion("essay_good_review between", value1, value2, "essayGoodReview");
             return (Criteria) this;
         }
 
-        public Criteria andEssayGoodReviewNotBetween(String value1, String value2) {
+        public Criteria andEssayGoodReviewNotBetween(Integer value1, Integer value2) {
             addCriterion("essay_good_review not between", value1, value2, "essayGoodReview");
             return (Criteria) this;
         }

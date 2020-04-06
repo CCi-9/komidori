@@ -1,5 +1,7 @@
 package com.doctor.komidori_doctor.pojo;
 
+import java.util.List;
+
 public class DoctorInfo {
     private Integer doctorId;
 
@@ -44,6 +46,24 @@ public class DoctorInfo {
     private Integer doctorVerify;
 
     private String dcotorStrength;
+
+    private Float onlinePrice;
+
+    private Float offlinePrice;
+
+    private Integer consultable;
+
+    private Integer docWorkAge;
+
+    private List<CourseInfo> courseInfo;
+
+    public List<CourseInfo> getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(List<CourseInfo> courseInfo) {
+        this.courseInfo = courseInfo;
+    }
 
     public Integer getDoctorId() {
         return doctorId;
@@ -219,5 +239,37 @@ public class DoctorInfo {
 
     public void setDcotorStrength(String dcotorStrength) {
         this.dcotorStrength = dcotorStrength == null ? null : dcotorStrength.trim();
+    }
+
+    public Float getOnlinePrice() {
+        return onlinePrice;
+    }
+
+    public void setOnlinePrice(Float onlinePrice) {
+        this.onlinePrice = onlinePrice;
+    }
+
+    public Float getOfflinePrice() {
+        return offlinePrice;
+    }
+
+    public void setOfflinePrice(Float offlinePrice) {
+        this.offlinePrice = offlinePrice;
+    }
+
+    public Integer getConsultable() {
+        return consultable;
+    }
+
+    public void setConsultable(Integer consultable) {
+        this.consultable = consultable;
+    }
+
+    public Integer getDocWorkAge() {
+        return docWorkAge;
+    }
+
+    public void setDocWorkAge(Integer docWorkAge) {
+        this.docWorkAge = docWorkAge;
     }
 }

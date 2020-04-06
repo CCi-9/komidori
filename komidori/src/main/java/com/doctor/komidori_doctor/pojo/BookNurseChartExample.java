@@ -561,6 +561,136 @@ public class BookNurseChartExample {
             addCriterion("bnurse_addr not between", value1, value2, "bnurseAddr");
             return (Criteria) this;
         }
+
+        public Criteria andBnurseStatusIsNull() {
+            addCriterion("bnurse_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusIsNotNull() {
+            addCriterion("bnurse_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusEqualTo(Integer value) {
+            addCriterion("bnurse_status =", value, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusNotEqualTo(Integer value) {
+            addCriterion("bnurse_status <>", value, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusGreaterThan(Integer value) {
+            addCriterion("bnurse_status >", value, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("bnurse_status >=", value, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusLessThan(Integer value) {
+            addCriterion("bnurse_status <", value, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("bnurse_status <=", value, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusIn(List<Integer> values) {
+            addCriterion("bnurse_status in", values, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusNotIn(List<Integer> values) {
+            addCriterion("bnurse_status not in", values, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusBetween(Integer value1, Integer value2) {
+            addCriterion("bnurse_status between", value1, value2, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("bnurse_status not between", value1, value2, "bnurseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkIsNull() {
+            addCriterion("bnurse_remark is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkIsNotNull() {
+            addCriterion("bnurse_remark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkEqualTo(String value) {
+            addCriterion("bnurse_remark =", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkNotEqualTo(String value) {
+            addCriterion("bnurse_remark <>", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkGreaterThan(String value) {
+            addCriterion("bnurse_remark >", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("bnurse_remark >=", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkLessThan(String value) {
+            addCriterion("bnurse_remark <", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkLessThanOrEqualTo(String value) {
+            addCriterion("bnurse_remark <=", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkLike(String value) {
+            addCriterion("bnurse_remark like", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkNotLike(String value) {
+            addCriterion("bnurse_remark not like", value, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkIn(List<String> values) {
+            addCriterion("bnurse_remark in", values, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkNotIn(List<String> values) {
+            addCriterion("bnurse_remark not in", values, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkBetween(String value1, String value2) {
+            addCriterion("bnurse_remark between", value1, value2, "bnurseRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseRemarkNotBetween(String value1, String value2) {
+            addCriterion("bnurse_remark not between", value1, value2, "bnurseRemark");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -1,128 +1,130 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.doctor.komidori_doctor.mapper.DoctorInfoMapper">
-    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.DoctorInfo">
-        <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
-        <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
-        <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR"/>
-        <result column="doctor_age" property="doctorAge" jdbcType="INTEGER"/>
-        <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR"/>
-        <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR"/>
-        <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR"/>
-        <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER"/>
-        <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR"/>
-        <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR"/>
-        <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR"/>
-        <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR"/>
-        <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER"/>
-        <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER"/>
-        <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER"/>
-        <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER"/>
-        <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER"/>
-        <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR"/>
-        <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR"/>
-        <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR"/>
-        <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER"/>
-        <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR"/>
-    </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+<mapper namespace="com.doctor.komidori_doctor.mapper.DoctorInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.DoctorInfo" >
+    <id column="doctor_id" property="doctorId" jdbcType="INTEGER" />
+    <result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
+    <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR" />
+    <result column="doctor_age" property="doctorAge" jdbcType="INTEGER" />
+    <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR" />
+    <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR" />
+    <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR" />
+    <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER" />
+    <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR" />
+    <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR" />
+    <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR" />
+    <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR" />
+    <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER" />
+    <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER" />
+    <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER" />
+    <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER" />
+    <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER" />
+    <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR" />
+    <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR" />
+    <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR" />
+    <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER" />
+    <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR" />
+    <result column="online_price" property="onlinePrice" jdbcType="REAL" />
+    <result column="offline_price" property="offlinePrice" jdbcType="REAL" />
+    <result column="consultable" property="consultable" jdbcType="INTEGER" />
+    <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
     doctor_id, doctor_name, doctor_sex, doctor_age, doctor_pwd, doctor_tel, doctor_idcard, 
     doctor_status, doctor_city, doctor_hospital, doctor_dept, doctor_email, doctor_bookable, 
     doctor_follow, doctor_good_review, doctor_orders, doctor_course_num, doctor_introduction, 
-    doctor_img, doctor_rank, doctor_verify, dcotor_strength
+    doctor_img, doctor_rank, doctor_verify, dcotor_strength, online_price, offline_price, 
+    consultable, doc_work_age
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap"
-            parameterType="com.doctor.komidori_doctor.pojo.DoctorInfoExample">
-        select
-        <if test="distinct">
-            distinct
-        </if>
-        <include refid="Base_Column_List"/>
-        from doctor_info
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from doctor_info
-        where doctor_id = #{doctorId,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from doctor_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from doctor_info
+    where doctor_id = #{doctorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from doctor_info
     where doctor_id = #{doctorId,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfoExample">
-        delete from doctor_info
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfoExample" >
+    delete from doctor_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo" >
     insert into doctor_info (doctor_id, doctor_name, doctor_sex, 
       doctor_age, doctor_pwd, doctor_tel, 
       doctor_idcard, doctor_status, doctor_city, 
@@ -130,7 +132,8 @@
       doctor_bookable, doctor_follow, doctor_good_review, 
       doctor_orders, doctor_course_num, doctor_introduction, 
       doctor_img, doctor_rank, doctor_verify, 
-      dcotor_strength)
+      dcotor_strength, online_price, offline_price, 
+      consultable, doc_work_age)
     values (#{doctorId,jdbcType=INTEGER}, #{doctorName,jdbcType=VARCHAR}, #{doctorSex,jdbcType=VARCHAR}, 
       #{doctorAge,jdbcType=INTEGER}, #{doctorPwd,jdbcType=VARCHAR}, #{doctorTel,jdbcType=VARCHAR}, 
       #{doctorIdcard,jdbcType=CHAR}, #{doctorStatus,jdbcType=INTEGER}, #{doctorCity,jdbcType=VARCHAR}, 
@@ -138,326 +141,378 @@
       #{doctorBookable,jdbcType=INTEGER}, #{doctorFollow,jdbcType=INTEGER}, #{doctorGoodReview,jdbcType=INTEGER}, 
       #{doctorOrders,jdbcType=INTEGER}, #{doctorCourseNum,jdbcType=INTEGER}, #{doctorIntroduction,jdbcType=VARCHAR}, 
       #{doctorImg,jdbcType=VARCHAR}, #{doctorRank,jdbcType=VARCHAR}, #{doctorVerify,jdbcType=INTEGER}, 
-      #{dcotorStrength,jdbcType=VARCHAR})
+      #{dcotorStrength,jdbcType=VARCHAR}, #{onlinePrice,jdbcType=REAL}, #{offlinePrice,jdbcType=REAL}, 
+      #{consultable,jdbcType=INTEGER}, #{docWorkAge,jdbcType=INTEGER})
   </insert>
-    <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo">
-        insert into doctor_info
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="doctorId != null">
-                doctor_id,
-            </if>
-            <if test="doctorName != null">
-                doctor_name,
-            </if>
-            <if test="doctorSex != null">
-                doctor_sex,
-            </if>
-            <if test="doctorAge != null">
-                doctor_age,
-            </if>
-            <if test="doctorPwd != null">
-                doctor_pwd,
-            </if>
-            <if test="doctorTel != null">
-                doctor_tel,
-            </if>
-            <if test="doctorIdcard != null">
-                doctor_idcard,
-            </if>
-            <if test="doctorStatus != null">
-                doctor_status,
-            </if>
-            <if test="doctorCity != null">
-                doctor_city,
-            </if>
-            <if test="doctorHospital != null">
-                doctor_hospital,
-            </if>
-            <if test="doctorDept != null">
-                doctor_dept,
-            </if>
-            <if test="doctorEmail != null">
-                doctor_email,
-            </if>
-            <if test="doctorBookable != null">
-                doctor_bookable,
-            </if>
-            <if test="doctorFollow != null">
-                doctor_follow,
-            </if>
-            <if test="doctorGoodReview != null">
-                doctor_good_review,
-            </if>
-            <if test="doctorOrders != null">
-                doctor_orders,
-            </if>
-            <if test="doctorCourseNum != null">
-                doctor_course_num,
-            </if>
-            <if test="doctorIntroduction != null">
-                doctor_introduction,
-            </if>
-            <if test="doctorImg != null">
-                doctor_img,
-            </if>
-            <if test="doctorRank != null">
-                doctor_rank,
-            </if>
-            <if test="doctorVerify != null">
-                doctor_verify,
-            </if>
-            <if test="dcotorStrength != null">
-                dcotor_strength,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="doctorId != null">
-                #{doctorId,jdbcType=INTEGER},
-            </if>
-            <if test="doctorName != null">
-                #{doctorName,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorSex != null">
-                #{doctorSex,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorAge != null">
-                #{doctorAge,jdbcType=INTEGER},
-            </if>
-            <if test="doctorPwd != null">
-                #{doctorPwd,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorTel != null">
-                #{doctorTel,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorIdcard != null">
-                #{doctorIdcard,jdbcType=CHAR},
-            </if>
-            <if test="doctorStatus != null">
-                #{doctorStatus,jdbcType=INTEGER},
-            </if>
-            <if test="doctorCity != null">
-                #{doctorCity,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorHospital != null">
-                #{doctorHospital,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorDept != null">
-                #{doctorDept,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorEmail != null">
-                #{doctorEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorBookable != null">
-                #{doctorBookable,jdbcType=INTEGER},
-            </if>
-            <if test="doctorFollow != null">
-                #{doctorFollow,jdbcType=INTEGER},
-            </if>
-            <if test="doctorGoodReview != null">
-                #{doctorGoodReview,jdbcType=INTEGER},
-            </if>
-            <if test="doctorOrders != null">
-                #{doctorOrders,jdbcType=INTEGER},
-            </if>
-            <if test="doctorCourseNum != null">
-                #{doctorCourseNum,jdbcType=INTEGER},
-            </if>
-            <if test="doctorIntroduction != null">
-                #{doctorIntroduction,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorImg != null">
-                #{doctorImg,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorRank != null">
-                #{doctorRank,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorVerify != null">
-                #{doctorVerify,jdbcType=INTEGER},
-            </if>
-            <if test="dcotorStrength != null">
-                #{dcotorStrength,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfoExample"
-            resultType="java.lang.Integer">
-        select count(*) from doctor_info
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update doctor_info
-        <set>
-            <if test="record.doctorId != null">
-                doctor_id = #{record.doctorId,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorName != null">
-                doctor_name = #{record.doctorName,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorSex != null">
-                doctor_sex = #{record.doctorSex,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorAge != null">
-                doctor_age = #{record.doctorAge,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorPwd != null">
-                doctor_pwd = #{record.doctorPwd,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorTel != null">
-                doctor_tel = #{record.doctorTel,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorIdcard != null">
-                doctor_idcard = #{record.doctorIdcard,jdbcType=CHAR},
-            </if>
-            <if test="record.doctorStatus != null">
-                doctor_status = #{record.doctorStatus,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorCity != null">
-                doctor_city = #{record.doctorCity,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorHospital != null">
-                doctor_hospital = #{record.doctorHospital,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorDept != null">
-                doctor_dept = #{record.doctorDept,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorEmail != null">
-                doctor_email = #{record.doctorEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorBookable != null">
-                doctor_bookable = #{record.doctorBookable,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorFollow != null">
-                doctor_follow = #{record.doctorFollow,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorGoodReview != null">
-                doctor_good_review = #{record.doctorGoodReview,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorOrders != null">
-                doctor_orders = #{record.doctorOrders,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorCourseNum != null">
-                doctor_course_num = #{record.doctorCourseNum,jdbcType=INTEGER},
-            </if>
-            <if test="record.doctorIntroduction != null">
-                doctor_introduction = #{record.doctorIntroduction,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorImg != null">
-                doctor_img = #{record.doctorImg,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorRank != null">
-                doctor_rank = #{record.doctorRank,jdbcType=VARCHAR},
-            </if>
-            <if test="record.doctorVerify != null">
-                doctor_verify = #{record.doctorVerify,jdbcType=INTEGER},
-            </if>
-            <if test="record.dcotorStrength != null">
-                dcotor_strength = #{record.dcotorStrength,jdbcType=VARCHAR},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update doctor_info
-        set doctor_id = #{record.doctorId,jdbcType=INTEGER},
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo" >
+    insert into doctor_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="doctorName != null" >
+        doctor_name,
+      </if>
+      <if test="doctorSex != null" >
+        doctor_sex,
+      </if>
+      <if test="doctorAge != null" >
+        doctor_age,
+      </if>
+      <if test="doctorPwd != null" >
+        doctor_pwd,
+      </if>
+      <if test="doctorTel != null" >
+        doctor_tel,
+      </if>
+      <if test="doctorIdcard != null" >
+        doctor_idcard,
+      </if>
+      <if test="doctorStatus != null" >
+        doctor_status,
+      </if>
+      <if test="doctorCity != null" >
+        doctor_city,
+      </if>
+      <if test="doctorHospital != null" >
+        doctor_hospital,
+      </if>
+      <if test="doctorDept != null" >
+        doctor_dept,
+      </if>
+      <if test="doctorEmail != null" >
+        doctor_email,
+      </if>
+      <if test="doctorBookable != null" >
+        doctor_bookable,
+      </if>
+      <if test="doctorFollow != null" >
+        doctor_follow,
+      </if>
+      <if test="doctorGoodReview != null" >
+        doctor_good_review,
+      </if>
+      <if test="doctorOrders != null" >
+        doctor_orders,
+      </if>
+      <if test="doctorCourseNum != null" >
+        doctor_course_num,
+      </if>
+      <if test="doctorIntroduction != null" >
+        doctor_introduction,
+      </if>
+      <if test="doctorImg != null" >
+        doctor_img,
+      </if>
+      <if test="doctorRank != null" >
+        doctor_rank,
+      </if>
+      <if test="doctorVerify != null" >
+        doctor_verify,
+      </if>
+      <if test="dcotorStrength != null" >
+        dcotor_strength,
+      </if>
+      <if test="onlinePrice != null" >
+        online_price,
+      </if>
+      <if test="offlinePrice != null" >
+        offline_price,
+      </if>
+      <if test="consultable != null" >
+        consultable,
+      </if>
+      <if test="docWorkAge != null" >
+        doc_work_age,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorName != null" >
+        #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorSex != null" >
+        #{doctorSex,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorAge != null" >
+        #{doctorAge,jdbcType=INTEGER},
+      </if>
+      <if test="doctorPwd != null" >
+        #{doctorPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTel != null" >
+        #{doctorTel,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorIdcard != null" >
+        #{doctorIdcard,jdbcType=CHAR},
+      </if>
+      <if test="doctorStatus != null" >
+        #{doctorStatus,jdbcType=INTEGER},
+      </if>
+      <if test="doctorCity != null" >
+        #{doctorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorHospital != null" >
+        #{doctorHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorDept != null" >
+        #{doctorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorEmail != null" >
+        #{doctorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorBookable != null" >
+        #{doctorBookable,jdbcType=INTEGER},
+      </if>
+      <if test="doctorFollow != null" >
+        #{doctorFollow,jdbcType=INTEGER},
+      </if>
+      <if test="doctorGoodReview != null" >
+        #{doctorGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="doctorOrders != null" >
+        #{doctorOrders,jdbcType=INTEGER},
+      </if>
+      <if test="doctorCourseNum != null" >
+        #{doctorCourseNum,jdbcType=INTEGER},
+      </if>
+      <if test="doctorIntroduction != null" >
+        #{doctorIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorImg != null" >
+        #{doctorImg,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorRank != null" >
+        #{doctorRank,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorVerify != null" >
+        #{doctorVerify,jdbcType=INTEGER},
+      </if>
+      <if test="dcotorStrength != null" >
+        #{dcotorStrength,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinePrice != null" >
+        #{onlinePrice,jdbcType=REAL},
+      </if>
+      <if test="offlinePrice != null" >
+        #{offlinePrice,jdbcType=REAL},
+      </if>
+      <if test="consultable != null" >
+        #{consultable,jdbcType=INTEGER},
+      </if>
+      <if test="docWorkAge != null" >
+        #{docWorkAge,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfoExample" resultType="java.lang.Integer" >
+    select count(*) from doctor_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update doctor_info
+    <set >
+      <if test="record.doctorId != null" >
+        doctor_id = #{record.doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorName != null" >
         doctor_name = #{record.doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorSex != null" >
         doctor_sex = #{record.doctorSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorAge != null" >
         doctor_age = #{record.doctorAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorPwd != null" >
         doctor_pwd = #{record.doctorPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorTel != null" >
         doctor_tel = #{record.doctorTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorIdcard != null" >
         doctor_idcard = #{record.doctorIdcard,jdbcType=CHAR},
+      </if>
+      <if test="record.doctorStatus != null" >
         doctor_status = #{record.doctorStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorCity != null" >
         doctor_city = #{record.doctorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorHospital != null" >
         doctor_hospital = #{record.doctorHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorDept != null" >
         doctor_dept = #{record.doctorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorEmail != null" >
         doctor_email = #{record.doctorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorBookable != null" >
         doctor_bookable = #{record.doctorBookable,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorFollow != null" >
         doctor_follow = #{record.doctorFollow,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorGoodReview != null" >
         doctor_good_review = #{record.doctorGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorOrders != null" >
         doctor_orders = #{record.doctorOrders,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorCourseNum != null" >
         doctor_course_num = #{record.doctorCourseNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctorIntroduction != null" >
         doctor_introduction = #{record.doctorIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorImg != null" >
         doctor_img = #{record.doctorImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorRank != null" >
         doctor_rank = #{record.doctorRank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorVerify != null" >
         doctor_verify = #{record.doctorVerify,jdbcType=INTEGER},
-        dcotor_strength = #{record.dcotorStrength,jdbcType=VARCHAR}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo">
-        update doctor_info
-        <set>
-            <if test="doctorName != null">
-                doctor_name = #{doctorName,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorSex != null">
-                doctor_sex = #{doctorSex,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorAge != null">
-                doctor_age = #{doctorAge,jdbcType=INTEGER},
-            </if>
-            <if test="doctorPwd != null">
-                doctor_pwd = #{doctorPwd,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorTel != null">
-                doctor_tel = #{doctorTel,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorIdcard != null">
-                doctor_idcard = #{doctorIdcard,jdbcType=CHAR},
-            </if>
-            <if test="doctorStatus != null">
-                doctor_status = #{doctorStatus,jdbcType=INTEGER},
-            </if>
-            <if test="doctorCity != null">
-                doctor_city = #{doctorCity,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorHospital != null">
-                doctor_hospital = #{doctorHospital,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorDept != null">
-                doctor_dept = #{doctorDept,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorEmail != null">
-                doctor_email = #{doctorEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorBookable != null">
-                doctor_bookable = #{doctorBookable,jdbcType=INTEGER},
-            </if>
-            <if test="doctorFollow != null">
-                doctor_follow = #{doctorFollow,jdbcType=INTEGER},
-            </if>
-            <if test="doctorGoodReview != null">
-                doctor_good_review = #{doctorGoodReview,jdbcType=INTEGER},
-            </if>
-            <if test="doctorOrders != null">
-                doctor_orders = #{doctorOrders,jdbcType=INTEGER},
-            </if>
-            <if test="doctorCourseNum != null">
-                doctor_course_num = #{doctorCourseNum,jdbcType=INTEGER},
-            </if>
-            <if test="doctorIntroduction != null">
-                doctor_introduction = #{doctorIntroduction,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorImg != null">
-                doctor_img = #{doctorImg,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorRank != null">
-                doctor_rank = #{doctorRank,jdbcType=VARCHAR},
-            </if>
-            <if test="doctorVerify != null">
-                doctor_verify = #{doctorVerify,jdbcType=INTEGER},
-            </if>
-            <if test="dcotorStrength != null">
-                dcotor_strength = #{dcotorStrength,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where doctor_id = #{doctorId,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+      </if>
+      <if test="record.dcotorStrength != null" >
+        dcotor_strength = #{record.dcotorStrength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onlinePrice != null" >
+        online_price = #{record.onlinePrice,jdbcType=REAL},
+      </if>
+      <if test="record.offlinePrice != null" >
+        offline_price = #{record.offlinePrice,jdbcType=REAL},
+      </if>
+      <if test="record.consultable != null" >
+        consultable = #{record.consultable,jdbcType=INTEGER},
+      </if>
+      <if test="record.docWorkAge != null" >
+        doc_work_age = #{record.docWorkAge,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update doctor_info
+    set doctor_id = #{record.doctorId,jdbcType=INTEGER},
+      doctor_name = #{record.doctorName,jdbcType=VARCHAR},
+      doctor_sex = #{record.doctorSex,jdbcType=VARCHAR},
+      doctor_age = #{record.doctorAge,jdbcType=INTEGER},
+      doctor_pwd = #{record.doctorPwd,jdbcType=VARCHAR},
+      doctor_tel = #{record.doctorTel,jdbcType=VARCHAR},
+      doctor_idcard = #{record.doctorIdcard,jdbcType=CHAR},
+      doctor_status = #{record.doctorStatus,jdbcType=INTEGER},
+      doctor_city = #{record.doctorCity,jdbcType=VARCHAR},
+      doctor_hospital = #{record.doctorHospital,jdbcType=VARCHAR},
+      doctor_dept = #{record.doctorDept,jdbcType=VARCHAR},
+      doctor_email = #{record.doctorEmail,jdbcType=VARCHAR},
+      doctor_bookable = #{record.doctorBookable,jdbcType=INTEGER},
+      doctor_follow = #{record.doctorFollow,jdbcType=INTEGER},
+      doctor_good_review = #{record.doctorGoodReview,jdbcType=INTEGER},
+      doctor_orders = #{record.doctorOrders,jdbcType=INTEGER},
+      doctor_course_num = #{record.doctorCourseNum,jdbcType=INTEGER},
+      doctor_introduction = #{record.doctorIntroduction,jdbcType=VARCHAR},
+      doctor_img = #{record.doctorImg,jdbcType=VARCHAR},
+      doctor_rank = #{record.doctorRank,jdbcType=VARCHAR},
+      doctor_verify = #{record.doctorVerify,jdbcType=INTEGER},
+      dcotor_strength = #{record.dcotorStrength,jdbcType=VARCHAR},
+      online_price = #{record.onlinePrice,jdbcType=REAL},
+      offline_price = #{record.offlinePrice,jdbcType=REAL},
+      consultable = #{record.consultable,jdbcType=INTEGER},
+      doc_work_age = #{record.docWorkAge,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo" >
+    update doctor_info
+    <set >
+      <if test="doctorName != null" >
+        doctor_name = #{doctorName,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorSex != null" >
+        doctor_sex = #{doctorSex,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorAge != null" >
+        doctor_age = #{doctorAge,jdbcType=INTEGER},
+      </if>
+      <if test="doctorPwd != null" >
+        doctor_pwd = #{doctorPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTel != null" >
+        doctor_tel = #{doctorTel,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorIdcard != null" >
+        doctor_idcard = #{doctorIdcard,jdbcType=CHAR},
+      </if>
+      <if test="doctorStatus != null" >
+        doctor_status = #{doctorStatus,jdbcType=INTEGER},
+      </if>
+      <if test="doctorCity != null" >
+        doctor_city = #{doctorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorHospital != null" >
+        doctor_hospital = #{doctorHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorDept != null" >
+        doctor_dept = #{doctorDept,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorEmail != null" >
+        doctor_email = #{doctorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorBookable != null" >
+        doctor_bookable = #{doctorBookable,jdbcType=INTEGER},
+      </if>
+      <if test="doctorFollow != null" >
+        doctor_follow = #{doctorFollow,jdbcType=INTEGER},
+      </if>
+      <if test="doctorGoodReview != null" >
+        doctor_good_review = #{doctorGoodReview,jdbcType=INTEGER},
+      </if>
+      <if test="doctorOrders != null" >
+        doctor_orders = #{doctorOrders,jdbcType=INTEGER},
+      </if>
+      <if test="doctorCourseNum != null" >
+        doctor_course_num = #{doctorCourseNum,jdbcType=INTEGER},
+      </if>
+      <if test="doctorIntroduction != null" >
+        doctor_introduction = #{doctorIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorImg != null" >
+        doctor_img = #{doctorImg,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorRank != null" >
+        doctor_rank = #{doctorRank,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorVerify != null" >
+        doctor_verify = #{doctorVerify,jdbcType=INTEGER},
+      </if>
+      <if test="dcotorStrength != null" >
+        dcotor_strength = #{dcotorStrength,jdbcType=VARCHAR},
+      </if>
+      <if test="onlinePrice != null" >
+        online_price = #{onlinePrice,jdbcType=REAL},
+      </if>
+      <if test="offlinePrice != null" >
+        offline_price = #{offlinePrice,jdbcType=REAL},
+      </if>
+      <if test="consultable != null" >
+        consultable = #{consultable,jdbcType=INTEGER},
+      </if>
+      <if test="docWorkAge != null" >
+        doc_work_age = #{docWorkAge,jdbcType=INTEGER},
+      </if>
+    </set>
+    where doctor_id = #{doctorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo" >
     update doctor_info
     set doctor_name = #{doctorName,jdbcType=VARCHAR},
       doctor_sex = #{doctorSex,jdbcType=VARCHAR},
@@ -479,19 +534,11 @@
       doctor_img = #{doctorImg,jdbcType=VARCHAR},
       doctor_rank = #{doctorRank,jdbcType=VARCHAR},
       doctor_verify = #{doctorVerify,jdbcType=INTEGER},
-      dcotor_strength = #{dcotorStrength,jdbcType=VARCHAR}
+      dcotor_strength = #{dcotorStrength,jdbcType=VARCHAR},
+      online_price = #{onlinePrice,jdbcType=REAL},
+      offline_price = #{offlinePrice,jdbcType=REAL},
+      consultable = #{consultable,jdbcType=INTEGER},
+      doc_work_age = #{docWorkAge,jdbcType=INTEGER}
     where doctor_id = #{doctorId,jdbcType=INTEGER}
   </update>
-
-    <select id="selectByCondition" resultMap="BaseResultMap">
-        select * from doctor_info
-        <trim prefix="WHERE" prefixOverrides="and">
-            <if test="city != null">
-                doctor_city like #{city}
-            </if>
-            <if test="dept != null">
-               and  doctor_dept = #{dept}
-            </if>
-        </trim>
-    </select>
 </mapper>

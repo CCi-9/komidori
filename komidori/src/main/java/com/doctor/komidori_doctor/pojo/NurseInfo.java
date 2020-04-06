@@ -29,6 +29,10 @@ public class NurseInfo {
 
     private String nurseImg;
 
+    private String nurseIntroduction;
+
+    private String nurseNvq;
+
     public Integer getNurseId() {
         return nurseId;
     }
@@ -139,5 +143,21 @@ public class NurseInfo {
 
     public void setNurseImg(String nurseImg) {
         this.nurseImg = nurseImg == null ? null : nurseImg.trim();
+    }
+
+    public String getNurseIntroduction() {
+        return nurseIntroduction;
+    }
+
+    public void setNurseIntroduction(String nurseIntroduction) {
+        this.nurseIntroduction = nurseIntroduction == null ? null : nurseIntroduction.trim();
+    }
+
+    public String getNurseNvq() {
+        return nurseNvq;
+    }
+
+    public void setNurseNvq(String nurseNvq) {
+        this.nurseNvq = nurseNvq == null ? null : nurseNvq.trim();
     }
 }

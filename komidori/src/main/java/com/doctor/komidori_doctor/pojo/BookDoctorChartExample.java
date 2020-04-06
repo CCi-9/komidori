@@ -604,6 +604,66 @@ public class BookDoctorChartExample {
             addCriterion("bdoc_remark not between", value1, value2, "bdocRemark");
             return (Criteria) this;
         }
+
+        public Criteria andBdocStatusIsNull() {
+            addCriterion("bdoc_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusIsNotNull() {
+            addCriterion("bdoc_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusEqualTo(Integer value) {
+            addCriterion("bdoc_status =", value, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusNotEqualTo(Integer value) {
+            addCriterion("bdoc_status <>", value, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusGreaterThan(Integer value) {
+            addCriterion("bdoc_status >", value, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("bdoc_status >=", value, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusLessThan(Integer value) {
+            addCriterion("bdoc_status <", value, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("bdoc_status <=", value, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusIn(List<Integer> values) {
+            addCriterion("bdoc_status in", values, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusNotIn(List<Integer> values) {
+            addCriterion("bdoc_status not in", values, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusBetween(Integer value1, Integer value2) {
+            addCriterion("bdoc_status between", value1, value2, "bdocStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andBdocStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("bdoc_status not between", value1, value2, "bdocStatus");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

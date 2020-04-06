@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.CourseOrderChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
+    <id column="course_order_id" property="courseOrderId" jdbcType="INTEGER" />
+    <result column="course_order_doc_id" property="courseOrderDocId" jdbcType="INTEGER" />
+    <result column="course_order_mat_id" property="courseOrderMatId" jdbcType="INTEGER" />
+    <result column="course_order_cid" property="courseOrderCid" jdbcType="INTEGER" />
+    <result column="course_order_date" property="courseOrderDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    course_order_id, course_order_doc_id, course_order_mat_id, course_order_cid, course_order_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_order_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_order_chart
+    where course_order_id = #{courseOrderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_order_chart
+    where course_order_id = #{courseOrderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChartExample" >
+    delete from course_order_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
+    insert into course_order_chart (course_order_id, course_order_doc_id, 
+      course_order_mat_id, course_order_cid, course_order_date
+      )
+    values (#{courseOrderId,jdbcType=INTEGER}, #{courseOrderDocId,jdbcType=INTEGER}, 
+      #{courseOrderMatId,jdbcType=INTEGER}, #{courseOrderCid,jdbcType=INTEGER}, #{courseOrderDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
+    insert into course_order_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseOrderId != null" >
+        course_order_id,
+      </if>
+      <if test="courseOrderDocId != null" >
+        course_order_doc_id,
+      </if>
+      <if test="courseOrderMatId != null" >
+        course_order_mat_id,
+      </if>
+      <if test="courseOrderCid != null" >
+        course_order_cid,
+      </if>
+      <if test="courseOrderDate != null" >
+        course_order_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseOrderId != null" >
+        #{courseOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderDocId != null" >
+        #{courseOrderDocId,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderMatId != null" >
+        #{courseOrderMatId,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderCid != null" >
+        #{courseOrderCid,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderDate != null" >
+        #{courseOrderDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChartExample" resultType="java.lang.Integer" >
+    select count(*) from course_order_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update course_order_chart
+    <set >
+      <if test="record.courseOrderId != null" >
+        course_order_id = #{record.courseOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseOrderDocId != null" >
+        course_order_doc_id = #{record.courseOrderDocId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseOrderMatId != null" >
+        course_order_mat_id = #{record.courseOrderMatId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseOrderCid != null" >
+        course_order_cid = #{record.courseOrderCid,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseOrderDate != null" >
+        course_order_date = #{record.courseOrderDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update course_order_chart
+    set course_order_id = #{record.courseOrderId,jdbcType=INTEGER},
+      course_order_doc_id = #{record.courseOrderDocId,jdbcType=INTEGER},
+      course_order_mat_id = #{record.courseOrderMatId,jdbcType=INTEGER},
+      course_order_cid = #{record.courseOrderCid,jdbcType=INTEGER},
+      course_order_date = #{record.courseOrderDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
+    update course_order_chart
+    <set >
+      <if test="courseOrderDocId != null" >
+        course_order_doc_id = #{courseOrderDocId,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderMatId != null" >
+        course_order_mat_id = #{courseOrderMatId,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderCid != null" >
+        course_order_cid = #{courseOrderCid,jdbcType=INTEGER},
+      </if>
+      <if test="courseOrderDate != null" >
+        course_order_date = #{courseOrderDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where course_order_id = #{courseOrderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
+    update course_order_chart
+    set course_order_doc_id = #{courseOrderDocId,jdbcType=INTEGER},
+      course_order_mat_id = #{courseOrderMatId,jdbcType=INTEGER},
+      course_order_cid = #{courseOrderCid,jdbcType=INTEGER},
+      course_order_date = #{courseOrderDate,jdbcType=TIMESTAMP}
+    where course_order_id = #{courseOrderId,jdbcType=INTEGER}
+  </update>
+</mapper>

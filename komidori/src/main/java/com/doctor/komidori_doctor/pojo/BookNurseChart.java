@@ -17,6 +17,10 @@ public class BookNurseChart {
 
     private String bnurseAddr;
 
+    private Integer bnurseStatus;
+
+    private String bnurseRemark;
+
     public Integer getBnurseOrderId() {
         return bnurseOrderId;
     }
@@ -71,5 +75,21 @@ public class BookNurseChart {
 
     public void setBnurseAddr(String bnurseAddr) {
         this.bnurseAddr = bnurseAddr == null ? null : bnurseAddr.trim();
+    }
+
+    public Integer getBnurseStatus() {
+        return bnurseStatus;
+    }
+
+    public void setBnurseStatus(Integer bnurseStatus) {
+        this.bnurseStatus = bnurseStatus;
+    }
+
+    public String getBnurseRemark() {
+        return bnurseRemark;
+    }
+
+    public void setBnurseRemark(String bnurseRemark) {
+        this.bnurseRemark = bnurseRemark == null ? null : bnurseRemark.trim();
     }
 }

@@ -2,6 +2,7 @@ package com.doctor.komidori_doctor.Service.Doctor.impl;
 
 import com.doctor.komidori_doctor.Service.Doctor.DoctorService;
 import com.doctor.komidori_doctor.mapper.DoctorInfoMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyDoctorInfoMapper;
 import com.doctor.komidori_doctor.pojo.DoctorInfo;
 import com.doctor.komidori_doctor.pojo.DoctorInfoExample;
 
@@ -22,8 +23,11 @@ public class DoctorServiceImpl implements DoctorService {
     @Resource
     private DoctorInfoMapper doctorInfoMapper;
 
+    @Resource
+    private MyDoctorInfoMapper myDoctorInfoMapper;
+
     @Override
-    public Map<String,Object> getDoctor(int page, String city, String dept) {
+    public Map<String,Object> getDoctor(int page, String city, String dept, Integer strengthId) {
         System.out.println("city :" + city);
         System.out.println("dept :" + dept);
 /*        DoctorInfoExample.Criteria criteria = doctorInfoExample.createCriteria();
@@ -57,9 +61,13 @@ public class DoctorServiceImpl implements DoctorService {
             dept = null;
         }
 
+        if (strengthId == 0){
+            strengthId = null;
+        }
+
         Map<String,Object> map = new HashMap<>();
         Page pageMsg = PageHelper.startPage(page, 4);
-        List<DoctorInfo> list = doctorInfoMapper.selectByCondition(city, dept);
+        List<DoctorInfo> list = myDoctorInfoMapper.selectByCondition(city, dept, strengthId);
         Integer total = Math.toIntExact(pageMsg.getPages());
         Integer pageNum = Math.toIntExact(pageMsg.getPageNum());
         map.put("list",list);
@@ -67,5 +75,10 @@ public class DoctorServiceImpl implements DoctorService {
         map.put("currentPage",pageNum);
       //  System.out.println(list);
         return map;
+    }
+
+    @Override
+    public DoctorInfo getDoctorByID(String doctorID) {
+        return myDoctorInfoMapper.getDoctorByID(doctorID);
     }
 }
