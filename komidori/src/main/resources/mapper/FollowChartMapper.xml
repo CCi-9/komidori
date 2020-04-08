@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.FollowChartMapper" >
+  <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.FollowChart" >
+    <id column="follow_mat_id" property="followMatId" jdbcType="INTEGER" />
+    <id column="follow_doc_id" property="followDocId" jdbcType="INTEGER" />
+    <result column="follow_date" property="followDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    follow_mat_id, follow_doc_id, follow_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.FollowChartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from follow_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.FollowChartKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from follow_chart
+    where follow_mat_id = #{followMatId,jdbcType=INTEGER}
+      and follow_doc_id = #{followDocId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.FollowChartKey" >
+    delete from follow_chart
+    where follow_mat_id = #{followMatId,jdbcType=INTEGER}
+      and follow_doc_id = #{followDocId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doctor.komidori_doctor.pojo.FollowChartExample" >
+    delete from follow_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.FollowChart" >
+    insert into follow_chart (follow_mat_id, follow_doc_id, follow_date
+      )
+    values (#{followMatId,jdbcType=INTEGER}, #{followDocId,jdbcType=INTEGER}, #{followDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.FollowChart" >
+    insert into follow_chart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="followMatId != null" >
+        follow_mat_id,
+      </if>
+      <if test="followDocId != null" >
+        follow_doc_id,
+      </if>
+      <if test="followDate != null" >
+        follow_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="followMatId != null" >
+        #{followMatId,jdbcType=INTEGER},
+      </if>
+      <if test="followDocId != null" >
+        #{followDocId,jdbcType=INTEGER},
+      </if>
+      <if test="followDate != null" >
+        #{followDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doctor.komidori_doctor.pojo.FollowChartExample" resultType="java.lang.Integer" >
+    select count(*) from follow_chart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update follow_chart
+    <set >
+      <if test="record.followMatId != null" >
+        follow_mat_id = #{record.followMatId,jdbcType=INTEGER},
+      </if>
+      <if test="record.followDocId != null" >
+        follow_doc_id = #{record.followDocId,jdbcType=INTEGER},
+      </if>
+      <if test="record.followDate != null" >
+        follow_date = #{record.followDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update follow_chart
+    set follow_mat_id = #{record.followMatId,jdbcType=INTEGER},
+      follow_doc_id = #{record.followDocId,jdbcType=INTEGER},
+      follow_date = #{record.followDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.FollowChart" >
+    update follow_chart
+    <set >
+      <if test="followDate != null" >
+        follow_date = #{followDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where follow_mat_id = #{followMatId,jdbcType=INTEGER}
+      and follow_doc_id = #{followDocId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.FollowChart" >
+    update follow_chart
+    set follow_date = #{followDate,jdbcType=TIMESTAMP}
+    where follow_mat_id = #{followMatId,jdbcType=INTEGER}
+      and follow_doc_id = #{followDocId,jdbcType=INTEGER}
+  </update>
+</mapper>

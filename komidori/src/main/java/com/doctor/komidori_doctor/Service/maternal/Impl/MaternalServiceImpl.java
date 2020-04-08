@@ -1,7 +1,10 @@
 package com.doctor.komidori_doctor.Service.maternal.Impl;
 
 import com.doctor.komidori_doctor.Service.maternal.MaternalService;
+import com.doctor.komidori_doctor.mapper.BabyInfoMapper;
 import com.doctor.komidori_doctor.mapper.MaternalDao;
+import com.doctor.komidori_doctor.mapper.MaternalInfoMapper;
+import com.doctor.komidori_doctor.pojo.BabyInfo;
 import com.doctor.komidori_doctor.pojo.Maternal;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,10 @@ import java.util.List;
 public class MaternalServiceImpl implements MaternalService {
     @Resource
     private MaternalDao maternalDao;
+
+    @Resource
+    private BabyInfoMapper babyInfoMapper;
+
 
     @Override
     public String registerMaternal(String username, String phone, String password, String yzm, HttpSession session) {
@@ -69,6 +76,9 @@ public class MaternalServiceImpl implements MaternalService {
         if (!maternal.getMaternal_pwd().equals(password)) {
             return "密码错误";
         }
+        session.setAttribute("nickname", maternal.getMaternal_nickname());
+        session.setAttribute("phone", maternal.getMaternal_tel());
+        session.setAttribute("id", maternal.getMaternal_id());
 
         return "success";
     }
@@ -80,9 +90,12 @@ public class MaternalServiceImpl implements MaternalService {
         System.out.println(phone);
         Maternal maternal = new Maternal();
         maternal.setMaternal_pwd(password);
-        maternalDao.update("maternal_tel",phone, maternal);
-        session.removeAttribute("createTime");
-        session.removeAttribute("verifyCode");
+        maternalDao.update("maternal_tel", phone, maternal);
+        if(session.getAttribute("createTime") != null){
+            session.removeAttribute("createTime");
+            session.removeAttribute("verifyCode");
+        }
+
         return "success";
     }
 
@@ -100,5 +113,31 @@ public class MaternalServiceImpl implements MaternalService {
             return "验证码已过期，请重新获取";
         }
         return "success";
+    }
+
+    @Override
+    public Maternal getMyServer(HttpSession session) {
+        String nickname = (String) session.getAttribute("nickname");
+        Maternal maternal = maternalDao.getMaternal("maternal_nickname", nickname);
+        return maternal;
+    }
+
+    @Override
+    public void updateMaternal(Maternal maternal, HttpSession session) {
+        Integer id = (Integer) session.getAttribute("id");
+        String meternanID= Integer.toString(id);
+
+        maternalDao.update("maternal_id",meternanID,maternal);
+       // maternalInfoMapper.updateByPrimaryKey();
+    }
+
+    public BabyInfo getBabyByID(String babyID){
+        BabyInfo babyInfo = babyInfoMapper.selectByPrimaryKey(Integer.valueOf(babyID));
+        return babyInfo;
+    }
+
+    @Override
+    public void updateBabyMsg(BabyInfo babyInfo) {
+        babyInfoMapper.updateByPrimaryKey(babyInfo);
     }
 }

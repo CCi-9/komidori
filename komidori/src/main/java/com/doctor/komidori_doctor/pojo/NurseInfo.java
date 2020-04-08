@@ -33,6 +33,10 @@ public class NurseInfo {
 
     private String nurseNvq;
 
+    private Integer nurseRank;
+
+    private Float nursePrice;
+
     public Integer getNurseId() {
         return nurseId;
     }
@@ -159,5 +163,21 @@ public class NurseInfo {
 
     public void setNurseNvq(String nurseNvq) {
         this.nurseNvq = nurseNvq == null ? null : nurseNvq.trim();
+    }
+
+    public Integer getNurseRank() {
+        return nurseRank;
+    }
+
+    public void setNurseRank(Integer nurseRank) {
+        this.nurseRank = nurseRank;
+    }
+
+    public Float getNursePrice() {
+        return nursePrice;
+    }
+
+    public void setNursePrice(Float nursePrice) {
+        this.nursePrice = nursePrice;
     }
 }

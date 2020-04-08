@@ -1,8 +1,12 @@
 package com.doctor.komidori_doctor.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Maternal {
+public class Maternal implements Serializable {
     private int maternal_id;
     private String maternal_name;
     private int maternal_age;
@@ -12,7 +16,8 @@ public class Maternal {
     private int maternal_status;
     private String maternal_email;
     private String maternal_city;
-    private LocalDateTime pregnant_date;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate pregnant_date;
     private String maternal_idcard;
     private int maternal_idcard_type;
     private int maternal_follow;
@@ -112,11 +117,11 @@ public class Maternal {
         this.maternal_city = maternal_city;
     }
 
-    public LocalDateTime getPregnant_date() {
+    public LocalDate getPregnant_date() {
         return pregnant_date;
     }
 
-    public void setPregnant_date(LocalDateTime pregnant_date) {
+    public void setPregnant_date(LocalDate pregnant_date) {
         this.pregnant_date = pregnant_date;
     }
 

@@ -6,7 +6,7 @@
     <result column="course_type" property="courseType" jdbcType="INTEGER" />
     <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
     <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
-    <result column="course_date" property="courseDate" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler" jdbcType="OTHER" javaType="java.time.LocalDateTime" />
+    <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
     <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
     <result column="course_price" property="coursePrice" jdbcType="REAL" />
     <result column="course_img" property="courseImg" jdbcType="VARCHAR" />

@@ -3,7 +3,6 @@
 <mapper namespace="com.doctor.komidori_doctor.mapper.CourseOrderChartMapper" >
   <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
     <id column="course_order_id" property="courseOrderId" jdbcType="INTEGER" />
-    <result column="course_order_doc_id" property="courseOrderDocId" jdbcType="INTEGER" />
     <result column="course_order_mat_id" property="courseOrderMatId" jdbcType="INTEGER" />
     <result column="course_order_cid" property="courseOrderCid" jdbcType="INTEGER" />
     <result column="course_order_date" property="courseOrderDate" jdbcType="TIMESTAMP" />
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    course_order_id, course_order_doc_id, course_order_mat_id, course_order_cid, course_order_date
+    course_order_id, course_order_mat_id, course_order_cid, course_order_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChartExample" >
     select
@@ -100,21 +99,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
-    insert into course_order_chart (course_order_id, course_order_doc_id, 
-      course_order_mat_id, course_order_cid, course_order_date
-      )
-    values (#{courseOrderId,jdbcType=INTEGER}, #{courseOrderDocId,jdbcType=INTEGER}, 
-      #{courseOrderMatId,jdbcType=INTEGER}, #{courseOrderCid,jdbcType=INTEGER}, #{courseOrderDate,jdbcType=TIMESTAMP}
-      )
+    insert into course_order_chart (course_order_id, course_order_mat_id, 
+      course_order_cid, course_order_date)
+    values (#{courseOrderId,jdbcType=INTEGER}, #{courseOrderMatId,jdbcType=INTEGER}, 
+      #{courseOrderCid,jdbcType=INTEGER}, #{courseOrderDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
     insert into course_order_chart
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="courseOrderId != null" >
         course_order_id,
-      </if>
-      <if test="courseOrderDocId != null" >
-        course_order_doc_id,
       </if>
       <if test="courseOrderMatId != null" >
         course_order_mat_id,
@@ -129,9 +123,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseOrderId != null" >
         #{courseOrderId,jdbcType=INTEGER},
-      </if>
-      <if test="courseOrderDocId != null" >
-        #{courseOrderDocId,jdbcType=INTEGER},
       </if>
       <if test="courseOrderMatId != null" >
         #{courseOrderMatId,jdbcType=INTEGER},
@@ -156,9 +147,6 @@
       <if test="record.courseOrderId != null" >
         course_order_id = #{record.courseOrderId,jdbcType=INTEGER},
       </if>
-      <if test="record.courseOrderDocId != null" >
-        course_order_doc_id = #{record.courseOrderDocId,jdbcType=INTEGER},
-      </if>
       <if test="record.courseOrderMatId != null" >
         course_order_mat_id = #{record.courseOrderMatId,jdbcType=INTEGER},
       </if>
@@ -176,7 +164,6 @@
   <update id="updateByExample" parameterType="map" >
     update course_order_chart
     set course_order_id = #{record.courseOrderId,jdbcType=INTEGER},
-      course_order_doc_id = #{record.courseOrderDocId,jdbcType=INTEGER},
       course_order_mat_id = #{record.courseOrderMatId,jdbcType=INTEGER},
       course_order_cid = #{record.courseOrderCid,jdbcType=INTEGER},
       course_order_date = #{record.courseOrderDate,jdbcType=TIMESTAMP}
@@ -187,9 +174,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
     update course_order_chart
     <set >
-      <if test="courseOrderDocId != null" >
-        course_order_doc_id = #{courseOrderDocId,jdbcType=INTEGER},
-      </if>
       <if test="courseOrderMatId != null" >
         course_order_mat_id = #{courseOrderMatId,jdbcType=INTEGER},
       </if>
@@ -204,8 +188,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.CourseOrderChart" >
     update course_order_chart
-    set course_order_doc_id = #{courseOrderDocId,jdbcType=INTEGER},
-      course_order_mat_id = #{courseOrderMatId,jdbcType=INTEGER},
+    set course_order_mat_id = #{courseOrderMatId,jdbcType=INTEGER},
       course_order_cid = #{courseOrderCid,jdbcType=INTEGER},
       course_order_date = #{courseOrderDate,jdbcType=TIMESTAMP}
     where course_order_id = #{courseOrderId,jdbcType=INTEGER}

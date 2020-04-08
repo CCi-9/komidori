@@ -11,7 +11,7 @@
 	<link href="../../assets/css/index_Base.css" rel="stylesheet" />	
 	
 	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/public/public.css"/>
-	
+	<link rel="stylesheet" type="text/css" href="../../assets/css/sweetalert.css"/>
 	</head>
 	<body class="card-no-border">
 		
@@ -236,15 +236,15 @@
                                     <a href="#" target="_blank"><img class="headpic" src="../../assets/images/heads.jpg" alt></a>
                                 </div>
                                 <div class="author-content">
-                                    <a href="#" class="author-name">Henry Joyes</a>
-                                    <p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
+                                    <a href="#" class="author-name"><strong>作者: </strong>
+                                    	菜玉溪
+                                    	<span class="label label-info">在孕中</span>
+                                    </a>
+                                    <p><strong>地区: </strong>广东省湛江市赤坎区</p>
                                     <div class="socials">
                                         <ul class="social-link">
-                                            <li><a href="#"><i class="ti-agenda"></i> 收藏文章</a></li>
-                                            <li><a href="#"><i class="ti-user"></i> 关注作者</a></li>
-                                            <li><a id="thumbup"><i class="ti-thumb-up"></i> 点赞</a></li>
-                                            <!--<li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-instagram"></i></a></li>-->
+                                            <li><button id="sa-title" class="btn btn-theme"><i class="fa fa-cart-arrow-down"></i> 收藏文章</button></li>
+                                            <li><button id="thumbup" class="btn btn-theme"><i class="fa fa-thumbs-up"></i> 点赞</button></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -423,8 +423,11 @@
     <script src="../../assets/js/script.js"></script>
     
     <!--滑动-->
-	<script src="../../assets/js/smoothscroll.js"></script>
+		<script src="../../assets/js/smoothscroll.js"></script>
     
+    <!--sweetalert-->
+    <script src="../../assets/js/sweetalert/jquery.sweet-alert.custom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../assets/js/sweetalert/sweet-alert.js" type="text/javascript" charset="utf-8"></script>
    
     
 <!-- JS files end===========================================================-->
@@ -438,7 +441,7 @@ $(function(){
 	
 	//点赞
 	$("#thumbup").click(function(){
-		$(this).css({"background-color":"#EBCCD1","border-color":"indianred","color":"white!"});
+		$(this).css({"background-color":"	#CD5C5C","border-color":"	#CD5C5C","color":"white"});
 	});
         
     

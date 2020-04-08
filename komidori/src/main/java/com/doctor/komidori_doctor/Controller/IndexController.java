@@ -3,6 +3,7 @@ package com.doctor.komidori_doctor.Controller;
 import com.doctor.komidori_doctor.ResponseModel.ResponseStatus;
 import com.doctor.komidori_doctor.ResponseModel.ResponseWrapper;
 import com.doctor.komidori_doctor.Service.IndexService;
+import com.doctor.komidori_doctor.annotation.CheckUser;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,5 +40,13 @@ public class IndexController {
         String result = indexService.getYZM(phone,request);
         return new ResponseWrapper<>(ResponseStatus.OK,result);
     }
+
+    @CheckUser
+    @RequestMapping(value = "checkUser",method = RequestMethod.GET)
+    public ResponseWrapper<String> checkUser(){
+        return new ResponseWrapper<>(ResponseStatus.OK,"success");
+    }
+
+
 
 }

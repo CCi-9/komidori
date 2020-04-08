@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="themepresss">
-	<title>月嫂详情</title>
+	<title>预约月嫂</title>
 	
 	<link href="../../assets/css/index_Base.css" rel="stylesheet" />	
 	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/nurse/nurse.css"/>
@@ -25,7 +25,7 @@
                 <div></div>
             </div>
         </div>	
-        
+
 		<!--头部-->
         <header id="header" class="site-header header-style-1 header-style-3">
             <div class="topbar">
@@ -229,7 +229,7 @@
 					                <span class="label label-default">温柔体贴</span>
 					            </p>
 					            <br>
-					            <p><button class="btn btn-theme"><i class="ti-envelope"></i> 联系</button></p>
+					            <!--<p><button class="btn btn-theme"><i class="ti-envelope"></i> 联系</button></p>-->
 					        </div>
 					              	
 					              <!-- 头像 -->
@@ -238,7 +238,7 @@
 					                  <p><img src="../../assets/images/heads.jpg" class="img-circle"></p>
 					                  <p>
 					                    <button id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞</button>
-					                    <button class="btn btn-theme02"><i class="ti-plus"></i> 预约</button>
+					                    <!--<button class="btn btn-theme02"><i class="ti-plus"></i> 预约</button>-->
 					                  </p>
 					                </div>
 					              </div>
@@ -289,6 +289,10 @@
 					               			<input id="addr" name="addr" value="" type="text"/>
 					               		</div>
 					               		
+					               		<div class="form-group">
+					               			<label for="remark">描述问题/备注</label>
+					               			<textarea id="remark" name="remark" value="" class="form-control"></textarea>
+					               		</div>
 					               		
 					               		<div class="input-daterange input-group" id="datepicker">
 					               			<label for="">时段</label>
@@ -392,6 +396,7 @@ $(function(){
 	$('#sandbox-container .input-daterange').datepicker({
         format: 'yyyy-mm-dd',
         locale: moment.locale('zh-CN'),
+        language:'zh-CN',
         todayHighlight:true,
         startDate:new Date(),
     });

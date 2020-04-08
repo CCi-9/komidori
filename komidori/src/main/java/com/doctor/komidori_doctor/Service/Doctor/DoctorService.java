@@ -1,5 +1,6 @@
 package com.doctor.komidori_doctor.Service.Doctor;
 
+import com.doctor.komidori_doctor.pojo.CourseInfo;
 import com.doctor.komidori_doctor.pojo.DoctorInfo;
 
 import java.util.List;
@@ -9,4 +10,6 @@ public interface DoctorService {
     Map<String,Object> getDoctor(int page, String city, String dept, Integer strengthId);
 
     DoctorInfo getDoctorByID(String doctorID);
+
+    CourseInfo getCourseByID(String courseID);
 }

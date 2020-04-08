@@ -1,6 +1,5 @@
 package com.doctor.komidori_doctor.pojo;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CourseInfo {
@@ -12,7 +11,7 @@ public class CourseInfo {
 
     private Integer courseClassId;
 
-    private LocalDateTime courseDate;
+    private Date courseDate;
 
     private Integer courseGoodReview;
 
@@ -28,12 +27,22 @@ public class CourseInfo {
 
     private PublicCategoryChart publicCategoryChart;
 
+    private DoctorInfo doctorInfo;
+
     public PublicCategoryChart getPublicCategoryChart() {
         return publicCategoryChart;
     }
 
     public void setPublicCategoryChart(PublicCategoryChart publicCategoryChart) {
         this.publicCategoryChart = publicCategoryChart;
+    }
+
+    public DoctorInfo getDoctorInfo() {
+        return doctorInfo;
+    }
+
+    public void setDoctorInfo(DoctorInfo doctorInfo) {
+        this.doctorInfo = doctorInfo;
     }
 
     public Integer getCourseId() {
@@ -68,11 +77,11 @@ public class CourseInfo {
         this.courseClassId = courseClassId;
     }
 
-    public LocalDateTime getCourseDate() {
+    public Date getCourseDate() {
         return courseDate;
     }
 
-    public void setCourseDate(LocalDateTime courseDate) {
+    public void setCourseDate(Date courseDate) {
         this.courseDate = courseDate;
     }
 

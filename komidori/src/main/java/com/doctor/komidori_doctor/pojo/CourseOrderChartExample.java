@@ -165,66 +165,6 @@ public class CourseOrderChartExample {
             return (Criteria) this;
         }
 
-        public Criteria andCourseOrderDocIdIsNull() {
-            addCriterion("course_order_doc_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdIsNotNull() {
-            addCriterion("course_order_doc_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdEqualTo(Integer value) {
-            addCriterion("course_order_doc_id =", value, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdNotEqualTo(Integer value) {
-            addCriterion("course_order_doc_id <>", value, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdGreaterThan(Integer value) {
-            addCriterion("course_order_doc_id >", value, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("course_order_doc_id >=", value, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdLessThan(Integer value) {
-            addCriterion("course_order_doc_id <", value, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdLessThanOrEqualTo(Integer value) {
-            addCriterion("course_order_doc_id <=", value, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdIn(List<Integer> values) {
-            addCriterion("course_order_doc_id in", values, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdNotIn(List<Integer> values) {
-            addCriterion("course_order_doc_id not in", values, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdBetween(Integer value1, Integer value2) {
-            addCriterion("course_order_doc_id between", value1, value2, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCourseOrderDocIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("course_order_doc_id not between", value1, value2, "courseOrderDocId");
-            return (Criteria) this;
-        }
-
         public Criteria andCourseOrderMatIdIsNull() {
             addCriterion("course_order_mat_id is null");
             return (Criteria) this;

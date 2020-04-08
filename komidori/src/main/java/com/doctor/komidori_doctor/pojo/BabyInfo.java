@@ -1,6 +1,8 @@
 package com.doctor.komidori_doctor.pojo;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
 
 public class BabyInfo {
     private Integer babyId;
@@ -9,7 +11,8 @@ public class BabyInfo {
 
     private Integer babyStatus;
 
-    private Date babyBirth;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate babyBirth;
 
     private String babySex;
 
@@ -45,11 +48,11 @@ public class BabyInfo {
         this.babyStatus = babyStatus;
     }
 
-    public Date getBabyBirth() {
+    public LocalDate getBabyBirth() {
         return babyBirth;
     }
 
-    public void setBabyBirth(Date babyBirth) {
+    public void setBabyBirth(LocalDate babyBirth) {
         this.babyBirth = babyBirth;
     }
 
@@ -91,5 +94,20 @@ public class BabyInfo {
 
     public void setBabyMomId(Integer babyMomId) {
         this.babyMomId = babyMomId;
+    }
+
+    @Override
+    public String toString() {
+        return "BabyInfo{" +
+                "babyId=" + babyId +
+                ", babyName='" + babyName + '\'' +
+                ", babyStatus=" + babyStatus +
+                ", babyBirth=" + babyBirth +
+                ", babySex='" + babySex + '\'' +
+                ", babyAge='" + babyAge + '\'' +
+                ", babyCity='" + babyCity + '\'' +
+                ", babyImg='" + babyImg + '\'' +
+                ", babyMomId=" + babyMomId +
+                '}';
     }
 }

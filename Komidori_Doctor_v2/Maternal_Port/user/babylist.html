@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="themepresss">
-	<title>个人中心</title>
+	<title>宝宝屋</title>
 	
 	<link href="../../assets/css/index_Base.css" rel="stylesheet" />	
 	
 	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/user/babylist.css"/>
 	<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-	
+	<link rel="stylesheet" type="text/css" href="../../assets/css/sweetalert.css"/>
 	</head>
 	<body class="card-no-border">
 		
@@ -186,7 +186,31 @@
 			<section id="" class="blog-single-section">         
             <h3 class="comments-title2">宝宝屋<span class="badge">2</span></h3>
             <a class="add" data-toggle="modal" data-target="#add_new_baby">添加宝宝</a>
-			<!--弹出框-->
+            <div class="row">
+            	
+            	<div class="col-md-12">
+            		<div class="white-box">
+            
+            			<div class="table-responsive">
+            				<div id="toolbar" class="toolbar">
+            					<!--<button class="btn btn-theme02" onclick="" id="delbtn">批量删除</button>-->
+            				</div>
+            				<table id="baby_list" class="table table-hover">
+            				</table>
+            			</div>
+            		</div>
+            	</div>
+            
+            </div><!-- end row -->
+				
+				
+				
+				
+                  
+        </section>
+		</div>
+		
+<!--添加宝宝弹出框-->
 			<div class="modal fade" id="add_new_baby" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
 		        <div class="modal-content">
@@ -229,101 +253,16 @@
 								</div>
 				          	</div>
 				          	
-				          <!--宝贝出生-->
-				          	<div class="form-group">
-				           		<label for="date">出生日期</label>
-							        <!--指定 date标记-->
-							        <div class='input-group date col-md-12 col-lg-12' id='datetimepicker1' >
-							            <input id='date1' class="form-control" name="date" />
-							            <span class="input-group-addon">
-							            <span class="ti-time"></span>
-							            </span>
-							        </div>
-				          	</div>
 				        </form>
 		            </div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-		                <button type="button" class="btn btn-primary">添加宝宝</button>
+		                <button id="sa-add" type="button" class="btn btn-primary" data-dismiss="modal">添加宝宝</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
 			</div>
-			<!--弹出框end-->
-				
-				
-				
-				<div id="" class="comments-area" style="margin-top: 20px;">
-					<div class="comments-section">								                                    							                                    
-						<ol class="nurse_list">
-							<!--宝宝1-->            	
-								<li class="comment" id="record_1">                                      	
-									<div id="div-comment-1">
-									    <div id="order_num" class="order_num">
-									        <p>小王纸</p>
-									        <span class="label label-warning">未出生</span>							                                         		
-									    </div>            	
-									    <div class="comment-theme">
-									        <div class="comment-image">
-									            <img src="../../assets/images/baby.jpg" alt>                                                 	
-									        </div>                                                                                                
-									    </div>                
-									    <div class="comment-main-area">
-									        <div class="comment-wrapper">
-									            <div class="comments-meta">
-									                <h4>姓名：小玉溪 </h4>
-									                <h4>预产期：<span>2020-02-08 19:38:30</span></h4>							              	                                                   		
-									            </div>
-									            <div class="comment-area">
-									            	<hr />
-										            <div class="comments-reply">
-										                <a class="comment-reply-link" href="babyinfo.html">详情</a>
-										            </div>
-									            </div>
-									        </div>
-									    </div>
-									</div>                                            
-								</li>
-								<!--宝宝2-->	
-								<li class="comment" id="record_2">                                      	
-									<div id="div-comment-2">
-									    <div id="order_num" class="order_num">
-									        <p>小公举</p>
-									        <span class="label label-success">出生</span>							                                         		
-									    </div>            	
-									    <div class="comment-theme">
-									        <div class="comment-image">
-									            <img src="../assets/images/lcy.jpg" alt>                                                 	
-									        </div>                                                                                                
-									    </div>                
-									    <div class="comment-main-area">
-									        <div class="comment-wrapper">
-									            <div class="comments-meta">
-									                <h4>姓名：熙美美 </h4>
-									                <h4>生日：<span>2018-02-08 19:38:30</span></h4>							              	                                                   		
-									            </div>
-									            <div class="comment-area">
-									            	<hr />
-										            <div class="comments-reply">
-										                <a class="comment-reply-link" href="babyinfo.html">详情</a>
-										            </div>
-									            </div>
-									        </div>
-									    </div>
-									</div>                                            
-								</li>
-							</ol>
-							<hr />
-							
-                        </div> <!-- end comments-section -->
-                                
-            <!--</div>--> <!-- end comments-area -->
-            </div>
-                  
-        </section>
-		</div>
-		
-		
+<!--弹出框end-->
 		
 
 
@@ -342,7 +281,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     
     <!--bootstrap-->
-	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <!-- Plugins for this template -->
     <script src="../../assets/js/jquery-plugin-collection.js"></script>
@@ -351,11 +290,18 @@
     <script src="../../assets/js/script.js"></script>
     
     <!--滑动-->
-	<script src="../../assets/js/smoothscroll.js" ></script>
+		<script src="../../assets/js/smoothscroll.js" ></script>
     
    	<!--时间(日期)段插件-->
    	<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
    	<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    
+   	<!--table-->
+   	<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+   	<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
+    
+    <script src="../../assets/js/sweetalert/jquery.sweet-alert.custom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../assets/js/sweetalert/sweet-alert.js" type="text/javascript" charset="utf-8"></script>
     
 <!-- JS files end===========================================================-->
 <script>
@@ -370,18 +316,139 @@ $(function(){
         locale: moment.locale('zh-cn'),
         
     });
-    
-	//点赞
-	$("#thumbup").click(function(){
-		$(this).css({"background-color":"darkred","border-color":"darkred"});
-	});
-        
-        
-
      
   });
+</script>
+<script type="text/javascript">
+	
+	$('#baby_list').bootstrapTable({
+        columns: [
+        		
+            	{
+                field: 'id',
+                title: '序号',
+              	formatter: function (value, row, index) {
+                  return index+1;
+              																					},
+                halign:'center',
+                align:'center',
+                width: 50
+            },
+          	{
+              field: 'baby_id',
+              title: '宝宝编号',
+              halign:'center',//表头居中显示
+              align:'center',
+              width: 80
+ 
+        		},
+          	{
+              field: 'baby_name',
+              title: '宝宝名字',
+              halign:'center',//表头居中显示
+              align:'center',
+              width: 80
+ 
+        		},
+            {
+                field: 'baby_status',
+                title: '宝宝状态',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: '30px',
+                formatter: function (value, row, index) {   //传入数据
+ 									if(value==1)
+        					return '<span class="label label-success">出生</span>';
+        					else if(value==0)
+        					return '<span class="label label-info">未出生</span>';
+        					
+        					
+    						},
+ 
+          	},
+            {
+                field: 'baby_sex',
+                title: '宝宝性别',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 60,
+ 
+          	},
+						{
+                field: '',
+                title: '管理',
+                halign:'center',
+                align:'center',
+                width:'80px',
+                formatter: function (value, row, index) {   //传入数据
+        				return '<a class="btn btn-theme02 btn-sm" title="del" >删除</a>';
+    						},
+    						 events: {
+      					'click a[title=del]': function (e, value, row, index) {
+          				if(confirm('此操作不可逆，请确认是否删除？')){
+          					$('#baby_list').bootstrapTable('remove', 
+          					{ field:'baby_id', values:[parseInt(row.baby_id)] }); 
+          					$("#baby_list").bootstrapTable("refresh");
+          				}
+          				}
+      					},
+                
+            }],
+        data: [
+        {	
+        	'baby_id':11,
+        	'baby_name':'菜大爷',
+        	'baby_status':1,
+        	'baby_sex':'小王纸',
+        },
+        {	
+        	'baby_id':12,
+        	'baby_name':'菜秋香',
+        	'baby_status':1,
+        	'baby_sex':'小公举',
+        },
+        {	
+        	'baby_id':14,
+        	'baby_name':'菜萨达',
+        	'baby_status':0,
+        	'baby_sex':'小王纸',
+        },
+        {	
+        	'baby_id':15,
+        	'baby_name':'菜鲍鱼',
+        	'baby_status':1,
+        	'baby_sex':'小王纸',
+        },
+        
+        
+        ],
+        url:'',
+        method: 'post',
+        pagination:true,  //设置为 true 会在表格底部显示分页条。
+        paginationLoop:false, //设置为 true 启用分页条无限循环的功能。
+        pageSize:3,//每页初始显示的条数
+        pageList:[5,10,15],
+        toolbar:'#toolbar',//工具栏
+        toolbarAlign:'right',//工具栏的位置
+        search: true,
+        showRefresh: true,
+        clickToSelect: true,   //是否启用点击选中行
+//      height:400
+//      sidePagination: "client"
+ 
+    });
+	
+	$("#baby_list").bootstrapTable('hideLoading');
+	
+	$("#baby_list")
+  .on('dbl-click-row.bs.table', function (e, row, ele,field) {
+  				
+  				//转跳至user目录下babyinfo
+  				alert("宝宝"+row.baby_id+"的详情页");
+            })          
+	
 
-	
-	</script>
-	
+</script>
+
+
 </html>

@@ -472,7 +472,7 @@
 
     $("#cancel_city").click(function () {
         app.city = "";
-        getDoctor(0, app.city, app.service)
+        getDoctor(0, app.city, app.service, app.strength)
     });
 
     $("#confirm_city").click(function () {
@@ -490,7 +490,7 @@
         app.city = city
         console.log(app.city)
 
-        getDoctor(0, app.city, app.service)
+        getDoctor(0, app.city, app.service, app.strength)
         //       $("#city_check").text(city);
     });
 

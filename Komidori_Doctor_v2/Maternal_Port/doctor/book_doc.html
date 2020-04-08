@@ -288,10 +288,15 @@
 					               			<input id="addr" name="addr" value="" type="text"/>
 					               		</div>
 					               		
+					               		<div class="form-group">
+					               			<label for="remark">描述问题/备注</label>
+					               			<textarea id="remark" name="remark" value="" class="form-control"></textarea>
+					               		</div>
+					               		
 					               		
 					               		<div class="form-group">
 					               			<label for="datetimepicker">时间</label>
-					               			<div class="input-group" id="datetimepicker" data-date="12-02-2012" data-date-format="yyyy-mm-dd hh:ii:ss" >
+					               			<div class="input-group" id="datetimepicker"  >
 						               			<input id="time_field" type="text" value="2012-05-15 21:05" class="date_input">
 						               			<span class="input-group-addon timer"><i class="ti-time "></i></span>
 					               			</div>
@@ -387,7 +392,7 @@
 $(function(){
 	$("#foot").load("../low_footer.html");	
 
-	$('#datetimepicker').datetimepicker({
+	$('#time_field').datetimepicker({
 		format: 'yyyy-mm-dd hh:ii',
 		startDate:new Date(),
 		todayHighlight:true,
@@ -397,7 +402,7 @@ $(function(){
         language:'zh-CN',
         endDate:"+1m", //限制可选时间范围在2月内
         todayBtn: true,
-        pickerPosition: "bottom-right",
+        pickerPosition: "top-right",
 //      datesDisabled:['2020-03-28','2020-03-29']
 //    	maxView: 4,
 	});

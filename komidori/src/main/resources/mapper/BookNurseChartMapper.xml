@@ -11,6 +11,7 @@
     <result column="bnurse_addr" property="bnurseAddr" jdbcType="VARCHAR" />
     <result column="bnurse_status" property="bnurseStatus" jdbcType="INTEGER" />
     <result column="bnurse_remark" property="bnurseRemark" jdbcType="VARCHAR" />
+    <result column="bnurse_date" property="bnurseDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     bnurse_order_id, bnurse_nurse_id, bnurse_mat_id, bnurse_start_date, bnurse_end_date, 
-    bnurse_price, bnurse_addr, bnurse_status, bnurse_remark
+    bnurse_price, bnurse_addr, bnurse_status, bnurse_remark, bnurse_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChartExample" >
     select
@@ -107,12 +108,12 @@
   <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChart" >
     insert into book_nurse_chart (bnurse_order_id, bnurse_nurse_id, bnurse_mat_id, 
       bnurse_start_date, bnurse_end_date, bnurse_price, 
-      bnurse_addr, bnurse_status, bnurse_remark
-      )
+      bnurse_addr, bnurse_status, bnurse_remark, 
+      bnurse_date)
     values (#{bnurseOrderId,jdbcType=INTEGER}, #{bnurseNurseId,jdbcType=INTEGER}, #{bnurseMatId,jdbcType=INTEGER}, 
       #{bnurseStartDate,jdbcType=DATE}, #{bnurseEndDate,jdbcType=DATE}, #{bnursePrice,jdbcType=REAL}, 
-      #{bnurseAddr,jdbcType=VARCHAR}, #{bnurseStatus,jdbcType=INTEGER}, #{bnurseRemark,jdbcType=VARCHAR}
-      )
+      #{bnurseAddr,jdbcType=VARCHAR}, #{bnurseStatus,jdbcType=INTEGER}, #{bnurseRemark,jdbcType=VARCHAR}, 
+      #{bnurseDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.BookNurseChart" >
     insert into book_nurse_chart
@@ -144,6 +145,9 @@
       <if test="bnurseRemark != null" >
         bnurse_remark,
       </if>
+      <if test="bnurseDate != null" >
+        bnurse_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="bnurseOrderId != null" >
@@ -172,6 +176,9 @@
       </if>
       <if test="bnurseRemark != null" >
         #{bnurseRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bnurseDate != null" >
+        #{bnurseDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -211,6 +218,9 @@
       <if test="record.bnurseRemark != null" >
         bnurse_remark = #{record.bnurseRemark,jdbcType=VARCHAR},
       </if>
+      <if test="record.bnurseDate != null" >
+        bnurse_date = #{record.bnurseDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -226,7 +236,8 @@
       bnurse_price = #{record.bnursePrice,jdbcType=REAL},
       bnurse_addr = #{record.bnurseAddr,jdbcType=VARCHAR},
       bnurse_status = #{record.bnurseStatus,jdbcType=INTEGER},
-      bnurse_remark = #{record.bnurseRemark,jdbcType=VARCHAR}
+      bnurse_remark = #{record.bnurseRemark,jdbcType=VARCHAR},
+      bnurse_date = #{record.bnurseDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -258,6 +269,9 @@
       <if test="bnurseRemark != null" >
         bnurse_remark = #{bnurseRemark,jdbcType=VARCHAR},
       </if>
+      <if test="bnurseDate != null" >
+        bnurse_date = #{bnurseDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where bnurse_order_id = #{bnurseOrderId,jdbcType=INTEGER}
   </update>
@@ -270,7 +284,8 @@
       bnurse_price = #{bnursePrice,jdbcType=REAL},
       bnurse_addr = #{bnurseAddr,jdbcType=VARCHAR},
       bnurse_status = #{bnurseStatus,jdbcType=INTEGER},
-      bnurse_remark = #{bnurseRemark,jdbcType=VARCHAR}
+      bnurse_remark = #{bnurseRemark,jdbcType=VARCHAR},
+      bnurse_date = #{bnurseDate,jdbcType=TIMESTAMP}
     where bnurse_order_id = #{bnurseOrderId,jdbcType=INTEGER}
   </update>
 </mapper>

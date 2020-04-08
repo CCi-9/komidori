@@ -5,8 +5,6 @@ import java.util.Date;
 public class CourseOrderChart {
     private Integer courseOrderId;
 
-    private Integer courseOrderDocId;
-
     private Integer courseOrderMatId;
 
     private Integer courseOrderCid;
@@ -19,14 +17,6 @@ public class CourseOrderChart {
 
     public void setCourseOrderId(Integer courseOrderId) {
         this.courseOrderId = courseOrderId;
-    }
-
-    public Integer getCourseOrderDocId() {
-        return courseOrderDocId;
-    }
-
-    public void setCourseOrderDocId(Integer courseOrderDocId) {
-        this.courseOrderDocId = courseOrderDocId;
     }
 
     public Integer getCourseOrderMatId() {

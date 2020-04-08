@@ -18,6 +18,7 @@
 <body class="card-no-border">
 
 <div class="page-wrapper" id="app">
+    <my-component></my-component>
     <!-- start preloader -->
     <div class="preloader">
         <div class="lds-ripple">
@@ -201,10 +202,12 @@
                 <!-- /col-md-4 -->
                 <div class="col-md-4  centered">
                     <div class="profile-pic">
-                        <p><img src="../../assets/images/heads.jpg" class="img-circle"></p>
+                        <p><img :src="doctor.doctorImg" class="img-circle"></p>
                         <p>
-                            <button @click="thumbup" id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞</button>
-                            <button @click="follow" id="sa-follow" class="btn btn-theme02"><i class="ti-plus"></i>关注</button>
+                            <button @click="thumbup" id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞
+                            </button>
+                            <button @click="follow" id="sa-follow" class="btn btn-theme02"><i class="ti-plus"></i>关注
+                            </button>
                         </p>
                     </div>
                 </div><!-- /col-md-4 -->
@@ -227,6 +230,7 @@
                     </p>
                     <br>
                     <p>
+                        <button class="btn btn-theme"><i class="ti-book"></i> 马上预约</button>
                         <button class="btn btn-theme"><i class="ti-envelope"></i> 马上咨询</button>
                         <span class="label label-default">{{doctor.onlinePrice}}￥/次</span>
                     </p>
@@ -241,6 +245,7 @@
                         <h6>服务人次</h6>
                         <h4>{{doctor.doctorFollow}}</h4>
                         <h6>关注量</h6>
+                        <my-component></my-component>
                     </div>
                 </div>
 
@@ -286,7 +291,7 @@
                     <p>专家文章</p>
                 </div>
                 <div class="rightbar" v-if="doctor.courseInfo !== undefined && doctor.courseInfo.length >0">
-                    <button>更多<i class="ti-angle-double-right"></i></button>
+                    <button @click="findMoreCourse(doctor.doctorId)">更多<i class="ti-angle-double-right"></i></button>
                 </div>
             </div>
         </div>
@@ -370,7 +375,7 @@
                     <p>专家课程</p>
                 </div>
                 <div class="rightbar" v-if="doctor.courseInfo !== undefined && doctor.courseInfo.length >0">
-                    <button>更多<i class="ti-angle-double-right"></i></button>
+                    <button @click="findMoreCourse(doctor.doctorId)">更多<i class="ti-angle-double-right"></i></button>
                 </div>
             </div>
         </div>
@@ -507,6 +512,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
 <script src="../../assets/js/jquery.params.js"></script>
 
 <!-- JS files end===========================================================-->
@@ -552,46 +558,34 @@
 
 
 </script>
-<script>
+<script type = "module">
     let app = new Vue({
         el: "#app",
         data: {
-            //	doctorId:"",
             doctor: {},
         },
         mounted() {
             //this.doctorId = getDoctorID()
             getDoctor()
         },
-		methods:{
-			follow(){
-				swal("关注成功!");
-			},
-			thumbup(){
-				$("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
-			},
-            formatDate (thistime, fmt) {
-                let $this = new Date(thistime)
-                let o = {
-                    'M+': $this.getMonth() + 1,
-                    'd+': $this.getDate(),
-                    'h+': $this.getHours(),
-                    'm+': $this.getMinutes(),
-                    's+': $this.getSeconds(),
-                    'q+': Math.floor(($this.getMonth() + 3) / 3),
-                    'S': $this.getMilliseconds()
-                }
-                if (/(y+)/.test(fmt)) {
-                    fmt = fmt.replace(RegExp.$1, ($this.getFullYear() + '').substr(4 - RegExp.$1.length))
-                }
-                for (var k in o) {
-                    if (new RegExp('(' + k + ')').test(fmt)) {
-                        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)))
-                    }
-                }
+        methods: {
+            follow() {
+                swal("关注成功!");
+            },
+
+            thumbup() {
+                $("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
+            },
+
+            formatDate(thistime, fmt){
+                fmt = formatDate(thistime,fmt)
                 return fmt
+            },
+
+            findMoreCourse(id){
+                window.location.href = 'doc_more_course_list.html?id=' + id
             }
-		}
+        }
     })
 </script>
 

@@ -62,7 +62,7 @@
            <result column="course_type" property="courseType" jdbcType="INTEGER" />
            <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
            <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
-           <result column="course_date" property="courseDate"  typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler" jdbcType="OTHER" javaType="java.time.LocalDateTime"/>
+           <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
            <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
            <result column="course_price" property="coursePrice" jdbcType="REAL" />
            <result column="course_img" property="courseImg" jdbcType="VARCHAR" />
@@ -85,6 +85,7 @@
         </if>
 
         <trim prefix="WHERE" prefixOverrides="and">
+
             <if test="city != null">
                 doctor_city like #{city}
             </if>
@@ -96,12 +97,15 @@
             <if test="strengthId != null">
                and  ci.course_class_id = #{strengthId}
             </if>
+
+            and consultable = 1
         </trim>
     </select>
 
     <select id="getDoctorByID" resultMap="myResultMap">
         select * from doctor_info
         left join course_info as ci on ci.course_doc_id = doctor_info.doctor_id
+        inner join public_category_chart as pcc on ci.course_class_id = pcc.public_category_id
         where doctor_info.doctor_id = #{doctorID}
     </select>
 

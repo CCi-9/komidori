@@ -1163,6 +1163,126 @@ public class NurseInfoExample {
             addCriterion("nurse_NVQ not between", value1, value2, "nurseNvq");
             return (Criteria) this;
         }
+
+        public Criteria andNurseRankIsNull() {
+            addCriterion("nurse_rank is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankIsNotNull() {
+            addCriterion("nurse_rank is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankEqualTo(Integer value) {
+            addCriterion("nurse_rank =", value, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankNotEqualTo(Integer value) {
+            addCriterion("nurse_rank <>", value, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankGreaterThan(Integer value) {
+            addCriterion("nurse_rank >", value, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankGreaterThanOrEqualTo(Integer value) {
+            addCriterion("nurse_rank >=", value, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankLessThan(Integer value) {
+            addCriterion("nurse_rank <", value, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankLessThanOrEqualTo(Integer value) {
+            addCriterion("nurse_rank <=", value, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankIn(List<Integer> values) {
+            addCriterion("nurse_rank in", values, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankNotIn(List<Integer> values) {
+            addCriterion("nurse_rank not in", values, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankBetween(Integer value1, Integer value2) {
+            addCriterion("nurse_rank between", value1, value2, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNurseRankNotBetween(Integer value1, Integer value2) {
+            addCriterion("nurse_rank not between", value1, value2, "nurseRank");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceIsNull() {
+            addCriterion("nurse_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceIsNotNull() {
+            addCriterion("nurse_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceEqualTo(Float value) {
+            addCriterion("nurse_price =", value, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceNotEqualTo(Float value) {
+            addCriterion("nurse_price <>", value, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceGreaterThan(Float value) {
+            addCriterion("nurse_price >", value, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("nurse_price >=", value, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceLessThan(Float value) {
+            addCriterion("nurse_price <", value, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceLessThanOrEqualTo(Float value) {
+            addCriterion("nurse_price <=", value, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceIn(List<Float> values) {
+            addCriterion("nurse_price in", values, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceNotIn(List<Float> values) {
+            addCriterion("nurse_price not in", values, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceBetween(Float value1, Float value2) {
+            addCriterion("nurse_price between", value1, value2, "nursePrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNursePriceNotBetween(Float value1, Float value2) {
+            addCriterion("nurse_price not between", value1, value2, "nursePrice");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

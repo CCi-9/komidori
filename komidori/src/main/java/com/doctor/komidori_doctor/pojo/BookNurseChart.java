@@ -21,6 +21,8 @@ public class BookNurseChart {
 
     private String bnurseRemark;
 
+    private Date bnurseDate;
+
     public Integer getBnurseOrderId() {
         return bnurseOrderId;
     }
@@ -91,5 +93,13 @@ public class BookNurseChart {
 
     public void setBnurseRemark(String bnurseRemark) {
         this.bnurseRemark = bnurseRemark == null ? null : bnurseRemark.trim();
+    }
+
+    public Date getBnurseDate() {
+        return bnurseDate;
+    }
+
+    public void setBnurseDate(Date bnurseDate) {
+        this.bnurseDate = bnurseDate;
     }
 }

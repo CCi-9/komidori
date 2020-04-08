@@ -691,6 +691,66 @@ public class BookNurseChartExample {
             addCriterion("bnurse_remark not between", value1, value2, "bnurseRemark");
             return (Criteria) this;
         }
+
+        public Criteria andBnurseDateIsNull() {
+            addCriterion("bnurse_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateIsNotNull() {
+            addCriterion("bnurse_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateEqualTo(Date value) {
+            addCriterion("bnurse_date =", value, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateNotEqualTo(Date value) {
+            addCriterion("bnurse_date <>", value, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateGreaterThan(Date value) {
+            addCriterion("bnurse_date >", value, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("bnurse_date >=", value, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateLessThan(Date value) {
+            addCriterion("bnurse_date <", value, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateLessThanOrEqualTo(Date value) {
+            addCriterion("bnurse_date <=", value, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateIn(List<Date> values) {
+            addCriterion("bnurse_date in", values, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateNotIn(List<Date> values) {
+            addCriterion("bnurse_date not in", values, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateBetween(Date value1, Date value2) {
+            addCriterion("bnurse_date between", value1, value2, "bnurseDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBnurseDateNotBetween(Date value1, Date value2) {
+            addCriterion("bnurse_date not between", value1, value2, "bnurseDate");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

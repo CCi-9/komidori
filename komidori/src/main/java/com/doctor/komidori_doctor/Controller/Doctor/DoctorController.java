@@ -3,6 +3,7 @@ package com.doctor.komidori_doctor.Controller.Doctor;
 import com.doctor.komidori_doctor.ResponseModel.ResponseStatus;
 import com.doctor.komidori_doctor.ResponseModel.ResponseWrapper;
 import com.doctor.komidori_doctor.Service.Doctor.DoctorService;
+import com.doctor.komidori_doctor.pojo.CourseInfo;
 import com.doctor.komidori_doctor.pojo.DoctorInfo;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -40,4 +41,14 @@ public class DoctorController {
         DoctorInfo doctor = doctorService.getDoctorByID(doctorID);
         return new ResponseWrapper<>(ResponseStatus.OK,"success",doctor);
     }
+
+    @Transactional
+    @RequestMapping(value = "getCourseByID",method = RequestMethod.GET)
+    public ResponseWrapper<CourseInfo> getCourseByID(@RequestParam String courseID){
+        System.out.println("courseID:" + courseID);
+        CourseInfo course = doctorService.getCourseByID(courseID);
+        return new ResponseWrapper<>(ResponseStatus.OK,"success",course);
+    }
+
+
 }

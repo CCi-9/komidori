@@ -2,7 +2,9 @@ package com.doctor.komidori_doctor.Service.Doctor.impl;
 
 import com.doctor.komidori_doctor.Service.Doctor.DoctorService;
 import com.doctor.komidori_doctor.mapper.DoctorInfoMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyDoctorInfoMapper;
+import com.doctor.komidori_doctor.pojo.CourseInfo;
 import com.doctor.komidori_doctor.pojo.DoctorInfo;
 import com.doctor.komidori_doctor.pojo.DoctorInfoExample;
 
@@ -25,6 +27,9 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Resource
     private MyDoctorInfoMapper myDoctorInfoMapper;
+
+    @Resource
+    private MyCourseInfoMapper myCourseInfoMapper;
 
     @Override
     public Map<String,Object> getDoctor(int page, String city, String dept, Integer strengthId) {
@@ -80,5 +85,10 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public DoctorInfo getDoctorByID(String doctorID) {
         return myDoctorInfoMapper.getDoctorByID(doctorID);
+    }
+
+    @Override
+    public CourseInfo getCourseByID(String courseID) {
+        return myCourseInfoMapper.getCourseByID(courseID);
     }
 }

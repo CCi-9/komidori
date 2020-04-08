@@ -18,6 +18,8 @@
     <result column="nurse_img" property="nurseImg" jdbcType="VARCHAR" />
     <result column="nurse_introduction" property="nurseIntroduction" jdbcType="VARCHAR" />
     <result column="nurse_NVQ" property="nurseNvq" jdbcType="VARCHAR" />
+    <result column="nurse_rank" property="nurseRank" jdbcType="INTEGER" />
+    <result column="nurse_price" property="nursePrice" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,7 +82,7 @@
   <sql id="Base_Column_List" >
     nurse_id, nurse_name, nurse_age, nurse_tel, nurse_idcard, nurse_city, nurse_race, 
     nurse_language, nurse_follow, nurse_orders, nurse_good_review, nurse_work_age, nurse_email, 
-    nurse_img, nurse_introduction, nurse_NVQ
+    nurse_img, nurse_introduction, nurse_NVQ, nurse_rank, nurse_price
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.NurseInfoExample" >
     select
@@ -118,13 +120,15 @@
       nurse_race, nurse_language, nurse_follow, 
       nurse_orders, nurse_good_review, nurse_work_age, 
       nurse_email, nurse_img, nurse_introduction, 
-      nurse_NVQ)
+      nurse_NVQ, nurse_rank, nurse_price
+      )
     values (#{nurseId,jdbcType=INTEGER}, #{nurseName,jdbcType=VARCHAR}, #{nurseAge,jdbcType=INTEGER}, 
       #{nurseTel,jdbcType=VARCHAR}, #{nurseIdcard,jdbcType=VARCHAR}, #{nurseCity,jdbcType=VARCHAR}, 
       #{nurseRace,jdbcType=VARCHAR}, #{nurseLanguage,jdbcType=VARCHAR}, #{nurseFollow,jdbcType=INTEGER}, 
       #{nurseOrders,jdbcType=INTEGER}, #{nurseGoodReview,jdbcType=INTEGER}, #{nurseWorkAge,jdbcType=INTEGER}, 
       #{nurseEmail,jdbcType=VARCHAR}, #{nurseImg,jdbcType=VARCHAR}, #{nurseIntroduction,jdbcType=VARCHAR}, 
-      #{nurseNvq,jdbcType=VARCHAR})
+      #{nurseNvq,jdbcType=VARCHAR}, #{nurseRank,jdbcType=INTEGER}, #{nursePrice,jdbcType=REAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.NurseInfo" >
     insert into nurse_info
@@ -177,6 +181,12 @@
       <if test="nurseNvq != null" >
         nurse_NVQ,
       </if>
+      <if test="nurseRank != null" >
+        nurse_rank,
+      </if>
+      <if test="nursePrice != null" >
+        nurse_price,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="nurseId != null" >
@@ -226,6 +236,12 @@
       </if>
       <if test="nurseNvq != null" >
         #{nurseNvq,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseRank != null" >
+        #{nurseRank,jdbcType=INTEGER},
+      </if>
+      <if test="nursePrice != null" >
+        #{nursePrice,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -286,6 +302,12 @@
       <if test="record.nurseNvq != null" >
         nurse_NVQ = #{record.nurseNvq,jdbcType=VARCHAR},
       </if>
+      <if test="record.nurseRank != null" >
+        nurse_rank = #{record.nurseRank,jdbcType=INTEGER},
+      </if>
+      <if test="record.nursePrice != null" >
+        nurse_price = #{record.nursePrice,jdbcType=REAL},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -308,7 +330,9 @@
       nurse_email = #{record.nurseEmail,jdbcType=VARCHAR},
       nurse_img = #{record.nurseImg,jdbcType=VARCHAR},
       nurse_introduction = #{record.nurseIntroduction,jdbcType=VARCHAR},
-      nurse_NVQ = #{record.nurseNvq,jdbcType=VARCHAR}
+      nurse_NVQ = #{record.nurseNvq,jdbcType=VARCHAR},
+      nurse_rank = #{record.nurseRank,jdbcType=INTEGER},
+      nurse_price = #{record.nursePrice,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -361,6 +385,12 @@
       <if test="nurseNvq != null" >
         nurse_NVQ = #{nurseNvq,jdbcType=VARCHAR},
       </if>
+      <if test="nurseRank != null" >
+        nurse_rank = #{nurseRank,jdbcType=INTEGER},
+      </if>
+      <if test="nursePrice != null" >
+        nurse_price = #{nursePrice,jdbcType=REAL},
+      </if>
     </set>
     where nurse_id = #{nurseId,jdbcType=INTEGER}
   </update>
@@ -380,7 +410,9 @@
       nurse_email = #{nurseEmail,jdbcType=VARCHAR},
       nurse_img = #{nurseImg,jdbcType=VARCHAR},
       nurse_introduction = #{nurseIntroduction,jdbcType=VARCHAR},
-      nurse_NVQ = #{nurseNvq,jdbcType=VARCHAR}
+      nurse_NVQ = #{nurseNvq,jdbcType=VARCHAR},
+      nurse_rank = #{nurseRank,jdbcType=INTEGER},
+      nurse_price = #{nursePrice,jdbcType=REAL}
     where nurse_id = #{nurseId,jdbcType=INTEGER}
   </update>
 </mapper>

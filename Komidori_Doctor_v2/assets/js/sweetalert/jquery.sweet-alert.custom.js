@@ -8,8 +8,12 @@
     SweetAlert.prototype.init = function() {
         
     //Basic
-    $('#sa-basic').click(function(){
-        swal("Here's a message!");
+    $('#sa-add').click(function(){
+        swal("添加成功!");
+    });
+    
+    $('#sa-buy').click(function(){
+        swal("购买成功，已加入您的课程列表!");
     });
     
     $('#sa-follow').click(function(){
@@ -23,7 +27,7 @@
 
     //A title with a text under
     $('#sa-title').click(function(){
-        swal("收藏成功!", "课程已加入您的收藏夹！")
+        swal("收藏成功!", "已加入您的收藏夹！")
     });
 
     //Success Message
