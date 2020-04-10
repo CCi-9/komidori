@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyBookNurseChartMapper">
+    <resultMap id="MyResultMap" type="com.doctor.komidori_doctor.pojo.BookNurseChart">
+        <id column="bnurse_order_id" property="bnurseOrderId" jdbcType="INTEGER"/>
+        <result column="bnurse_nurse_id" property="bnurseNurseId" jdbcType="INTEGER"/>
+        <result column="bnurse_mat_id" property="bnurseMatId" jdbcType="INTEGER"/>
+        <result column="bnurse_start_date" property="bnurseStartDate" jdbcType="DATE"/>
+        <result column="bnurse_end_date" property="bnurseEndDate" jdbcType="DATE"/>
+        <result column="bnurse_price" property="bnursePrice" jdbcType="REAL"/>
+        <result column="bnurse_addr" property="bnurseAddr" jdbcType="VARCHAR"/>
+        <result column="bnurse_status" property="bnurseStatus" jdbcType="INTEGER"/>
+        <result column="bnurse_remark" property="bnurseRemark" jdbcType="VARCHAR"/>
+        <result column="bnurse_date" property="bnurseDate" jdbcType="TIMESTAMP"/>
+        <association property="nurseInfo" javaType="com.doctor.komidori_doctor.pojo.NurseInfo" >
+          <result column="nurse_name" property="nurseName" jdbcType="VARCHAR" />
+          <result column="nurse_good_review" property="nurseGoodReview" jdbcType="INTEGER" />
+          <result column="nurse_work_age" property="nurseWorkAge" jdbcType="INTEGER" />
+          <result column="nurse_rank" property="nurseRank" jdbcType="INTEGER" />
+        </association>
+    </resultMap>
+
+    <select id="getMyBookNurse" resultMap="MyResultMap">
+        select * from book_nurse_chart as bnc inner join nurse_info as ni
+        on ni.nurse_id = bnc.bnurse_nurse_id
+        where bnc.bnurse_mat_id = #{matId}
+    </select>
+
+</mapper>

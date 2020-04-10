@@ -2,79 +2,119 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyDoctorInfoMapper">
     <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.DoctorInfo">
-        <id column="doctor_id" property="doctorId" jdbcType="INTEGER" />
-        <result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
-        <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR" />
-        <result column="doctor_age" property="doctorAge" jdbcType="INTEGER" />
-        <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR" />
-        <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR" />
-        <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR" />
-        <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER" />
-        <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR" />
-        <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR" />
-        <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR" />
-        <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR" />
-        <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER" />
-        <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER" />
-        <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER" />
-        <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER" />
-        <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER" />
-        <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR" />
-        <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR" />
-        <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR" />
-        <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER" />
-        <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR" />
-        <result column="online_price" property="onlinePrice" jdbcType="REAL" />
-        <result column="offline_price" property="offlinePrice" jdbcType="REAL" />
-        <result column="consultable" property="consultable" jdbcType="INTEGER" />
-        <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER" />
+        <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+        <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+        <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR"/>
+        <result column="doctor_age" property="doctorAge" jdbcType="INTEGER"/>
+        <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR"/>
+        <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR"/>
+        <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR"/>
+        <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER"/>
+        <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR"/>
+        <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR"/>
+        <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR"/>
+        <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR"/>
+        <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER"/>
+        <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER"/>
+        <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER"/>
+        <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER"/>
+        <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER"/>
+        <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR"/>
+        <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR"/>
+        <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR"/>
+        <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER"/>
+        <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR"/>
+        <result column="online_price" property="onlinePrice" jdbcType="REAL"/>
+        <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+        <result column="consultable" property="consultable" jdbcType="INTEGER"/>
+        <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER"/>
     </resultMap>
 
-   <resultMap id="myResultMap" type="com.doctor.komidori_doctor.pojo.DoctorInfo">
-       <id column="doctor_id" property="doctorId" jdbcType="INTEGER" />
-       <result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
-       <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR" />
-       <result column="doctor_age" property="doctorAge" jdbcType="INTEGER" />
-       <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR" />
-       <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR" />
-       <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR" />
-       <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER" />
-       <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR" />
-       <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR" />
-       <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR" />
-       <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR" />
-       <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER" />
-       <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER" />
-       <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER" />
-       <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER" />
-       <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER" />
-       <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR" />
-       <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR" />
-       <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR" />
-       <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER" />
-       <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR" />
-       <result column="online_price" property="onlinePrice" jdbcType="REAL" />
-       <result column="offline_price" property="offlinePrice" jdbcType="REAL" />
-       <result column="consultable" property="consultable" jdbcType="INTEGER" />
-       <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER" />
-       <collection property="courseInfo" ofType="com.doctor.komidori_doctor.pojo.CourseInfo">
-           <id column="course_id" property="courseId" jdbcType="INTEGER" />
-           <result column="course_type" property="courseType" jdbcType="INTEGER" />
-           <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
-           <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
-           <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
-           <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
-           <result column="course_price" property="coursePrice" jdbcType="REAL" />
-           <result column="course_img" property="courseImg" jdbcType="VARCHAR" />
-           <result column="course_title" property="courseTitle" jdbcType="VARCHAR" />
-           <result column="course_content" property="courseContent" jdbcType="VARCHAR" />
-           <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR" />
-           <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
-               <id column="public_category_id" property="publicCategoryId" jdbcType="INTEGER" />
-               <result column="public_category_name" property="publicCategoryName" jdbcType="VARCHAR" />
-           </association>
-       </collection>
-   </resultMap>
+    <resultMap id="myResultMap" type="com.doctor.komidori_doctor.pojo.DoctorInfo">
+        <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+        <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+        <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR"/>
+        <result column="doctor_age" property="doctorAge" jdbcType="INTEGER"/>
+        <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR"/>
+        <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR"/>
+        <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR"/>
+        <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER"/>
+        <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR"/>
+        <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR"/>
+        <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR"/>
+        <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR"/>
+        <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER"/>
+        <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER"/>
+        <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER"/>
+        <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER"/>
+        <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER"/>
+        <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR"/>
+        <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR"/>
+        <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR"/>
+        <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER"/>
+        <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR"/>
+        <result column="online_price" property="onlinePrice" jdbcType="REAL"/>
+        <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+        <result column="consultable" property="consultable" jdbcType="INTEGER"/>
+        <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER"/>
+        <collection property="courseInfo" ofType="com.doctor.komidori_doctor.pojo.CourseInfo">
+            <id column="course_id" property="courseId" jdbcType="INTEGER"/>
+            <result column="course_type" property="courseType" jdbcType="INTEGER"/>
+            <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER"/>
+            <result column="course_class_id" property="courseClassId" jdbcType="INTEGER"/>
+            <result column="course_date" property="courseDate" jdbcType="TIMESTAMP"/>
+            <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER"/>
+            <result column="course_price" property="coursePrice" jdbcType="REAL"/>
+            <result column="course_img" property="courseImg" jdbcType="VARCHAR"/>
+            <result column="course_title" property="courseTitle" jdbcType="VARCHAR"/>
+            <result column="course_content" property="courseContent" jdbcType="VARCHAR"/>
+            <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR"/>
+            <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
+                <id column="public_category_id" property="publicCategoryId" jdbcType="INTEGER"/>
+                <result column="public_category_name" property="publicCategoryName" jdbcType="VARCHAR"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <resultMap id="myResultMapOfBook" type="com.doctor.komidori_doctor.pojo.DoctorInfo">
+        <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+        <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+        <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR"/>
+        <result column="doctor_age" property="doctorAge" jdbcType="INTEGER"/>
+        <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR"/>
+        <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR"/>
+        <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR"/>
+        <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER"/>
+        <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR"/>
+        <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR"/>
+        <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR"/>
+        <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR"/>
+        <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER"/>
+        <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER"/>
+        <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER"/>
+        <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER"/>
+        <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER"/>
+        <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR"/>
+        <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR"/>
+        <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR"/>
+        <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER"/>
+        <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR"/>
+        <result column="online_price" property="onlinePrice" jdbcType="REAL"/>
+        <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+        <result column="consultable" property="consultable" jdbcType="INTEGER"/>
+        <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER"/>
+        <collection property="bookDoctorChart" ofType="com.doctor.komidori_doctor.pojo.BookDoctorChart">
+            <id column="bdoc_order_id" property="bdocOrderId" jdbcType="INTEGER"/>
+            <result column="bdoc_mat_id" property="bdocMatId" jdbcType="INTEGER"/>
+            <result column="bdoc_doc_id" property="bdocDocId" jdbcType="INTEGER"/>
+            <result column="bdoc_service_date" property="bdocServiceDate" jdbcType="TIMESTAMP"/>
+            <result column="bdoc_book_date" property="bdocBookDate" jdbcType="TIMESTAMP"/>
+            <result column="bdoc_addr" property="bdocAddr" jdbcType="VARCHAR"/>
+            <result column="bdoc_price" property="bdocPrice" jdbcType="REAL"/>
+            <result column="bdoc_remark" property="bdocRemark" jdbcType="VARCHAR"/>
+            <result column="bdoc_status" property="bdocStatus" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
 
     <select id="selectByCondition" resultMap="myResultMap">
         select * from doctor_info
@@ -91,22 +131,28 @@
             </if>
 
             <if test="dept != null">
-               and  doctor_dept = #{dept}
+                and doctor_dept = #{dept}
             </if>
 
             <if test="strengthId != null">
-               and  ci.course_class_id = #{strengthId}
+                and ci.course_class_id = #{strengthId}
             </if>
 
-            and consultable = 1
+            and ${type} = 1
         </trim>
     </select>
 
     <select id="getDoctorByID" resultMap="myResultMap">
         select * from doctor_info
         left join course_info as ci on ci.course_doc_id = doctor_info.doctor_id
-        inner join public_category_chart as pcc on ci.course_class_id = pcc.public_category_id
+        left join public_category_chart as pcc on ci.course_class_id = pcc.public_category_id
         where doctor_info.doctor_id = #{doctorID}
+    </select>
+
+    <select id="getDoctorBookByDoctorID" resultMap="myResultMapOfBook">
+        select * from doctor_info as di
+        left join book_doctor_chart as bdc on bdc.bdoc_doc_id = di.doctor_id
+        where di.doctor_id = #{doctorID}
     </select>
 
 

@@ -25,6 +25,8 @@ public class CourseInfo {
 
     private String courseIntroduction;
 
+    private Integer courseStatus;
+
     private PublicCategoryChart publicCategoryChart;
 
     private DoctorInfo doctorInfo;
@@ -131,5 +133,13 @@ public class CourseInfo {
 
     public void setCourseIntroduction(String courseIntroduction) {
         this.courseIntroduction = courseIntroduction == null ? null : courseIntroduction.trim();
+    }
+
+    public Integer getCourseStatus() {
+        return courseStatus;
+    }
+
+    public void setCourseStatus(Integer courseStatus) {
+        this.courseStatus = courseStatus;
     }
 }

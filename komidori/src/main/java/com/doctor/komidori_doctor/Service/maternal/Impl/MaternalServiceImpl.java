@@ -1,11 +1,11 @@
 package com.doctor.komidori_doctor.Service.maternal.Impl;
 
 import com.doctor.komidori_doctor.Service.maternal.MaternalService;
-import com.doctor.komidori_doctor.mapper.BabyInfoMapper;
-import com.doctor.komidori_doctor.mapper.MaternalDao;
-import com.doctor.komidori_doctor.mapper.MaternalInfoMapper;
-import com.doctor.komidori_doctor.pojo.BabyInfo;
-import com.doctor.komidori_doctor.pojo.Maternal;
+import com.doctor.komidori_doctor.mapper.*;
+import com.doctor.komidori_doctor.mapper.myMapper.MyConsultChartMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyCourseOrderChartMapper;
+import com.doctor.komidori_doctor.pojo.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +19,21 @@ public class MaternalServiceImpl implements MaternalService {
 
     @Resource
     private BabyInfoMapper babyInfoMapper;
+
+    @Resource
+    private ConsultChartMapper consultChartMapper;
+
+    @Resource
+    private CourseOrderChartMapper courseOrderChartMapper;
+
+    @Resource
+    private MyConsultChartMapper myConsultChartMapper;
+
+    @Resource
+    private MyCourseOrderChartMapper myCourseOrderChartMapper;
+
+    @Resource
+    private MyCourseInfoMapper myCourseInfoMapper;
 
 
     @Override
@@ -91,7 +106,7 @@ public class MaternalServiceImpl implements MaternalService {
         Maternal maternal = new Maternal();
         maternal.setMaternal_pwd(password);
         maternalDao.update("maternal_tel", phone, maternal);
-        if(session.getAttribute("createTime") != null){
+        if (session.getAttribute("createTime") != null) {
             session.removeAttribute("createTime");
             session.removeAttribute("verifyCode");
         }
@@ -125,13 +140,13 @@ public class MaternalServiceImpl implements MaternalService {
     @Override
     public void updateMaternal(Maternal maternal, HttpSession session) {
         Integer id = (Integer) session.getAttribute("id");
-        String meternanID= Integer.toString(id);
+        String meternanID = Integer.toString(id);
 
-        maternalDao.update("maternal_id",meternanID,maternal);
-       // maternalInfoMapper.updateByPrimaryKey();
+        maternalDao.update("maternal_id", meternanID, maternal);
+        // maternalInfoMapper.updateByPrimaryKey();
     }
 
-    public BabyInfo getBabyByID(String babyID){
+    public BabyInfo getBabyByID(String babyID) {
         BabyInfo babyInfo = babyInfoMapper.selectByPrimaryKey(Integer.valueOf(babyID));
         return babyInfo;
     }
@@ -140,4 +155,86 @@ public class MaternalServiceImpl implements MaternalService {
     public void updateBabyMsg(BabyInfo babyInfo) {
         babyInfoMapper.updateByPrimaryKey(babyInfo);
     }
+
+    @Override
+    public List<BabyInfo> getMyAllBaby(HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+
+        if (momId == null) {
+            return null;
+        }
+
+        BabyInfoExample example = new BabyInfoExample();
+        BabyInfoExample.Criteria criteria = example.createCriteria();
+        criteria.andBabyMomIdEqualTo(momId);
+        List<BabyInfo> list = babyInfoMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public String deleteBabyByBabyID(Integer id, HttpSession session) {
+        Integer bncId = babyInfoMapper.deleteByPrimaryKey(id);
+        System.out.println(bncId);
+
+        if (bncId == null) {
+            return "删除失败";
+        }
+
+        return "success";
+    }
+
+    @Override
+    public List<ConsultChart> getMyConsult(HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+
+        if (momId == null) {
+            return null;
+        }
+
+        List<ConsultChart> list = myConsultChartMapper.getMyConsult(momId);
+        return list;
+    }
+
+    @Override
+    public String deleteConsult(Integer id, HttpSession session) {
+        Integer consultId = consultChartMapper.deleteByPrimaryKey(id);
+        System.out.println(consultId);
+
+        if (consultId == null) {
+            return "删除失败";
+        }
+
+        return "success";
+    }
+
+    @Override
+    public List<CourseOrderChart> getMyCourse(HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+
+        if (momId == null) {
+            return null;
+        }
+        List<CourseOrderChart> list = myCourseOrderChartMapper.getMyCourse(momId);
+        return list;
+    }
+
+    @Override
+    public String deleteMyCourse(Integer id, HttpSession session) {
+        Integer consultId = courseOrderChartMapper.deleteByPrimaryKey(id);
+        System.out.println(consultId);
+
+        if (consultId == null) {
+            return "删除失败";
+        }
+
+        return "success";
+    }
+
+    @Override
+    public CourseInfo getCourseMsg(Integer courseID, HttpSession session) {
+
+        CourseInfo courseInfo = myCourseInfoMapper.getCourseByID(String.valueOf(courseID));
+        return courseInfo;
+    }
+
 }

@@ -543,6 +543,7 @@
                 city: city,
                 dept: dept,
                 strengthId: strength,
+                type: "consultable",
             },
             xhrFields: {
                 withCredentials: true  //带上cookie信息，解决sessionid不一致
@@ -550,8 +551,19 @@
             success: function (result) {
                 console.log(result)
                 app.doctorList = result.data.list
-                app.pageTotal = result.data.pageTotal
-                app.currentPage = result.data.currentPage
+
+                if(result.data.pageTotal == 0){
+                    app.pageTotal = 1
+                } else {
+                    app.pageTotal = result.data.pageTotal
+                }
+
+                if(result.data.currentPage == 0){
+                    app.currentPage = 1
+                } else {
+                    app.currentPage = result.data.currentPage
+                }
+
                 console.log("currentPage:" + app.currentPage)
                 console.log("pageTotal:" + app.pageTotal)
                 showPage()
@@ -589,7 +601,7 @@
 
             advisory(id){
                 console.log(id)
-                window.location.href = 'doctorinfo.html?id=' + id
+                window.location.href = 'doctorinfo.html?id=' + id + "&type=" + 0
             }
         },
         mounted() {

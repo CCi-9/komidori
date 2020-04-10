@@ -1,18 +1,21 @@
 package com.doctor.komidori_doctor.Service.Doctor.impl;
 
 import com.doctor.komidori_doctor.Service.Doctor.DoctorService;
+import com.doctor.komidori_doctor.mapper.BookDoctorChartMapper;
 import com.doctor.komidori_doctor.mapper.DoctorInfoMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyBookDoctorChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyDoctorInfoMapper;
-import com.doctor.komidori_doctor.pojo.CourseInfo;
-import com.doctor.komidori_doctor.pojo.DoctorInfo;
-import com.doctor.komidori_doctor.pojo.DoctorInfoExample;
+import com.doctor.komidori_doctor.pojo.*;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +34,15 @@ public class DoctorServiceImpl implements DoctorService {
     @Resource
     private MyCourseInfoMapper myCourseInfoMapper;
 
+    @Resource
+    private MyBookDoctorChartMapper myBookDoctorChartMapper;
+
+    @Resource
+    private BookDoctorChartMapper bookDoctorChartMapper;
+
+
     @Override
-    public Map<String,Object> getDoctor(int page, String city, String dept, Integer strengthId) {
+    public Map<String, Object> getDoctor(int page, String city, String dept, Integer strengthId, String type) {
         System.out.println("city :" + city);
         System.out.println("dept :" + dept);
 /*        DoctorInfoExample.Criteria criteria = doctorInfoExample.createCriteria();
@@ -58,7 +68,7 @@ public class DoctorServiceImpl implements DoctorService {
         if (city == "") {
             city = null;
         } else {
-            city = city+"%";
+            city = city + "%";
         }
 
 
@@ -66,19 +76,19 @@ public class DoctorServiceImpl implements DoctorService {
             dept = null;
         }
 
-        if (strengthId == 0){
+        if (strengthId == 0) {
             strengthId = null;
         }
 
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         Page pageMsg = PageHelper.startPage(page, 4);
-        List<DoctorInfo> list = myDoctorInfoMapper.selectByCondition(city, dept, strengthId);
+        List<DoctorInfo> list = myDoctorInfoMapper.selectByCondition(city, dept, strengthId, type);
         Integer total = Math.toIntExact(pageMsg.getPages());
         Integer pageNum = Math.toIntExact(pageMsg.getPageNum());
-        map.put("list",list);
-        map.put("pageTotal",total);
-        map.put("currentPage",pageNum);
-      //  System.out.println(list);
+        map.put("list", list);
+        map.put("pageTotal", total);
+        map.put("currentPage", pageNum);
+        //  System.out.println(list);
         return map;
     }
 
@@ -91,4 +101,54 @@ public class DoctorServiceImpl implements DoctorService {
     public CourseInfo getCourseByID(String courseID) {
         return myCourseInfoMapper.getCourseByID(courseID);
     }
+
+    @Override
+    public DoctorInfo getDoctorBookByDoctorID(Integer doctorID) {
+        return myDoctorInfoMapper.getDoctorBookByDoctorID(doctorID);
+    }
+
+    @Override
+    public String bookDoctor(BookDoctorChart bookDoctor, HttpSession session) {
+        Integer matId = (Integer) session.getAttribute("id");
+        bookDoctor.setBdocMatId(matId);
+        DoctorInfo doctor = myDoctorInfoMapper.getDoctorBookByDoctorID(bookDoctor.getBdocDocId());
+
+        if (doctor == null) {
+            return "预约失败，请重新预约";
+        }
+
+        bookDoctor.setBdocBookDate(new Date());
+        bookDoctor.setBdocStatus(0);
+        bookDoctor.setBdocPrice(doctor.getOfflinePrice());
+
+        bookDoctorChartMapper.insert(bookDoctor);
+        return "success";
+    }
+
+    @Override
+    public List<BookDoctorChart> getMyBookDoctor(HttpSession session) {
+        Integer matId = (Integer) session.getAttribute("id");
+
+        if (matId == null) {
+            return null;
+        }
+
+        System.out.println("id:" + matId);
+        //根据客户的id获取他的预约月嫂记录
+        List<BookDoctorChart> list = myBookDoctorChartMapper.getMyBookDoctor(matId);
+        return list;
+    }
+
+    @Override
+    public String deleteBookNurse(Integer id, HttpSession session) {
+        Integer bdcId = bookDoctorChartMapper.deleteByPrimaryKey(id);
+        System.out.println(bdcId);
+
+        if (bdcId == null) {
+            return "删除失败";
+        }
+
+        return "success";
+    }
+
 }

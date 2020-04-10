@@ -16,21 +16,15 @@ public interface EmailInfoMapper {
 
     int insertSelective(EmailInfo record);
 
-    List<EmailInfo> selectByExampleWithBLOBs(EmailInfoExample example);
-
     List<EmailInfo> selectByExample(EmailInfoExample example);
 
     EmailInfo selectByPrimaryKey(Integer emailId);
 
     int updateByExampleSelective(@Param("record") EmailInfo record, @Param("example") EmailInfoExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") EmailInfo record, @Param("example") EmailInfoExample example);
-
     int updateByExample(@Param("record") EmailInfo record, @Param("example") EmailInfoExample example);
 
     int updateByPrimaryKeySelective(EmailInfo record);
-
-    int updateByPrimaryKeyWithBLOBs(EmailInfo record);
 
     int updateByPrimaryKey(EmailInfo record);
 }

@@ -22,7 +22,7 @@ function sendMessage1(phoneId,btnId) {
     }, 1000); //启动计时器，1秒执行一次
     //向后台发送处理数据------------------
     $.ajax({
-        url: "http://" + host + "/maternal/getYZM",
+        url: "http://" + host + "/index/getYZM",
         method: "post",
         data: {
             phone: phone

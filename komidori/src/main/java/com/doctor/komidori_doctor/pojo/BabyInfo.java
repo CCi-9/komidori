@@ -3,6 +3,7 @@ package com.doctor.komidori_doctor.pojo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class BabyInfo {
     private Integer babyId;
@@ -94,20 +95,5 @@ public class BabyInfo {
 
     public void setBabyMomId(Integer babyMomId) {
         this.babyMomId = babyMomId;
-    }
-
-    @Override
-    public String toString() {
-        return "BabyInfo{" +
-                "babyId=" + babyId +
-                ", babyName='" + babyName + '\'' +
-                ", babyStatus=" + babyStatus +
-                ", babyBirth=" + babyBirth +
-                ", babySex='" + babySex + '\'' +
-                ", babyAge='" + babyAge + '\'' +
-                ", babyCity='" + babyCity + '\'' +
-                ", babyImg='" + babyImg + '\'' +
-                ", babyMomId=" + babyMomId +
-                '}';
     }
 }

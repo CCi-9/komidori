@@ -21,6 +21,16 @@ public class BookDoctorChart {
 
     private Integer bdocStatus;
 
+    private DoctorInfo doctorInfo;
+
+    public DoctorInfo getDoctorInfo() {
+        return doctorInfo;
+    }
+
+    public void setDoctorInfo(DoctorInfo doctorInfo) {
+        this.doctorInfo = doctorInfo;
+    }
+
     public Integer getBdocOrderId() {
         return bdocOrderId;
     }
@@ -91,5 +101,20 @@ public class BookDoctorChart {
 
     public void setBdocStatus(Integer bdocStatus) {
         this.bdocStatus = bdocStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "BookDoctorChart{" +
+                "bdocOrderId=" + bdocOrderId +
+                ", bdocMatId=" + bdocMatId +
+                ", bdocDocId=" + bdocDocId +
+                ", bdocServiceDate=" + bdocServiceDate +
+                ", bdocBookDate=" + bdocBookDate +
+                ", bdocAddr='" + bdocAddr + '\'' +
+                ", bdocPrice=" + bdocPrice +
+                ", bdocRemark='" + bdocRemark + '\'' +
+                ", bdocStatus=" + bdocStatus +
+                '}';
     }
 }

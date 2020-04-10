@@ -1,8 +1,5 @@
 package com.doctor.komidori_doctor.pojo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import java.time.LocalDate;
 import java.util.Date;
 
 public class MaternalInfo {
@@ -24,8 +21,7 @@ public class MaternalInfo {
 
     private String maternalCity;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate pregnantDate;
+    private Date pregnantDate;
 
     private String maternalIdcard;
 
@@ -109,11 +105,11 @@ public class MaternalInfo {
         this.maternalCity = maternalCity == null ? null : maternalCity.trim();
     }
 
-    public LocalDate getPregnantDate() {
+    public Date getPregnantDate() {
         return pregnantDate;
     }
 
-    public void setPregnantDate(LocalDate pregnantDate) {
+    public void setPregnantDate(Date pregnantDate) {
         this.pregnantDate = pregnantDate;
     }
 
@@ -155,26 +151,5 @@ public class MaternalInfo {
 
     public void setMaternalImg(String maternalImg) {
         this.maternalImg = maternalImg == null ? null : maternalImg.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "MaternalInfo{" +
-                "maternalId=" + maternalId +
-                ", maternalName='" + maternalName + '\'' +
-                ", maternalAge=" + maternalAge +
-                ", maternalNickname='" + maternalNickname + '\'' +
-                ", maternalPwd='" + maternalPwd + '\'' +
-                ", maternalTel='" + maternalTel + '\'' +
-                ", maternalStatus=" + maternalStatus +
-                ", maternalEmail='" + maternalEmail + '\'' +
-                ", maternalCity='" + maternalCity + '\'' +
-                ", pregnantDate=" + pregnantDate +
-                ", maternalIdcard='" + maternalIdcard + '\'' +
-                ", maternalIdcardType=" + maternalIdcardType +
-                ", maternalFollow=" + maternalFollow +
-                ", maternalPregWeek=" + maternalPregWeek +
-                ", maternalImg='" + maternalImg + '\'' +
-                '}';
     }
 }

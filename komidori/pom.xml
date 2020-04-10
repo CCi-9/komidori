@@ -93,6 +93,7 @@
             <version>1.2.41</version>
         </dependency>
 
+        <!-- 用于指定json的格式 -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>

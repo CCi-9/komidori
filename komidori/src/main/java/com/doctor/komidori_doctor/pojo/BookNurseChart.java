@@ -1,6 +1,10 @@
 package com.doctor.komidori_doctor.pojo;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class BookNurseChart {
     private Integer bnurseOrderId;
@@ -9,9 +13,11 @@ public class BookNurseChart {
 
     private Integer bnurseMatId;
 
-    private Date bnurseStartDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate bnurseStartDate;
 
-    private Date bnurseEndDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate bnurseEndDate;
 
     private Float bnursePrice;
 
@@ -21,7 +27,18 @@ public class BookNurseChart {
 
     private String bnurseRemark;
 
-    private Date bnurseDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime bnurseDate;
+
+    private NurseInfo nurseInfo;
+
+    public NurseInfo getNurseInfo() {
+        return nurseInfo;
+    }
+
+    public void setNurseInfo(NurseInfo nurseInfo) {
+        this.nurseInfo = nurseInfo;
+    }
 
     public Integer getBnurseOrderId() {
         return bnurseOrderId;
@@ -47,19 +64,19 @@ public class BookNurseChart {
         this.bnurseMatId = bnurseMatId;
     }
 
-    public Date getBnurseStartDate() {
+    public LocalDate getBnurseStartDate() {
         return bnurseStartDate;
     }
 
-    public void setBnurseStartDate(Date bnurseStartDate) {
+    public void setBnurseStartDate(LocalDate bnurseStartDate) {
         this.bnurseStartDate = bnurseStartDate;
     }
 
-    public Date getBnurseEndDate() {
+    public LocalDate getBnurseEndDate() {
         return bnurseEndDate;
     }
 
-    public void setBnurseEndDate(Date bnurseEndDate) {
+    public void setBnurseEndDate(LocalDate bnurseEndDate) {
         this.bnurseEndDate = bnurseEndDate;
     }
 
@@ -95,11 +112,27 @@ public class BookNurseChart {
         this.bnurseRemark = bnurseRemark == null ? null : bnurseRemark.trim();
     }
 
-    public Date getBnurseDate() {
+    public LocalDateTime getBnurseDate() {
         return bnurseDate;
     }
 
-    public void setBnurseDate(Date bnurseDate) {
+    public void setBnurseDate(LocalDateTime bnurseDate) {
         this.bnurseDate = bnurseDate;
+    }
+
+    @Override
+    public String toString() {
+        return "BookNurseChart{" +
+                "bnurseOrderId=" + bnurseOrderId +
+                ", bnurseNurseId=" + bnurseNurseId +
+                ", bnurseMatId=" + bnurseMatId +
+                ", bnurseStartDate=" + bnurseStartDate +
+                ", bnurseEndDate=" + bnurseEndDate +
+                ", bnursePrice=" + bnursePrice +
+                ", bnurseAddr='" + bnurseAddr + '\'' +
+                ", bnurseStatus=" + bnurseStatus +
+                ", bnurseRemark='" + bnurseRemark + '\'' +
+                ", bnurseDate=" + bnurseDate +
+                '}';
     }
 }

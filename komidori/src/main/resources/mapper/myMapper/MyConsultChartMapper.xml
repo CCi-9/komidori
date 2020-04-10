@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyConsultChartMapper">
+    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.ConsultChart">
+        <id column="consult_id" property="consultId" jdbcType="INTEGER"/>
+        <result column="doc_id" property="docId" jdbcType="INTEGER"/>
+        <result column="mat_id" property="matId" jdbcType="INTEGER"/>
+        <result column="consult_date" property="consultDate" jdbcType="TIMESTAMP"/>
+        <result column="consult_price" property="consultPrice" jdbcType="REAL"/>
+        <result column="consult_content" property="consultContent" jdbcType="VARCHAR"/>
+        <result column="consult_status" property="consultStatus" jdbcType="INTEGER"/>
+        <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+            <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+            <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+            <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+        </association>
+    </resultMap>
+
+    <select id="getMyConsult" resultMap="BaseResultMap">
+        select * from consult_chart as cc inner join doctor_info as di on di.doctor_id = cc.doc_id
+        where cc.mat_id = #{momId}
+    </select>
+</mapper>

@@ -11,6 +11,16 @@ public class CourseOrderChart {
 
     private Date courseOrderDate;
 
+    private CourseInfo courseInfo;
+
+    public CourseInfo getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(CourseInfo courseInfo) {
+        this.courseInfo = courseInfo;
+    }
+
     public Integer getCourseOrderId() {
         return courseOrderId;
     }

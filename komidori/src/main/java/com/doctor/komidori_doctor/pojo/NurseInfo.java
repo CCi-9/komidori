@@ -1,5 +1,7 @@
 package com.doctor.komidori_doctor.pojo;
 
+import java.util.List;
+
 public class NurseInfo {
     private Integer nurseId;
 
@@ -36,6 +38,16 @@ public class NurseInfo {
     private Integer nurseRank;
 
     private Float nursePrice;
+
+    private List<BookNurseChart> myBookList;
+
+    public List<BookNurseChart> getBookNurseCharts() {
+        return myBookList;
+    }
+
+    public void setBookNurseCharts(List<BookNurseChart> myBookList) {
+        this.myBookList = myBookList;
+    }
 
     public Integer getNurseId() {
         return nurseId;

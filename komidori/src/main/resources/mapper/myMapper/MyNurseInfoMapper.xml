@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyNurseInfoMapper">
+    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.NurseInfo" >
+        <id column="nurse_id" property="nurseId" jdbcType="INTEGER" />
+        <result column="nurse_name" property="nurseName" jdbcType="VARCHAR" />
+        <result column="nurse_age" property="nurseAge" jdbcType="INTEGER" />
+        <result column="nurse_tel" property="nurseTel" jdbcType="VARCHAR" />
+        <result column="nurse_idcard" property="nurseIdcard" jdbcType="VARCHAR" />
+        <result column="nurse_city" property="nurseCity" jdbcType="VARCHAR" />
+        <result column="nurse_race" property="nurseRace" jdbcType="VARCHAR" />
+        <result column="nurse_language" property="nurseLanguage" jdbcType="VARCHAR" />
+        <result column="nurse_follow" property="nurseFollow" jdbcType="INTEGER" />
+        <result column="nurse_orders" property="nurseOrders" jdbcType="INTEGER" />
+        <result column="nurse_good_review" property="nurseGoodReview" jdbcType="INTEGER" />
+        <result column="nurse_work_age" property="nurseWorkAge" jdbcType="INTEGER" />
+        <result column="nurse_email" property="nurseEmail" jdbcType="VARCHAR" />
+        <result column="nurse_img" property="nurseImg" jdbcType="VARCHAR" />
+        <result column="nurse_introduction" property="nurseIntroduction" jdbcType="VARCHAR" />
+        <result column="nurse_NVQ" property="nurseNvq" jdbcType="VARCHAR" />
+        <result column="nurse_rank" property="nurseRank" jdbcType="INTEGER" />
+        <result column="nurse_price" property="nursePrice" jdbcType="REAL" />
+    </resultMap>
+
+   <resultMap id="myResultMap" type="com.doctor.komidori_doctor.pojo.NurseInfo">
+       <id column="nurse_id" property="nurseId" jdbcType="INTEGER" />
+       <result column="nurse_name" property="nurseName" jdbcType="VARCHAR" />
+       <result column="nurse_age" property="nurseAge" jdbcType="INTEGER" />
+       <result column="nurse_tel" property="nurseTel" jdbcType="VARCHAR" />
+       <result column="nurse_idcard" property="nurseIdcard" jdbcType="VARCHAR" />
+       <result column="nurse_city" property="nurseCity" jdbcType="VARCHAR" />
+       <result column="nurse_race" property="nurseRace" jdbcType="VARCHAR" />
+       <result column="nurse_language" property="nurseLanguage" jdbcType="VARCHAR" />
+       <result column="nurse_follow" property="nurseFollow" jdbcType="INTEGER" />
+       <result column="nurse_orders" property="nurseOrders" jdbcType="INTEGER" />
+       <result column="nurse_good_review" property="nurseGoodReview" jdbcType="INTEGER" />
+       <result column="nurse_work_age" property="nurseWorkAge" jdbcType="INTEGER" />
+       <result column="nurse_email" property="nurseEmail" jdbcType="VARCHAR" />
+       <result column="nurse_img" property="nurseImg" jdbcType="VARCHAR" />
+       <result column="nurse_introduction" property="nurseIntroduction" jdbcType="VARCHAR" />
+       <result column="nurse_NVQ" property="nurseNvq" jdbcType="VARCHAR" />
+       <result column="nurse_rank" property="nurseRank" jdbcType="INTEGER" />
+       <result column="nurse_price" property="nursePrice" jdbcType="REAL" />
+       <collection property="myBookList" ofType="com.doctor.komidori_doctor.pojo.BookNurseChart">
+           <id column="bnurse_order_id" property="bnurseOrderId" jdbcType="INTEGER" />
+           <result column="bnurse_nurse_id" property="bnurseNurseId" jdbcType="INTEGER" />
+           <result column="bnurse_mat_id" property="bnurseMatId" jdbcType="INTEGER" />
+           <result column="bnurse_start_date" property="bnurseStartDate" jdbcType="DATE" />
+           <result column="bnurse_end_date" property="bnurseEndDate" jdbcType="DATE" />
+           <result column="bnurse_price" property="bnursePrice" jdbcType="REAL" />
+           <result column="bnurse_addr" property="bnurseAddr" jdbcType="VARCHAR" />
+           <result column="bnurse_status" property="bnurseStatus" jdbcType="INTEGER" />
+           <result column="bnurse_remark" property="bnurseRemark" jdbcType="VARCHAR" />
+           <result column="bnurse_date" property="bnurseDate" jdbcType="TIMESTAMP" />
+       </collection>
+   </resultMap>
+
+    <select id="getNurseBookByNurseID" resultMap="myResultMap">
+        select * from nurse_info as ni inner join book_nurse_chart as bnc
+        on ni.nurse_id = bnc.bnurse_nurse_id
+        where ni.nurse_id = #{nurseID}
+    </select>
+</mapper>

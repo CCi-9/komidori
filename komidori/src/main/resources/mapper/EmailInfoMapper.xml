@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.EmailInfo" >
     <id column="email_id" property="emailId" jdbcType="INTEGER" />
     <result column="email_title" property="emailTitle" jdbcType="VARCHAR" />
-    <result column="email_from_id" property="emailFromId" jdbcType="INTEGER" />
-    <result column="email_to_id" property="emailToId" jdbcType="INTEGER" />
+    <result column="email_from_id" property="emailFromId" jdbcType="VARCHAR" />
+    <result column="email_to_doc_id" property="emailToDocId" jdbcType="INTEGER" />
+    <result column="email_content" property="emailContent" jdbcType="VARCHAR" />
     <result column="email_status" property="emailStatus" jdbcType="INTEGER" />
     <result column="email_date" property="emailDate" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.doctor.komidori_doctor.pojo.EmailInfo" extends="BaseResultMap" >
-    <result column="email_content" property="emailContent" jdbcType="LONGVARCHAR" />
+    <result column="email_to_mad_id" property="emailToMadId" jdbcType="INTEGER" />
+    <result column="email_to_admin_id" property="emailToAdminId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,27 +71,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    email_id, email_title, email_from_id, email_to_id, email_status, email_date
+    email_id, email_title, email_from_id, email_to_doc_id, email_content, email_status, 
+    email_date, email_to_mad_id, email_to_admin_id
   </sql>
-  <sql id="Blob_Column_List" >
-    email_content
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.EmailInfoExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from email_info
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.EmailInfoExample" >
     select
     <if test="distinct" >
@@ -106,11 +88,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from email_info
     where email_id = #{emailId,jdbcType=INTEGER}
   </select>
@@ -126,11 +106,13 @@
   </delete>
   <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
     insert into email_info (email_id, email_title, email_from_id, 
-      email_to_id, email_status, email_date, 
-      email_content)
-    values (#{emailId,jdbcType=INTEGER}, #{emailTitle,jdbcType=VARCHAR}, #{emailFromId,jdbcType=INTEGER}, 
-      #{emailToId,jdbcType=INTEGER}, #{emailStatus,jdbcType=INTEGER}, #{emailDate,jdbcType=TIMESTAMP}, 
-      #{emailContent,jdbcType=LONGVARCHAR})
+      email_to_doc_id, email_content, email_status, 
+      email_date, email_to_mad_id, email_to_admin_id
+      )
+    values (#{emailId,jdbcType=INTEGER}, #{emailTitle,jdbcType=VARCHAR}, #{emailFromId,jdbcType=VARCHAR}, 
+      #{emailToDocId,jdbcType=INTEGER}, #{emailContent,jdbcType=VARCHAR}, #{emailStatus,jdbcType=INTEGER}, 
+      #{emailDate,jdbcType=TIMESTAMP}, #{emailToMadId,jdbcType=INTEGER}, #{emailToAdminId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
     insert into email_info
@@ -144,8 +126,11 @@
       <if test="emailFromId != null" >
         email_from_id,
       </if>
-      <if test="emailToId != null" >
-        email_to_id,
+      <if test="emailToDocId != null" >
+        email_to_doc_id,
+      </if>
+      <if test="emailContent != null" >
+        email_content,
       </if>
       <if test="emailStatus != null" >
         email_status,
@@ -153,8 +138,11 @@
       <if test="emailDate != null" >
         email_date,
       </if>
-      <if test="emailContent != null" >
-        email_content,
+      <if test="emailToMadId != null" >
+        email_to_mad_id,
+      </if>
+      <if test="emailToAdminId != null" >
+        email_to_admin_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -165,10 +153,13 @@
         #{emailTitle,jdbcType=VARCHAR},
       </if>
       <if test="emailFromId != null" >
-        #{emailFromId,jdbcType=INTEGER},
+        #{emailFromId,jdbcType=VARCHAR},
       </if>
-      <if test="emailToId != null" >
-        #{emailToId,jdbcType=INTEGER},
+      <if test="emailToDocId != null" >
+        #{emailToDocId,jdbcType=INTEGER},
+      </if>
+      <if test="emailContent != null" >
+        #{emailContent,jdbcType=VARCHAR},
       </if>
       <if test="emailStatus != null" >
         #{emailStatus,jdbcType=INTEGER},
@@ -176,8 +167,11 @@
       <if test="emailDate != null" >
         #{emailDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="emailContent != null" >
-        #{emailContent,jdbcType=LONGVARCHAR},
+      <if test="emailToMadId != null" >
+        #{emailToMadId,jdbcType=INTEGER},
+      </if>
+      <if test="emailToAdminId != null" >
+        #{emailToAdminId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -197,10 +191,13 @@
         email_title = #{record.emailTitle,jdbcType=VARCHAR},
       </if>
       <if test="record.emailFromId != null" >
-        email_from_id = #{record.emailFromId,jdbcType=INTEGER},
+        email_from_id = #{record.emailFromId,jdbcType=VARCHAR},
       </if>
-      <if test="record.emailToId != null" >
-        email_to_id = #{record.emailToId,jdbcType=INTEGER},
+      <if test="record.emailToDocId != null" >
+        email_to_doc_id = #{record.emailToDocId,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailContent != null" >
+        email_content = #{record.emailContent,jdbcType=VARCHAR},
       </if>
       <if test="record.emailStatus != null" >
         email_status = #{record.emailStatus,jdbcType=INTEGER},
@@ -208,23 +205,13 @@
       <if test="record.emailDate != null" >
         email_date = #{record.emailDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.emailContent != null" >
-        email_content = #{record.emailContent,jdbcType=LONGVARCHAR},
+      <if test="record.emailToMadId != null" >
+        email_to_mad_id = #{record.emailToMadId,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailToAdminId != null" >
+        email_to_admin_id = #{record.emailToAdminId,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update email_info
-    set email_id = #{record.emailId,jdbcType=INTEGER},
-      email_title = #{record.emailTitle,jdbcType=VARCHAR},
-      email_from_id = #{record.emailFromId,jdbcType=INTEGER},
-      email_to_id = #{record.emailToId,jdbcType=INTEGER},
-      email_status = #{record.emailStatus,jdbcType=INTEGER},
-      email_date = #{record.emailDate,jdbcType=TIMESTAMP},
-      email_content = #{record.emailContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -233,10 +220,13 @@
     update email_info
     set email_id = #{record.emailId,jdbcType=INTEGER},
       email_title = #{record.emailTitle,jdbcType=VARCHAR},
-      email_from_id = #{record.emailFromId,jdbcType=INTEGER},
-      email_to_id = #{record.emailToId,jdbcType=INTEGER},
+      email_from_id = #{record.emailFromId,jdbcType=VARCHAR},
+      email_to_doc_id = #{record.emailToDocId,jdbcType=INTEGER},
+      email_content = #{record.emailContent,jdbcType=VARCHAR},
       email_status = #{record.emailStatus,jdbcType=INTEGER},
-      email_date = #{record.emailDate,jdbcType=TIMESTAMP}
+      email_date = #{record.emailDate,jdbcType=TIMESTAMP},
+      email_to_mad_id = #{record.emailToMadId,jdbcType=INTEGER},
+      email_to_admin_id = #{record.emailToAdminId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -248,10 +238,13 @@
         email_title = #{emailTitle,jdbcType=VARCHAR},
       </if>
       <if test="emailFromId != null" >
-        email_from_id = #{emailFromId,jdbcType=INTEGER},
+        email_from_id = #{emailFromId,jdbcType=VARCHAR},
       </if>
-      <if test="emailToId != null" >
-        email_to_id = #{emailToId,jdbcType=INTEGER},
+      <if test="emailToDocId != null" >
+        email_to_doc_id = #{emailToDocId,jdbcType=INTEGER},
+      </if>
+      <if test="emailContent != null" >
+        email_content = #{emailContent,jdbcType=VARCHAR},
       </if>
       <if test="emailStatus != null" >
         email_status = #{emailStatus,jdbcType=INTEGER},
@@ -259,29 +252,25 @@
       <if test="emailDate != null" >
         email_date = #{emailDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="emailContent != null" >
-        email_content = #{emailContent,jdbcType=LONGVARCHAR},
+      <if test="emailToMadId != null" >
+        email_to_mad_id = #{emailToMadId,jdbcType=INTEGER},
+      </if>
+      <if test="emailToAdminId != null" >
+        email_to_admin_id = #{emailToAdminId,jdbcType=INTEGER},
       </if>
     </set>
-    where email_id = #{emailId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
-    update email_info
-    set email_title = #{emailTitle,jdbcType=VARCHAR},
-      email_from_id = #{emailFromId,jdbcType=INTEGER},
-      email_to_id = #{emailToId,jdbcType=INTEGER},
-      email_status = #{emailStatus,jdbcType=INTEGER},
-      email_date = #{emailDate,jdbcType=TIMESTAMP},
-      email_content = #{emailContent,jdbcType=LONGVARCHAR}
     where email_id = #{emailId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.EmailInfo" >
     update email_info
     set email_title = #{emailTitle,jdbcType=VARCHAR},
-      email_from_id = #{emailFromId,jdbcType=INTEGER},
-      email_to_id = #{emailToId,jdbcType=INTEGER},
+      email_from_id = #{emailFromId,jdbcType=VARCHAR},
+      email_to_doc_id = #{emailToDocId,jdbcType=INTEGER},
+      email_content = #{emailContent,jdbcType=VARCHAR},
       email_status = #{emailStatus,jdbcType=INTEGER},
-      email_date = #{emailDate,jdbcType=TIMESTAMP}
+      email_date = #{emailDate,jdbcType=TIMESTAMP},
+      email_to_mad_id = #{emailToMadId,jdbcType=INTEGER},
+      email_to_admin_id = #{emailToAdminId,jdbcType=INTEGER}
     where email_id = #{emailId,jdbcType=INTEGER}
   </update>
 </mapper>

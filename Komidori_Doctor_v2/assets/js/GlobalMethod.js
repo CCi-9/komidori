@@ -1,7 +1,7 @@
 //判断用户是否已经登陆
 function returnSignin(){
     $.ajax({
-        url: "http://" + host + "/maternal/checkUser",
+        url: "http://" + host + "/index/checkUser",
         method: "get",
         xhrFields: {
             withCredentials: true  //带上cookie信息，解决sessionid不一致

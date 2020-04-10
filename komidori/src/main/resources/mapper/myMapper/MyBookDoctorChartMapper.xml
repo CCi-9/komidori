@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyBookDoctorChartMapper">
+    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.BookDoctorChart">
+        <id column="bdoc_order_id" property="bdocOrderId" jdbcType="INTEGER"/>
+        <result column="bdoc_mat_id" property="bdocMatId" jdbcType="INTEGER"/>
+        <result column="bdoc_doc_id" property="bdocDocId" jdbcType="INTEGER"/>
+        <result column="bdoc_service_date" property="bdocServiceDate" jdbcType="TIMESTAMP"/>
+        <result column="bdoc_book_date" property="bdocBookDate" jdbcType="TIMESTAMP"/>
+        <result column="bdoc_addr" property="bdocAddr" jdbcType="VARCHAR"/>
+        <result column="bdoc_price" property="bdocPrice" jdbcType="REAL"/>
+        <result column="bdoc_remark" property="bdocRemark" jdbcType="VARCHAR"/>
+        <result column="bdoc_status" property="bdocStatus" jdbcType="INTEGER"/>
+        <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+            <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+            <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+            <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+        </association>
+    </resultMap>
+
+    <select id="getMyBookDoctor" resultMap="BaseResultMap">
+        select * from book_doctor_chart bdc inner join doctor_info as di on bdc.bdoc_doc_id = di.doctor_id
+        where bdc.bdoc_mat_id = #{matId}
+  </select>
+</mapper>

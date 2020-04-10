@@ -57,12 +57,14 @@ public class DoctorInfo {
 
     private List<CourseInfo> courseInfo;
 
-    public List<CourseInfo> getCourseInfo() {
-        return courseInfo;
+    private List<BookDoctorChart> bookDoctorChart;
+
+    public List<BookDoctorChart> getBookDoctorChart() {
+        return bookDoctorChart;
     }
 
-    public void setCourseInfo(List<CourseInfo> courseInfo) {
-        this.courseInfo = courseInfo;
+    public void setBookDoctorChart(List<BookDoctorChart> bookDoctorChart) {
+        this.bookDoctorChart = bookDoctorChart;
     }
 
     public Integer getDoctorId() {
@@ -78,7 +80,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName == null ? null : doctorName.trim();
+        this.doctorName = doctorName;
     }
 
     public String getDoctorSex() {
@@ -86,7 +88,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorSex(String doctorSex) {
-        this.doctorSex = doctorSex == null ? null : doctorSex.trim();
+        this.doctorSex = doctorSex;
     }
 
     public Integer getDoctorAge() {
@@ -102,7 +104,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorPwd(String doctorPwd) {
-        this.doctorPwd = doctorPwd == null ? null : doctorPwd.trim();
+        this.doctorPwd = doctorPwd;
     }
 
     public String getDoctorTel() {
@@ -110,7 +112,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorTel(String doctorTel) {
-        this.doctorTel = doctorTel == null ? null : doctorTel.trim();
+        this.doctorTel = doctorTel;
     }
 
     public String getDoctorIdcard() {
@@ -118,7 +120,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorIdcard(String doctorIdcard) {
-        this.doctorIdcard = doctorIdcard == null ? null : doctorIdcard.trim();
+        this.doctorIdcard = doctorIdcard;
     }
 
     public Integer getDoctorStatus() {
@@ -134,7 +136,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorCity(String doctorCity) {
-        this.doctorCity = doctorCity == null ? null : doctorCity.trim();
+        this.doctorCity = doctorCity;
     }
 
     public String getDoctorHospital() {
@@ -142,7 +144,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorHospital(String doctorHospital) {
-        this.doctorHospital = doctorHospital == null ? null : doctorHospital.trim();
+        this.doctorHospital = doctorHospital;
     }
 
     public String getDoctorDept() {
@@ -150,7 +152,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorDept(String doctorDept) {
-        this.doctorDept = doctorDept == null ? null : doctorDept.trim();
+        this.doctorDept = doctorDept;
     }
 
     public String getDoctorEmail() {
@@ -158,7 +160,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorEmail(String doctorEmail) {
-        this.doctorEmail = doctorEmail == null ? null : doctorEmail.trim();
+        this.doctorEmail = doctorEmail;
     }
 
     public Integer getDoctorBookable() {
@@ -206,7 +208,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorIntroduction(String doctorIntroduction) {
-        this.doctorIntroduction = doctorIntroduction == null ? null : doctorIntroduction.trim();
+        this.doctorIntroduction = doctorIntroduction;
     }
 
     public String getDoctorImg() {
@@ -214,7 +216,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorImg(String doctorImg) {
-        this.doctorImg = doctorImg == null ? null : doctorImg.trim();
+        this.doctorImg = doctorImg;
     }
 
     public String getDoctorRank() {
@@ -222,7 +224,7 @@ public class DoctorInfo {
     }
 
     public void setDoctorRank(String doctorRank) {
-        this.doctorRank = doctorRank == null ? null : doctorRank.trim();
+        this.doctorRank = doctorRank;
     }
 
     public Integer getDoctorVerify() {
@@ -238,7 +240,7 @@ public class DoctorInfo {
     }
 
     public void setDcotorStrength(String dcotorStrength) {
-        this.dcotorStrength = dcotorStrength == null ? null : dcotorStrength.trim();
+        this.dcotorStrength = dcotorStrength;
     }
 
     public Float getOnlinePrice() {
@@ -271,5 +273,13 @@ public class DoctorInfo {
 
     public void setDocWorkAge(Integer docWorkAge) {
         this.docWorkAge = docWorkAge;
+    }
+
+    public List<CourseInfo> getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(List<CourseInfo> courseInfo) {
+        this.courseInfo = courseInfo;
     }
 }

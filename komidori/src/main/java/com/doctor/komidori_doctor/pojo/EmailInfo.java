@@ -7,15 +7,19 @@ public class EmailInfo {
 
     private String emailTitle;
 
-    private Integer emailFromId;
+    private String emailFromId;
 
-    private Integer emailToId;
+    private Integer emailToDocId;
+
+    private String emailContent;
 
     private Integer emailStatus;
 
     private Date emailDate;
 
-    private String emailContent;
+    private Integer emailToMadId;
+
+    private Integer emailToAdminId;
 
     public Integer getEmailId() {
         return emailId;
@@ -33,20 +37,28 @@ public class EmailInfo {
         this.emailTitle = emailTitle == null ? null : emailTitle.trim();
     }
 
-    public Integer getEmailFromId() {
+    public String getEmailFromId() {
         return emailFromId;
     }
 
-    public void setEmailFromId(Integer emailFromId) {
-        this.emailFromId = emailFromId;
+    public void setEmailFromId(String emailFromId) {
+        this.emailFromId = emailFromId == null ? null : emailFromId.trim();
     }
 
-    public Integer getEmailToId() {
-        return emailToId;
+    public Integer getEmailToDocId() {
+        return emailToDocId;
     }
 
-    public void setEmailToId(Integer emailToId) {
-        this.emailToId = emailToId;
+    public void setEmailToDocId(Integer emailToDocId) {
+        this.emailToDocId = emailToDocId;
+    }
+
+    public String getEmailContent() {
+        return emailContent;
+    }
+
+    public void setEmailContent(String emailContent) {
+        this.emailContent = emailContent == null ? null : emailContent.trim();
     }
 
     public Integer getEmailStatus() {
@@ -65,11 +77,19 @@ public class EmailInfo {
         this.emailDate = emailDate;
     }
 
-    public String getEmailContent() {
-        return emailContent;
+    public Integer getEmailToMadId() {
+        return emailToMadId;
     }
 
-    public void setEmailContent(String emailContent) {
-        this.emailContent = emailContent == null ? null : emailContent.trim();
+    public void setEmailToMadId(Integer emailToMadId) {
+        this.emailToMadId = emailToMadId;
+    }
+
+    public Integer getEmailToAdminId() {
+        return emailToAdminId;
+    }
+
+    public void setEmailToAdminId(Integer emailToAdminId) {
+        this.emailToAdminId = emailToAdminId;
     }
 }

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("maternal")
+@RequestMapping("index")
 public class IndexController {
     @Resource(name = "indexService")
     private IndexService indexService;

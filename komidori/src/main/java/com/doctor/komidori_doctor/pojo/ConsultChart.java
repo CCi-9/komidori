@@ -17,6 +17,16 @@ public class ConsultChart {
 
     private Integer consultStatus;
 
+    private DoctorInfo doctorInfo;
+
+    public DoctorInfo getDoctorInfo() {
+        return doctorInfo;
+    }
+
+    public void setDoctorInfo(DoctorInfo doctorInfo) {
+        this.doctorInfo = doctorInfo;
+    }
+
     public Integer getConsultId() {
         return consultId;
     }

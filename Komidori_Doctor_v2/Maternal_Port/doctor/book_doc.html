@@ -1,419 +1,506 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<!-- Meta Tags -->
+<head>
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="themepresss">
-	<title>预约医生</title>
-	
-	<link href="../../assets/css/index_Base.css" rel="stylesheet" />	
-	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/doctor/doctor.css"/>
-	<link href="../../assets/css/datepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-	<link href="../../assets/css/city/city-picker.css" rel="stylesheet" />
-	
-	</head>
-	<body class="card-no-border">
-		
-		<div class="page-wrapper">
-		<!--头部-->
-		<header id="header" class="site-header header-style-1 header-style-3">
-            <div class="topbar">
-                <div class="container">
-                    <div class="separator"></div>
-                    <div class="row">
-                        <div class="col col-sm-3">
-                            <div class="contact-info">
-                                <ul>
-                                    <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col col-sm-5">
-                            <div class="contact-info">
-                                <ul>
-                                    <li><i class="ti-mobile"></i>502015889@qq.com</li>
-                                    <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--登陆注册入口-->
-                        <div class="col col-sm-4 hidden">
-                            <div class="sign">
-                            	<ul>
-                            		<li><a href="signin.html" class="log">登陆</a></li>
-                            		<li><a href="register.html" class="log">注册</a></li>
-                            		<li id="doc_entry"><a href="#"  class="log">医生入口</a></li>                            			
-                            	</ul>
-                            </div>
-                        </div>
-                        <!--登陆后显示-->
-                        <div class="col col-sm-4 ">
-                            <div class="admin">
-                            	<ul>
-                            		<li>
-                            			<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            				<img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px" />
-                            				Komidori Li
-                            				<span class="caret"></span>
-                        				</a>
-                        				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-				                          <li> <a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a> </li>
-				                          <li> <a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a> </li>
-				                          <li> <a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息 </a> </li>
-				                          <hr />
-				                          <li> <a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a> </li>
-                        				</ul>                      				
-                            		</li>
-                            	</ul>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div> <!-- end container -->
-            </div>
-            <!-- end topbar -->
+    <title>预约医生</title>
 
-            <nav class="navigation navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="open-btn">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!--logo-->
-                        <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
-                    </div>
-                    <!--导航条-->
-                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
-                        <button class="close-navbar"><i class="ti-close"></i></button>
-                        <ul class="nav navbar-nav">
-                        	
-                            <li class="menu-item-has-children">
-                                <a href="../index.html">主页</a>
-                               
-                            </li>
-                            
-                            <li class="menu-item-has-children">
-                                <a href="#">线上咨询服务</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../doctor/find_doctors.html">找医生</a></li>
-                                    <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">线下预约服务</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
-                                    <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">经验交流社区</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../mom_public/expert_course.html">专家课程</a></li>
-                                    <li><a href="../expert/find_experts.html">找专家</a></li>
-                                    <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="menu-item-has-children">
-                                <a href="#">育儿工具</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../baby_tools/production_list.html">产检表</a></li>
-                                    <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
-                                    <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="../about.html">关于我们</a></li>
-                            
-                        </ul>
-                    </div><!-- end of nav-collapse -->
-					<!--导航条//-->
-					<!--搜索-->
-                    <div class="side-info">
-                        <div class="header-search-form-wrapper">
-                            <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
-                            <div class="header-search-form">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="在此处搜索...">
-                                        <button type="submit"><i class="fi flaticon-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>                      	
-                    <!--搜索//-->
-                </div><!-- end of container -->
-            </nav>
-        </header>
-        
-		<!--头部结束-->
-		<div class="preloader">
-            <div class="lds-ripple">
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <!-- end preloader -->
-		
-		<div class="breadcumb-area">
+    <link href="../../assets/css/index_Base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/doctor/doctor.css"/>
+    <link href="../../assets/css/datepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="../../assets/css/city/city-picker.css" rel="stylesheet"/>
+
+</head>
+<body class="card-no-border">
+
+<div class="page-wrapper" id="app">
+    <!--头部-->
+    <header id="header" class="site-header header-style-1 header-style-3">
+        <div class="topbar">
             <div class="container">
+                <div class="separator"></div>
                 <div class="row">
-                    <div class="col-12">
-                        <div class="breadcumb-wrap text-center">
-                            <h2>预约医生</h2>
-                            <!--导航-->
+                    <div class="col col-sm-3">
+                        <div class="contact-info">
                             <ul>
-                                <li><a href="../index.html">主页</a></li>
-                                <li>线下服务</li>
-                                <li><span>预约医生</span></li>
+                                <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="col col-sm-5">
+                        <div class="contact-info">
+                            <ul>
+                                <li><i class="ti-mobile"></i>502015889@qq.com</li>
+                                <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--登陆注册入口-->
+                    <div class="col col-sm-4 hidden">
+                        <div class="sign">
+                            <ul>
+                                <li><a href="signin.html" class="log">登陆</a></li>
+                                <li><a href="register.html" class="log">注册</a></li>
+                                <li id="doc_entry"><a href="#" class="log">医生入口</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--登陆后显示-->
+                    <div class="col col-sm-4 ">
+                        <div class="admin">
+                            <ul>
+                                <li>
+                                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px"/>
+                                        Komidori Li
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                        <li><a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a>
+                                        </li>
+                                        <li><a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a></li>
+                                        <li><a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息
+                                        </a></li>
+                                        <hr/>
+                                        <li><a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div> <!-- end container -->
+        </div>
+        <!-- end topbar -->
+
+        <nav class="navigation navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="open-btn">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--logo-->
+                    <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
+                </div>
+                <!--导航条-->
+                <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                    <button class="close-navbar"><i class="ti-close"></i></button>
+                    <ul class="nav navbar-nav">
+
+                        <li class="menu-item-has-children">
+                            <a href="../index.html">主页</a>
+
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">线上咨询服务</a>
+                            <ul class="sub-menu">
+                                <li><a href="../doctor/find_doctors.html">找医生</a></li>
+                                <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">线下预约服务</a>
+                            <ul class="sub-menu">
+                                <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
+                                <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">经验交流社区</a>
+                            <ul class="sub-menu">
+                                <li><a href="../mom_public/expert_course.html">专家课程</a></li>
+                                <li><a href="../expert/find_experts.html">找专家</a></li>
+                                <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">育儿工具</a>
+                            <ul class="sub-menu">
+                                <li><a href="../baby_tools/production_list.html">产检表</a></li>
+                                <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
+                                <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="../about.html">关于我们</a></li>
+
+                    </ul>
+                </div><!-- end of nav-collapse -->
+                <!--导航条//-->
+                <!--搜索-->
+                <div class="side-info">
+                    <div class="header-search-form-wrapper">
+                        <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
+                        <div class="header-search-form">
+                            <form>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="在此处搜索...">
+                                    <button type="submit"><i class="fi flaticon-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--搜索//-->
+            </div><!-- end of container -->
+        </nav>
+    </header>
+
+    <!--头部结束-->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- end preloader -->
+
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>预约医生</h2>
+                        <!--导航-->
+                        <ul>
+                            <li><a href="../index.html">主页</a></li>
+                            <li>线下服务</li>
+                            <li><span>预约医生</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-		
-		<section class="blog-single-section section-padding">
-            <div class="ab-svg_color">
-                <svg x="0px" y="0px"
-                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+    </div>
+
+    <section class="blog-single-section section-padding">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px"
+                 viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
                 <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
                     z"/>
                </svg>
+        </div>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="container book_doctor">
+                    <div class="col content-panel dbox">
+
+                        <!-- /col-md-4 -->
+                        <div class="col-md-4  centered">
+                            <div class="profile-pic">
+                                <p><img :src="doctor.doctorImg" class="img-circle"></p>
+                                <p>
+                                    <button @click="thumbup" id="thumbup" class="btn btn-theme"><i
+                                            class="ti-thumb-up"></i> 点赞
+                                    </button>
+                                    <button @click="follow" id="sa-follow" class="btn btn-theme02"><i
+                                            class="ti-plus"></i>关注
+                                    </button>
+                                </p>
+                            </div>
+                        </div><!-- /col-md-4 -->
+
+                        <div class="col-md-4 profile-text doc_center_box">
+                            <h3>{{doctor.doctorName}}<span class="hospital">{{doctor.doctorHospital}}</span></h3>
+                            <!-- 姓名 -->
+                            <h5>{{doctor.doctorDept}}
+                                <span class="rank">{{doctor.doctorRank}}</span>
+                                <span class="label label-warning label1" v-if="doctor.doctorVerify == 1">已认证</span>
+                                <span class="label label-warning label1" v-else>未认证</span>
+                                <button class="btn1" data-toggle="modal" data-target="#confirm">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </button>
+                            </h5><!-- 科室、等级 -->
+
+                            <p class="centent">
+                                <span class="label label-success">知名医院</span>
+                                <span class="label label-success">从业{{doctor.docWorkAge}}年</span>
+                                <span class="label label-success">{{doctor.doctorCity}}</span>
+                            </p>
+                            <br>
+                            <p>
+                                <button class="btn btn-theme"><i class="ti-envelope"></i> 马上咨询</button>
+                                <span class="label label-default">{{doctor.onlinePrice}}￥/次</span>
+                            </p>
+                        </div>
+
+                        <!--点赞收藏情况-->
+                        <div class="col-md-4 profile-text mt mb centered">
+                            <div class="right-divider">
+                                <h4>{{doctor.doctorGoodReview}}</h4>
+                                <h6>点赞</h6>
+                                <h4>{{doctor.doctorOrders}}</h4>
+                                <h6>服务人次</h6>
+                                <h4>{{doctor.doctorFollow}}</h4>
+                                <h6>关注量</h6>
+                                <my-component></my-component>
+                            </div>
+                        </div>
+
+                        <!-- 姓名、简介 -->
+
+                    </div>
+                </div>
+                <!-- content-panel -->
             </div>
-            
-            <div class="container">
-            	
-            	<div class="row">
-            		<div class="container book_doctor">
-            			<div class="col content-panel dbox">
-					            	
-					            	<!-- /col-md-4 -->
-						            <div class="col-md-4  centered">
-						                <div class="profile-pic">
-						                  <p><img src="../../assets/images/heads.jpg" class="img-circle"></p>
-						                  <p>
-						                    <button id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞</button>
-						                    <button class="btn btn-theme02"><i class="ti-plus"></i> 预约</button>
-						                  </p>
-						                </div>
-						            </div><!-- /col-md-4 -->
-					            	
-					            	<div class="col-md-4 profile-text doc_center_box">
-					                <h3>菜玉溪<span class="hospital">湛江中心人民</span></h3><!-- 姓名 -->
-					                <h5>妇产科
-					                	<span class="rank">主任医师</span>
-					                	<span class="label label-warning label1">已认证</span>
-					                	<button class="btn1" data-toggle="modal" data-target="#confirm">
-					                		<i class="glyphicon glyphicon-eye-open"></i>
-					                	</button>
-					                </h5><!-- 科室、等级 -->
+            <!--row end-->
 
-					                <p class="centent">
-					                	<span class="label label-success">知名医院</span>
-					                	<span class="label label-success">从业20年</span>
-					                	<span class="label label-success">汕头市</span>				               	
-					                </p>
-					                <br>
-					                <p>
-					                	<button class="btn btn-theme"><i class="ti-envelope"></i> 马上咨询</button>
-					                	<span class="label label-default">38￥/次</span>
-					                </p>
-					              	</div>
-					            						            					            
-					            	<!--点赞收藏情况-->           	
-						            <div class="col-md-4 profile-text mt mb centered">
-						                <div class="right-divider">
-						                  <h4>130</h4>
-						                  <h6>点赞</h6>
-						                  <h4>250</h4>
-						                  <h6>服务人次</h6>
-						                  <h4>55</h4>
-						                  <h6>评价</h6>
-						                </div>
-						            </div>
-					            
-					            	<!-- 姓名、简介 -->
+            <!--预约-->
+            <div class="nurse_contentbox">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="greenbar"></div>
+                        <div class="centerbar">
+                            <p>预约</p>
+                        </div>
+                        <div class="rightbar"></div>
+                    </div>
+                </div>
 
-					            </div>
-            		</div>
-					 <!-- content-panel -->
-				</div>
-				<!--row end-->
-				
-				<!--预约-->
-				<div class="nurse_contentbox">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="greenbar"></div>
-								<div class="centerbar">
-									<p>预约</p>
-								</div>
-							<div class="rightbar"></div>
-						</div>
-					</div>
-								
-					<div class="row">
-						<div class="col-md-12 normal_text">
-							<div class="well">
-				               <div id="sandbox-container">
-					               	<form action="" >
-					               		
-					               		<div class="form-group">
-					               			<label for="username">姓名</label>
-					               			<input id="username" name="username" type="text" value="" />
-					               		</div>
-					               		
-					               		<div class="form-group">
-					               			<label for="telephone">电话</label>
-					               			<input id="telephone" name="telephone" value="" type="tel"/>
-					               		</div>
-					               		
-					               		<div class="form-group">
-					               			<label for="city">地区</label>
-					               			<input id="city" name="city" value="" type="text"/>
-					               			<a class="btn btn-theme btn-sm" data-toggle="modal" data-target="#city_select2">选择城市</a>
-					               		</div>
-					               		
-					               		
-					               		<div class="form-group">
-					               			<label for="addr">详细地址</label>
-					               			<input id="addr" name="addr" value="" type="text"/>
-					               		</div>
-					               		
-					               		<div class="form-group">
-					               			<label for="remark">描述问题/备注</label>
-					               			<textarea id="remark" name="remark" value="" class="form-control"></textarea>
-					               		</div>
-					               		
-					               		
-					               		<div class="form-group">
-					               			<label for="datetimepicker">时间</label>
-					               			<div class="input-group" id="datetimepicker"  >
-						               			<input id="time_field" type="text" value="2012-05-15 21:05" class="date_input">
-						               			<span class="input-group-addon timer"><i class="ti-time "></i></span>
-					               			</div>
-					               		</div>
-					               		
-					               		<button type="submit" class="btn btn-theme">提交</button>
-					               		
-					               	</form>
-				               </div>
-				               
-				
-				            </div>
-							
-						</div>
-					</div>
-					
-					
-					
-				</div>
-				
+                <div class="row">
+                    <div class="col-md-12 normal_text">
+                        <div class="well">
+                            <div id="sandbox-container">
+                                <form action="" onsubmit="return false">
+
+
+                                    <div class="form-group">
+                                        <label for="addr">详细地址</label>
+                                        <input v-model="bookDoctor.bdocAddr" id="addr" name="addr" value=""
+                                               type="text"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="remark">描述问题/备注</label>
+                                        <textarea v-model="bookDoctor.bdocRemark" id="remark" name="remark" value=""
+                                                  class="form-control"></textarea>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="datetimepicker">时间</label>
+                                        <div class="input-group" id="datetimepicker">
+                                            <input id="time_field" type="text" value=""
+                                                   class="date_input">
+                                            <span class="input-group-addon timer"><i class="ti-time "></i></span>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" onclick="bookDoctor()" class="btn btn-theme">提交</button>
+
+                                </form>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
-            
-            <!--城市选择-->
-        <div class="modal fade" id="city_select2" tabindex="-1" role="dialog" aria-labelledby="mycity" aria-hidden="true">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="modal-header">
-		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                <h4 class="modal-title" id="mycity">选择城市</h4>
-		            </div>
-		            <div class="modal-body">
-		            	
-		            	<div class="form-group">
-							<form  class="">
-								<div id="city">
-									<input id="city-picker3" class="form-control form-control-line" readonly type="text" value="广东省/湛江市/赤坎区" data-toggle="city-picker">	
-								</div>
-							</form>										
-						</div>
-						
-		            </div>
-		            <div class="modal-footer">
-		                <button id="confirm_city" type="button" class="btn btn-default" data-dismiss="modal" >确认</button>
-		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-		            </div>
-		        </div><!-- /.modal-content -->
-		    </div><!-- /.modal -->
-		</div>
-            
-            
-       </section>    
 
-										
-		<!--页尾-->
-		<div id="foot"></div>
-		
-	</div>	
-	</body>
-	
+        </div>
+
+        <!--城市选择-->
+        <div class="modal fade" id="city_select2" tabindex="-1" role="dialog" aria-labelledby="mycity"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="mycity">选择城市</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <form class="">
+                                <div id="city">
+                                    <input id="city-picker3" class="form-control form-control-line" readonly type="text"
+                                           value="广东省/湛江市/赤坎区" data-toggle="city-picker">
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="confirm_city" type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+
+    </section>
+
+
+    <!--页尾-->
+    <div id="foot"></div>
+
+</div>
+</body>
 
 
 <!-- All JavaScript files================================================== -->
-    
-    <!--jquery-->
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    
-    <!--bootstrap-->
-	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
-    <!-- Plugins for this template -->
-    <script src="../../assets/js/jquery-plugin-collection.js"></script>
 
-    <!-- Custom script for this template -->
-    <script src="../../assets/js/script.js"></script>
-    
-    <!--滑动-->
-	<script src="../../assets/js/smoothscroll.js" ></script>
-    
-    <!--城市选择-->
-    <script src="../../assets/js/city/city-picker.data.js"></script>
-    <script src="../../assets/js/city/city-picker.js"></script>
-    
-    <!--时间插件-->
-   	<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
-   	<script src="../../assets/js/time/bootstrap-datetimepicker.min.js"></script>
-   	<script src="../../assets/js/time/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--jquery-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 
+<!--bootstrap-->
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Plugins for this template -->
+<script src="../../assets/js/jquery-plugin-collection.js"></script>
+
+<!-- Custom script for this template -->
+<script src="../../assets/js/script.js"></script>
+
+<!--滑动-->
+<script src="../../assets/js/smoothscroll.js"></script>
+
+<!--城市选择-->
+<script src="../../assets/js/city/city-picker.data.js"></script>
+<script src="../../assets/js/city/city-picker.js"></script>
+
+<!--时间插件-->
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+<script src="../../assets/js/time/bootstrap-datetimepicker.min.js"></script>
+<script src="../../assets/js/time/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+<script src="../../assets/js/vue/vue.js"></script>
+<script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
+<script src="../../assets/js/jquery.params.js"></script>
 <!-- JS files end===========================================================-->
 <script>
 
-	
-	
-$(function(){
-	$("#foot").load("../low_footer.html");	
+    function init() {
+        $(function () {
+            $("#foot").load("../low_footer.html");
 
-	$('#time_field').datetimepicker({
-		format: 'yyyy-mm-dd hh:ii',
-		startDate:new Date(),
-		todayHighlight:true,
-		linkField: "time_field",
-        linkFormat: "yyyy-mm-dd hh:ii",
-        showMeridian: true,
-        language:'zh-CN',
-        endDate:"+1m", //限制可选时间范围在2月内
-        todayBtn: true,
-        pickerPosition: "top-right",
+
+            $("#confirm_city").click(function () {
+                var city = $("#city-picker3").val();
+                $("#city").val(city);
+            });
+
+        });
+    }
+
+    function initDatePlugin() {
+        $('#time_field').datetimepicker({
+            format: 'yyyy-mm-dd hh:ii',
+            startDate: new Date(),
+            todayHighlight: true,
+            linkField: "time_field",
+            linkFormat: "yyyy-mm-dd hh:ii",
+            showMeridian: true,
+            language: 'zh-CN',
+            endDate: "+1m", //限制可选时间范围在2月内
+            todayBtn: true,
+            pickerPosition: "top-right",
+            datesDisabled: app.disableDay //app.disableDay
 //      datesDisabled:['2020-03-28','2020-03-29']
 //    	maxView: 4,
-	});
-    
-    $("#confirm_city").click(function(){
-    	var city = $("#city-picker3").val();
-    	$("#city").val(city);
-    });
+        });
+    }
 
- });
 
-	</script>
-		
+</script>
+<script>
+    function getDoctor() {
+        let id = $.query.get("id")
+
+        console.log(id)
+        $.ajax({
+            url: "http://" + host + "/doctor/getDoctorBookByDoctorID",
+            method: "get",
+            data: {
+                doctorID: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                app.doctor = result.data
+                let bdc = app.doctor.bookDoctorChart
+                for (let i = 0; i < bdc.length; i++) {
+                    let fmt = formatDate(bdc[i].bdocServiceDate, "yyyy-MM-dd")
+                    app.disableDay.push(fmt)
+                }
+                initDatePlugin()
+            }
+        });
+    }
+
+    function bookDoctor() {
+        app.bookDoctor.bdocDocId = $.query.get("id")
+        let time = $('#time_field').val()
+        app.bookDoctor.bdocServiceDate = formatDate(time, "yyyy-MM-ddThh:mm:ss")
+        console.log(app.bookDoctor.bdocServiceDate)
+        $.ajax({
+            url: "http://" + host + "/doctor/bookDoctor",
+            method: "post",
+            data: JSON.stringify(app.bookDoctor),
+            dataType: "json",
+            contentType: "application/json;charset-UTF-8",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                alert(result.message)
+                if (result.status != "200") {
+                    window.location.href = 'find_appointment_doc.html'
+                } else {
+                    window.location.href = 'appointment_doc_list.html'
+                }
+            }
+        });
+    }
+</script>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            doctor: {},
+            bookDoctor: {
+                bdocDocId: "",
+                bdocAddr: "",
+                bdocRemark: "",
+                bdocServiceDate: "",
+            },
+
+            disableDay: [],
+        },
+        mounted() {
+            returnSignin()
+            init()
+            getDoctor()
+        },
+        methods: {
+            follow() {
+                swal("关注成功!");
+            },
+
+            thumbup() {
+                $("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
+            },
+        }
+    })
+</script>
 </html>

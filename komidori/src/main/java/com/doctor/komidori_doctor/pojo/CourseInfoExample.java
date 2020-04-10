@@ -804,6 +804,66 @@ public class CourseInfoExample {
             addCriterion("course_introduction not between", value1, value2, "courseIntroduction");
             return (Criteria) this;
         }
+
+        public Criteria andCourseStatusIsNull() {
+            addCriterion("course_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusIsNotNull() {
+            addCriterion("course_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusEqualTo(Integer value) {
+            addCriterion("course_status =", value, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusNotEqualTo(Integer value) {
+            addCriterion("course_status <>", value, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusGreaterThan(Integer value) {
+            addCriterion("course_status >", value, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("course_status >=", value, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusLessThan(Integer value) {
+            addCriterion("course_status <", value, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("course_status <=", value, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusIn(List<Integer> values) {
+            addCriterion("course_status in", values, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusNotIn(List<Integer> values) {
+            addCriterion("course_status not in", values, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusBetween(Integer value1, Integer value2) {
+            addCriterion("course_status between", value1, value2, "courseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("course_status not between", value1, value2, "courseStatus");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
