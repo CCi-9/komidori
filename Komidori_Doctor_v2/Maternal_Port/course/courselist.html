@@ -473,7 +473,7 @@
                 }
                 let list = result.data
                 for (let i = 0; i < list.length; i++) {
-                    list[i].courseInfo.courseDate = formatDate(list[i].consultDate,'yyyy-MM-dd hh:mm')
+                    list[i].courseInfo.courseDate = formatDate(list[i].courseInfo.courseDate,'yyyy-MM-dd hh:mm')
                 }
                 app.courseList = list
                 initTable()

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyPublicEssayChartMapper">
+    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.PublicEssayChart">
+        <id column="essay_id" property="essayId" jdbcType="INTEGER"/>
+        <result column="essay_title" property="essayTitle" jdbcType="VARCHAR"/>
+        <result column="essay_author_id" property="essayAuthorId" jdbcType="INTEGER"/>
+        <result column="essay_date" property="essayDate" jdbcType="TIMESTAMP"/>
+        <result column="essay_category" property="essayCategory" jdbcType="INTEGER"/>
+        <result column="essay_good_review" property="essayGoodReview" jdbcType="INTEGER"/>
+        <result column="essay_content" property="essayContent" jdbcType="VARCHAR"/>
+        <result column="essay_status" property="essayStatus" jdbcType="INTEGER"/>
+
+        <association property="maternalInfo" javaType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+            <id column="maternal_id" property="maternalId" jdbcType="INTEGER"/>
+            <result column="maternal_name" property="maternalName" jdbcType="VARCHAR"/>
+            <result column="maternal_img" property="maternalImg" jdbcType="VARCHAR"/>
+            <result column="maternal_city" property="maternalCity" jdbcType="VARCHAR" />
+            <result column="maternal_status" property="maternalStatus" jdbcType="INTEGER" />
+        </association>
+
+        <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
+            <id column="public_category_id" property="publicCategoryId" jdbcType="INTEGER"/>
+            <result column="public_category_name" property="publicCategoryName" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllEssay" resultMap="BaseResultMap">
+        select * from public_essay_chart as pec
+        inner join maternal_info as mi on mi.maternal_id = pec.essay_author_id
+        inner join public_category_chart as pcc on pcc.public_category_id = pec.essay_category
+
+        <if test="category != null">
+            where pec.essay_category = #{category}
+        </if>
+
+        <if test="name != null">
+            where pec.essay_title = #{name}
+        </if>
+        order by essay_date desc
+
+
+    </select>
+
+    <select id="getEssayByID" resultMap="BaseResultMap">
+        select * from public_essay_chart as pec
+        inner join maternal_info as mi on mi.maternal_id = pec.essay_author_id
+        inner join public_category_chart as pcc on pcc.public_category_id = pec.essay_category
+        where pec.essay_id = #{id}
+
+    </select>
+
+</mapper>

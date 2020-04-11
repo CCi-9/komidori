@@ -172,7 +172,7 @@ public class MaternalController {
     }
 
     //获得我这篇课程的信息
-    @CheckUser
+
     @RequestMapping(value = "getCourseMsg", method = RequestMethod.GET)
     public ResponseWrapper<CourseInfo> getCourseMsg(@RequestParam Integer courseID,HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -181,6 +181,31 @@ public class MaternalController {
         return new ResponseWrapper<>(ResponseStatus.OK, courseInfo);
     }
 
+    //获得我关注的专家
+    @CheckUser
+    @RequestMapping(value = "getMyExpert", method = RequestMethod.GET)
+    public ResponseWrapper<List<FollowChart>> getMyExpert(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        List<FollowChart> list = maternalService.getMyExpert(session);
+        if (list == null) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, "获取失败，请重新登陆");
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK, list);
+    }
+
+    @CheckUser
+    @RequestMapping(value = "deleteMyExpert", method = RequestMethod.DELETE)
+    public ResponseWrapper<String> deleteMyExpert(Integer id, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String result = maternalService.deleteMyExpert(id, session);
+
+        if (result.equals("success")) {
+            return new ResponseWrapper<>(ResponseStatus.OK, "删除成功");
+        }
+
+        return new ResponseWrapper<>(ResponseStatus.Fail_400, "删除失败");
+
+    }
 
     //我的宝宝
     @CheckUser

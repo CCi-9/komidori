@@ -202,16 +202,19 @@
                             <div class="profile-pic">
                                 <p><img :src="doctor.doctorImg" class="img-circle"></p>
                                 <p>
-                                    <button @click="thumbup" id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞
+                                    <button @click="thumbup" id="thumbup" class="btn btn-theme"><i
+                                            class="ti-thumb-up"></i> 点赞
                                     </button>
-                                    <button @click="follow" id="sa-follow" class="btn btn-theme02"><i class="ti-plus"></i>关注
+                                    <button @click="follow" id="sa-follow" class="btn btn-theme02"><i
+                                            class="ti-plus"></i>关注
                                     </button>
                                 </p>
                             </div>
                         </div><!-- /col-md-4 -->
 
                         <div class="col-md-4 profile-text doc_center_box">
-                            <h3>{{doctor.doctorName}}<span class="hospital">{{doctor.doctorHospital}}</span></h3><!-- 姓名 -->
+                            <h3>{{doctor.doctorName}}<span class="hospital">{{doctor.doctorHospital}}</span></h3>
+                            <!-- 姓名 -->
                             <h5>{{doctor.doctorDept}}
                                 <span class="rank">{{doctor.doctorRank}}</span>
                                 <span class="label label-warning label1" v-if="doctor.doctorVerify == 1">已认证</span>
@@ -322,6 +325,7 @@
 
 <!--引用vue和全局变量-->
 <script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="../../assets/js/jquery.params.js"></script>
 
@@ -337,7 +341,7 @@
 </script>
 
 <script type="text/javascript">
-    function initTable(courseInfo){
+    function initTable(courseInfo) {
         $('#doc_more_course_list').bootstrapTable({
             columns: [
 
@@ -416,7 +420,7 @@
 
                 },
             ],
-            data:courseInfo,
+            data: courseInfo,
             /*data: [
                 {
                     'course_id': 11,
@@ -509,7 +513,11 @@
             success: function (result) {
                 console.log(result)
                 app.doctor = result.data
-                initTable(app.doctor.courseInfo)
+                let courseInfo = app.doctor.courseInfo
+                for (let i = 0; i < courseInfo.length; i++) {
+                    courseInfo[i].courseDate = formatDate(courseInfo[i].courseDate,"yyyy-MM-dd hh:mm")
+                }
+                initTable(courseInfo)
             }
         });
     }
@@ -517,10 +525,10 @@
 <script>
     let app = new Vue({
         el: "#app",
-        data:{
+        data: {
             doctor: {},
         },
-        methods:{
+        methods: {
             follow() {
                 swal("关注成功!");
             },

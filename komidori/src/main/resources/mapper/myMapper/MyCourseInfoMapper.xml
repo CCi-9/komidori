@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper">
-    <resultMap id="myResultMap" type="com.doctor.komidori_doctor.pojo.CourseInfo" >
-        <id column="course_id" property="courseId" jdbcType="INTEGER" />
-        <result column="course_type" property="courseType" jdbcType="INTEGER" />
-        <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
-        <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
-        <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
-        <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
-        <result column="course_price" property="coursePrice" jdbcType="REAL" />
-        <result column="course_img" property="courseImg" jdbcType="VARCHAR" />
-        <result column="course_title" property="courseTitle" jdbcType="VARCHAR" />
-        <result column="course_content" property="courseContent" jdbcType="VARCHAR" />
-        <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR" />
+    <resultMap id="myResultMap" type="com.doctor.komidori_doctor.pojo.CourseInfo">
+        <id column="course_id" property="courseId" jdbcType="INTEGER"/>
+        <result column="course_type" property="courseType" jdbcType="INTEGER"/>
+        <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER"/>
+        <result column="course_class_id" property="courseClassId" jdbcType="INTEGER"/>
+        <result column="course_date" property="courseDate" jdbcType="TIMESTAMP"/>
+        <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER"/>
+        <result column="course_price" property="coursePrice" jdbcType="REAL"/>
+        <result column="course_img" property="courseImg" jdbcType="VARCHAR"/>
+        <result column="course_title" property="courseTitle" jdbcType="VARCHAR"/>
+        <result column="course_content" property="courseContent" jdbcType="VARCHAR"/>
+        <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR"/>
         <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
-            <id column="doctor_id" property="doctorId" jdbcType="INTEGER" />
-            <result column="doctor_name" property="doctorName" jdbcType="VARCHAR" />
-            <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR" />
-            <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR" />
-            <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR" />
+            <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+            <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+            <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR"/>
+            <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR"/>
+            <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR"/>
+        </association>
+        <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
+            <id column="public_category_id" property="publicCategoryId" jdbcType="INTEGER"/>
+            <result column="public_category_name" property="publicCategoryName" jdbcType="VARCHAR"/>
         </association>
     </resultMap>
 
@@ -29,5 +33,20 @@
         where course_info.course_id = #{courseID}
     </select>
 
+    <select id="getAllCourse" resultMap="myResultMap">
+        select * from course_info as ci
+        inner join doctor_info as di on di.doctor_id = ci.course_doc_id
+        inner join public_category_chart as pcc on pcc.public_category_id = ci.course_class_id
 
+        <if test="category != null">
+            where ci.course_class_id = #{category}
+        </if>
+
+        <if test="essayName != null">
+            where ci.course_title = #{essayName}
+        </if>
+        order by course_date desc
+
+
+    </select>
 </mapper>

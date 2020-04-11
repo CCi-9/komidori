@@ -35,4 +35,8 @@ public interface MaternalService {
     String deleteMyCourse(Integer id, HttpSession session);
 
     CourseInfo getCourseMsg(Integer courseID, HttpSession session);
+
+    List<FollowChart> getMyExpert(HttpSession session);
+
+    String deleteMyExpert(Integer id, HttpSession session);
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doctor.komidori_doctor.mapper.myMapper.MyFollowChartMapper">
+    <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.FollowChart">
+        <id column="follow_mat_id" property="followMatId" jdbcType="INTEGER"/>
+        <id column="follow_doc_id" property="followDocId" jdbcType="INTEGER"/>
+        <result column="follow_date" property="followDate" jdbcType="TIMESTAMP"/>
+        <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+            <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+            <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+            <result column="doctor_sex" property="doctorSex" jdbcType="VARCHAR"/>
+            <result column="doctor_age" property="doctorAge" jdbcType="INTEGER"/>
+            <result column="doctor_pwd" property="doctorPwd" jdbcType="VARCHAR"/>
+            <result column="doctor_tel" property="doctorTel" jdbcType="VARCHAR"/>
+            <result column="doctor_idcard" property="doctorIdcard" jdbcType="CHAR"/>
+            <result column="doctor_status" property="doctorStatus" jdbcType="INTEGER"/>
+            <result column="doctor_city" property="doctorCity" jdbcType="VARCHAR"/>
+            <result column="doctor_hospital" property="doctorHospital" jdbcType="VARCHAR"/>
+            <result column="doctor_dept" property="doctorDept" jdbcType="VARCHAR"/>
+            <result column="doctor_email" property="doctorEmail" jdbcType="VARCHAR"/>
+            <result column="doctor_bookable" property="doctorBookable" jdbcType="INTEGER"/>
+            <result column="doctor_follow" property="doctorFollow" jdbcType="INTEGER"/>
+            <result column="doctor_good_review" property="doctorGoodReview" jdbcType="INTEGER"/>
+            <result column="doctor_orders" property="doctorOrders" jdbcType="INTEGER"/>
+            <result column="doctor_course_num" property="doctorCourseNum" jdbcType="INTEGER"/>
+            <result column="doctor_introduction" property="doctorIntroduction" jdbcType="VARCHAR"/>
+            <result column="doctor_img" property="doctorImg" jdbcType="VARCHAR"/>
+            <result column="doctor_rank" property="doctorRank" jdbcType="VARCHAR"/>
+            <result column="doctor_verify" property="doctorVerify" jdbcType="INTEGER"/>
+            <result column="dcotor_strength" property="dcotorStrength" jdbcType="VARCHAR"/>
+            <result column="online_price" property="onlinePrice" jdbcType="REAL"/>
+            <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+            <result column="consultable" property="consultable" jdbcType="INTEGER"/>
+            <result column="doc_work_age" property="docWorkAge" jdbcType="INTEGER"/>
+        </association>
+    </resultMap>
+
+    <select id="getMyExpert" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.FollowChartKey">
+      select * from follow_chart as fc inner join doctor_info as di on di.doctor_id = fc.follow_doc_id
+      where follow_mat_id = #{momId}
+  </select>
+</mapper>

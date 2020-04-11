@@ -5,6 +5,7 @@ import com.doctor.komidori_doctor.mapper.*;
 import com.doctor.komidori_doctor.mapper.myMapper.MyConsultChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseOrderChartMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyFollowChartMapper;
 import com.doctor.komidori_doctor.pojo.*;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,9 @@ public class MaternalServiceImpl implements MaternalService {
     private CourseOrderChartMapper courseOrderChartMapper;
 
     @Resource
+    private FollowChartMapper followChartMapper;
+
+    @Resource
     private MyConsultChartMapper myConsultChartMapper;
 
     @Resource
@@ -34,6 +38,9 @@ public class MaternalServiceImpl implements MaternalService {
 
     @Resource
     private MyCourseInfoMapper myCourseInfoMapper;
+
+    @Resource
+    private MyFollowChartMapper myFollowChartMapper;
 
 
     @Override
@@ -235,6 +242,36 @@ public class MaternalServiceImpl implements MaternalService {
 
         CourseInfo courseInfo = myCourseInfoMapper.getCourseByID(String.valueOf(courseID));
         return courseInfo;
+    }
+
+    @Override
+    public List<FollowChart> getMyExpert(HttpSession session) {
+
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return null;
+        }
+
+        List<FollowChart> list = myFollowChartMapper.getMyExpert(momId);
+        return list;
+    }
+
+    @Override
+    public String deleteMyExpert(Integer id, HttpSession session) {
+
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "fail";
+        }
+        FollowChartExample followChartExample = new FollowChartExample();
+        FollowChartExample.Criteria criteria = followChartExample.createCriteria();
+        criteria.andFollowMatIdEqualTo(momId);
+        criteria.andFollowDocIdEqualTo(id);
+        Integer result = followChartMapper.deleteByExample(followChartExample);
+        if (result == null) {
+            return "fail";
+        }
+        return "success";
     }
 
 }

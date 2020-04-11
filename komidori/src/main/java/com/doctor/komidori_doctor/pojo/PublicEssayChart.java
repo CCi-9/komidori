@@ -19,6 +19,26 @@ public class PublicEssayChart {
 
     private Integer essayStatus;
 
+    private MaternalInfo maternalInfo;
+
+    private PublicCategoryChart publicCategoryChart;
+
+    public MaternalInfo getMaternalInfo() {
+        return maternalInfo;
+    }
+
+    public void setMaternalInfo(MaternalInfo maternalInfo) {
+        this.maternalInfo = maternalInfo;
+    }
+
+    public PublicCategoryChart getPublicCategoryChart() {
+        return publicCategoryChart;
+    }
+
+    public void setPublicCategoryChart(PublicCategoryChart publicCategoryChart) {
+        this.publicCategoryChart = publicCategoryChart;
+    }
+
     public Integer getEssayId() {
         return essayId;
     }
@@ -81,5 +101,21 @@ public class PublicEssayChart {
 
     public void setEssayStatus(Integer essayStatus) {
         this.essayStatus = essayStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "PublicEssayChart{" +
+                "essayId=" + essayId +
+                ", essayTitle='" + essayTitle + '\'' +
+                ", essayAuthorId=" + essayAuthorId +
+                ", essayDate=" + essayDate +
+                ", essayCategory=" + essayCategory +
+                ", essayGoodReview=" + essayGoodReview +
+                ", essayContent='" + essayContent + '\'' +
+                ", essayStatus=" + essayStatus +
+                ", maternalInfo=" + maternalInfo +
+                ", publicCategoryChart=" + publicCategoryChart +
+                '}';
     }
 }

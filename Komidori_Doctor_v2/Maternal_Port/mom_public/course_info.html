@@ -15,7 +15,7 @@
 </head>
 <body class="card-no-border">
 
-<div class="page-wrapper">
+<div class="page-wrapper" id="app">
     <!-- start preloader -->
     <div class="preloader">
         <div class="lds-ripple">
@@ -198,17 +198,18 @@
                     <div class="author-box" style="margin-top: 0px;">
                         <div class="author-avatar">
                             <!--作者详情链接-->
-                            <a href="#" target="_blank"><img class="headpic" src="../../assets/images/heads.jpg"
+                            <a href="#" target="_blank"><img class="headpic" :src="doctor.doctorImg"
                                                              alt></a>
                         </div>
                         <div class="author-content">
-
-                            <h4 class="course_title">如何安全度过危险孕早期？<span class="badge">￥39.9</span></h4>
-                            <a href="#" class="author">Henry Joyes <span class="">| 菜甜甜</span></a>
-
-                            <p><strong>课程内容 : </strong> <span>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</span>
+                            <h4 class="course_title">{{course.courseTitle}}<span class="badge">{{"￥" + course.coursePrice}}</span>
+                            </h4>
+                            <a href="#" class="author-name"><strong>{{doctor.doctorName}}</strong></a>
+                            <span class="">{{"| " + doctor.doctorRank}}</span>
+                            <p v-if="course.courseType == 3"><strong>课程内容 : </strong>
+                                <span>{{course.courseContent}}</span>
                             </p>
-                            <p style="margin-top: -10px;"><strong>发布时间 : </strong> <span class="date">2019-05-08</span>
+                            <p style="margin-top: -10px;"><strong>发布时间 : </strong> <span class="date">{{formatDate(course.courseDate, 'yyyy-MM-dd hh:mm')}}</span>
                             </p>
                             <div class="socials">
                                 <ul class="social-link">
@@ -228,7 +229,7 @@
             <!--作者信息 end-->
 
             <!--视频======================================-->
-            <div class="row">
+            <div class="row"  v-if="course.courseType == 1">
                 <div class="container">
                     <div class="col-md-10 col-md-push-1 col-xs-12">
                         <div class="media">
@@ -244,7 +245,7 @@
             </div>
 
             <!--音频-->
-            <div class="row" >
+            <div class="row" v-if="course.courseType == 2">
                 <div class="col-md-push-4 col-md-4 ">
                     <div class="media">
                         <audio controls class="">
@@ -258,7 +259,7 @@
 
 
             <!--文章-->
-            <div class="post" >
+            <!--<div class="post" >
                 <h2>标题</h2>
                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
                     alteration in some form, by injected humour, or randomised words which don't look even slightly
@@ -283,7 +284,7 @@
                 <p>looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
                     through the cites of the word in classical literature, discovered the undoubtable source. Lorem
                     Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum.</p>
-            </div>
+            </div>-->
 
             <!--课程 end =======================================-->
 
@@ -449,13 +450,13 @@
                     </div>
                     <div class="modal-body">
                         <h4>作者信息</h4>
-                        <p>医生姓名：<span>菜玉溪</span></p>
-                        <p>所属医院：<span>湛江市中心人民医院</span></p>
-                        <p>职称：<span>主任医师</span></p>
+                        <p>医生姓名：<span>{{doctor.doctorName}}</span></p>
+                        <p>所属医院：<span>{{doctor.doctorHospital}}</span></p>
+                        <p>职称：<span>{{doctor.doctorRank}}</span></p>
 
                         <h4>课程信息</h4>
-                        <p>课程名称:<span>如何安全度过危险孕早期？</span></p>
-                        <p>课程价格:<span class="price"> 39.9￥ </span></p>
+                        <p>课程名称:<span>{{course.courseTitle}}</span></p>
+                        <p>课程价格:<span class="price"> {{"￥" + course.coursePrice}} </span></p>
 
                     </div>
                     <div class="modal-footer">
@@ -497,21 +498,68 @@
 <!--滑动-->
 <script src="../../assets/js/smoothscroll.js"></script>
 
+
+<script src="../../assets/js/vue/vue.js"></script>
+<script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
+<script src="../../assets/js/jquery.params.js"></script>
 <!-- JS files end===========================================================-->
 <script>
     //	$("#head").load("./user_head.html");
+    function init(){
+        $(function () {
+            $("#foot").load("../low_footer.html");
 
-    $(function () {
-        $("#foot").load("../low_footer.html");
-    });
 
-    //点赞
-    $("#thumbup").click(function () {
-        $(this).css({"background-color": "#EBCCD1", "border-color": "indianred", "color": "white!"});
-    });
+        });
+
+        //点赞
+        $("#thumbup").click(function () {
+            $(this).css({"background-color": "#EBCCD1", "border-color": "indianred", "color": "white!"});
+        });
+    }
+    function getCourseMsg() {
+        let id = $.query.get("id")
+
+        console.log(id)
+        $.ajax({
+            url: "http://" + host + "/maternal/getCourseMsg",
+            method: "get",
+            data: {
+                courseID: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                app.course = result.data
+                console.log(app.course.doctorInfo)
+                app.doctor = app.course.doctorInfo
+            }
+        });
+    }
 
 
 </script>
-
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            course: {},
+            doctor: {},
+        },
+        mounted() {
+            init()
+            getCourseMsg()
+        },
+        methods: {
+            formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
+        }
+    })
+</script>
 
 </html>

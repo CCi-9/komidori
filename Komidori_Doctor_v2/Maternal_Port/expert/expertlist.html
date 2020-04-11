@@ -183,7 +183,7 @@
     </div>
     <!--导航结束-->
 
-    <div class="container">
+    <div class="container" id="app">
         <section id="" class="blog-single-section">
             <h3 class="comments-title2">我关注的专家<span class="badge">3</span></h3>
             <div class="row">
@@ -234,6 +234,10 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
 
+
+<script src="../../assets/js/vue/vue.js"></script>
+<script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
 <!-- JS files end===========================================================-->
 
 <script>
@@ -244,184 +248,209 @@
     });
 </script>
 <script type="text/javascript">
-
-    $('#follow_doc_list').bootstrapTable({
-        columns: [
-            {
-                // radio: true, // 单选
-                checkbox: true,
-                width: 30,
-                halign: 'center',//表头居中显示
-                align: 'center'
-            },
-            {
-                field: 'id',
-                title: '序号',
-                formatter: function (value, row, index) {
-                    return index + 1;
+    function initTable() {
+        $('#follow_doc_list').bootstrapTable({
+            columns: [
+                /*            {
+                                // radio: true, // 单选
+                                checkbox: true,
+                                width: 30,
+                                halign: 'center',//表头居中显示
+                                align: 'center'
+                            },*/
+                {
+                    field: 'id',
+                    title: '序号',
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    },
+                    halign: 'center',
+                    align: 'center',
+                    width: 50
                 },
-                halign: 'center',
-                align: 'center',
-                width: 50
-            },
-            {
-                field: 'follow_doc_id',
-                title: '医生编号',
-                halign: 'center',//表头居中显示
-                align: 'center',
-                width: 80
-            },
-            {
-                field: 'doctor_name',
-                title: '医生姓名',
-                halign: 'center',//表头居中显示
-                align: 'center',
-                width: 80
-            },
-            {
-                field: 'doctor_hospital',
-                title: '所属医院',
-                halign: 'center',//表头居中显示
-                align: 'center',
-                width: 100
-            },
-
-            {
-                field: 'doctor_dept',
-                title: '所属部门',
-                halign: 'center',//表头居中显示
-                align: 'center',
-                width: 80
-            },
-            {
-                field: 'doctor_rank',
-                title: '职称',
-                halign: 'center',//表头居中显示
-                align: 'center',
-                width: 80,
-
-            },
-            {
-                field: 'doctor_good_review',
-                title: '好评',
-                halign: 'center',//表头居中显示
-                align: 'center',
-                width: 50,
-                formatter: function (value, row, index) {   //传入数据
-                    return '<span class="badge badge-good">' + value + '</span>';
+                {
+                    field: 'followDocId',
+                    title: '医生编号',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 80
+                },
+                {
+                    field: 'doctorInfo.doctorName',
+                    title: '医生姓名',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 80
+                },
+                {
+                    field: 'doctorInfo.doctorHospital',
+                    title: '所属医院',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 100
                 },
 
-            },
-            {
-                field: '',
-                title: '管理',
-                halign: 'center',
-                align: 'center',
-                width: '80px',
-                formatter: function (value, row, index) {   //传入数据
-                    return '<a class="btn btn-theme02 btn-sm" title="del" >删除</a>';
+                {
+                    field: 'doctorInfo.doctorDept',
+                    title: '所属部门',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 80
                 },
-                events: {
-                    'click a[title=del]': function (e, value, row, index) {
-                        if (confirm('此操作不可逆，请确认是否删除？')) {
-                            $('#follow_doc_list').bootstrapTable('remove',
-                                {field: 'follow_doc_id', values: [parseInt(row.follow_doc_id)]});
-                            $("#follow_doc_list").bootstrapTable("refresh");
+                {
+                    field: 'doctorInfo.doctorRank',
+                    title: '职称',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 80,
+
+                },
+                {
+                    field: 'doctorInfo.doctorGoodReview',
+                    title: '好评',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 50,
+                    formatter: function (value, row, index) {   //传入数据
+                        return '<span class="badge badge-good">' + value + '</span>';
+                    },
+
+                },
+                {
+                    field: '',
+                    title: '管理',
+                    halign: 'center',
+                    align: 'center',
+                    width: '80px',
+                    formatter: function (value, row, index) {   //传入数据
+                        return '<a class="btn btn-theme02 btn-sm" title="del" >删除</a>';
+                    },
+                    events: {
+                        'click a[title=del]': function (e, value, row, index) {
+                            if (confirm('此操作不可逆，请确认是否删除？')) {
+                                $.ajax({
+                                    url: "http://" + host + "/maternal/deleteMyExpert",
+                                    method: "delete",
+                                    data: {
+                                        id: row.followDocId
+                                    },
+                                    xhrFields: {
+                                        withCredentials: true  //带上cookie信息，解决sessionid不一致
+                                    },
+                                    success: function (result) {
+                                        console.log(result)
+
+                                        if (result.status == "200") {
+                                            alert("删除成功")
+                                            $('#follow_doc_list').bootstrapTable('remove',
+                                                {field: 'followDocId', values: [parseInt(row.followDocId)]});
+                                            $("#follow_doc_list").bootstrapTable("refresh");
+                                        } else {
+                                            alert(result.message)
+                                        }
+
+
+                                    }
+                                });
+
+                            }
                         }
-                    }
-                },
+                    },
 
-            }],
-        data: [
-
-            {
-                'follow_doc_id': 11,
-                'doctor_name': '菜憨憨',
-                'doctor_hospital': '汕头医院',
-                'doctor_dept': '妇科',
-                'doctor_rank': '主任医师',
-                'doctor_good_review': 562,
-            },
-            {
-                'follow_doc_id': 12,
-                'doctor_name': '菜憨憨',
-                'doctor_hospital': '汕头医院',
-                'doctor_dept': '妇科',
-                'doctor_rank': '主任医师',
-                'doctor_good_review': 562,
-            },
-            {
-                'follow_doc_id': 14,
-                'doctor_name': '菜憨憨',
-                'doctor_hospital': '汕头医院',
-                'doctor_dept': '妇科',
-                'doctor_rank': '主任医师',
-                'doctor_good_review': 562,
-            },
-            {
-                'follow_doc_id': 15,
-                'doctor_name': '菜憨憨',
-                'doctor_hospital': '汕头医院',
-                'doctor_dept': '妇科',
-                'doctor_rank': '主任医师',
-                'doctor_good_review': 562,
-            },
-
-
-        ],
-        url: '',
-        method: 'post',
-        pagination: true,  //设置为 true 会在表格底部显示分页条。
-        paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
-        pageSize: 3,//每页初始显示的条数
-        pageList: [5, 10, 15],
-        toolbar: '#toolbar',//工具栏
-        toolbarAlign: 'right',//工具栏的位置
-        search: true,
-        showRefresh: true,
-        showColumns: true,
-        clickToSelect: true,   //是否启用点击选中行
+                }],
+            data: app.expertList,
+            url: '',
+            method: 'post',
+            pagination: true,  //设置为 true 会在表格底部显示分页条。
+            paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
+            pageSize: 3,//每页初始显示的条数
+            pageList: [5, 10, 15],
+            toolbar: '#toolbar',//工具栏
+            toolbarAlign: 'right',//工具栏的位置
+            search: true,
+            showRefresh: true,
+            showColumns: true,
+            clickToSelect: true,   //是否启用点击选中行
 //      height:400
 //      sidePagination: "client"
 
-    });
+        });
 
-    $("#follow_doc_list").bootstrapTable('hideLoading');
-    $("#delbtn").on("click", function () {
-        // $("#table").bootstrapTable('getSelections');为bootstrapTable自带的，所以说一定要使用bootstrapTable显示表格,#table：为table的id
-        var rows = $("#follow_doc_list").bootstrapTable('getSelections');
-        console.log(rows);
-        if (rows.length == 0) {// rows 主要是为了判断是否选中，下面的else内容才是主要
-            alert("请先选择要删除的记录!");
-            return;
-        } else {
-            var arrays = new Array();// 声明一个数组
-            $(rows).each(function () {// 通过获得别选中的来进行遍历
-                arrays.push(this.id);// cid为获得到的整条数据中的一列
+    }
+
+    function init() {
+        $("#follow_doc_list").bootstrapTable('hideLoading');
+        $("#delbtn").on("click", function () {
+            // $("#table").bootstrapTable('getSelections');为bootstrapTable自带的，所以说一定要使用bootstrapTable显示表格,#table：为table的id
+            var rows = $("#follow_doc_list").bootstrapTable('getSelections');
+            console.log(rows);
+            if (rows.length == 0) {// rows 主要是为了判断是否选中，下面的else内容才是主要
+                alert("请先选择要删除的记录!");
+                return;
+            } else {
+                var arrays = new Array();// 声明一个数组
+                $(rows).each(function () {// 通过获得别选中的来进行遍历
+                    arrays.push(this.id);// cid为获得到的整条数据中的一列
+                });
+                var idcard = arrays.join(','); // 获得要删除的id
+                deleteMs(ids);
+            }
+        });
+
+        function deleteMs(ids) {
+            $.ajax({
+                url: '',
+                data: "ids=" + ids,
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $("#follow_doc_list").bootstrapTable("refresh");
+                }
             });
-            var idcard = arrays.join(','); // 获得要删除的id
-            deleteMs(ids);
         }
-    });
 
-    function deleteMs(ids) {
+        $("#follow_doc_list")
+            .on('dbl-click-row.bs.table', function (e, row, ele, field) {
+                window.location.href = '../doctor/doctorinfo.html?id=' + row.followDocId + "&type=" + 0
+
+            })
+    }
+
+
+</script>
+<script>
+    function getMyExpert() {
         $.ajax({
-            url: '',
-            data: "ids=" + ids,
-            type: "post",
-            dataType: "json",
-            success: function (data) {
-                $("#follow_doc_list").bootstrapTable("refresh");
+            url: "http://" + host + "/maternal/getMyExpert",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status != "200") {
+                    alert(result.message)
+                    window.location.href = '../index.html'
+                    return
+                }
+                app.expertList = result.data
+                initTable()
             }
         });
     }
-
-    $("#follow_doc_list")
-        .on('dbl-click-row.bs.table', function (e, row, ele, field) {
-
-            //转跳到doctor目录下的docinfo
-            alert("医生" + row.follow_doc_id + "的详情页");
-        })
-
+</script>
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            expertList: [],
+        },
+        mounted() {
+            returnSignin()
+            init()
+            getMyExpert()
+        },
+        methods: {}
+    })
 </script>
 </html>
