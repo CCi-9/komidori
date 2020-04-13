@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan({"com.doctor.komidori_doctor.mapper","com.doctor.komidori_doctor.mapper.*"})
+@MapperScan({"com.doctor.komidori_doctor.mapper"})
 public class KomidoriDoctorApplication {
 
     public static void main(String[] args) {

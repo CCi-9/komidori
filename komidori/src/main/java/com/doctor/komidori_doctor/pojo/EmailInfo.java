@@ -11,15 +11,19 @@ public class EmailInfo {
 
     private Integer emailToDocId;
 
+    private Integer emailToAdminId;
+
     private String emailContent;
 
     private Integer emailStatus;
 
     private Date emailDate;
 
-    private Integer emailToMadId;
+    private Integer validateType;
 
-    private Integer emailToAdminId;
+    private Integer validateCourseId;
+
+    private Integer validateDocId;
 
     public Integer getEmailId() {
         return emailId;
@@ -53,6 +57,14 @@ public class EmailInfo {
         this.emailToDocId = emailToDocId;
     }
 
+    public Integer getEmailToAdminId() {
+        return emailToAdminId;
+    }
+
+    public void setEmailToAdminId(Integer emailToAdminId) {
+        this.emailToAdminId = emailToAdminId;
+    }
+
     public String getEmailContent() {
         return emailContent;
     }
@@ -77,19 +89,27 @@ public class EmailInfo {
         this.emailDate = emailDate;
     }
 
-    public Integer getEmailToMadId() {
-        return emailToMadId;
+    public Integer getValidateType() {
+        return validateType;
     }
 
-    public void setEmailToMadId(Integer emailToMadId) {
-        this.emailToMadId = emailToMadId;
+    public void setValidateType(Integer validateType) {
+        this.validateType = validateType;
     }
 
-    public Integer getEmailToAdminId() {
-        return emailToAdminId;
+    public Integer getValidateCourseId() {
+        return validateCourseId;
     }
 
-    public void setEmailToAdminId(Integer emailToAdminId) {
-        this.emailToAdminId = emailToAdminId;
+    public void setValidateCourseId(Integer validateCourseId) {
+        this.validateCourseId = validateCourseId;
+    }
+
+    public Integer getValidateDocId() {
+        return validateDocId;
+    }
+
+    public void setValidateDocId(Integer validateDocId) {
+        this.validateDocId = validateDocId;
     }
 }

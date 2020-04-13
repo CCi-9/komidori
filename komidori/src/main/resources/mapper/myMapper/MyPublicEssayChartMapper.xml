@@ -17,6 +17,7 @@
             <result column="maternal_img" property="maternalImg" jdbcType="VARCHAR"/>
             <result column="maternal_city" property="maternalCity" jdbcType="VARCHAR" />
             <result column="maternal_status" property="maternalStatus" jdbcType="INTEGER" />
+            <result column="maternal_nickname" property="maternalNickname" jdbcType="VARCHAR" />
         </association>
 
         <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
@@ -47,6 +48,13 @@
         inner join maternal_info as mi on mi.maternal_id = pec.essay_author_id
         inner join public_category_chart as pcc on pcc.public_category_id = pec.essay_category
         where pec.essay_id = #{id}
+
+    </select>
+
+    <select id="getMyBookList" resultMap="BaseResultMap">
+        select * from public_essay_chart as pec
+        inner join public_category_chart as pcc on pcc.public_category_id = pec.essay_category
+        where pec.essay_author_id = #{momId}
 
     </select>
 

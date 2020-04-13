@@ -207,6 +207,57 @@ public class MaternalController {
 
     }
 
+    /**
+     * 获得产检表
+     * @param request
+     * @return
+     */
+   // @CheckUser
+    @RequestMapping(value = "getProduction", method = RequestMethod.GET)
+    public ResponseWrapper<List<ProductionChecklist>> getProduction(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        List<ProductionChecklist> list = maternalService.getProduction(session);
+        if (list == null) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, "获取失败，请重新登陆");
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK, list);
+    }
+
+
+    /**
+     * 获得疫苗
+     * @param request
+     * @return
+     */
+   // @CheckUser
+    @RequestMapping(value = "getVaccine", method = RequestMethod.GET)
+    public ResponseWrapper<List<VaccineInfo>> getVaccine(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        List<VaccineInfo> list = maternalService.getVaccine(session);
+        if (list == null) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, "获取失败，请重新登陆");
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK, list);
+    }
+
+
+    /**
+     * 胎儿测评
+     * @param request
+     * @return
+     */
+   // @CheckUser
+    @RequestMapping(value = "getPrediction", method = RequestMethod.GET)
+    public ResponseWrapper<List<BabyGrowthChart>> getPrediction(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        List<BabyGrowthChart> list = maternalService.getPrediction(session);
+        if (list == null) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, "获取失败，请重新登陆");
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK, list);
+    }
+
+
     //我的宝宝
     @CheckUser
     @RequestMapping(value = "baby/getBabyByID", method = RequestMethod.GET)
@@ -239,6 +290,18 @@ public class MaternalController {
         }
 
         return new ResponseWrapper<>(ResponseStatus.OK, list);
+    }
+
+
+
+    @CheckUser
+    @RequestMapping(value = "baby/addMyBaby", method = RequestMethod.POST)
+    public ResponseWrapper<String> addMyBaby(@RequestBody BabyInfo babyInfo, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+         String result = maternalService.addMyBaby(babyInfo, session);
+
+
+        return new ResponseWrapper<>(ResponseStatus.OK, result);
     }
 
 

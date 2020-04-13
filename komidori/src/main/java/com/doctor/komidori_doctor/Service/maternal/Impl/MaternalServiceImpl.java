@@ -7,6 +7,7 @@ import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseOrderChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyFollowChartMapper;
 import com.doctor.komidori_doctor.pojo.*;
+import com.doctor.komidori_doctor.utils.BabyUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,6 +31,16 @@ public class MaternalServiceImpl implements MaternalService {
     @Resource
     private FollowChartMapper followChartMapper;
 
+    @Resource
+    private ProductionChecklistMapper productionChecklistMapper;
+
+    @Resource
+    private VaccineInfoMapper vaccineInfoMapper;
+
+    @Resource
+    private BabyGrowthChartMapper babyGrowthChartMapper;
+
+    //-----------------------------  自己定义的mapper
     @Resource
     private MyConsultChartMapper myConsultChartMapper;
 
@@ -272,6 +283,44 @@ public class MaternalServiceImpl implements MaternalService {
             return "fail";
         }
         return "success";
+    }
+
+    @Override
+    public String addMyBaby(BabyInfo babyInfo, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "fail";
+        }
+        babyInfo.setBabyMomId(momId);
+        Integer insert = babyInfoMapper.insert(babyInfo);
+        if (insert == null) {
+            return "fail";
+        }
+        return "success";
+    }
+
+    @Override
+    public List<ProductionChecklist> getProduction(HttpSession session) {
+        ProductionChecklistExample example = new ProductionChecklistExample();
+        List<ProductionChecklist> list = productionChecklistMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public List<VaccineInfo> getVaccine(HttpSession session) {
+        VaccineInfoExample example = new VaccineInfoExample();
+        List<VaccineInfo> list = vaccineInfoMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public List<BabyGrowthChart> getPrediction(HttpSession session) {
+        BabyGrowthChartExample example = new BabyGrowthChartExample();
+        List<BabyGrowthChart> list = babyGrowthChartMapper.selectByExample(example);
+        for(int i = 0; i < list.size(); i++){
+            BabyUtil.setBabyGrowthMaxAndMin(list.get(i));
+        }
+        return list;
     }
 
 }

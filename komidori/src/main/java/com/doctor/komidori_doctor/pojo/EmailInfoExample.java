@@ -365,6 +365,66 @@ public class EmailInfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andEmailToAdminIdIsNull() {
+            addCriterion("email_to_admin_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdIsNotNull() {
+            addCriterion("email_to_admin_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdEqualTo(Integer value) {
+            addCriterion("email_to_admin_id =", value, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdNotEqualTo(Integer value) {
+            addCriterion("email_to_admin_id <>", value, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdGreaterThan(Integer value) {
+            addCriterion("email_to_admin_id >", value, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("email_to_admin_id >=", value, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdLessThan(Integer value) {
+            addCriterion("email_to_admin_id <", value, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdLessThanOrEqualTo(Integer value) {
+            addCriterion("email_to_admin_id <=", value, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdIn(List<Integer> values) {
+            addCriterion("email_to_admin_id in", values, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdNotIn(List<Integer> values) {
+            addCriterion("email_to_admin_id not in", values, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdBetween(Integer value1, Integer value2) {
+            addCriterion("email_to_admin_id between", value1, value2, "emailToAdminId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailToAdminIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("email_to_admin_id not between", value1, value2, "emailToAdminId");
+            return (Criteria) this;
+        }
+
         public Criteria andEmailContentIsNull() {
             addCriterion("email_content is null");
             return (Criteria) this;
@@ -555,123 +615,183 @@ public class EmailInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdIsNull() {
-            addCriterion("email_to_mad_id is null");
+        public Criteria andValidateTypeIsNull() {
+            addCriterion("validate_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdIsNotNull() {
-            addCriterion("email_to_mad_id is not null");
+        public Criteria andValidateTypeIsNotNull() {
+            addCriterion("validate_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdEqualTo(Integer value) {
-            addCriterion("email_to_mad_id =", value, "emailToMadId");
+        public Criteria andValidateTypeEqualTo(Integer value) {
+            addCriterion("validate_type =", value, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdNotEqualTo(Integer value) {
-            addCriterion("email_to_mad_id <>", value, "emailToMadId");
+        public Criteria andValidateTypeNotEqualTo(Integer value) {
+            addCriterion("validate_type <>", value, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdGreaterThan(Integer value) {
-            addCriterion("email_to_mad_id >", value, "emailToMadId");
+        public Criteria andValidateTypeGreaterThan(Integer value) {
+            addCriterion("validate_type >", value, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("email_to_mad_id >=", value, "emailToMadId");
+        public Criteria andValidateTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("validate_type >=", value, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdLessThan(Integer value) {
-            addCriterion("email_to_mad_id <", value, "emailToMadId");
+        public Criteria andValidateTypeLessThan(Integer value) {
+            addCriterion("validate_type <", value, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdLessThanOrEqualTo(Integer value) {
-            addCriterion("email_to_mad_id <=", value, "emailToMadId");
+        public Criteria andValidateTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("validate_type <=", value, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdIn(List<Integer> values) {
-            addCriterion("email_to_mad_id in", values, "emailToMadId");
+        public Criteria andValidateTypeIn(List<Integer> values) {
+            addCriterion("validate_type in", values, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdNotIn(List<Integer> values) {
-            addCriterion("email_to_mad_id not in", values, "emailToMadId");
+        public Criteria andValidateTypeNotIn(List<Integer> values) {
+            addCriterion("validate_type not in", values, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdBetween(Integer value1, Integer value2) {
-            addCriterion("email_to_mad_id between", value1, value2, "emailToMadId");
+        public Criteria andValidateTypeBetween(Integer value1, Integer value2) {
+            addCriterion("validate_type between", value1, value2, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToMadIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("email_to_mad_id not between", value1, value2, "emailToMadId");
+        public Criteria andValidateTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("validate_type not between", value1, value2, "validateType");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdIsNull() {
-            addCriterion("email_to_admin_id is null");
+        public Criteria andValidateCourseIdIsNull() {
+            addCriterion("validate_course_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdIsNotNull() {
-            addCriterion("email_to_admin_id is not null");
+        public Criteria andValidateCourseIdIsNotNull() {
+            addCriterion("validate_course_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdEqualTo(Integer value) {
-            addCriterion("email_to_admin_id =", value, "emailToAdminId");
+        public Criteria andValidateCourseIdEqualTo(Integer value) {
+            addCriterion("validate_course_id =", value, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdNotEqualTo(Integer value) {
-            addCriterion("email_to_admin_id <>", value, "emailToAdminId");
+        public Criteria andValidateCourseIdNotEqualTo(Integer value) {
+            addCriterion("validate_course_id <>", value, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdGreaterThan(Integer value) {
-            addCriterion("email_to_admin_id >", value, "emailToAdminId");
+        public Criteria andValidateCourseIdGreaterThan(Integer value) {
+            addCriterion("validate_course_id >", value, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("email_to_admin_id >=", value, "emailToAdminId");
+        public Criteria andValidateCourseIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("validate_course_id >=", value, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdLessThan(Integer value) {
-            addCriterion("email_to_admin_id <", value, "emailToAdminId");
+        public Criteria andValidateCourseIdLessThan(Integer value) {
+            addCriterion("validate_course_id <", value, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdLessThanOrEqualTo(Integer value) {
-            addCriterion("email_to_admin_id <=", value, "emailToAdminId");
+        public Criteria andValidateCourseIdLessThanOrEqualTo(Integer value) {
+            addCriterion("validate_course_id <=", value, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdIn(List<Integer> values) {
-            addCriterion("email_to_admin_id in", values, "emailToAdminId");
+        public Criteria andValidateCourseIdIn(List<Integer> values) {
+            addCriterion("validate_course_id in", values, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdNotIn(List<Integer> values) {
-            addCriterion("email_to_admin_id not in", values, "emailToAdminId");
+        public Criteria andValidateCourseIdNotIn(List<Integer> values) {
+            addCriterion("validate_course_id not in", values, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdBetween(Integer value1, Integer value2) {
-            addCriterion("email_to_admin_id between", value1, value2, "emailToAdminId");
+        public Criteria andValidateCourseIdBetween(Integer value1, Integer value2) {
+            addCriterion("validate_course_id between", value1, value2, "validateCourseId");
             return (Criteria) this;
         }
 
-        public Criteria andEmailToAdminIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("email_to_admin_id not between", value1, value2, "emailToAdminId");
+        public Criteria andValidateCourseIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("validate_course_id not between", value1, value2, "validateCourseId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdIsNull() {
+            addCriterion("validate_doc_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdIsNotNull() {
+            addCriterion("validate_doc_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdEqualTo(Integer value) {
+            addCriterion("validate_doc_id =", value, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdNotEqualTo(Integer value) {
+            addCriterion("validate_doc_id <>", value, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdGreaterThan(Integer value) {
+            addCriterion("validate_doc_id >", value, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("validate_doc_id >=", value, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdLessThan(Integer value) {
+            addCriterion("validate_doc_id <", value, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdLessThanOrEqualTo(Integer value) {
+            addCriterion("validate_doc_id <=", value, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdIn(List<Integer> values) {
+            addCriterion("validate_doc_id in", values, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdNotIn(List<Integer> values) {
+            addCriterion("validate_doc_id not in", values, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdBetween(Integer value1, Integer value2) {
+            addCriterion("validate_doc_id between", value1, value2, "validateDocId");
+            return (Criteria) this;
+        }
+
+        public Criteria andValidateDocIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("validate_doc_id not between", value1, value2, "validateDocId");
             return (Criteria) this;
         }
     }

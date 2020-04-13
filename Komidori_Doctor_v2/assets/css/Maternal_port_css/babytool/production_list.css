@@ -64,7 +64,7 @@
 .doc-link:after {
     border: 1px solid #e7e7e7;
     border-radius: 5px;
-    content: "Documentation";
+    content: "刷新";
     font-size: 12px;
     padding: 5px 10px;
     position: absolute;

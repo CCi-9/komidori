@@ -4,11 +4,14 @@
   <resultMap id="BaseResultMap" type="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
     <id column="baby_growth_id" property="babyGrowthId" jdbcType="INTEGER" />
     <result column="baby_growth_date" property="babyGrowthDate" jdbcType="VARCHAR" />
-    <result column="BPD" property="bpd" jdbcType="INTEGER" />
-    <result column="AC" property="ac" jdbcType="INTEGER" />
-    <result column="FL" property="fl" jdbcType="INTEGER" />
+    <result column="BPD" property="bpd" jdbcType="REAL" />
+    <result column="AC" property="ac" jdbcType="REAL" />
+    <result column="FL" property="fl" jdbcType="REAL" />
     <result column="minweight" property="minweight" jdbcType="REAL" />
     <result column="maxwight" property="maxwight" jdbcType="REAL" />
+    <result column="BPD_range" property="bpdRange" jdbcType="REAL" />
+    <result column="AC_range" property="acRange" jdbcType="REAL" />
+    <result column="FL_range" property="flRange" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    baby_growth_id, baby_growth_date, BPD, AC, FL, minweight, maxwight
+    baby_growth_id, baby_growth_date, BPD, AC, FL, minweight, maxwight, BPD_range, AC_range, 
+    FL_range
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChartExample" >
     select
@@ -103,11 +107,11 @@
   </delete>
   <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
     insert into baby_growth_chart (baby_growth_id, baby_growth_date, BPD, 
-      AC, FL, minweight, maxwight
-      )
-    values (#{babyGrowthId,jdbcType=INTEGER}, #{babyGrowthDate,jdbcType=VARCHAR}, #{bpd,jdbcType=INTEGER}, 
-      #{ac,jdbcType=INTEGER}, #{fl,jdbcType=INTEGER}, #{minweight,jdbcType=REAL}, #{maxwight,jdbcType=REAL}
-      )
+      AC, FL, minweight, maxwight, 
+      BPD_range, AC_range, FL_range)
+    values (#{babyGrowthId,jdbcType=INTEGER}, #{babyGrowthDate,jdbcType=VARCHAR}, #{bpd,jdbcType=REAL}, 
+      #{ac,jdbcType=REAL}, #{fl,jdbcType=REAL}, #{minweight,jdbcType=REAL}, #{maxwight,jdbcType=REAL}, 
+      #{bpdRange,jdbcType=REAL}, #{acRange,jdbcType=REAL}, #{flRange,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
     insert into baby_growth_chart
@@ -133,6 +137,15 @@
       <if test="maxwight != null" >
         maxwight,
       </if>
+      <if test="bpdRange != null" >
+        BPD_range,
+      </if>
+      <if test="acRange != null" >
+        AC_range,
+      </if>
+      <if test="flRange != null" >
+        FL_range,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="babyGrowthId != null" >
@@ -142,19 +155,28 @@
         #{babyGrowthDate,jdbcType=VARCHAR},
       </if>
       <if test="bpd != null" >
-        #{bpd,jdbcType=INTEGER},
+        #{bpd,jdbcType=REAL},
       </if>
       <if test="ac != null" >
-        #{ac,jdbcType=INTEGER},
+        #{ac,jdbcType=REAL},
       </if>
       <if test="fl != null" >
-        #{fl,jdbcType=INTEGER},
+        #{fl,jdbcType=REAL},
       </if>
       <if test="minweight != null" >
         #{minweight,jdbcType=REAL},
       </if>
       <if test="maxwight != null" >
         #{maxwight,jdbcType=REAL},
+      </if>
+      <if test="bpdRange != null" >
+        #{bpdRange,jdbcType=REAL},
+      </if>
+      <if test="acRange != null" >
+        #{acRange,jdbcType=REAL},
+      </if>
+      <if test="flRange != null" >
+        #{flRange,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -174,19 +196,28 @@
         baby_growth_date = #{record.babyGrowthDate,jdbcType=VARCHAR},
       </if>
       <if test="record.bpd != null" >
-        BPD = #{record.bpd,jdbcType=INTEGER},
+        BPD = #{record.bpd,jdbcType=REAL},
       </if>
       <if test="record.ac != null" >
-        AC = #{record.ac,jdbcType=INTEGER},
+        AC = #{record.ac,jdbcType=REAL},
       </if>
       <if test="record.fl != null" >
-        FL = #{record.fl,jdbcType=INTEGER},
+        FL = #{record.fl,jdbcType=REAL},
       </if>
       <if test="record.minweight != null" >
         minweight = #{record.minweight,jdbcType=REAL},
       </if>
       <if test="record.maxwight != null" >
         maxwight = #{record.maxwight,jdbcType=REAL},
+      </if>
+      <if test="record.bpdRange != null" >
+        BPD_range = #{record.bpdRange,jdbcType=REAL},
+      </if>
+      <if test="record.acRange != null" >
+        AC_range = #{record.acRange,jdbcType=REAL},
+      </if>
+      <if test="record.flRange != null" >
+        FL_range = #{record.flRange,jdbcType=REAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -197,11 +228,14 @@
     update baby_growth_chart
     set baby_growth_id = #{record.babyGrowthId,jdbcType=INTEGER},
       baby_growth_date = #{record.babyGrowthDate,jdbcType=VARCHAR},
-      BPD = #{record.bpd,jdbcType=INTEGER},
-      AC = #{record.ac,jdbcType=INTEGER},
-      FL = #{record.fl,jdbcType=INTEGER},
+      BPD = #{record.bpd,jdbcType=REAL},
+      AC = #{record.ac,jdbcType=REAL},
+      FL = #{record.fl,jdbcType=REAL},
       minweight = #{record.minweight,jdbcType=REAL},
-      maxwight = #{record.maxwight,jdbcType=REAL}
+      maxwight = #{record.maxwight,jdbcType=REAL},
+      BPD_range = #{record.bpdRange,jdbcType=REAL},
+      AC_range = #{record.acRange,jdbcType=REAL},
+      FL_range = #{record.flRange,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,13 +247,13 @@
         baby_growth_date = #{babyGrowthDate,jdbcType=VARCHAR},
       </if>
       <if test="bpd != null" >
-        BPD = #{bpd,jdbcType=INTEGER},
+        BPD = #{bpd,jdbcType=REAL},
       </if>
       <if test="ac != null" >
-        AC = #{ac,jdbcType=INTEGER},
+        AC = #{ac,jdbcType=REAL},
       </if>
       <if test="fl != null" >
-        FL = #{fl,jdbcType=INTEGER},
+        FL = #{fl,jdbcType=REAL},
       </if>
       <if test="minweight != null" >
         minweight = #{minweight,jdbcType=REAL},
@@ -227,17 +261,29 @@
       <if test="maxwight != null" >
         maxwight = #{maxwight,jdbcType=REAL},
       </if>
+      <if test="bpdRange != null" >
+        BPD_range = #{bpdRange,jdbcType=REAL},
+      </if>
+      <if test="acRange != null" >
+        AC_range = #{acRange,jdbcType=REAL},
+      </if>
+      <if test="flRange != null" >
+        FL_range = #{flRange,jdbcType=REAL},
+      </if>
     </set>
     where baby_growth_id = #{babyGrowthId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.doctor.komidori_doctor.pojo.BabyGrowthChart" >
     update baby_growth_chart
     set baby_growth_date = #{babyGrowthDate,jdbcType=VARCHAR},
-      BPD = #{bpd,jdbcType=INTEGER},
-      AC = #{ac,jdbcType=INTEGER},
-      FL = #{fl,jdbcType=INTEGER},
+      BPD = #{bpd,jdbcType=REAL},
+      AC = #{ac,jdbcType=REAL},
+      FL = #{fl,jdbcType=REAL},
       minweight = #{minweight,jdbcType=REAL},
-      maxwight = #{maxwight,jdbcType=REAL}
+      maxwight = #{maxwight,jdbcType=REAL},
+      BPD_range = #{bpdRange,jdbcType=REAL},
+      AC_range = #{acRange,jdbcType=REAL},
+      FL_range = #{flRange,jdbcType=REAL}
     where baby_growth_id = #{babyGrowthId,jdbcType=INTEGER}
   </update>
 </mapper>

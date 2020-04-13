@@ -232,11 +232,13 @@
                                     <label class="col-md-12">宝宝状态</label>
                                     <div class="col-md-12">
                                         <label class="radio-inline">
-                                            <input type="radio" name="baby_status" @click="getBabyStatus" v-model="baby.babyStatus" value="1">
+                                            <input type="radio" name="baby_status" @click="getBabyStatus"
+                                                   v-model="baby.babyStatus" value="1">
                                             出生
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="baby_status" @click="getBabyStatus" v-model="baby.babyStatus" value="0">
+                                            <input type="radio" name="baby_status" @click="getBabyStatus"
+                                                   v-model="baby.babyStatus" value="0">
                                             未出生
                                         </label>
 
@@ -247,13 +249,16 @@
                                     <label class="col-md-12">宝宝性别</label>
                                     <div class="col-md-12">
                                         <label class="radio-inline">
-                                            <input type="radio" name="babysex" @click="getBabySex" v-model="baby.babySex" value="小王子"> 小王子
+                                            <input type="radio" name="babysex" @click="getBabySex"
+                                                   v-model="baby.babySex" value="小王子"> 小王子
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="babysex" @click="getBabySex" v-model="baby.babySex" value="小公举"> 小公举
+                                            <input type="radio" name="babysex" @click="getBabySex"
+                                                   v-model="baby.babySex" value="小公举"> 小公举
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="babysex" @click="getBabySex" v-model="baby.babySex" value="未知"> 未知
+                                            <input type="radio" name="babysex" @click="getBabySex"
+                                                   v-model="baby.babySex" value="未知"> 未知
                                         </label>
 
                                     </div>
@@ -269,24 +274,26 @@
                                 </div>
 
                                 <div class="form-group container">
-                                    <label for="datetimepicker1" >出生日期/预产期</label>
+                                    <label for="datetimepicker1">出生日期/预产期</label>
                                     <!--指定 date标记-->
-                                    <div class='input-group date col-md-5'  id='datetimepicker1'>
-                                        <input :value="formatDate()" id='date1' class="form-control" name="date"/>
+                                    <div class='input-group date col-md-5' id='datetimepicker1' >
+                                        <input :value="formatDate()" id='date1' class="form-control"/>
+
                                         <span class="input-group-addon">
-							                    <span class="ti-time"></span>
+							                    <i class="ti-time"></i>
 							                </span>
                                     </div>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label for="city" class="col-sm-12">出生城市: <span>{{city}}</span></label>
+                                    <label for="city" class="col-sm-12">现住城市: <span>{{city}}</span></label>
                                     <form class="">
-                                        <div id="city"  @click="getCity">
+                                        <div id="city" @click="getCity">
                                             <div class="col-sm-12" style="position: relative;">
                                                 <input id="city-picker3" class="form-control form-control-line" readonly
-                                                       type="text" value="" data-toggle="city-picker">
+                                                       placeholder="更改城市"
+                                                       type="text" data-toggle="city-picker">
                                             </div>
                                         </div>
                                     </form>
@@ -340,7 +347,9 @@
 
 <!--时间(日期)段插件-->
 <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>-->
+<script src="../../assets/js/time/bootstrap-datepicker.min.js"></script>
+<script src="../../assets/js/time/bootstrap-datepicker.zh-CN.min.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -351,26 +360,21 @@
 <script>
     //	$("#head").load("./user_head.html");
 
-
     $(function () {
+        returnSignin()
+
         $("#foot").load("../low_footer.html");
 
-        $('#datetimepicker1').datetimepicker({
-            format: 'YYYY-MM-DD',
-            locale: moment.locale('zh-cn'),
-
-        }).on('changeDate',function (e) {
+        $('#date1').datepicker({
+            locale: moment.locale('zh-CN'),
+            format: 'yyyy-mm-dd',
+            startDate: new Date(),
+            todayHighlight: true,
+            autoclose: true,
+            endDate: "+10m",
+        }).on('changeDate', function (e) {
             app.baby.babyBirth = e.target.value
         });
-
-//	$('#datetimepicker2').datetimepicker({
-//      format: 'YYYY-MM-DD',
-//      locale: moment.locale('zh-cn'),
-//      
-//  });
-//
-        getBaby()
-
     });
 
 
@@ -393,24 +397,27 @@
                 app.baby = result.data
                 app.babyName = app.baby.babyName
                 app.babySex = app.baby.babySex
+                app.city = app.baby.babyCity
                 app.babyStatus = app.baby.babyStatus
             }
         });
     }
 
     function updateBabyMsg() {
+        console.log(app.baby)
+
         $.ajax({
             url: "http://" + host + "/maternal/baby/updateBabyMsg",
-            method:"put",
-            data:JSON.stringify(app.baby),
+            method: "put",
+            data: JSON.stringify(app.baby),
             dataType: "json",
             contentType: "application/json;charset-UTF-8",
-            xhrFields:{
-                withCredentials:true  //带上cookie信息，解决sessionid不一致
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
             },
             success: function (result) {
                 console.log(result)
-                if(result.status == "200"){
+                if (result.status == "200") {
                     alert("更改成功")
                     window.location.href = 'personal_center.html'
                 }
@@ -423,27 +430,30 @@
         el: "#app",
         data: {
             baby: {},
-            babyName:"",
-            babyStatus:0,
-            babySex:"",
-            city:"",
+            babyName: "",
+            babyStatus: 0,
+            babySex: "",
+            city: "",
         },
-        methods:{
-            getBabySex(obj){
+        methods: {
+            getBabySex(obj) {
                 this.baby.babySex = obj.target.value
             },
-            getBabyStatus(obj){
+            getBabyStatus(obj) {
                 this.baby.babyStatus = obj.target.value
             },
-            formatDate(){
+            formatDate() {
                 let date = this.baby.babyBirth
-                date = formatDate(date,"yyyy-MM-dd")
+                date = formatDate(date, "yyyy-MM-dd")
                 return date
             },
-            getCity(){
+            getCity() {
                 this.baby.babyCity = $("#city-picker3").val()
             }
-        }
+        },
+        mounted() {
+            getBaby()
+        },
     })
 </script>
 </html>

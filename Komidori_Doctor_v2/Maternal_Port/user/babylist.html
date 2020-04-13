@@ -220,36 +220,38 @@
                         <h4 class="modal-title" id="myModalLabel">添加新宝宝</h4>
                     </div>
                     <div class="modal-body">
-                        <form id="add_baby_form" class="">
+                        <form id="add_baby_form" class="" onsubmit="return false">
                             <!--宝宝名-->
                             <div class="form-group">
                                 <label for="baby_name" class="control-label">宝宝名:</label>
-                                <input type="text" class="form-control" id="baby_name">
+                                <input v-model="baby.babyName" type="text" class="form-control" id="baby_name">
                             </div>
-                            <!--宝宝性别-->
+                            <!--宝宝性别-->e
                             <div class="form-group">
-                                <label for="" class="control-label">宝宝性别:</label>
+                                <label class="control-label">宝宝性别:</label>
                                 <div class="col-sm-12">
                                     <label class="radio-inline">
-                                        <input type="radio" name="babysex" value="boy"> 小王子
+                                        <input type="radio" name="babysex" @click="getBabySex" v-model="baby.babySex" value="小王子"> 小王子
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="babysex" value="girl"> 小公主
+                                        <input type="radio" name="babysex" @click="getBabySex" v-model="baby.babySex" value="小公举"> 小公举
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="babysex" value="unknown"> 未知
+                                        <input type="radio" name="babysex" @click="getBabySex" v-model="baby.babySex" value="未知"> 未知
                                     </label>
                                 </div>
                             </div>
                             <!--宝贝状态-->
                             <div class="form-group">
-                                <label for="baby_status" class="control-label">宝宝状态:</label>
+                                <label class="control-label">宝宝状态:</label>
                                 <div class="col-sm-12">
                                     <label class="radio-inline">
-                                        <input type="radio" name="babysex" id="" value="boy"> 出生
+                                        <input type="radio" name="baby_status" @click="getBabyStatus" v-model="baby.babyStatus" value="1">
+                                        出生
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="babysex" id="baby_status" value="girl"> 未出生
+                                        <input type="radio" name="baby_status" @click="getBabyStatus" v-model="baby.babyStatus" value="0">
+                                        未出生
                                     </label>
                                 </div>
                             </div>
@@ -258,7 +260,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button id="sa-add" type="button" class="btn btn-primary" data-dismiss="modal">添加宝宝</button>
+                        <button id="sa-add" onclick="addMyBaby()" type="button" class="btn btn-primary" data-dismiss="modal">添加宝宝</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal -->
@@ -290,10 +292,6 @@
 <!--滑动-->
 <script src="../../assets/js/smoothscroll.js"></script>
 
-<!--时间(日期)段插件-->
-<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
 <!--table-->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
@@ -301,7 +299,11 @@
 <script src="../../assets/js/sweetalert/jquery.sweet-alert.custom.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../assets/js/sweetalert/sweet-alert.js" type="text/javascript" charset="utf-8"></script>
 
-
+<!--时间(日期)段插件-->
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+<!--<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>-->
+<script src="../../assets/js/time/bootstrap-datepicker.min.js"></script>
+<script src="../../assets/js/time/bootstrap-datepicker.zh-CN.min.js"></script>
 
 <script src="../../assets/js/vue/vue.js"></script>
 <script src="../../assets/js/GlobalVariables.js"></script>
@@ -475,12 +477,37 @@
             }
         });
     }
+
+    function addMyBaby(){
+        $.ajax({
+            url: "http://" + host + "/maternal/baby/addMyBaby",
+            method:"post",
+            data:JSON.stringify(app.baby),
+            dataType: "json",
+            contentType: "application/json;charset-UTF-8",
+            xhrFields:{
+                withCredentials:true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if(result.message == "success"){
+                    alert("添加成功")
+                    window.location.reload()
+                }
+            }
+        });
+    }
 </script>
 <script>
     let app = new Vue({
         el: "#app",
         data: {
             babyList: [],
+            baby:{
+                babyName:"",
+                babyStatus:0,
+                babySex:"小王子",
+            },
         },
         mounted() {
             returnSignin()
@@ -488,7 +515,14 @@
             initTable()
             getMyAllBaby()
         },
-        methods: {}
+        methods: {
+            getBabySex(obj){
+                this.baby.babySex = obj.target.value
+            },
+            getBabyStatus(obj){
+                this.baby.babyStatus = obj.target.value
+            },
+        }
     })
 </script>
 </html>

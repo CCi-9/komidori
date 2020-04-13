@@ -244,52 +244,52 @@ public class BabyGrowthChartExample {
             return (Criteria) this;
         }
 
-        public Criteria andBpdEqualTo(Integer value) {
+        public Criteria andBpdEqualTo(Float value) {
             addCriterion("BPD =", value, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdNotEqualTo(Integer value) {
+        public Criteria andBpdNotEqualTo(Float value) {
             addCriterion("BPD <>", value, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdGreaterThan(Integer value) {
+        public Criteria andBpdGreaterThan(Float value) {
             addCriterion("BPD >", value, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andBpdGreaterThanOrEqualTo(Float value) {
             addCriterion("BPD >=", value, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdLessThan(Integer value) {
+        public Criteria andBpdLessThan(Float value) {
             addCriterion("BPD <", value, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdLessThanOrEqualTo(Integer value) {
+        public Criteria andBpdLessThanOrEqualTo(Float value) {
             addCriterion("BPD <=", value, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdIn(List<Integer> values) {
+        public Criteria andBpdIn(List<Float> values) {
             addCriterion("BPD in", values, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdNotIn(List<Integer> values) {
+        public Criteria andBpdNotIn(List<Float> values) {
             addCriterion("BPD not in", values, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdBetween(Integer value1, Integer value2) {
+        public Criteria andBpdBetween(Float value1, Float value2) {
             addCriterion("BPD between", value1, value2, "bpd");
             return (Criteria) this;
         }
 
-        public Criteria andBpdNotBetween(Integer value1, Integer value2) {
+        public Criteria andBpdNotBetween(Float value1, Float value2) {
             addCriterion("BPD not between", value1, value2, "bpd");
             return (Criteria) this;
         }
@@ -304,52 +304,52 @@ public class BabyGrowthChartExample {
             return (Criteria) this;
         }
 
-        public Criteria andAcEqualTo(Integer value) {
+        public Criteria andAcEqualTo(Float value) {
             addCriterion("AC =", value, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcNotEqualTo(Integer value) {
+        public Criteria andAcNotEqualTo(Float value) {
             addCriterion("AC <>", value, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcGreaterThan(Integer value) {
+        public Criteria andAcGreaterThan(Float value) {
             addCriterion("AC >", value, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcGreaterThanOrEqualTo(Integer value) {
+        public Criteria andAcGreaterThanOrEqualTo(Float value) {
             addCriterion("AC >=", value, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcLessThan(Integer value) {
+        public Criteria andAcLessThan(Float value) {
             addCriterion("AC <", value, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcLessThanOrEqualTo(Integer value) {
+        public Criteria andAcLessThanOrEqualTo(Float value) {
             addCriterion("AC <=", value, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcIn(List<Integer> values) {
+        public Criteria andAcIn(List<Float> values) {
             addCriterion("AC in", values, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcNotIn(List<Integer> values) {
+        public Criteria andAcNotIn(List<Float> values) {
             addCriterion("AC not in", values, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcBetween(Integer value1, Integer value2) {
+        public Criteria andAcBetween(Float value1, Float value2) {
             addCriterion("AC between", value1, value2, "ac");
             return (Criteria) this;
         }
 
-        public Criteria andAcNotBetween(Integer value1, Integer value2) {
+        public Criteria andAcNotBetween(Float value1, Float value2) {
             addCriterion("AC not between", value1, value2, "ac");
             return (Criteria) this;
         }
@@ -364,52 +364,52 @@ public class BabyGrowthChartExample {
             return (Criteria) this;
         }
 
-        public Criteria andFlEqualTo(Integer value) {
+        public Criteria andFlEqualTo(Float value) {
             addCriterion("FL =", value, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlNotEqualTo(Integer value) {
+        public Criteria andFlNotEqualTo(Float value) {
             addCriterion("FL <>", value, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlGreaterThan(Integer value) {
+        public Criteria andFlGreaterThan(Float value) {
             addCriterion("FL >", value, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlGreaterThanOrEqualTo(Integer value) {
+        public Criteria andFlGreaterThanOrEqualTo(Float value) {
             addCriterion("FL >=", value, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlLessThan(Integer value) {
+        public Criteria andFlLessThan(Float value) {
             addCriterion("FL <", value, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlLessThanOrEqualTo(Integer value) {
+        public Criteria andFlLessThanOrEqualTo(Float value) {
             addCriterion("FL <=", value, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlIn(List<Integer> values) {
+        public Criteria andFlIn(List<Float> values) {
             addCriterion("FL in", values, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlNotIn(List<Integer> values) {
+        public Criteria andFlNotIn(List<Float> values) {
             addCriterion("FL not in", values, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlBetween(Integer value1, Integer value2) {
+        public Criteria andFlBetween(Float value1, Float value2) {
             addCriterion("FL between", value1, value2, "fl");
             return (Criteria) this;
         }
 
-        public Criteria andFlNotBetween(Integer value1, Integer value2) {
+        public Criteria andFlNotBetween(Float value1, Float value2) {
             addCriterion("FL not between", value1, value2, "fl");
             return (Criteria) this;
         }
@@ -531,6 +531,186 @@ public class BabyGrowthChartExample {
 
         public Criteria andMaxwightNotBetween(Float value1, Float value2) {
             addCriterion("maxwight not between", value1, value2, "maxwight");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeIsNull() {
+            addCriterion("BPD_range is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeIsNotNull() {
+            addCriterion("BPD_range is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeEqualTo(Float value) {
+            addCriterion("BPD_range =", value, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeNotEqualTo(Float value) {
+            addCriterion("BPD_range <>", value, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeGreaterThan(Float value) {
+            addCriterion("BPD_range >", value, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeGreaterThanOrEqualTo(Float value) {
+            addCriterion("BPD_range >=", value, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeLessThan(Float value) {
+            addCriterion("BPD_range <", value, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeLessThanOrEqualTo(Float value) {
+            addCriterion("BPD_range <=", value, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeIn(List<Float> values) {
+            addCriterion("BPD_range in", values, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeNotIn(List<Float> values) {
+            addCriterion("BPD_range not in", values, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeBetween(Float value1, Float value2) {
+            addCriterion("BPD_range between", value1, value2, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andBpdRangeNotBetween(Float value1, Float value2) {
+            addCriterion("BPD_range not between", value1, value2, "bpdRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeIsNull() {
+            addCriterion("AC_range is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeIsNotNull() {
+            addCriterion("AC_range is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeEqualTo(Float value) {
+            addCriterion("AC_range =", value, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeNotEqualTo(Float value) {
+            addCriterion("AC_range <>", value, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeGreaterThan(Float value) {
+            addCriterion("AC_range >", value, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeGreaterThanOrEqualTo(Float value) {
+            addCriterion("AC_range >=", value, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeLessThan(Float value) {
+            addCriterion("AC_range <", value, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeLessThanOrEqualTo(Float value) {
+            addCriterion("AC_range <=", value, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeIn(List<Float> values) {
+            addCriterion("AC_range in", values, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeNotIn(List<Float> values) {
+            addCriterion("AC_range not in", values, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeBetween(Float value1, Float value2) {
+            addCriterion("AC_range between", value1, value2, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andAcRangeNotBetween(Float value1, Float value2) {
+            addCriterion("AC_range not between", value1, value2, "acRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeIsNull() {
+            addCriterion("FL_range is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeIsNotNull() {
+            addCriterion("FL_range is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeEqualTo(Float value) {
+            addCriterion("FL_range =", value, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeNotEqualTo(Float value) {
+            addCriterion("FL_range <>", value, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeGreaterThan(Float value) {
+            addCriterion("FL_range >", value, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeGreaterThanOrEqualTo(Float value) {
+            addCriterion("FL_range >=", value, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeLessThan(Float value) {
+            addCriterion("FL_range <", value, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeLessThanOrEqualTo(Float value) {
+            addCriterion("FL_range <=", value, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeIn(List<Float> values) {
+            addCriterion("FL_range in", values, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeNotIn(List<Float> values) {
+            addCriterion("FL_range not in", values, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeBetween(Float value1, Float value2) {
+            addCriterion("FL_range between", value1, value2, "flRange");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlRangeNotBetween(Float value1, Float value2) {
+            addCriterion("FL_range not between", value1, value2, "flRange");
             return (Criteria) this;
         }
     }

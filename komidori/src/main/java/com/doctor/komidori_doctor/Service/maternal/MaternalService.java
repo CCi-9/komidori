@@ -39,4 +39,12 @@ public interface MaternalService {
     List<FollowChart> getMyExpert(HttpSession session);
 
     String deleteMyExpert(Integer id, HttpSession session);
+
+    String addMyBaby(BabyInfo babyInfo, HttpSession session);
+
+    List<ProductionChecklist> getProduction(HttpSession session);
+
+    List<VaccineInfo> getVaccine(HttpSession session);
+
+    List<BabyGrowthChart> getPrediction(HttpSession session);
 }

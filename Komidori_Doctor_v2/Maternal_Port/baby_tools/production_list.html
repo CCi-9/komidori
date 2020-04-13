@@ -1,385 +1,594 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<!-- Meta Tags -->
+<head>
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="themepresss">
-	<title>产检表</title>
-	
-	<link href="../../assets/css/index_Base.css" rel="stylesheet" />
-	<!--<link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css"/>-->
-	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/babytool/production_list.css"/>
-	
-	</head>
-	<body class="card-no-border">
-		
-		<div class="page-wrapper">			
-		<!-- start preloader -->
-        <div class="preloader">
-            <div class="lds-ripple">
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <!-- end preloader -->
-        
-		<!--头部-->
-		<header id="header" class="site-header header-style-1 header-style-3">
-            <div class="topbar">
-                <div class="container">
-                    <div class="separator"></div>
-                    <div class="row">
-                        <div class="col col-sm-3">
-                            <div class="contact-info">
-                                <ul>
-                                    <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col col-sm-5">
-                            <div class="contact-info">
-                                <ul>
-                                    <li><i class="ti-mobile"></i>502015889@qq.com</li>
-                                    <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--登陆注册入口-->
-                        <div class="col col-sm-4 hidden">
-                            <div class="sign">
-                            	<ul>
-                            		<li><a href="signin.html" class="log">登陆</a></li>
-                            		<li><a href="register.html" class="log">注册</a></li>
-                            		<li id="doc_entry"><a href="#"  class="log">医生入口</a></li>                            			
-                            	</ul>
-                            </div>
-                        </div>
-                        <!--登陆后显示-->
-                        <div class="col col-sm-4 ">
-                            <div class="admin">
-                            	<ul>
-                            		<li>
-                            			<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            				<img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px" />
-                            				Komidori Li
-                            				<span class="caret"></span>
-                        				</a>
-                        				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-				                          <li> <a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a> </li>
-				                          <li> <a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a> </li>
-				                          <li> <a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息 </a> </li>
-				                          <hr />
-				                          <li> <a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a> </li>
-                        				</ul>                      				
-                            		</li>
-                            	</ul>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div> <!-- end container -->
-            </div>
-            <!-- end topbar -->
+    <title>产检表</title>
 
-            <nav class="navigation navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="open-btn">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!--logo-->
-                        <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
-                    </div>
-                    <!--导航条-->
-                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
-                        <button class="close-navbar"><i class="ti-close"></i></button>
-                        <ul class="nav navbar-nav">
-                        	
-                            <li class="menu-item-has-children">
-                                <a href="../index.html">主页</a>
-                               
-                            </li>
-                            
-                            <li class="menu-item-has-children">
-                                <a href="#">线上咨询服务</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../doctor/find_doctors.html">找医生</a></li>
-                                    <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">线下预约服务</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
-                                    <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">经验交流社区</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../mom_public/expert_course.html">专家课程</a></li>
-                                    <li><a href="../expert/find_experts.html">找专家</a></li>
-                                    <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="menu-item-has-children">
-                                <a href="#">育儿工具</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../baby_tools/production_list.html">产检表</a></li>
-                                    <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
-                                    <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="../about.html">关于我们</a></li>
-                            
-                        </ul>
-                    </div><!-- end of nav-collapse -->
-					<!--导航条//-->
-					<!--搜索-->
-                    <div class="side-info">
-                        <div class="header-search-form-wrapper">
-                            <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
-                            <div class="header-search-form">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="在此处搜索...">
-                                        <button type="submit"><i class="fi flaticon-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>                      	
-                    <!--搜索//-->
-                </div><!-- end of container -->
-            </nav>
-        </header>
-        		       
-		<!--导航-->
-		<div class="breadcumb-area">
+    <link href="../../assets/css/index_Base.css" rel="stylesheet"/>
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css"/>-->
+    <link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/babytool/production_list.css"/>
+
+</head>
+<body class="card-no-border">
+
+<div class="page-wrapper" id="app">
+    <!-- start preloader -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- end preloader -->
+
+    <!--头部-->
+    <header id="header" class="site-header header-style-1 header-style-3">
+        <div class="topbar">
             <div class="container">
+                <div class="separator"></div>
                 <div class="row">
-                    <div class="col-12">
-                        <div class="breadcumb-wrap text-center">
-                            <h2>产检表</h2>
-                            <!--导航-->
+                    <div class="col col-sm-3">
+                        <div class="contact-info">
                             <ul>
-                                <li><a href="../index.html">主页</a></li>
-                                <li>育儿工具</li>
-                                <li><span>产检表</span></li>
+                                <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="col col-sm-5">
+                        <div class="contact-info">
+                            <ul>
+                                <li><i class="ti-mobile"></i>502015889@qq.com</li>
+                                <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--登陆注册入口-->
+                    <div class="col col-sm-4 hidden">
+                        <div class="sign">
+                            <ul>
+                                <li><a href="signin.html" class="log">登陆</a></li>
+                                <li><a href="register.html" class="log">注册</a></li>
+                                <li id="doc_entry"><a href="#" class="log">医生入口</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--登陆后显示-->
+                    <div class="col col-sm-4 ">
+                        <div class="admin">
+                            <ul>
+                                <li>
+                                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px"/>
+                                        Komidori Li
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                        <li><a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a>
+                                        </li>
+                                        <li><a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a></li>
+                                        <li><a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息
+                                        </a></li>
+                                        <hr/>
+                                        <li><a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div> <!-- end container -->
+        </div>
+        <!-- end topbar -->
+
+        <nav class="navigation navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="open-btn">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--logo-->
+                    <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
+                </div>
+                <!--导航条-->
+                <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                    <button class="close-navbar"><i class="ti-close"></i></button>
+                    <ul class="nav navbar-nav">
+
+                        <li class="menu-item-has-children">
+                            <a href="../index.html">主页</a>
+
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">线上咨询服务</a>
+                            <ul class="sub-menu">
+                                <li><a href="../doctor/find_doctors.html">找医生</a></li>
+                                <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">线下预约服务</a>
+                            <ul class="sub-menu">
+                                <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
+                                <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">经验交流社区</a>
+                            <ul class="sub-menu">
+                                <li><a href="../mom_public/expert_course.html">专家课程</a></li>
+                                <li><a href="../expert/find_experts.html">找专家</a></li>
+                                <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">育儿工具</a>
+                            <ul class="sub-menu">
+                                <li><a href="../baby_tools/production_list.html">产检表</a></li>
+                                <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
+                                <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="../about.html">关于我们</a></li>
+
+                    </ul>
+                </div><!-- end of nav-collapse -->
+                <!--导航条//-->
+                <!--搜索-->
+                <div class="side-info">
+                    <div class="header-search-form-wrapper">
+                        <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
+                        <div class="header-search-form">
+                            <form>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="在此处搜索...">
+                                    <button type="submit"><i class="fi flaticon-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--搜索//-->
+            </div><!-- end of container -->
+        </nav>
+    </header>
+
+    <!--导航-->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>产检表</h2>
+                        <!--导航-->
+                        <ul>
+                            <li><a href="../index.html">主页</a></li>
+                            <li>育儿工具</li>
+                            <li><span>产检表</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <section class="blog-single-section section-padding">
-            <div class="ab-svg_color">
-                <svg x="0px" y="0px"
-                viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
+    </div>
+
+    <section class="blog-single-section section-padding">
+        <div class="ab-svg_color">
+            <svg x="0px" y="0px"
+                 viewBox="0 0 1920 289" enable-background="new 0 0 1920 289" xml:space="preserve">
                 <path fill="#fff" d="M959,169C582.541,169,240.253,104.804-14.125,0H0v289h1920V0h12.125C1677.747,104.804,1335.459,169,959,169
                     z"/>
                </svg>
-            </div>
-            
-            <div class="container">
-            	<div class="row">
-            	<div class="col-md-6 col-md-push-3">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
                     <div class="card alert">
-                    	<!--头部-->
+                        <!--头部-->
                         <div class="card-header">
-                            <h4>产检表 </h4>
-							<div class="card-header-right-icon">
+                            <h4>产检表</h4>
+                            <div class="card-header-right-icon">
                                 <ul>
-                                	<li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-                                	<li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+                                    <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                                    <li @click="currentTimes = 0" class="doc-link"><a href="javascript:void(0)"><i
+                                            class="fa fa-refresh"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <!--内容-->
                         <div class="todo-list">
                             <div class="tdl-holder">
-								<div class="tdl-content">
-									<ul>
-										<li>
-											<label>
-												<input type="checkbox"><i></i>
-												<a href="#" class="preg_list_item">
-													<span class="name">孕12周 第1次产检</span>
-												</a>
-												<button class="ti-close"></button>
-											</label>
-										</li>
-										
-										<li>
-											<label>
-												<input type="checkbox"><i></i>
-												<a href="#" class="preg_list_item">
-													<span class="name">孕16周 第2次产检</span></a>
-												<button class="ti-close"></button>
-											</label>
-										</li>
-										
-										<li>
-											<label>
-												<input type="checkbox"><i></i>
-												<a href="#" class="preg_list_item">
-													<span class="name">孕20-21周 第3次产检</span></a>
-												<button class="ti-close"></button>
-											</label>
-										</li>
-										
-										<li>
-											<label>
-												<input type="checkbox"><i></i>
-												<a href="#" class="preg_list_item">
-													<span class="name">孕24周 第4次产检</span></a>
-												<button class="ti-close"></button>
-											</label>
-										</li>
-										
-									
-									</ul>
-								</div>
-								<!--<input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">-->
-							</div>
+                                <div class="tdl-content">
+                                    <ul>
+                                        <li v-for="(pro,index) in production">
+                                            <label>
+                                                <!--<input @click="currentTimes = 1" :checked="currentTimes >= 1"
+                                                       :disabled="currentTimes >= 1" type="checkbox"><i></i>-->
+                                                <input type="checkbox"><i></i>
+                                                <a href="javascript:void(0)" @click="changeShow(index)"
+                                                   class="preg_list_item">
+                                                    <span class="name">{{pro.proListDate + pro.proListName}}</span>
+                                                </a>
+                                                <button class="ti-close"></button>
+                                            </label>
+                                        </li>
+
+<!--
+
+                                        <li>
+                                            <label>
+                                                <input @click="currentTimes = 6" :checked="currentTimes >= 6"
+                                                       :disabled="currentTimes >= 6" type="checkbox"><i></i>
+                                                <a href="javascript:void(0)" @click="changeShow('six')"
+                                                   class="preg_list_item">
+                                                    <span class="name">孕30周 第6次产检</span></a>
+                                                <button class="ti-close"></button>
+                                            </label>
+                                        </li>
+-->
+
+
+                                    </ul>
+                                </div>
+                                <!--<input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">-->
+                            </div>
                         </div>
-					</div><!-- /# card -->
-				</div>
+                    </div><!-- /# card -->
+                </div>
             </div>
             <!--row end-->
-            
-            <div class="row">
-            	<div class="col col-md-8 data_box col-md-push-2">
-            		<form class="contact-validation-active">
-            			<fieldset id="">
-            				<legend align="center">产检表详情</legend>
-            				
-            				<table class="table table-hover">
-            					<caption>产检信息</caption>
-            					<tr>
-            						<th>产检序号</th>
-            						<td>第一次产检</td>
-            					</tr>
-            					<tr>
-            						<th>适宜孕期</th>
-            						<td>孕12周</td>
-            					</tr>
-            				</table>
-            				
-            				<h5>产检目的</h5>
-            				<p>准妈妈在孕期第12周时正式开始进行第1次产检。一般医院会给妈妈们办理“孕妇健康手册”。日后医师为每位准妈妈做各项产检时，也会依据手册内记载的检查项目分别进行并做记录。</p>
-            				
-            				<h5>检查项目</h5>
-            				<p>建立妊娠期保健手册、确定孕周、推算预产期、评估妊娠期高危因素、血压、体重指数、胎心率、血常规、尿常规、血型（ABO和Rh）、空腹血糖、肝功能和肾功能、乙型肝炎病毒表面抗原、梅毒螺旋体、HIV筛查、心电图。</p>
-            				
-            				<h5>温馨提示</h5>
-            				<p>之前没有做过婚检、孕前检查的人，还要增加地中海贫血的筛查，家里养宠物的人，则要增加寄生虫检查。专家提醒：第一次产检做的检查项目相对最多，这也是为了全面检查准妈妈的健康情况。要带上准爸爸一起检查，并且要了解你和他的直系亲属及家族成员的健康情况。</p>
-            				
-            				
-            				
-            				<div class="whitebox">
-            					<p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
-            					<!--<span id="tip" class="weight_rank"> </span>-->
-            				</div>
-            				
-            			</fieldset>
-            		</form>
-            	</div>
-            </div>
-            
-            </div>
-            
-            
-            
-            
-            
-             
-            
-    
 
-        </section>
-		
-		
-		
-								
-		<!--页尾-->
-		<div id="foot"></div>
-		
-	</div>	
-	</body>
-	
+            <div class="row" v-for="(pro,index) in production"  v-show=" show ==  index" >
+                <div class="col col-md-8 data_box col-md-push-2">
+                    <form class="contact-validation-active">
+                        <fieldset>
+                            <legend align="center">产检表详情</legend>
+
+                            <table class="table table-hover">
+                                <caption>产检信息</caption>
+                                <tr>
+                                    <th>产检序号</th>
+                                    <td>{{pro.proListName}}</td>
+                                </tr>
+                                <tr>
+                                    <th>适宜孕期</th>
+                                    <td>{{pro.proListDate}}</td>
+                                </tr>
+                            </table>
+
+                            <h5>产检目的</h5>
+                            <p>{{pro.proListAim}}</p>
+
+                            <h5>检查项目</h5>
+                            <p>{{pro.proListContent}}</p>
+
+                            <h5>温馨提示</h5>
+                            <p>{{pro.proListTip}}</p>
+
+                            <div class="whitebox">
+                                <p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
+                                <!--<span id="tip" class="weight_rank"> </span>-->
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+<!--
+            <div class="row" v-show="show == 'two'">
+                <div class="col col-md-8 data_box col-md-push-2">
+                    <form class="contact-validation-active">
+                        <fieldset>
+                            <legend align="center">产检表详情</legend>
+
+                            <table class="table table-hover">
+                                <caption>产检信息</caption>
+                                <tr>
+                                    <th>产检序号</th>
+                                    <td>第二次产检</td>
+                                </tr>
+                                <tr>
+                                    <th>适宜孕期</th>
+                                    <td>怀孕16周</td>
+                                </tr>
+                            </table>
+
+                            <h5>产检目的</h5>
+                            <p>本次产检除了一些常规的检查，查看胎儿的发育情况，最重要的是进行唐氏综合征的筛查，这次的唐氏筛查一般称为“中唐”。</p>
+
+                            <h5>检查项目</h5>
+                            <p>分析首次产前检查的结果、血压、体重、宫底高度、腹围、胎心率、孕中期唐氏血液筛查（15—20周）</p>
+
+                            <h5>温馨提示</h5>
+                            <p>
+                                第2次产检，最重要的项目是唐氏筛查，做唐氏筛查时检查前一天晚上12点以后禁食物和水，第二天早上空腹来医院进行检查。另外，检查还与月经周期、体重、身高、准确孕周、胎龄大小有关，最好在检查前向医生咨询其他准备工作。</p>
+
+                            <div class="whitebox">
+                                <p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
+                                &lt;!&ndash;<span id="tip" class="weight_rank"> </span>&ndash;&gt;
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row" v-show="show == 'three'">
+                <div class="col col-md-8 data_box col-md-push-2">
+                    <form class="contact-validation-active">
+                        <fieldset>
+                            <legend align="center">产检表详情</legend>
+
+                            <table class="table table-hover">
+                                <caption>产检信息</caption>
+                                <tr>
+                                    <th>产检序号</th>
+                                    <td>第三次产检</td>
+                                </tr>
+                                <tr>
+                                    <th>适宜孕期</th>
+                                    <td>怀孕20周</td>
+                                </tr>
+                            </table>
+
+                            <h5>产检目的</h5>
+                            <p>准妈妈要做第3次产检。在孕期20周做超声波检查，主要是看胎儿外观发育上是否有较大问题，医师会仔细量胎儿的头围、腹围、看大腿骨长度及检视脊柱是否有先天性异常。</p>
+
+                            <h5>检查项目</h5>
+                            <p>血压、体重、宫底高度、腹围、胎心率、B超胎儿畸形筛查（18—24周）、血常规、尿常规</p>
+
+                            <h5>温馨提示</h5>
+                            <p>
+                                第3次产检项目中最重要的是B超筛查胎儿畸形，在孕期20周做超声波检查，主要是看胎儿外观发育上是否有较大问题。医生会仔细量胎儿的头围、腹围、看大腿骨长度及检视脊柱是否有先天性异常。如果准妈妈照的是四维彩超，还可以看到宝宝的实时面部表情呢。照彩超之前，准妈妈要做的是保持平和的心态，如果过于紧张是会影响到胎儿的活动哦。</p>
+
+                            <div class="whitebox">
+                                <p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
+                                &lt;!&ndash;<span id="tip" class="weight_rank"> </span>&ndash;&gt;
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row" v-show="show == 'four'">
+                <div class="col col-md-8 data_box col-md-push-2">
+                    <form class="contact-validation-active">
+                        <fieldset>
+                            <legend align="center">产检表详情</legend>
+
+                            <table class="table table-hover">
+                                <caption>产检信息</caption>
+                                <tr>
+                                    <th>产检序号</th>
+                                    <td>第四次产检</td>
+                                </tr>
+                                <tr>
+                                    <th>适宜孕期</th>
+                                    <td>怀孕24周</td>
+                                </tr>
+                            </table>
+
+                            <h5>产检目的</h5>
+                            <p>
+                                准妈妈要做第4次产检。大部分妊娠糖尿病的筛检，是在孕期第24周做。如准妈妈有妊娠糖尿病，在治疗上，要采取饮食调整，如果调整饮食后还不能将餐后血糖控制在理想范围，则需通过注射胰岛素来控制，孕期不能使用口服的降血糖药物来治疗，以免造成胎儿畸形。</p>
+
+                            <h5>检查项目</h5>
+                            <p>血压、体重、宫底高度、腹围、胎心率、糖耐量筛查（75g OGTT）、血常规、尿常规</p>
+
+                            <h5>温馨提示</h5>
+                            <p>
+                                第4次常规产检，最重要的项目是进行妊娠糖尿病的筛检——糖耐量筛查，一般是在孕期第24周做。做糖耐量筛查前一天晚上8点以后不要进食，水也少喝。喝糖水的时候不要太快，慢慢喝，一点一点的喝，不要一口喝完，要在3—5分钟之内喝完。喝完后最好多走动，这样一个小时内能量会有所消耗，会帮助降低血糖浓度。</p>
+
+                            <div class="whitebox">
+                                <p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
+                                &lt;!&ndash;<span id="tip" class="weight_rank"> </span>&ndash;&gt;
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row" v-show="show == 'five'">
+                <div class="col col-md-8 data_box col-md-push-2">
+                    <form class="contact-validation-active">
+                        <fieldset>
+                            <legend align="center">产检表详情</legend>
+
+                            <table class="table table-hover">
+                                <caption>产检信息</caption>
+                                <tr>
+                                    <th>产检序号</th>
+                                    <td>第五次产检</td>
+                                </tr>
+                                <tr>
+                                    <th>适宜孕期</th>
+                                    <td>怀孕28周</td>
+                                </tr>
+                            </table>
+
+                            <h5>产检目的</h5>
+                            <p>
+                                准妈妈要做第5次产检。此阶段最重要的是为准妈妈抽血检查乙型肝炎，目的是要检视准妈妈本身是否携带乙型肝炎病毒，如果准妈妈的乙型肝炎两项检验皆呈阳性反应，一定要在准妈妈生下胎儿24小时内，为新生儿注射疫苗，以免让新生儿遭受感染。此外，要再次确认准妈妈前次所做的梅毒反应，是呈阳性还是阴性反应。如此方能在胎儿未出生前，即为准妈妈彻底治疗梅毒。</p>
+
+                            <h5>检查项目</h5>
+                            <p>血压、体重、宫底高度、腹围、胎心率、产科B超检查、血常规、尿常规</p>
+
+                            <h5>温馨提示</h5>
+                            <p>这时期贫血发生率增加，准妈妈务必作贫血检查，若发现贫血要在分娩前治愈。从怀孕28周开始，产检变为每两周一次，第5次和第6次产检都是常规项目的检查。</p>
+
+                            <div class="whitebox">
+                                <p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
+                                &lt;!&ndash;<span id="tip" class="weight_rank"> </span>&ndash;&gt;
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row" v-show="show == 'six'">
+                <div class="col col-md-8 data_box col-md-push-2">
+                    <form class="contact-validation-active">
+                        <fieldset>
+                            <legend align="center">产检表详情</legend>
+
+                            <table class="table table-hover">
+                                <caption>产检信息</caption>
+                                <tr>
+                                    <th>产检序号</th>
+                                    <td>第六次产检</td>
+                                </tr>
+                                <tr>
+                                    <th>适宜孕期</th>
+                                    <td>怀孕30周</td>
+                                </tr>
+                            </table>
+
+                            <h5>产检目的</h5>
+                            <p>
+                                准妈妈要做第6次产检。医师要陆续为准妈妈检查是否有水肿现象。由于大部分的子痫前症，会在孕期28周以后发生，如果测量结果发现准妈妈的血压偏高，又出现蛋白尿、全身水肿等情况时，准妈妈须多加留意，以免有子痫前症的危险。另外，准妈妈在37周前，要特别预防早产的发生，如果阵痛超过
+                                30分钟以上且持续增加，又合并有阴道出血或出水现象时，一定要立即送医院检查。</p>
+
+                            <h5>检查项目</h5>
+                            <p>血压、体重、宫底高度、腹围、胎心率、血常规、尿常规</p>
+
+                            <h5>温馨提示</h5>
+                            <p>这周的产检是进行常规的产检项目，准妈妈要注意每天都要自数胎动，发现异常就应该马上就医。</p>
+
+                            <div class="whitebox">
+                                <p>以上信息仅供参考，不同医院产检不同，请以实际为准 </p>
+                                &lt;!&ndash;<span id="tip" class="weight_rank"> </span>&ndash;&gt;
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+-->
+
+        </div>
+
+
+    </section>
+
+
+    <!--页尾-->
+    <div id="foot"></div>
+
+</div>
+</body>
 
 
 <!-- All JavaScript files================================================== -->
-    
-    <!--jquery-->
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    
-    <!--bootstrap-->
-	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
-    <!-- Plugins for this template -->
-    <script src="../../assets/js/jquery-plugin-collection.js"></script>
 
-    <!-- Custom script for this template -->
-    <script src="../../assets/js/script.js"></script>
-    
-    <!--滑动-->
-	<script src="../../assets/js/smoothscroll.js" type="text/javascript" charset="utf-8"></script>
-    
+<!--jquery-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+<!--bootstrap-->
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Plugins for this template -->
+<script src="../../assets/js/jquery-plugin-collection.js"></script>
+
+<!-- Custom script for this template -->
+<script src="../../assets/js/script.js"></script>
+
+<!--滑动-->
+<script src="../../assets/js/smoothscroll.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="../../assets/js/vue/vue.js"></script>
+<script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
+
 <!-- JS files end===========================================================-->
 <script>
-//	$("#head").load("./user_head.html");
-	
-$(function(){
-	$("#foot").load("../low_footer.html");	
-   	});
-$(function(){
-	/* TO DO LIST 
-    --------------------*/
-    $(".tdl-new").on('keypress', function (e) {
-        var code = (e.keyCode ? e.keyCode : e.which);
-        if (code == 13) {
-            var v = $(this).val();
-            var s = v.replace(/ +?/g, '');
-            if (s == "") {
-                return false;
-            } else {
-                $(".tdl-content ul").append("<li><label><input type='checkbox'><i></i><span>" + v + "</span><a href='#' class='ti-close'></a></label></li>");
-                $(this).val("");
+    //	$("#head").load("./user_head.html");
+
+    $(function () {
+        $("#foot").load("../low_footer.html");
+    });
+
+    /*$(function () {
+        /!* TO DO LIST
+        --------------------*!/
+        $(".tdl-new").on('keypress', function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) {
+                var v = $(this).val();
+                var s = v.replace(/ +?/g, '');
+                if (s == "") {
+                    return false;
+                } else {
+                    $(".tdl-content ul").append("<li><label><input type='checkbox'><i></i><span>" + v + "</span><a href='#' class='ti-close'></a></label></li>");
+                    $(this).val("");
+                }
             }
-        }
-    });
-
-
-    $(".tdl-content button").on("click", function () {
-        var _li = $(this).parent().parent("li");
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
-            _li.remove();
         });
-        return false;
-    });
 
-    // for dynamically created a tags
-    $(".tdl-content").on('click', "button", function () {
-        var _li = $(this).parent().parent("li");
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
-            _li.remove();
+
+        $(".tdl-content button").on("click", function () {
+            var _li = $(this).parent().parent("li");
+            _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
+                _li.remove();
+            });
+            return false;
         });
-        return false;
-    });
 
-})
- 
+        // for dynamically created a tags
+        $(".tdl-content").on('click', "button", function () {
+            var _li = $(this).parent().parent("li");
+            _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
+                _li.remove();
+            });
+            return false;
+        });
+
+    })*/
+    function getProduction() {
+        $.ajax({
+            url: "http://" + host + "/maternal/getProduction",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                app.production = result.data
+            }
+        });
+    }
 </script>
 
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            show: 0,
+            currentTimes: 0,
+            production:[],
+            //  bookList: [],
+        },
+        mounted() {
+         //   returnSignin()
+            getProduction()
+
+        },
+        methods: {
+            changeShow(obj) {
+                this.show = obj
+            }
+        }
+    })
+</script>
 
 </html>

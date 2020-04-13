@@ -1,11 +1,12 @@
 package com.doctor.komidori_doctor.Service.Essay.impl;
 
 import com.doctor.komidori_doctor.Service.Essay.EssayService;
+import com.doctor.komidori_doctor.mapper.CollectionChartMapper;
 import com.doctor.komidori_doctor.mapper.PublicEssayChartMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.MyCollectionChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyPublicEssayChartMapper;
-import com.doctor.komidori_doctor.pojo.CourseInfo;
-import com.doctor.komidori_doctor.pojo.PublicEssayChart;
+import com.doctor.komidori_doctor.pojo.*;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,17 @@ public class EssayServiceImpl implements EssayService {
     private PublicEssayChartMapper publicEssayChartMapper;
 
     @Resource
+    private CollectionChartMapper collectionChartMapper;
+
+    @Resource
     private MyPublicEssayChartMapper myPublicEssayChartMapper;
 
     @Resource
     private MyCourseInfoMapper myCourseInfoMapper;
+
+    @Resource
+    private MyCollectionChartMapper myCollectionChartMapper;
+
 
     @Override
     public Map<String, Object> getAllEssay(int page, Integer category, String name) {
@@ -37,7 +45,7 @@ public class EssayServiceImpl implements EssayService {
             category = null;
         }
 
-        if(name.equals("")){
+        if (name.equals("")) {
             name = null;
         }
 
@@ -74,7 +82,7 @@ public class EssayServiceImpl implements EssayService {
             category = null;
         }
 
-        if(essayName.equals("")){
+        if (essayName.equals("")) {
             essayName = null;
         }
 
@@ -87,5 +95,103 @@ public class EssayServiceImpl implements EssayService {
         map.put("pageTotal", total);
         map.put("currentPage", pageNum);
         return map;
+    }
+
+    @Override
+    public List<PublicEssayChart> getMyBookList(HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+
+        if (momId == null) {
+            return null;
+        }
+
+        List<PublicEssayChart> list = myPublicEssayChartMapper.getMyBookList(momId);
+        return list;
+    }
+
+    @Override
+    public boolean findCollection(Integer essayId, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            momId = 0;
+        }
+
+        CollectionChartExample example = new CollectionChartExample();
+        CollectionChartExample.Criteria criteria = example.createCriteria();
+        criteria.andCollectionIdEqualTo(essayId);
+        criteria.andCollectMatIdEqualTo(momId);
+        List<CollectionChart> collectionCharts = collectionChartMapper.selectByExample(example);
+
+        if (collectionCharts.size() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String deleteMyBook(Integer essayId, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "fail";
+        }
+        Integer id = publicEssayChartMapper.deleteByPrimaryKey(essayId);
+        if (id == null) {
+            return "删除失败";
+        }
+
+        return "success";
+    }
+
+    @Override
+    public List<CollectionChart> getBookList(HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+
+        if (momId == null) {
+            return null;
+        }
+
+        List<CollectionChart> list = myCollectionChartMapper.getBookList(momId);
+        return list;
+    }
+
+    @Override
+    public String deleteBook(Integer essayId, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "fail";
+        }
+
+        CollectionChartExample example = new CollectionChartExample();
+        CollectionChartExample.Criteria criteria = example.createCriteria();
+        criteria.andCollectMatIdEqualTo(momId);
+        criteria.andCollectionIdEqualTo(essayId);
+
+        Integer id = collectionChartMapper.deleteByExample(example);
+
+        if (id == null) {
+            return "删除失败";
+        }
+
+        return "success";
+    }
+
+    @Override
+    public String collectEssay(Integer essayId, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "请重新登录";
+        }
+
+        CollectionChart chart = new CollectionChart();
+        chart.setCollectionId(essayId);
+        chart.setCollectMatId(momId);
+        chart.setCollectionDate(new Date());
+        Integer result = collectionChartMapper.insert(chart);
+
+        if (result == null) {
+            return "收藏失败";
+        }
+
+        return "收藏成功";
     }
 }

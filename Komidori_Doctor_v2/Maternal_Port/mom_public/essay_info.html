@@ -199,7 +199,7 @@
                             <ul class="entry-meta">
                                 <li>
                                     <img class="headpic" :src="maternal.maternalImg" alt>
-                                    &nbsp; By <a href="#">{{maternal.maternalName}}</a>
+                                    &nbsp; By <a href="#">{{maternal.maternalNickname}}</a>
                                 </li>
                                 <li>{{essay.essayDate}}</li>
                             </ul>
@@ -236,7 +236,7 @@
                             </div>
                             <div class="author-content">
                                 <a href="#" class="author-name"><strong>作者: </strong>
-                                    {{maternal.maternalName}}
+                                    {{maternal.maternalNickname}}
                                     <span v-if="maternal.maternalStatus == 1" class="label label-info">在孕中</span>
                                     <span v-if="maternal.maternalStatus == 2" class="label label-info">已产</span>
                                     <span v-if="maternal.maternalStatus == 3" class="label label-info">备孕</span>
@@ -245,8 +245,8 @@
                                 <p><strong>地区: </strong>{{maternal.maternalCity}}</p>
                                 <div class="socials">
                                     <ul class="social-link">
-                                        <li>
-                                            <button id="sa-title" class="btn btn-theme"><i
+                                        <li v-if="exist == 'no'">
+                                            <button @click="collect" id="sa-follow" class="btn btn-theme"><i
                                                     class="fa fa-cart-arrow-down"></i> 收藏文章
                                             </button>
                                         </li>
@@ -260,7 +260,7 @@
                             </div>
                         </div> <!-- end author-box -->
 
-                        <div class="more-posts clearfix">
+                        <!--<div class="more-posts clearfix">
                             <div class="previous-post">
                                 <a href="#">
                                     <span class="post-control-link">上一篇</span>
@@ -271,7 +271,7 @@
                                     <span class="post-control-link">下一篇</span>
                                 </a>
                             </div>
-                        </div> <!-- end more-posts -->
+                        </div>--> <!-- end more-posts -->
 
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">写评论</h3>
@@ -500,13 +500,35 @@
             },
             success: function (result) {
                 console.log(result)
-                if (result.message != "success") {
+                if (result.status != "200") {
                     alert(result.message)
                 } else {
                     app.essay = result.data
                     app.maternal = app.essay.maternalInfo
                     app.essay.essayDate = formatDate(app.essay.essayDate, "yyyy-MM-dd hh:mm")
+                    app.exist = result.message
                 }
+            }
+        });
+    }
+
+    function collectEssay() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/essay/maternal/collectEssay",
+            method: "POST",
+            data: {
+                essayId: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status == "200") {
+                    app.exist = "yes"
+                }
+                swal(result.message)
             }
         });
     }
@@ -516,13 +538,19 @@
         el: "#app",
         data: {
             essay: {},
-            maternal:{}
+            maternal: {},
+            exist: "no",
         },
         mounted() {
             init()
             getEssayByID()
         },
-        methods: {}
+        methods: {
+            collect() {
+                collectEssay()
+
+            },
+        }
     })
 </script>
 

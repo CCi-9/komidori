@@ -1,423 +1,445 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<!-- Meta Tags -->
+<head>
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="themepresss">
-	<title>育儿宝典</title>
-	
-	<link href="../../assets/css/index_Base.css" rel="stylesheet" />	
-	
-	<link rel="stylesheet" type="text/css" href="../../assets/css/tab/tab_styles.css"/>
-	<link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/nurse/nurse.css"/>
-	
-	</head>
-	<body class="card-no-border">
-		
-		<div class="page-wrapper">
-		<!--头部-->
-		<header id="header" class="site-header header-style-1 header-style-3">
-            <div class="topbar">
-                <div class="container">
-                    <div class="separator"></div>
-                    <div class="row">
-                        <div class="col col-sm-3">
-                            <div class="contact-info">
-                                <ul>
-                                    <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col col-sm-5">
-                            <div class="contact-info">
-                                <ul>
-                                    <li><i class="ti-mobile"></i>502015889@qq.com</li>
-                                    <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--登陆注册入口-->
-                        <div class="col col-sm-4 hidden">
-                            <div class="sign">
-                            	<ul>
-                            		<li><a href="signin.html" class="log">登陆</a></li>
-                            		<li><a href="register.html" class="log">注册</a></li>
-                            		<li id="doc_entry"><a href="#"  class="log">医生入口</a></li>                            			
-                            	</ul>
-                            </div>
-                        </div>
-                        <!--登陆后显示-->
-                        <div class="col col-sm-4 ">
-                            <div class="admin">
-                            	<ul>
-                            		<li>
-                            			<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            				<img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px" />
-                            				Komidori Li
-                            				<span class="caret"></span>
-                        				</a>
-                        				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-				                          <li> <a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a> </li>
-				                          <li> <a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a> </li>
-				                          <li> <a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息 </a> </li>
-				                          <hr />
-				                          <li> <a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a> </li>
-                        				</ul>                      				
-                            		</li>
-                            	</ul>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div> <!-- end container -->
-            </div>
-            <!-- end topbar -->
+    <title>育儿宝典</title>
 
-            <nav class="navigation navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="open-btn">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!--logo-->
-                        <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
-                    </div>
-                    <!--导航条-->
-                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
-                        <button class="close-navbar"><i class="ti-close"></i></button>
-                        <ul class="nav navbar-nav">
-                        	
-                            <li class="menu-item-has-children">
-                                <a href="../index.html">主页</a>
-                               
-                            </li>
-                            
-                            <li class="menu-item-has-children">
-                                <a href="#">线上咨询服务</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../doctor/find_doctors.html">找医生</a></li>
-                                    <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">线下预约服务</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
-                                    <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">经验交流社区</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../mom_public/expert_course.html">专家课程</a></li>
-                                    <li><a href="../expert/find_experts.html">找专家</a></li>
-                                    <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li class="menu-item-has-children">
-                                <a href="#">育儿工具</a>
-                                <ul class="sub-menu">
-                                    <li><a href="../baby_tools/production_list.html">产检表</a></li>
-                                    <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
-                                    <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="../about.html">关于我们</a></li>
-                            
-                        </ul>
-                    </div><!-- end of nav-collapse -->
-					<!--导航条//-->
-					<!--搜索-->
-                    <div class="side-info">
-                        <div class="header-search-form-wrapper">
-                            <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
-                            <div class="header-search-form">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="在此处搜索...">
-                                        <button type="submit"><i class="fi flaticon-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
+    <link href="../../assets/css/index_Base.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/tab/tab_styles.css"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/Maternal_port_css/nurse/nurse.css"/>
+
+</head>
+<body class="card-no-border">
+
+<div class="page-wrapper">
+    <!--头部-->
+    <header id="header" class="site-header header-style-1 header-style-3">
+        <div class="topbar">
+            <div class="container">
+                <div class="separator"></div>
+                <div class="row">
+                    <div class="col col-sm-3">
+                        <div class="contact-info">
+                            <ul>
+                                <li><i class="ti-location-pin"></i>湛江市赤坎区教育路11号</li>
+                            </ul>
                         </div>
-                    </div>                      	
-                    <!--搜索//-->
-                </div><!-- end of container -->
-            </nav>
-        </header>
-        
-		<!--头部结束-->
-		<div class="preloader">
-            <div class="lds-ripple">
-                <div></div>
-                <div></div>
+                    </div>
+                    <div class="col col-sm-5">
+                        <div class="contact-info">
+                            <ul>
+                                <li><i class="ti-mobile"></i>502015889@qq.com</li>
+                                <li><i class="ti-email"></i>+ 0759 134 3364 8882</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--登陆注册入口-->
+                    <div class="col col-sm-4 hidden">
+                        <div class="sign">
+                            <ul>
+                                <li><a href="signin.html" class="log">登陆</a></li>
+                                <li><a href="register.html" class="log">注册</a></li>
+                                <li id="doc_entry"><a href="#" class="log">医生入口</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--登陆后显示-->
+                    <div class="col col-sm-4 ">
+                        <div class="admin">
+                            <ul>
+                                <li>
+                                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <img src="../../assets/images/heads.jpg" alt="" width="30px" height="30px"/>
+                                        Komidori Li
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                        <li><a href="../user/personal_center.html"> <i class="ti-user"></i> 个人中心 </a>
+                                        </li>
+                                        <li><a href="../reset_pwd.html"> <i class="ti-lock"></i> 更改密码</a></li>
+                                        <li><a href="../user/personal_information.html"> <i class="ti-bag"></i> 我的信息
+                                        </a></li>
+                                        <hr/>
+                                        <li><a href="../signin.html"> <i class="ti-close"></i> 退出登陆 </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div> <!-- end container -->
+        </div>
+        <!-- end topbar -->
+
+        <nav class="navigation navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="open-btn">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--logo-->
+                    <a class="navbar-brand" href="index.html"><img src="../../assets/images/l3.jpg" alt height="68px;"></a>
+                </div>
+                <!--导航条-->
+                <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                    <button class="close-navbar"><i class="ti-close"></i></button>
+                    <ul class="nav navbar-nav">
+
+                        <li class="menu-item-has-children">
+                            <a href="../index.html">主页</a>
+
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">线上咨询服务</a>
+                            <ul class="sub-menu">
+                                <li><a href="../doctor/find_doctors.html">找医生</a></li>
+                                <!--<li><a href="service-single.html">按科室寻找医生</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">线下预约服务</a>
+                            <ul class="sub-menu">
+                                <li><a href="../doctor/find_appointment_doc.html">预约私人医生</a></li>
+                                <li><a href="../nurse/find_nurses.html">预约月嫂</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">经验交流社区</a>
+                            <ul class="sub-menu">
+                                <li><a href="../mom_public/expert_course.html">专家课程</a></li>
+                                <li><a href="../expert/find_experts.html">找专家</a></li>
+                                <li><a href="../mom_public/mom_public.html">妈妈交流社区</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item-has-children">
+                            <a href="#">育儿工具</a>
+                            <ul class="sub-menu">
+                                <li><a href="../baby_tools/production_list.html">产检表</a></li>
+                                <li><a href="../baby_tools/vaccine_list.html">疫苗接种</a></li>
+                                <li><a href="../baby_tools/growth_prediction.html">胎儿发育测评</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="../about.html">关于我们</a></li>
+
+                    </ul>
+                </div><!-- end of nav-collapse -->
+                <!--导航条//-->
+                <!--搜索-->
+                <div class="side-info">
+                    <div class="header-search-form-wrapper">
+                        <button class="search-toggle-btn"><i class="fi flaticon-search"></i></button>
+                        <div class="header-search-form">
+                            <form>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="在此处搜索...">
+                                    <button type="submit"><i class="fi flaticon-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--搜索//-->
+            </div><!-- end of container -->
+        </nav>
+    </header>
+
+    <!--头部结束-->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- end preloader -->
+
+    <!--导航-->
+    <div id="personal">
+        <div class="container">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-12 align-self-center">
+                    <!--<h3 class="text-themecolor">个人信息</h3>-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="../user/personal_center.html">个人中心</a></li>
+                        <li class="breadcrumb-item">育儿宝典</li>
+                    </ol>
+                </div>
             </div>
         </div>
-        <!-- end preloader -->
-        
-		<!--导航-->
-		<div id="personal">		
-		<div class="container">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <div class="row page-titles">
-                    <div class="col-md-12 align-self-center">
-                        <!--<h3 class="text-themecolor">个人信息</h3>-->
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a href="../user/personal_center.html">个人中心</a></li>
-                            <li class="breadcrumb-item">育儿宝典</li>                                                        
-                        </ol>
-                    </div>                   
-                </div>                
-           </div>                        
-		</div>
-		<!--导航结束-->
-		
-		<div class="container">
-			<section id="" class="blog-single-section">         
+    </div>
+    <!--导航结束-->
+
+    <div class="container" id="app">
+        <section id="" class="blog-single-section">
             <h3 class="comments-title2">育儿宝典<span class="badge">3</span></h3>
             <div class="row">
-            	<div class="col-md-12">
-            		<div class="white-box">
-            
-            			<div class="table-responsive">
-            				<div id="toolbar" class="toolbar">
-            					<!--<button class="btn btn-theme02" onclick="" id="delbtn">批量删除</button>-->
-            				</div>
-            				<table id="babybook" class="table table-hover">
-            				</table>
-            			</div>
-            		</div>
-            	</div>
-            	<!-- end row -->
-            
+                <div class="col-md-12">
+                    <div class="white-box">
+
+                        <div class="table-responsive">
+                            <div id="toolbar" class="toolbar">
+                                <!--<button class="btn btn-theme02" onclick="" id="delbtn">批量删除</button>-->
+                            </div>
+                            <table id="babybook" class="table table-hover">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
             </div>
-                  
+
         </section>
-		</div>
-		
-		
-		
+    </div>
 
 
-										
-		<!--页尾-->
-		<div id="foot"></div>
-		
-	</div>	
-	</body>
-	
+    <!--页尾-->
+    <div id="foot"></div>
+
+</div>
+</body>
 
 
 <!-- All JavaScript files================================================== -->
-    
-   <!--jquery-->
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    
-    <!--bootstrap-->
-		<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
-    <!-- Plugins for this template -->
-    <script src="../../assets/js/jquery-plugin-collection.js"></script>
 
-    <!-- Custom script for this template -->
-    <script src="../../assets/js/script.js"></script>
-    
-    <!--滑动-->
-		<script src="../../assets/js/smoothscroll.js" type="text/javascript" charset="utf-8"></script>
-    
-    	<!--table-->
-  	<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
-		<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
-    
+<!--jquery-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+<!--bootstrap-->
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Plugins for this template -->
+<script src="../../assets/js/jquery-plugin-collection.js"></script>
+
+<!-- Custom script for this template -->
+<script src="../../assets/js/script.js"></script>
+
+<!--滑动-->
+<script src="../../assets/js/smoothscroll.js" type="text/javascript" charset="utf-8"></script>
+
+<!--table-->
+<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
+
+
+<script src="../../assets/js/vue/vue.js"></script>
+<script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
 <!-- JS files end===========================================================-->
 <script>
-//	$("#head").load("./user_head.html");
-	
-	
-$(function(){
-	$("#foot").load("../low_footer.html");	
-  });
+    //	$("#head").load("./user_head.html");
+
+
+    $(function () {
+        $("#foot").load("../low_footer.html");
+    });
 </script>
 
 <script type="text/javascript">
-	
-	$('#babybook').bootstrapTable({
-        columns: [
-        		{
-                // radio: true, // 单选
-                checkbox: true,
-                width: 30,
-                halign:'center',//表头居中显示
-              	align:'center'
-            },
-            	{
-                field: 'id',
-                title: '序号',
-              	formatter: function (value, row, index) {
-                  return index+1;
-              																					},
-                halign:'center',
-                align:'center',
-                width: 50
-            },
-          	{
-              field: 'essay_id',
-              title: '文章编号',
-              halign:'center',//表头居中显示
-              align:'center',
-              width: 80
- 
-        		},
-          	{
-              field: 'essay_author_id',
-              title: '作者姓名',
-              halign:'center',//表头居中显示
-              align:'center',
-              width: 80
- 
-        		},
-            {
-                field: 'essay_category',
-                title: '文章分类',
-                halign:'center',//表头居中显示
-                align:'center',
-                width: '30px',
-                formatter: function (value, row, index) {   //传入数据
-        					return '<span class="label label-success">'+value+'</span>';
-    						},
- 
-          	},
-            {
-                field: 'essay_date',
-                title: '发布时间',
-                halign:'center',//表头居中显示
-                align:'center',
-                width: 100
- 
-          	},
-            {
-                field: 'essay_good_review',
-                title: '好评',
-                halign:'center',//表头居中显示
-                align:'center',
-                width: 50,
-                formatter: function (value, row, index) {   //传入数据
- 									
-        					return '<span class="badge badge-good">'+value+'</span>';
-        					
-        		},			
-    						},
-            {
-                field: 'collection_date',
-                title: '收藏时间',
-                halign:'center',//表头居中显示
-                align:'center',
-                width: 100
- 
-          	},
- 
-          	
-							{
-                field: '',
-                title: '管理',
-                halign:'center',
-                align:'center',
-                width:'80px',
-                formatter: function (value, row, index) {   //传入数据
-        				return '<a class="btn btn-theme02 btn-sm" title="del" >删除</a>';
-    						},
-    						 events: {
-      					'click a[title=del]': function (e, value, row, index) {
-          				if(confirm('此操作不可逆，请确认是否删除？')){
-          					$('#babybook').bootstrapTable('remove', 
-          					{ field:'collect_order_id', values:[parseInt(row.collect_order_id)] }); 
-          					$("#babybook").bootstrapTable("refresh");
-          				}
-          				}
-      					},
-                
-            }],
-        data: [
-        {	
-        	'essay_id':11,
-        	'essay_author_id':'玉溪',
-        	'essay_category':'产后·调理',
-        	'essay_good_review':'233',
-        	'essay_date':'2018-05-06 19:15:33',
-        	'collection_date':'2018-05-08 19:15:33',
-        },
-        {	
-        	'essay_id':12,
-        	'essay_author_id':'玉溪',
-        	'essay_category':'产后·调理',
-        	'essay_good_review':'233',
-        	'essay_date':'2018-05-06 19:15:33',
-        	'collection_date':'2018-05-08 19:15:33',
-        },
-        {	
-        	'essay_id':13,
-        	'essay_author_id':'玉溪',
-        	'essay_category':'产后·调理',
-        	'essay_good_review':'233',
-        	'essay_date':'2018-05-06 19:15:33',
-        	'collection_date':'2018-05-08 19:15:33',
-        },
-        {	
-        	'essay_id':14,
-        	'essay_author_id':'玉溪',
-        	'essay_category':'产后·调理',
-        	'essay_good_review':'233',
-        	'essay_date':'2018-05-06 19:15:33',
-        	'collection_date':'2018-05-08 19:15:33',
-        },
-        {	
-        	'essay_id':15,
-        	'essay_author_id':'玉溪',
-        	'essay_category':'产后·调理',
-        	'essay_good_review':'233',
-        	'essay_date':'2018-05-06 19:15:33',
-        	'collection_date':'2018-05-08 19:15:33',
-        },
-        
-        
-        
-        ],
-        url:'',
-        method: 'post',
-        pagination:true,  //设置为 true 会在表格底部显示分页条。
-        paginationLoop:false, //设置为 true 启用分页条无限循环的功能。
-        pageSize:3,//每页初始显示的条数
-        pageList:[5,10,15],
-        toolbar:'#toolbar',//工具栏
-        toolbarAlign:'right',//工具栏的位置
-        search: true,
-        showRefresh: true,
-        showColumns: true,
-        clickToSelect: true,   //是否启用点击选中行
+    function initTable(){
+        $('#babybook').bootstrapTable({
+            columns: [
+               /* {
+                    // radio: true, // 单选
+                    checkbox: true,
+                    width: 30,
+                    halign: 'center',//表头居中显示
+                    align: 'center'
+                },*/
+                {
+                    field: 'id',
+                    title: '序号',
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    },
+                    halign: 'center',
+                    align: 'center',
+                    width: 50
+                },
+                {
+                    field: 'collectionId',
+                    title: '文章编号',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 80
+
+                },
+                {
+                    field: 'publicEssayChart.essayTitle',
+                    title: '文章标题',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 120
+
+                },
+                {
+                    field: 'publicEssayChart.publicCategoryChart.publicCategoryName',
+                    title: '文章分类',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: '30px',
+                    formatter: function (value, row, index) {   //传入数据
+                        return '<span class="label label-success">' + value + '</span>';
+                    },
+
+                },
+                {
+                    field: 'publicEssayChart.essayDate',
+                    title: '发布时间',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 100
+
+                },
+                {
+                    field: 'publicEssayChart.essayGoodReview',
+                    title: '好评',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 50,
+                    formatter: function (value, row, index) {   //传入数据
+
+                        return '<span class="badge badge-good">' + value + '</span>';
+
+                    },
+                },
+                {
+                    field: 'collectionDate',
+                    title: '收藏时间',
+                    halign: 'center',//表头居中显示
+                    align: 'center',
+                    width: 100
+
+                },
+
+
+                {
+                    field: '',
+                    title: '管理',
+                    halign: 'center',
+                    align: 'center',
+                    width: '80px',
+                    formatter: function (value, row, index) {   //传入数据
+                        return '<a class="btn btn-theme02 btn-sm" title="del" >删除</a>';
+                    },
+                    events: {
+                        'click a[title=del]': function (e, value, row, index) {
+                            if (confirm('此操作不可逆，请确认是否删除？')) {
+                                $.ajax({
+                                    url: "http://" + host + "/essay/maternal/deleteBook",
+                                    method: "delete",
+                                    data: {
+                                        essayId: row.collectionId
+                                    },
+                                    xhrFields: {
+                                        withCredentials: true  //带上cookie信息，解决sessionid不一致
+                                    },
+                                    success: function (result) {
+                                        console.log(result)
+                                        if (result.status == "200") {
+                                            alert("删除成功")
+                                            $('#babybook').bootstrapTable('remove',
+                                                {field: 'collectionId', values: [parseInt(row.collectionId)]});
+                                            $("#babybook").bootstrapTable("refresh");
+                                        } else {
+                                            alert(result.message)
+                                        }
+                                    }
+                                });
+
+                            }
+                        }
+                    },
+
+                }],
+            data: app.bookList,
+            url: '',
+            method: 'post',
+            pagination: true,  //设置为 true 会在表格底部显示分页条。
+            paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
+            pageSize: 3,//每页初始显示的条数
+            pageList: [5, 10, 15],
+            toolbar: '#toolbar',//工具栏
+            toolbarAlign: 'right',//工具栏的位置
+            search: true,
+            showRefresh: true,
+            showColumns: true,
+            clickToSelect: true,   //是否启用点击选中行
 //      height:400
 //      sidePagination: "client"
- 
-    });
-	
-	$("#babybook").bootstrapTable('hideLoading');
-	
-	$("#babybook")
-  .on('dbl-click-row.bs.table', function (e, row, ele,field) {
-  				//转跳到mom_public目录下essay_info
-  				alert("文章"+row.essay_id+"的详情页");
-            })          
-	
+
+        });
+    }
+
+
+    function init() {
+        $("#babybook").bootstrapTable('hideLoading');
+
+        $("#babybook")
+            .on('dbl-click-row.bs.table', function (e, row, ele, field) {
+                //转跳到mom_public目录下essay_info
+                window.location.href = '../mom_public/essay_info.html?id=' + row.collectionId
+            })
+    }
 
 </script>
 
+<script>
+
+    function getMyBookList() {
+        $.ajax({
+            url: "http://" + host + "/essay/maternal/getBookList",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status != "200") {
+                    alert(result.message)
+                    window.location.href = '../index.html'
+                    return
+                }
+                let list = result.data
+                for (let i = 0; i < list.length; i++) {
+                    list[i].collectionDate = formatDate(list[i].collectionDate, "yyyy-MM-dd hh:mm")
+                    list[i].publicEssayChart.essayDate = formatDate(list[i].publicEssayChart.essayDate, "yyyy-MM-dd hh:mm")
+                }
+                app.bookList = list
+                initTable()
+            }
+        });
+    }
+
+</script>
+
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            bookList: [],
+        },
+        mounted() {
+            returnSignin()
+            init()
+            getMyBookList()
+        },
+        methods: {}
+    })
+</script>
 </html>
