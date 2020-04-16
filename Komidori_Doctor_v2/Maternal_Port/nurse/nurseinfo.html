@@ -235,7 +235,7 @@
                                         <div class="profile-pic">
                                             <p><img :src="nurse.nurseImg" class="img-circle"></p>
                                             <p>
-                                                <button id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i>
+                                                <button id="thumbup" @click="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i>
                                                     点赞
                                                 </button>
                                                 <button class="btn btn-theme02" @click="orderNurse(nurse.nurseId)"><i class="ti-plus"></i> 预约</button>
@@ -456,11 +456,11 @@
     $(function () {
         $("#foot").load("../low_footer.html");
 
-        $('#datetimepicker1').datetimepicker({
+  /*      $('#datetimepicker1').datetimepicker({
             format: 'YYYY-MM-DD',
             locale: moment.locale('zh-cn'),
 
-        });
+        });*/
 
         //点赞
         $("#thumbup").click(function () {
@@ -491,6 +491,29 @@
 			}
 		});
 	}
+
+
+    //医生点赞
+    function thumbUpNurse() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/nurse/thumbUpNurse",
+            method: "post",
+            data: {
+                nurseID: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    app.nurse.nurseGoodReview += 1
+                    $("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
+                }
+
+            }
+        });
+    }
 </script>
 <script>
     let app = new Vue({
@@ -507,7 +530,7 @@
             },
 
             thumbup() {
-                $("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
+                thumbUpNurse()
             },
 
             formatDate(thistime, fmt) {

@@ -55,6 +55,7 @@ public class MaternalController {
 
     /**
      * 个人中心获得个人的所有信息
+     *
      * @param request
      * @return
      */
@@ -174,8 +175,15 @@ public class MaternalController {
     public ResponseWrapper<CourseInfo> getCourseMsg(@RequestParam Integer courseID, HttpServletRequest request) {
         HttpSession session = request.getSession();
         CourseInfo courseInfo = maternalService.getCourseMsg(courseID, session);
+        Integer doctorId = courseInfo.getDoctorInfo().getDoctorId();
 
-        return new ResponseWrapper<>(ResponseStatus.OK, courseInfo);
+        boolean hasbeenCollect = maternalService.findFollow(doctorId, session);
+        String message;
+        // 判断用户是否已经收藏，没有的话就返回no，否则返回yes
+        message = (hasbeenCollect == false) ? "no" : "yes";
+
+
+        return new ResponseWrapper<>(ResponseStatus.OK, message, courseInfo);
     }
 
     //获得我关注的专家
@@ -203,6 +211,22 @@ public class MaternalController {
         return new ResponseWrapper<>(ResponseStatus.Fail_400, "删除失败");
 
     }
+
+    //关注专家
+    @CheckUser
+    @RequestMapping(value = "followDoctor", method = RequestMethod.POST)
+    public ResponseWrapper<String> followDoctor(Integer doctorID, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String result = maternalService.followDoctor(doctorID, session);
+
+        if (!result.equals("关注成功")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+
+        return new ResponseWrapper<>(ResponseStatus.OK, result);
+
+    }
+
 
     /**
      * 获得产检表

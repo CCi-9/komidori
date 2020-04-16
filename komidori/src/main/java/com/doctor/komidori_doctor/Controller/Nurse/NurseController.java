@@ -130,5 +130,18 @@ public class NurseController {
 
     }
 
+    @CheckUser
+    @RequestMapping(value = "thumbUpNurse", method = RequestMethod.POST)
+    public ResponseWrapper<String> thumbUpNurse(@RequestParam Integer nurseID) {
+
+        String result = nurseService.thumbUpNurse(nurseID);
+
+        if (!result.equals("success")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK,result);
+
+    }
+
 
 }

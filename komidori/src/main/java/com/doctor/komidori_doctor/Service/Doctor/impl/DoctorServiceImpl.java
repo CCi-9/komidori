@@ -3,6 +3,7 @@ package com.doctor.komidori_doctor.Service.Doctor.impl;
 import com.doctor.komidori_doctor.Service.Doctor.DoctorService;
 import com.doctor.komidori_doctor.mapper.BookDoctorChartMapper;
 import com.doctor.komidori_doctor.mapper.DoctorInfoMapper;
+import com.doctor.komidori_doctor.mapper.FollowChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyBookDoctorChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyDoctorInfoMapper;
@@ -23,7 +24,6 @@ import java.util.Map;
 @Service("doctorServiceImpl")
 public class DoctorServiceImpl implements DoctorService {
 
-    private DoctorInfoExample doctorInfoExample = new DoctorInfoExample();
 
     @Resource
     private DoctorInfoMapper doctorInfoMapper;
@@ -40,6 +40,8 @@ public class DoctorServiceImpl implements DoctorService {
     @Resource
     private BookDoctorChartMapper bookDoctorChartMapper;
 
+    @Resource
+    private FollowChartMapper followChartMapper;
 
     @Override
     public Map<String, Object> getDoctor(int page, String city, String dept, Integer strengthId, String type) {
@@ -147,6 +149,41 @@ public class DoctorServiceImpl implements DoctorService {
         if (bdcId == null) {
             return "删除失败";
         }
+
+        return "success";
+    }
+
+    @Override
+    public boolean findFollow(String doctorID, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            momId = 0;
+        }
+
+        FollowChartExample f = new  FollowChartExample();
+        FollowChartExample.Criteria criteria = f.createCriteria();
+        criteria.andFollowDocIdEqualTo(Integer.valueOf(doctorID));
+        criteria.andFollowMatIdEqualTo(momId);
+        List<FollowChart> list = followChartMapper.selectByExample(f);
+
+        if (list.size() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String thumbUpDoctor(Integer doctorID) {
+        DoctorInfo doctorInfo = doctorInfoMapper.selectByPrimaryKey(doctorID);
+
+        if (doctorInfo == null) {
+            return "点赞失败";
+        }
+
+        int good = doctorInfo.getDoctorGoodReview();
+        good += 1;
+        doctorInfo.setDoctorGoodReview(good);
+        doctorInfoMapper.updateByPrimaryKey(doctorInfo);
 
         return "success";
     }

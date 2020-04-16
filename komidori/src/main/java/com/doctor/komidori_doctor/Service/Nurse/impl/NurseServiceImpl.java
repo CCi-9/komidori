@@ -120,4 +120,22 @@ public class NurseServiceImpl implements NurseService {
 
         return "success";
     }
+
+    @Override
+    public String thumbUpNurse(Integer nurseID) {
+        NurseInfo nurseInfo = nurseInfoMapper.selectByPrimaryKey(nurseID);
+
+
+        if (nurseInfo == null) {
+            return "点赞失败";
+        }
+
+        int good = nurseInfo.getNurseGoodReview();
+        good += 1;
+        nurseInfo.setNurseGoodReview(good);
+        nurseInfoMapper.updateByPrimaryKey(nurseInfo);
+
+        return "success";
+    }
+
 }

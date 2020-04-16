@@ -213,9 +213,10 @@
                             </p>
                             <div class="socials">
                                 <ul class="social-link">
-                                    <li><a id="sa-title" class="link" href="#"><i class="ti-agenda"></i> 收藏课程</a></li>
-                                    <li><a class="link" href="#" id="sa-follow"><i class="ti-user"></i> 关注作者</a></li>
-                                    <li><a class="link" id="thumbup"><i class="ti-thumb-up"></i> 点赞</a></li>
+                                    <!--<li><a id="sa-title" class="link" href="#"><i class="ti-agenda"></i> 收藏课程</a></li>-->
+                                    <li v-if="exist == 'no'" @click="follow"><a class="link" href="#" id="sa-follow"><i
+                                            class="ti-user"></i> 关注作者</a></li>
+                                    <li><a class="link" @click="thumbup" id="thumbup"><i class="ti-thumb-up"></i> 点赞</a></li>
                                     <li><a href="#" class="buy" id="buy_btn" data-toggle="modal" data-target="#confirm">
                                         <i class="ti-shopping-cart-full"></i> 立即购课
                                     </a></li>
@@ -229,7 +230,7 @@
             <!--作者信息 end-->
 
             <!--视频======================================-->
-            <div class="row"  v-if="course.courseType == 1">
+            <div class="row" v-if="course.courseType == 1">
                 <div class="container">
                     <div class="col-md-10 col-md-push-1 col-xs-12">
                         <div class="media">
@@ -506,7 +507,7 @@
 <!-- JS files end===========================================================-->
 <script>
     //	$("#head").load("./user_head.html");
-    function init(){
+    function init() {
         $(function () {
             $("#foot").load("../low_footer.html");
 
@@ -518,6 +519,7 @@
             $(this).css({"background-color": "#EBCCD1", "border-color": "indianred", "color": "white!"});
         });
     }
+
     function getCourseMsg() {
         let id = $.query.get("id")
 
@@ -536,12 +538,52 @@
                 app.course = result.data
                 console.log(app.course.doctorInfo)
                 app.doctor = app.course.doctorInfo
-
+                app.exist = result.message
             }
         });
     }
 
+    //关注医生
+    function followDoctor() {
+        $.ajax({
+            url: "http://" + host + "/maternal/followDoctor",
+            method: "post",
+            data: {
+                doctorID: app.doctor.doctorId,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    app.exist = "yes"
+                }
+                swal(result.message)
+            }
+        });
+    }
 
+    //文章点赞
+    function thumbUpCourse() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/essay/maternal/thumbUpCourse",
+            method: "post",
+            data: {
+                courseID: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    app.doctor.doctorGoodReview += 1
+                    $(this).css({"background-color": "#EBCCD1", "border-color": "indianred", "color": "white!"});
+                }
+
+            }
+        });
+    }
 </script>
 <script>
     let app = new Vue({
@@ -549,7 +591,7 @@
         data: {
             course: {},
             doctor: {},
-
+            exist: "no",
         },
         mounted() {
             init()
@@ -560,6 +602,14 @@
                 fmt = formatDate(thistime, fmt)
                 return fmt
             },
+
+            follow() {
+                followDoctor()
+            },
+            thumbup(){
+                thumbUpCourse()
+            }
+
         }
     })
 </script>

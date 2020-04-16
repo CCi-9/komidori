@@ -205,7 +205,8 @@
                         <p>
                             <button @click="thumbup" id="thumbup" class="btn btn-theme"><i class="ti-thumb-up"></i> 点赞
                             </button>
-                            <button @click="follow" id="sa-follow" class="btn btn-theme02"><i class="ti-plus"></i>关注
+                            <button v-if="exist == 'no'" @click="follow" id="sa-follow" class="btn btn-theme02"><i
+                                    class="ti-plus"></i>关注
                             </button>
                         </p>
                     </div>
@@ -229,8 +230,12 @@
                     </p>
                     <br>
                     <p>
-                        <button class="btn btn-theme" @click="bookDoc(doctor.doctorId)" v-if="type == 1"><i class="ti-book"></i> 马上预约</button>
-                        <button class="btn btn-theme" @click="askDoc(doctor.doctorId)" v-if="type == 0"><i class="ti-envelope"></i> 马上咨询</button>
+                        <button class="btn btn-theme" @click="bookDoc(doctor.doctorId)" v-if="type == 1"><i
+                                class="ti-book"></i> 马上预约
+                        </button>
+                        <button class="btn btn-theme" @click="askDoc(doctor.doctorId)" v-if="type == 0"><i
+                                class="ti-envelope"></i> 马上咨询
+                        </button>
                         <span class="label label-default">{{doctor.onlinePrice}}￥/次</span>
                     </p>
                 </div>
@@ -244,7 +249,6 @@
                         <h6>服务人次</h6>
                         <h4>{{doctor.doctorFollow}}</h4>
                         <h6>关注量</h6>
-                        <my-component></my-component>
                     </div>
                 </div>
 
@@ -509,7 +513,6 @@
 <script src="../../assets/js/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 
-
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="../../assets/js/GlobalVariables.js"></script>
 <script src="../../assets/js/GlobalMethod.js"></script>
@@ -554,18 +557,61 @@
                 console.log(result)
                 app.type = $.query.get("type")
                 app.doctor = result.data
+                app.exist = result.message
             }
         });
     }
 
+    //关注医生
+    function followDoctor() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/maternal/followDoctor",
+            method: "post",
+            data: {
+                doctorID: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    app.exist = "yes"
+                }
+                swal(result.message)
+            }
+        });
+    }
 
+    //医生点赞
+    function thumbupDoctor() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/doctor/thumbUpDoctor",
+            method: "post",
+            data: {
+                doctorID: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    app.doctor.doctorGoodReview += 1
+                    $("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
+                }
+
+            }
+        });
+    }
 </script>
 <script>
     let app = new Vue({
         el: "#app",
         data: {
             doctor: {},
-            type:0,
+            type: 0,
+            exist: "no",
         },
         mounted() {
             //this.doctorId = getDoctorID()
@@ -573,23 +619,27 @@
         },
         methods: {
             follow() {
-                swal("关注成功!");
+                followDoctor()
             },
 
             thumbup() {
-                $("#thumbup").css({"background-color": "darkred", "border-color": "darkred"});
+                thumbupDoctor()
+
             },
 
-            formatDate(thistime, fmt){
-                fmt = formatDate(thistime,fmt)
+            formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
                 return fmt
             },
 
-            findMoreCourse(id){
+            findMoreCourse(id) {
                 window.location.href = 'doc_more_course_list.html?id=' + id
             },
-            askDoc(id){
+            askDoc(id) {
                 window.location.href = 'consult_ask2.html?id=' + id
+            },
+            bookDoc(id) {
+                window.location.href = 'book_doc.html?id=' + id
             }
         }
     })

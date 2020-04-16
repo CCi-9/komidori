@@ -23,4 +23,8 @@ public interface DoctorService {
     List<BookDoctorChart> getMyBookDoctor(HttpSession session);
 
     String deleteBookNurse(Integer id, HttpSession session);
+
+    boolean findFollow(String doctorID, HttpSession session);
+
+    String thumbUpDoctor(Integer doctorID);
 }

@@ -27,4 +27,6 @@ public interface EssayService {
     String deleteBook(Integer essayId, HttpSession session);
 
     String collectEssay(Integer essayId, HttpSession session);
+
+    String thumbUpCourse(Integer courseID);
 }

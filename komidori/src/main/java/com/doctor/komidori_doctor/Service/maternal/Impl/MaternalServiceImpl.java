@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -221,6 +222,48 @@ public class MaternalServiceImpl implements MaternalService {
         map.put("myBookDoctorList", myBookDoctorList);
 
         return map;
+    }
+
+    @Override
+    public String followDoctor(Integer doctorID, HttpSession session) {
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "请重新登录";
+        }
+
+        FollowChart follow = new FollowChart();
+        follow.setFollowDocId(doctorID);
+        follow.setFollowMatId(momId);
+        follow.setFollowDate(new Date());
+        Integer result = followChartMapper.insert(follow);
+
+
+        if (result == null) {
+            return "关注失败";
+        }
+
+        return "关注成功";
+    }
+
+    @Override
+    public boolean findFollow(Integer doctorId, HttpSession session) {
+
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            momId = 0;
+        }
+
+        FollowChartExample f = new  FollowChartExample();
+        FollowChartExample.Criteria criteria = f.createCriteria();
+        criteria.andFollowDocIdEqualTo(doctorId);
+        criteria.andFollowMatIdEqualTo(momId);
+        List<FollowChart> list = followChartMapper.selectByExample(f);
+
+        if (list.size() == 0) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

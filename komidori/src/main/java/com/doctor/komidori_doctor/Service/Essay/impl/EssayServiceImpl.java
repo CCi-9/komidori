@@ -2,6 +2,7 @@ package com.doctor.komidori_doctor.Service.Essay.impl;
 
 import com.doctor.komidori_doctor.Service.Essay.EssayService;
 import com.doctor.komidori_doctor.mapper.CollectionChartMapper;
+import com.doctor.komidori_doctor.mapper.CourseInfoMapper;
 import com.doctor.komidori_doctor.mapper.PublicEssayChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCollectionChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
@@ -10,7 +11,6 @@ import com.doctor.komidori_doctor.pojo.*;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -27,6 +27,9 @@ public class EssayServiceImpl implements EssayService {
 
     @Resource
     private CollectionChartMapper collectionChartMapper;
+
+    @Resource
+    private CourseInfoMapper courseInfoMapper;
 
     @Resource
     private MyPublicEssayChartMapper myPublicEssayChartMapper;
@@ -194,4 +197,21 @@ public class EssayServiceImpl implements EssayService {
 
         return "收藏成功";
     }
+
+    @Override
+    public String thumbUpCourse(Integer courseID) {
+        CourseInfo courseInfo = courseInfoMapper.selectByPrimaryKey(courseID);
+
+        if (courseInfo == null) {
+            return "点赞失败";
+        }
+
+        int good = courseInfo.getCourseGoodReview();
+        good += 1;
+        courseInfo.setCourseGoodReview(good);
+        courseInfoMapper.updateByPrimaryKey(courseInfo);
+
+        return "success";
+    }
+
 }

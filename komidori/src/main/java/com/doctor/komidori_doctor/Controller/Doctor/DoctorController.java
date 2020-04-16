@@ -35,13 +35,31 @@ public class DoctorController {
 
     @Transactional
     @RequestMapping(value = "getDoctorByID",method = RequestMethod.GET)
-    public ResponseWrapper<DoctorInfo> getDoctorByID(@RequestParam String doctorID){
+    public ResponseWrapper<DoctorInfo> getDoctorByID(@RequestParam String doctorID, HttpServletRequest request){
         System.out.println("doctorID:" + doctorID);
         DoctorInfo doctor = doctorService.getDoctorByID(doctorID);
-        return new ResponseWrapper<>(ResponseStatus.OK,"success",doctor);
+        HttpSession session = request.getSession();
+        boolean hasbeenCollect = doctorService.findFollow(doctorID, session);
+        String message;
+        // 判断用户是否已经收藏，没有的话就返回no，否则返回yes
+        message = (hasbeenCollect == false) ? "no" : "yes";
+        return new ResponseWrapper<>(ResponseStatus.OK,message,doctor);
     }
 
-    @Transactional
+
+    @RequestMapping(value = "thumbUpDoctor",method = RequestMethod.POST)
+    public ResponseWrapper<String> thumbUpDoctor(@RequestParam Integer doctorID){
+
+        String result = doctorService.thumbUpDoctor(doctorID);
+
+        if (!result.equals("success")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK,result);
+    }
+
+
+
     @RequestMapping(value = "getCourseByID",method = RequestMethod.GET)
     public ResponseWrapper<CourseInfo> getCourseByID(@RequestParam String courseID){
         System.out.println("courseID:" + courseID);

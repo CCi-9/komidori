@@ -113,7 +113,7 @@ public class EssayController {
 
 
     /**
-     * 用户收藏的所有文章
+     * 用户已经收藏的所有文章
      */
     @CheckUser
     @RequestMapping(value = "maternal/getBookList", method = RequestMethod.GET)
@@ -126,7 +126,7 @@ public class EssayController {
 
 
     /**
-     * 用户收藏的所有文章
+     * 用户收藏文章
      */
     @CheckUser
     @RequestMapping(value = "maternal/collectEssay", method = RequestMethod.POST)
@@ -161,6 +161,23 @@ public class EssayController {
 
         return new ResponseWrapper<>(ResponseStatus.Fail_400, "删除失败");
     }
+
+    /**
+     * 用户文章点赞
+     */
+    @CheckUser
+    @RequestMapping(value = "maternal/thumbUpCourse", method = RequestMethod.POST)
+    public ResponseWrapper<String> thumbUpCourse(@RequestParam Integer courseID) {
+
+        String result = essayService.thumbUpCourse(courseID);
+
+        if (!result.equals("success")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+        return new ResponseWrapper<>(ResponseStatus.OK,result);
+
+    }
+
 
 
     /**

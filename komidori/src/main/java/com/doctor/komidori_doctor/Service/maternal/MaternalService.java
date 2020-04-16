@@ -50,4 +50,8 @@ public interface MaternalService {
     List<BabyGrowthChart> getPrediction(HttpSession session);
 
     Map<String, Object> getMaternalAllMessage(HttpSession session);
+
+    String followDoctor(Integer doctorID, HttpSession session);
+
+    boolean findFollow(Integer doctorId, HttpSession session);
 }

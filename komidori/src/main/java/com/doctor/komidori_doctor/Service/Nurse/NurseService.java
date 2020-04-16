@@ -19,4 +19,6 @@ public interface NurseService {
     List<BookNurseChart> getMyBookNurse(HttpSession session);
 
     String deleteBookNurse(Integer id, HttpSession session);
+
+    String thumbUpNurse(Integer nurseID);
 }
