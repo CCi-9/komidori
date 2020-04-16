@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,23 @@ public class IndexController {
     @RequestMapping(value = "checkUser",method = RequestMethod.GET)
     public ResponseWrapper<String> checkUser(){
         return new ResponseWrapper<>(ResponseStatus.OK,"success");
+    }
+
+
+    @RequestMapping(value = "fileUpload",method = RequestMethod.POST)
+    public ResponseWrapper<String> fileUpload(@RequestParam("file") MultipartFile file){
+        String path = indexService.fileUpload(file);
+      /*  String fileName = file.getOriginalFilename();
+
+
+        System.out.println("fileName:" + fileName);
+        FileUtils utils = FileUtils.getInstance();
+        Map<String, Object> message = utils.uploadFile(file, localPath, fileName, user);
+        if ((int) message.get("code") == 0) {
+
+        }
+*/
+        return new ResponseWrapper<>(ResponseStatus.OK,path);
     }
 
 

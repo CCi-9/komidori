@@ -7,12 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
 
-	<!--<link href="/Komidori_Doctor/assets/css/Base.css" rel="stylesheet" />-->
-	<!--<link rel="stylesheet" type="text/css" href="../assets/css/index_Base.css"/>-->
 	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="../assets/css/city/city-picker.css"/>
 	<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/jquery-steps/jquery.steps.css"/>
 	<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/sign_css/signup.css"/>
+	<link rel="stylesheet" type="text/css" href="../assets/css/file-uploader/bootstrap-fileupload.css"/>
 </head>
 <body class="bodybox">
 
@@ -37,7 +36,8 @@
 		<div class="col-sm-12 col-md-8 col-md-push-2">
 			<div class="white-box">
 				<h2 class="header-title">医生注册</h2>
-				<form id="example-form" action="#">
+				
+				<form id="example-form">
 					<div class="col col-md-12 col-xs-12">
 						<h3>账户</h3>
 						
@@ -51,9 +51,9 @@
 							</div>
 							
 							<div class="form-group clearfix">
-								<label for="password" class="col-md-2">密码 *</label>
+								<label for="doc_password" class="col-md-2">密码 *</label>
 								<div class="col-md-10">
-									<input id="password" name="password" type="password" class="required form-control">
+									<input id="doc_password" name="doc_password" type="password" class="required form-control">
 								</div>
 							</div>
 							
@@ -74,9 +74,9 @@
 							<div class="form-group clearfix">
 									<label class="col-md-2" for="email">验证码 *</label>
 									<div class="col-md-10">
-										<input id="yzm" name="yzm" type="text" class="required yzm">
+										<input id="doc_yzm" name="yzm" type="text" class="required yzm">
 										<div class="sendbox">
-											<button id="btnSendCode2" type="button" class="btn" value="">获取验证码</button>
+											<button id="btnSendCode2" type="button" class="btn"onclick="">获取验证码</button>
 										</div>
 									</div>
 							</div>
@@ -109,7 +109,7 @@
 								</div>
 								
 								<div class="form-group clearfix">
-									<label class="col-md-2" for="email">身份证号码 *</label>
+									<label class="col-md-2" for="idcard">身份证号码 *</label>
 									<div class="col-md-10">
 										<input id="idcard" name="idcard" type="text" class="required form-control">
 									</div>
@@ -118,9 +118,9 @@
 								<div class="form-group clearfix">
 									<label class="col-md-2" for="doc_city">所在城市</label>
 									<div class="col-md-10">
-										<input id="doc_city" name="doc_city" type="text" class="city required">
+										<input id="doc_city" name="doc_city" type="text" class="cityinput required">
 										<div class="citybox">
-											<button class="btn btn-sm" data-toggle="modal" data-target="#doc_city_select">选择城市</button>
+											<a class="btn btn-sm" data-toggle="modal" data-target="#doc_city_select">选择城市</a>
 										</div>
 									</div>
 								</div>
@@ -153,19 +153,35 @@
 								</div>
 								
 								<div class="form-group clearfix">
-									<label for="doc_file" class="col-md-2">相关材料 *</label>
+									<label for="doc_work_age" class="col-md-2">工龄 *</label>
 									<div class="col-md-10">
-										<input id="doc_file" name="doc_file" type="file" multiple class="required form-control">
-										<span id="filelist"></span>
+										<input id="doc_work_age" name="doc_work_age" type="number"  min="0" class="required form-control">
 									</div>
 								</div>
-								
-								
 								
 						</section>
 						
 						<h3>完成</h3>
 						<section class="formbox agreebox">
+							
+							<label for="doc_img">请上传证件照 *</label>
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								
+								<div class="fileupload-new thumbnail" style="">
+									<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+								</div>
+								
+								<div class="fileupload-preview fileupload-exists thumbnail" style=""></div>
+								
+								<div>
+									<span class="btn btn-theme02 btn-file">
+							   	<span class="fileupload-new"><i class="fa fa-paperclip"></i> 选择照片</span>
+									<span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
+									<input type="file" class="default" id="doc_img" />
+									</span>
+								</div>
+							</div>
+							
 							<input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> 
 								<label for="acceptTerms">
 									我已阅读<a href="#" id="note" class="agreement">《小翠医生协议》</a>
@@ -195,23 +211,21 @@
 <!-- //footer -->
 
 <!--城市选择-->
-		<div class="modal fade" id="doc_city_select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="doc_city_select" tabindex="-1" role="dialog" aria-labelledby="doc_city1" aria-hidden="true">
 		    <div class="modal-dialog">
 		        <div class="modal-content">
 		            <div class="modal-header">
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                <h4 class="modal-title" id="myModalLabel">选择城市</h4>
+		                <h4 class="modal-title" id="doc_city1">选择城市</h4>
 		            </div>
 		            <div class="modal-body">
-		            	
 		            	<div class="form-group">
-							<form  class="">
-								<div id="city">
-									<input id="doc_city_picker" class="form-control form-control-line" readonly type="text" value="广东省/湛江市/赤坎区" data-toggle="city-picker">	
-								</div>
-							</form>										
-						</div>
-						
+										<form  class="">
+											<div id="">
+												<input id="doc_city_picker" class="form-control form-control-line" readonly type="text" value="广东省/湛江市/赤坎区" data-toggle="city-picker">	
+											</div>
+										</form>										
+									</div>
 		            </div>
 		            <div class="modal-footer">
 		                <button id="doc_confirm_city" type="button" class="btn btn-default" data-dismiss="modal">确认</button>
@@ -250,12 +264,17 @@
     <script src="../assets/js/jquery-steps/jquery.steps.min.js" type="text/javascript" charset="utf-8"></script>
     
     <!--发送短信-->
-    <script src="../assets/js/sendmessage/sendmsg.js" type="text/javascript" charset="utf-8"></script>
+   	<script src="../assets/js/sendmessage/sendmsg.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!--fileupload-->
+    <script src="../assets/js/file-uploader/bootstrap-fileupload.js" type="text/javascript" charset="utf-8"></script>	
+    	
     <!-- //js ===========================================-->
 
 <script>
 $("#head").load("doc_logobar.html");
 $("#foot").load("low_footer.html");
+
 $(function(){
 	$("#btnSendCode2").click(function(){
 				sendMessage1("#doc_phone","#btnSendCode2");
@@ -281,10 +300,80 @@ $("#example-basic").steps({
                 																						},
       rules: {
         confirm: {
-          equalTo: "#password"
-                  }
-              }
+          equalTo: "#doc_password"
+                 },
+          username:{
+          	required:true,
+          	checkname:true
+          },
+          doc_phone:{
+          	required:true,
+          	checktel:true
+          },
+          doc_password:{
+          	required:true,
+          	checkpwd:true,
+          	minlength:8
+          },
+          doc_age:{
+          	range:[0,100],
+          	number:true
+          },
+          idcard:{
+          	checkid:true
+          },
+          doc_work_age:{
+          	number:true,
+          	range:[0,60]
+          },
+          doc_img:{
+          	required:true
+          }
+        	
+        
+        
+             },
+      massage:{
+      	doc_password:{
+          	minlength:'密码长度必须大于8'
+          },
+        doc_age:{
+          	range:'请填写正确的年龄！',
+          	number:'年龄必须是数字'
+         },
+        doc_work_age:{
+          	number:'工龄必须是数字',
+          	range:'工龄必须在0-60范围以内'
+          },
+        doc_img: {
+        	required:'请上传您的证件照!'
+        }
+       
+       
+      }
             		});
+    //手机验证
+      $.validator.addMethod("checktel",function(value,element,params){
+				var checktel = /^1[3,5,7,8]\d{9}$/;
+				return this.optional(element)||(checktel.test(value));
+			},"请输入正确的手机号码！");
+      //人名验证
+      $.validator.addMethod("checkname",function(value,element,params){
+				var checkname = /^[\u4E00-\u9FA5\uf900-\ufa2d]{2,4}$/;
+//			var checkname = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
+				return this.optional(element)||(checkname.test(value));
+			},"请输入正确的真实姓名！"); 
+			
+			$.validator.addMethod("checkpwd",function(value,element,params){
+				var checkpwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+				return this.optional(element)||(checkpwd.test(value));
+			},"密码必须包括英文大写、英文小写以及数字,长度大于8！");
+			
+			$.validator.addMethod("checkid",function(value,element,params){
+				var checkid = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+				return this.optional(element)||(checkid.test(value));
+			},"*请输入正确的身份证号码！");
+      
             		
   form.children("div").steps({
     headerTag: "h3",
@@ -313,6 +402,9 @@ $("#example-basic").steps({
 		
 </script>
 <!--获取验证码-->
+
+
+
 
 </body>
 </html>

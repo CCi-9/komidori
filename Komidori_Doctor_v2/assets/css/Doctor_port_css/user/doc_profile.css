@@ -1,0 +1,15 @@
+/*图片预览*/
+.fileupload-preview{
+	max-width: 200px; 
+	max-height: 150px; 
+	line-height: 20px;
+}
+.fileupload-new .thumbnail{
+	width: 200px; 
+	height: 150px;
+}
+
+.fileupload{
+	text-align: center;
+	margin:auto auto;
+}

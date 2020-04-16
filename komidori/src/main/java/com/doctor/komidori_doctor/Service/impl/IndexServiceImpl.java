@@ -2,8 +2,10 @@ package com.doctor.komidori_doctor.Service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.doctor.komidori_doctor.Service.IndexService;
+import com.doctor.komidori_doctor.utils.FileUtils;
 import com.zhenzi.sms.ZhenziSmsClient;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,5 +52,10 @@ public class IndexServiceImpl implements IndexService {
             e.printStackTrace();
         }
         return "验证码获取失败";
+    }
+
+    @Override
+    public String fileUpload(MultipartFile file) {
+        return FileUtils.savePngFile(file);
     }
 }

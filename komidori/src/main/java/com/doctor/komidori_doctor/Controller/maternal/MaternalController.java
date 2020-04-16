@@ -54,18 +54,17 @@ public class MaternalController {
     }
 
     /**
-     * 获得个人的所有信息
-     *
+     * 个人中心获得个人的所有信息
      * @param request
      * @return
      */
     // @CheckUser
-    @RequestMapping(value = "getMyServer", method = RequestMethod.GET)
-    public ResponseWrapper<Map<String, Object>> getMyServer(HttpServletRequest request) {
+    @RequestMapping(value = "getMaternalAllMessage", method = RequestMethod.GET)
+    public ResponseWrapper<Map<String, Object>> getMaternalAllMessage(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        //  String result = maternalService.getMyServer(session);
-        System.out.println("getMyServer");
-        return new ResponseWrapper<>(ResponseStatus.OK, "result");
+        Map<String, Object> maternalMsg = maternalService.getMaternalAllMessage(session);
+
+        return new ResponseWrapper<>(ResponseStatus.OK, maternalMsg);
     }
 
     /**
@@ -120,7 +119,6 @@ public class MaternalController {
     }
 
 
-
     @CheckUser
     @RequestMapping(value = "deleteConsult", method = RequestMethod.DELETE)
     public ResponseWrapper<String> deleteConsult(Integer id, HttpServletRequest request) {
@@ -134,7 +132,6 @@ public class MaternalController {
         return new ResponseWrapper<>(ResponseStatus.Fail_400, "删除失败");
 
     }
-
 
 
     /**
@@ -174,7 +171,7 @@ public class MaternalController {
     //获得我这篇课程的信息
 
     @RequestMapping(value = "getCourseMsg", method = RequestMethod.GET)
-    public ResponseWrapper<CourseInfo> getCourseMsg(@RequestParam Integer courseID,HttpServletRequest request) {
+    public ResponseWrapper<CourseInfo> getCourseMsg(@RequestParam Integer courseID, HttpServletRequest request) {
         HttpSession session = request.getSession();
         CourseInfo courseInfo = maternalService.getCourseMsg(courseID, session);
 
@@ -209,10 +206,11 @@ public class MaternalController {
 
     /**
      * 获得产检表
+     *
      * @param request
      * @return
      */
-   // @CheckUser
+    // @CheckUser
     @RequestMapping(value = "getProduction", method = RequestMethod.GET)
     public ResponseWrapper<List<ProductionChecklist>> getProduction(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -226,10 +224,11 @@ public class MaternalController {
 
     /**
      * 获得疫苗
+     *
      * @param request
      * @return
      */
-   // @CheckUser
+    // @CheckUser
     @RequestMapping(value = "getVaccine", method = RequestMethod.GET)
     public ResponseWrapper<List<VaccineInfo>> getVaccine(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -243,10 +242,11 @@ public class MaternalController {
 
     /**
      * 胎儿测评
+     *
      * @param request
      * @return
      */
-   // @CheckUser
+    // @CheckUser
     @RequestMapping(value = "getPrediction", method = RequestMethod.GET)
     public ResponseWrapper<List<BabyGrowthChart>> getPrediction(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -293,12 +293,11 @@ public class MaternalController {
     }
 
 
-
     @CheckUser
     @RequestMapping(value = "baby/addMyBaby", method = RequestMethod.POST)
     public ResponseWrapper<String> addMyBaby(@RequestBody BabyInfo babyInfo, HttpServletRequest request) {
         HttpSession session = request.getSession();
-         String result = maternalService.addMyBaby(babyInfo, session);
+        String result = maternalService.addMyBaby(babyInfo, session);
 
 
         return new ResponseWrapper<>(ResponseStatus.OK, result);

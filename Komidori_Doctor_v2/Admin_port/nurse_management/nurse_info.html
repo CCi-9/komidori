@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <!--<link rel="icon" href="assets/images/favicon.png" type="image/png">-->
+  
+  <title>月嫂详情</title>
+
+    <!--Begin  Page Level  CSS -->
+    <link href="../../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+     <!--End  Page Level  CSS -->
+    <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css"/>
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/doc_index.css/doc_index.css"/>-->
+    
+   
+
+</head>
+
+<body class="sticky-header">
+
+	<header>
+		<div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="../index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+        </div>
+				<div class="logo-icon text-center">
+            <a href="../index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+            	
+                <li class="menu-list">
+                	<a href="#"><i class="fa fa-home"></i> 
+                		<span>主页</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                    <li><a href="../index.html"> 主页</a></li>
+                  </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-user"></i> 
+                		<span>个人中心</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../mine/admin_info.html"> 个人信息</a></li>
+                        <li><a href="../mine/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-people"></i> 
+                		<span>平台用户管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../user/mat_list.html"> 孕产妇管理</a></li>
+                        <li><a href="../user/doc_list.html"> 入驻医生管理</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-microphone"></i> 
+                		<span>线上服务管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                    		<li><a href="../online_service/online_list.html">线上咨询情况</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-paper-clip"></i> 
+                		<span>线下服务管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../offline_service/doc_offline_list.html"> 医生线下服务情况</a></li>
+                        <li><a href="../offline_service/nurse_offline_list.html"> 月嫂线下服务情况</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-book-open"></i> 
+                		<span>经验社区管理</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../public_service/essay_list.html"> 孕产妇帖子管理</a></li>
+                        <li><a href="../public_service/course_list.html"> 医生课程管理</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list nav-active">
+                	<a href="#"><i class="icon-user-female"></i> 
+                		<span>入驻月嫂管理</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../nurse_management/add_nurse.html"> 添加入驻月嫂</a></li>
+                        <li><a href="../nurse_management/nurse_list.html"> 入驻月嫂列表</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-envelope-letter"></i> 
+                		<span>我的消息盒子</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
+                    </ul>
+                </li>
+         
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+	</header>
+    <!--Start 左侧导航栏-->
+    
+    <!--End left side menu-->
+    
+    <!-- main content start-->
+    <div class="main-content" id="app" >
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                  <li>
+                  	<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                  		<i class="fa fa-bell-o"></i>
+                  		<span class="badge">{{noteSize}}</span>
+                  	</a>
+                  	<div class="dropdown-menu dropdown-menu-head pull-right">
+                  		<h5 class="title">消息</h5>
+                  		<ul class="dropdown-list normal-list">
+                  			<li class="message-list message-scroll-list">
+                  				<a href="#" v-for="note in noteList">
+                  					<span class="photo"> <img src="../../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                  					<span class="subject">{{note.emailFromId}}</span>
+                  					<p class="message hiddencontent">{{note.emailContent}}</p>
+                  					<span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
+                  				</a>
+                  			</li>
+                  			<li class="last">
+                  				<a href="inbox/inbox.html">所有消息</a>
+                  			</li>
+                  		</ul>
+                  	</div>
+               	 	</li>
+                    
+                  <li>
+                  	<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  		<img src="../../assets/images/admin.jpg" alt="" /> Admin：{{admin.adminName}}
+                  		<span class="caret"></span>
+                  	</a>
+                  	<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                  		<li>
+                  			<a href="../mine/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                  		</li>
+                  		<li>
+                  			<a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                  		</li>
+                  	</ul>
+                  </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+              
+          <!--Start Page Title-->
+          <div class="page-title-box">
+                <h5 class="page-title">您好 , 管理员Lcy ! </h5>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="index.html">主页</a>
+                    </li>
+                </ol>
+                <div class="clearfix"></div>
+          </div>
+              <!--End Page Title-->          
+           
+                 <!--Start row-->
+                 <div class="row">
+                     <div class="container">
+                         <div class="analytics-box">
+                             
+                         </div>
+                     </div>
+                 </div>
+                 <!--End row-->
+           			
+           			<div class="row">
+           				
+		            	<div class="col-md-12">
+		            		<div class="white-box">
+		            			<h2 class="header-title">
+                   				<a href="nurse_list.html" class="returnbtn">
+                      			<i class="fa fa-caret-left"> 返回</i>
+                      		</a>
+                   				月嫂的基本信息</h2>
+                   		<div class="doc_image_box">
+                   				<img :src="Nurse.nurseImg" alt="用户头像" title="用户头像" class="img-thumbnail"/>
+                   		</div>		
+		            			<div class="table-responsive">
+		            				<table id="" class="table table-striped table-hover table-bordered doc_data_list">
+		            					<tr>
+		            						<th>Id</th>
+		            						<td>{{Nurse.nurseId}}</td>
+		            						<th>年龄</th>
+		            						<td>{{Nurse.nurseAge}}</td>
+		            						<th>工龄</th>
+		            						<td>{{Nurse.nurseWorkAge}}</td>
+		            					</tr>
+		            					<tr>
+		            						<th>姓名</th>
+		            						<td>{{Nurse.nurseName}}</td>
+		            						<th>手机</th>
+		            						<td>{{Nurse.nurseTel}}</td>
+		            						<th>邮箱</th>
+		            						<td>{{Nurse.nurseEmail}}</td>
+		            					</tr>
+		            					<tr>
+		            						<th>证件号</th>
+		            						<td>{{Nurse.nurseIdcard}}</td>
+		            						<th>籍贯</th>
+		            						<td>{{Nurse.nurseRace}}</td>
+		            						<th>城市</th>
+		            						<td>{{Nurse.nurseCity}}</td>
+		            					</tr>
+		            					<tr>
+		            						<th>月嫂等级</th>
+		            						<td>
+		            							<span v-if="Nurse.nurseRank==0" class="label label-warning">银牌月嫂</span>
+		            							<span v-if="Nurse.nurseRank==1" class="label label-warning">金牌月嫂</span>
+		            							<span v-if="Nurse.nurseRank==2" class="label label-warning">钻石月嫂</span>
+		            						</td>
+		            						<th>好评</th>
+		            						<td><span class="badge badge-good">{{Nurse.nurseGoodReview}}</span></td>
+		            						<th>价格</th>
+		            						<td><span class="label label-success">￥{{Nurse.nursePrice}}</span></td>
+		            					</tr>
+		            					<tr>
+		            						<th>资格证</th>
+		            						<td colspan="5">{{Nurse.nurseNvq}}</td>
+		            					</tr>
+		            					<tr>
+		            						<th>个人介绍</th>
+		            						<td colspan="5">{{Nurse.nurseIntroduction}}</td>
+		            					</tr>
+		            				</table>
+		            			</div>
+		            			<button class="btn btn-theme02" onclick="updateNurse()">修改信息</button>
+		            		</div>
+            			</div>
+            	<!-- end row -->
+            
+            		</div>
+			   
+			    </div>
+        <!-- End Wrapper-->
+
+
+        <!--Start  Footer -->
+        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
+         <!--End footer -->
+
+       </div>
+      <!--End main content -->
+    
+
+
+    <!--Begin core plugin -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <!--<script src="assets/plugins/moment/moment.js"></script>-->
+    <script  src="../../assets/js/jquery.slimscroll.js"></script>
+    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+    <script src="../../assets/js/functions.js"></script>
+    <!-- End core plugin -->
+    
+		<!--table-->
+  	<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
+		
+		<script src="../../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../assets/js/GlobalMethod.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../assets/js/getUrlParam.js" type="text/javascript" charset="utf-8"></script>
+   
+
+</body>
+<script type="text/javascript">
+	
+	let app = new Vue({
+        el: "#app",
+        data: {
+            Nurse: [],
+            admin:{}, noteList:[], noteSize:0
+        },
+        mounted() {
+//          returnSignin()
+//          init()
+            getList()
+            getAdminMsg(this)
+       			getNoteMsg(this)
+        },
+        methods: {
+        		formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
+        }
+    })
+	
+	function getList() {
+				let nurseid= getUrlParam('nurseid');
+				if(nurseid==null||nurseid==undefined){
+					alert("未能获取到月嫂详情，请重新选择");
+					window.location.href = 'nurse_list.html';
+				}
+        $.ajax({
+            url: "http://" + host + "/Admin/nurse/getNurseById",
+            method: "get",
+            data:{
+						nurseId:nurseid,
+						},
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status != "200") {
+                    alert(result.message);
+                    window.location.href = 'nurse_list.html';
+                    return;
+                }
+                app.Nurse = result.data;
+                
+            }
+        });
+    }
+	
+	function updateNurse(){
+		window.location.href = 'update_nurse.html?nurseid='+app.Nurse.nurseId;
+	}
+	
+</script>
+</html>

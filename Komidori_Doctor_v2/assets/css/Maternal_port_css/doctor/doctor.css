@@ -382,3 +382,21 @@ input{
 	width:35px;
 	margin-top: -2px!important;
 }
+/*专家课程*/
+.media_pic {
+	width: 120px;
+	height: 80px;
+}
+
+.course_tb th{
+	width: 150px;
+	text-align: center;
+	height: 100px;
+}
+.course_tb td{
+	text-align: left;
+}
+
+.course_btn{
+	vertical-align: middle;
+}

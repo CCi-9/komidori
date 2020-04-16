@@ -7,10 +7,10 @@
     <title>Soho - Chat and Discussion Platform</title>
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-	
-    <link rel="stylesheet" type="text/css" href="../../assets/css/themify-icons.css"/>	
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/themify-icons.css"/>
     <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/flaticon.css"/>	
+    <link rel="stylesheet" type="text/css" href="../../assets/css/flaticon.css"/>
     <!-- Soho css -->
     <link rel="stylesheet" href="../../assets/css/chat/soho.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets/css/fancybox/jquery.fancybox.css"/>
@@ -18,8 +18,8 @@
 </head>
 <body>
 
-            
-<div class="layout">
+
+<div class="layout" id="app">
     <!-- content -->
     <div class="content col col-md-8 offset-md-2">
         <!-- chat -->
@@ -30,17 +30,17 @@
                         <img src="../../assets/images/baby.jpg" class="rounded-circle">
                     </figure>
                     <div>
-                        <h5 class="doc_name">菜玉溪
-                        	<span class="professor">主任医师</span>
+                        <h5 class="doc_name">{{doctor.doctorName}}
+                            <span class="professor">{{doctor.doctorRank}}</span>
                         </h5>
                         <span class="badge badge-secondary">在线</span>
-                        
+
                         <p class="info">
-                        	<span class="Office">妇产科</span>
-                        	<span>湛江市中心人民医生</span>
+                            <span class="Office">{{doctor.doctorDept}}</span>
+                            <span>{{doctor.doctorHospital}}</span>
                         </p>
-                        
-                        
+
+
                     </div>
                 </div>
                 <div class="chat-header-action">
@@ -55,14 +55,14 @@
                                 <i class="fa fa-video-camera" aria-hidden="true"></i>
                             </a>
                         </li>
-                        
+
                         <li class="list-inline-item">
                             <a href="#" class="btn btn-light-dark">
                                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
                             </a>
                         </li>
-                        
-                       	<li class="list-inline-item">
+
+                        <li class="list-inline-item">
                             <a href="#" class="btn btn-secondary" data-toggle="dropdown">
                                 <i class="ti-more"></i>
                             </a>
@@ -79,147 +79,146 @@
             </div>
             <!--聊天主窗口-->
             <div class="chat-body"> <!-- .no-message -->
-                
+
                 <!--<div class="no-message-container">
                     <i class="fa fa-comments-o"></i>
                     <p>Select a chat to read messages</p>
                 </div>-->
-                
+
                 <!--短信-->
                 <div class="messages">
-                	
-                    <div class="message-item outgoing-message">
-                        <div class="message-content">
-                            Hey, Maher! I'm waiting for you to send me the files.
-                        </div>
-                        <div class="message-action">
-                            Am 09:34 <i class="ti-double-check"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="message-item">
-                        <div class="message-content">
-                            I'm sorry :( I'll send you as soon as possible.
-                        </div>
-                        <div class="message-action">
-                            Pm 14:20
-                        </div>
-                    </div>
-                    
-                    <div class="message-item outgoing-message">
-                        <div class="message-content">
-                            I'm waiting. Thank you :)
-                        </div>
-                        <div class="message-action">
-                            Pm 14:25 <i class="ti-double-check"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="message-item">
-                        <div class="message-content">
-                            I'm sending files now.
-                        </div>
-                        <div class="message-action">
-                            Pm 14:20
-                        </div>
-                    </div>
-                    <!--文件信息-->
-                    <div class="message-item">
-                        <div class="message-content message-file">
-                            <div class="file-icon">
-                                <i class="ti-file"></i>
-                            </div>
-                            <div>
-                                <div>important_documents.pdf <i class="text-muted small">(50KB)</i></div>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item"><a href="#">Download</a></li>
-                                    <li class="list-inline-item"><a href="#">View</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="message-action">
-                            Pm 14:25
-                        </div>
-                    </div>
-                    
-                    <div class="message-item outgoing-message">
-                        <div class="message-content">
-                            Thank you so much. After I review these files, I will give you my opinion. If there's a problem, you can send it back. Good luck with!
-                        </div>
-                        <div class="message-action">
-                            Pm 14:50 <i title="Message could not be sent" class="ti-info-alt text-danger"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="message-item">
-                        <div class="message-content">
-                            I can't wait
-                        </div>
-                        <div class="message-action">
-                            Pm 15:00
-                        </div>
-                    </div>
-                    
-                    <div class="message-item outgoing-message">
-                        <div class="message-content">
-                            I know how important this file is to you. You can trust me ;)
-                        </div>
-                        <div class="message-action">
-                            Pm 14:50 <i class="ti-double-check"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="message-item outgoing-message">
-                        <div class="message-content">
-                            <a class="fancybox" href="../../assets/images/baby.jpg">
-                            	<img class="img-responsive img" src="../../assets/images/baby.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="message-action">
-                            Pm 14:55 <i class="ti-double-check"></i>
-                        </div>
-                    </div>
-                    
+                    <!--
+                                        <div class="message-item outgoing-message">
+                                            <div class="message-content">
+                                                Hey, Maher! I'm waiting for you to send me the files.
+                                            </div>
+                                            <div class="message-action">
+                                                Am 09:34 <i class="ti-double-check"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item">
+                                            <div class="message-content">
+                                                I'm sorry :( I'll send you as soon as possible.
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:20
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item outgoing-message">
+                                            <div class="message-content">
+                                                I'm waiting. Thank you :)
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:25 <i class="ti-double-check"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item">
+                                            <div class="message-content">
+                                                I'm sending files now.
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:20
+                                            </div>
+                                        </div>
+                                        &lt;!&ndash;文件信息&ndash;&gt;
+                                        <div class="message-item">
+                                            <div class="message-content message-file">
+                                                <div class="file-icon">
+                                                    <i class="ti-file"></i>
+                                                </div>
+                                                <div>
+                                                    <div>important_documents.pdf <i class="text-muted small">(50KB)</i></div>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#">Download</a></li>
+                                                        <li class="list-inline-item"><a href="#">View</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:25
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item outgoing-message">
+                                            <div class="message-content">
+                                                Thank you so much. After I review these files, I will give you my opinion. If there's a
+                                                problem, you can send it back. Good luck with!
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:50 <i title="Message could not be sent" class="ti-info-alt text-danger"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item">
+                                            <div class="message-content">
+                                                I can't wait
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 15:00
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item outgoing-message">
+                                            <div class="message-content">
+                                                I know how important this file is to you. You can trust me ;)
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:50 <i class="ti-double-check"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="message-item outgoing-message">
+                                            <div class="message-content">
+                                                <a class="fancybox" href="../../assets/images/baby.jpg">
+                                                    <img class="img-responsive img" src="../../assets/images/baby.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="message-action">
+                                                Pm 14:55 <i class="ti-double-check"></i>
+                                            </div>
+                                        </div>-->
+
                 </div>
-                
+
             </div>
             <!--发送框-->
             <div class="chat-footer">
-                <form action="">
+                <form id="form_table" enctype="multipart/form-data" action="" onsubmit="return false">
                     <input id="inputbox" type="text" class="form-control" placeholder="Recipient's username"
                            aria-label="Recipient's username" aria-describedby="button-addon2">
-                    
+
                     <div class="form-buttons">
-                    	
+
                         <button class="btn btn-light btn-floating" type="button">
                             <i class="fa fa-microphone"></i>
                         </button>
-                        
+
                         <div class="btn btn-light btn-floating">
-                        	<input id="file" type="file" hidden=""/>
-                        	<label for="file" class="file_icon"><i class="fa fa-file"></i></label>
+                            <input id="file" type="file" name="file" hidden=""/>
+                            <label for="file" class="file_icon"><i class="fa fa-file"></i></label>
                         </div>
-                        
-                        <button class="btn btn-primary btn-floating" type="submit">
+
+                        <button class="btn btn-primary btn-floating" onclick="send()" type="submit">
                             <i class="fa fa-send"></i>
                         </button>
-                        
+                        <img src="" alt="">
                     </div>
                 </form>
             </div>
-            
-            
-            
+
+
         </div>
         <!-- ./ chat -->
 
-        
 
     </div>
     <!-- ./ content -->
 
 </div>
-            
+
 
 <!-- ./ page loading -->
 <!-- layout -->
@@ -248,16 +247,211 @@
 
 <!-- Examples -->
 <script src="../../assets/js/chat/examples.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../../assets/js/GlobalVariables.js"></script>
+<script src="../../assets/js/GlobalMethod.js"></script>
+<script src="../../assets/js/jquery.params.js"></script>
+
 </body>
 <script type="text/javascript">
-	$(function() {
-      //    fancybox
-      jQuery(".fancybox").fancybox();
+    $(function () {
+        //    fancybox
+        jQuery(".fancybox").fancybox();
     });
-    
-    $("#file").bind("input propertychange",function(event){
-    	var pro = $("#file").val();	
-	$("#inputbox").val(pro);
-	});
+
+    $("#file").bind("input propertychange", function (event) {
+        var pro = $("#file").val();
+        $("#inputbox").val(pro);
+    });
+</script>
+<script>
+    let fromId;
+    let websocket;
+    let to = $.query.get("id")
+    $(function () {
+
+
+        $.ajax({
+            url: "http://" + host + "/doctor/getDoctorByID",
+            method: "get",
+            data: {
+                doctorID: $.query.get("id"),
+            },
+            async: false,
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                app.doctor = result.data
+            }
+        });
+
+        $.ajax({
+            url: "http://" + host + "/maternal/getMyMessage",
+            method: "get",
+            async: false,
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+
+                fromId = result.data.maternal_id
+            }
+        });
+
+        let url = "ws://" + host + "/webSocket/" + fromId + "/" + "maternal"
+        websocket = new WebSocket(url);
+
+        websocket.onopen = function () {
+            console.log("WebSocket连接成功");
+        }
+
+
+        websocket.onmessage = function (event) {
+            console.log("回调信息")
+            let type = event.data.split(':')[0];
+            console.log(type)
+            let data
+
+            if (type == 'image') {
+                data = '<img src=" ../../assets/images/chatImg/' + event.data.split(':')[1] + '">'
+            } else {
+                data =  event.data.split(':')[1]
+            }
+
+            $('.layout .content .chat .chat-body .messages').append('' +
+                '<div class="message-item ' + '">' +
+                '   <div  class="message-content">' + data + '</div>' +
+                '<div class="message-action">' + formatDate(new Date(), "hh:mm") + '</div></div>');
+
+            /*else {
+                let reader = new FileReader();
+                reader.οnlοad = function (eve) {
+                    if (eve.target.readyState == FileReader.DONE) {
+                        $('.layout .content .chat .chat-body .messages').append('' +
+                            '<div class="message-item ' + '">' +
+                            '   <div  class="message-content">' + '<img src=" ' + this.result + '">' + '</div>' +
+                            '<div class="message-action">' + formatDate(new Date(), "hh:mm") + '</div></div>');
+
+                        // document.getElementById("plane").appendChild(img);
+                    }
+                };
+                reader.readAsDataURL(event.data);
+            }*/
+
+        }
+
+        function closeWebSocket() {
+            websocket.close();
+        }
+
+
+    })
+
+    function send() {
+        let message = document.getElementById('inputbox').value;
+        //message作为发送的信息，role作为发送的对象标识，socketId是此次会话的标识
+        if (message != null && message != '') {
+            websocket.send(JSON.stringify({'message': message, 'type': 'text', 'to': app.doctor.doctorId}));
+        }
+
+        let pro = $("#file").val();
+        if (pro != null && pro != '') {
+            sendImage()
+        }
+
+
+    }
+
+    function sendImage() {
+        let fd = new FormData($("#form_table")[0]);
+        $.ajax({
+            type: "POST",
+            url: "http://" + host + "/index/fileUpload",
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                let fileName = result.message
+                websocket.send(JSON.stringify({'message': fileName, 'type': 'image', 'to': app.doctor.doctorId}));
+            }
+        });
+        /* let inputElement = document.getElementById("file");
+         let fileList = inputElement.files;
+         let file = fileList[0];
+         console.log(file)
+         if (!file) return;
+         let reader = new FileReader();
+         //以二进制形式读取文件
+         reader.readAsText(file);
+         //文件读取完毕后该函数响应
+         reader.onload = function loaded(evt) {
+             let blob = evt.target.result;
+             console.log(blob)
+             websocket.send(JSON.stringify({'message': blob, 'type': 'img', 'to': app.doctor.doctorId}));
+             /!*            websocket.send(blob);*!/
+             console.log("finnish");
+         }*/
+
+    }
+</script>
+
+
+<!--<script>
+
+
+    function onMessage(event) {
+        if (typeof event.data == 'string') {
+            var element = document.createElement("p");
+            element.innerHTML = event.data;
+            document.getElementById("plane").appendChild(element);
+        } else {
+            let reader = new FileReader();
+            reader.οnlοad = function (eve) {
+                if (eve.target.readyState == FileReader.DONE) {
+                    var img = document.createElement("img");
+                    img.src = this.result;
+                    document.getElementById("plane").appendChild(img);
+                }
+            };
+            reader.readAsDataURL(event.data);
+        }
+    }
+
+    function doSend() {
+        if (websocket.readyState == 1) {  //0-CONNECTING;1-OPEN;2-CLOSING;3-CLOSED
+            var msg = document.getElementById("message").value;
+            if (msg) {
+                websocket.send(msg);
+            }
+            sendFile(msg);
+            document.getElementById("message").value = "";
+        } else {
+            alert("connect fail!");
+        }
+    }
+
+
+
+    function disconnect() {
+        if (websocket != null) {
+            websocket.close();
+            websocket = null;
+        }
+    }
+
+</script>-->
+
+<script>
+    let app = new Vue({
+        el: "#app",
+        data: {
+            doctor: {},
+        }
+    })
 </script>
 </html>

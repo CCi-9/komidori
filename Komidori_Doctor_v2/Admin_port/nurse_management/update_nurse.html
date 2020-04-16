@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <!--<link rel="icon" href="assets/images/favicon.png" type="image/png">-->
+  
+  <title>修改入驻月嫂信息</title>
+
+    <!--Begin  Page Level  CSS -->
+    <link href="../../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+     <!--End  Page Level  CSS -->
+   	<link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>
+    <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css"/>
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/Doctor_port_css/user/doc_profile.css"/>
+		<link rel="stylesheet" type="text/css" href="../../assets/css/file-uploader/bootstrap-fileupload.css"/>
+    
+   
+
+</head>
+
+<body class="sticky-header">
+
+	<header>
+		<div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="../index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+        </div>
+				<div class="logo-icon text-center">
+            <a href="../index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+            	
+                <li class="menu-list">
+                	<a href="#"><i class="fa fa-home"></i> 
+                		<span>主页</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                    <li><a href="../index.html"> 主页</a></li>
+                  </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-user"></i> 
+                		<span>个人中心</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../mine/admin_info.html"> 个人信息</a></li>
+                        <li><a href="../mine/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-people"></i> 
+                		<span>平台用户管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../user/mat_list.html"> 孕产妇管理</a></li>
+                        <li><a href="../user/doc_list.html"> 入驻医生管理</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-microphone"></i> 
+                		<span>线上服务管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                    		<li><a href="../online_service/online_list.html">线上咨询情况</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-paper-clip"></i> 
+                		<span>线下服务管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../offline_service/doc_offline_list.html"> 医生线下服务情况</a></li>
+                        <li><a href="../offline_service/nurse_offline_list.html"> 月嫂线下服务情况</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-book-open"></i> 
+                		<span>经验社区管理</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../public_service/essay_list.html"> 孕产妇帖子管理</a></li>
+                        <li><a href="../public_service/course_list.html"> 医生课程管理</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list nav-active">
+                	<a href="#"><i class="icon-user-female"></i> 
+                		<span>入驻月嫂管理</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../nurse_management/add_nurse.html"> 添加入驻月嫂</a></li>
+                        <li><a href="../nurse_management/nurse_list.html"> 入驻月嫂列表</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-envelope-letter"></i> 
+                		<span>我的消息盒子</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
+                    </ul>
+                </li>
+         
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+	</header>
+    <!--Start 左侧导航栏-->
+    
+    <!--End left side menu-->
+    
+    <!-- main content start-->
+    <div class="main-content" id="app">
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                  <li>
+                  	<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                  		<i class="fa fa-bell-o"></i>
+                  		<span class="badge">{{noteSize}}</span>
+                  	</a>
+                  	<div class="dropdown-menu dropdown-menu-head pull-right">
+                  		<h5 class="title">消息</h5>
+                  		<ul class="dropdown-list normal-list">
+                  			<li class="message-list message-scroll-list">
+                  				<a href="#" v-for="note in noteList">
+                  					<span class="photo"> <img src="../../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                  					<span class="subject">{{note.emailFromId}}</span>
+                  					<p class="message hiddencontent">{{note.emailContent}}</p>
+                  					<span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
+                  				</a>
+                  			</li>
+                  			<li class="last">
+                  				<a href="inbox/inbox.html">所有消息</a>
+                  			</li>
+                  		</ul>
+                  	</div>
+               	 	</li>
+                    
+                  <li>
+                  	<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  		<img src="../../assets/images/admin.jpg" alt="" /> Admin：{{admin.adminName}}
+                  		<span class="caret"></span>
+                  	</a>
+                  	<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                  		<li>
+                  			<a href="../mine/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                  		</li>
+                  		<li>
+                  			<a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                  		</li>
+                  	</ul>
+                  </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+              
+          <!--Start Page Title-->
+          <div class="page-title-box">
+                <h5 class="page-title">您好 , 管理员Lcy ! </h5>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <a href="index.html">主页</a>
+                    </li>
+                </ol>
+                <div class="clearfix"></div>
+          </div>
+              <!--End Page Title-->          
+           
+                 <!--Start row-->
+                 <div class="row">
+                     <div class="container">
+                         <div class="analytics-box">
+                             
+                         </div>
+                     </div>
+                 </div>
+                 <!--End row-->
+           			
+           			<div class="row">
+           				
+		            	<div class="col-md-12">
+		            		<div class="white-box">
+		            			<h2 class="header-title">
+		            				<a href="nurse_list.html" class="returnbtn">
+                      			<i class="fa fa-caret-left"> 返回列表</i>
+                      	</a>
+                   				修改入驻月嫂表单</h2>
+                   		
+                   		<form id="nurseform" class="js-validation-bootstrap form-horizontal" onsubmit="return false">
+                          
+                          <div class="fileupload fileupload-new" data-provides="fileupload">
+													<h5>证件照 *</h5>
+													<div class="fileupload-new thumbnail" style="">
+														<img :src="nurse.nurseImg" alt="" />
+													</div>
+													
+													<div class="fileupload-preview fileupload-exists thumbnail" style=""></div>
+													
+													<div class="form-group">
+														<div id="">
+															
+															<span class="btn btn-theme02 btn-file">
+												   			<span class="fileupload-new"><i class="fa fa-paperclip"></i> 选择照片</span>
+																<span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
+																<input type="file" class="default" id="nurse_img"  value=""/>
+															</span>
+															
+															<span class="" style="margin-left:5px;"></span>
+														</div>
+														
+													</div>
+													
+												</div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse-username">月嫂姓名 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseName" class="form-control" type="text" id="nurse-username" name="val-username" placeholder="Enter User Name">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse-age">年龄 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseAge" class="form-control" type="number" id="nurse-age" name="val-age" placeholder="Enter User Age">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_work_age">工龄 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseWorkAge" class="form-control" type="number" id="nurse_work_age" name="val-work-age" placeholder="Enter User Age">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_rank">月嫂等级 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <select v-model="nurse.nurseRank" class="form-control" id="nurse_rank" name="nurse_rank">
+                              	<option value="0" selected="selected">银牌月嫂</option>
+                              	<option value="1">金牌月嫂</option>
+                              	<option value="2">钻石月嫂</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_price">服务价格 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nursePrice" class="form-control" type="number" id="nurse_price" name="val-price" placeholder="Enter User Age">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_tel">手机 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseTel" class="form-control" type="text" id="nurse_tel" name="val-tel" placeholder="Enter User Tel">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_email">邮箱 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseEmail" class="form-control" type="text" id="nurse_email" name="val-email" placeholder="Enter your  email">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_idcard">身份证 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseIdcard" class="form-control" type="text" id="nurse_idcard" name="val-idcard" placeholder="Enter User Id Card Number">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_race">籍贯 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseRace" class="form-control" type="text" id="nurse_race" name="val-race" placeholder="Enter User Id Card Number">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_lang">语言 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseLanguage" class="form-control" type="text" id="nurse_lang" name="val-lang" placeholder="Enter User Id Card Number">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_NVQ">资格证<span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <textarea v-model="nurse.nurseNvq" class="form-control" id="nurse_NVQ" name="val-NVQ" placeholder="Enter your Remark" rows="2"></textarea>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="nurse_introduction">个人介绍<span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <textarea v-model="nurse.nurseIntroduction" class="form-control" id="nurse_introduction" name="val-introduction" placeholder="Enter your Introduction" rows="3"></textarea>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-city">所在城市 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input v-model="nurse.nurseCity" class="form-control" type="text" id="val-city" name="val-city" >
+                            	<div class="dome-main">
+																<div class="city-picker-selector" id="city-picker-selector2"></div>
+															</div>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <div class="col-md-8 col-md-offset-3">
+                              <button class="btn btn-theme02" type="submit" onclick="updateNurse()"><i class="fa fa-plus"></i>更新信息</button>
+                            </div>
+                          </div>
+                          
+                        </form>
+		            			
+		            		</div>
+            			</div>
+            	<!-- end row -->
+            
+            		</div>
+			   
+			    </div>
+        <!-- End Wrapper-->
+
+
+        <!--Start  Footer -->
+        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
+         <!--End footer -->
+
+       </div>
+      <!--End main content -->
+    
+
+
+    <!--Begin core plugin -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <!--<script src="assets/plugins/moment/moment.js"></script>-->
+    <script  src="../../assets/js/jquery.slimscroll.js"></script>
+    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+    <script src="../../assets/js/functions.js"></script>
+    <!-- End core plugin -->
+    
+		<script src="../../assets/js/jquery-validation/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+   	<script src="../../assets/js/jquery-validation/validation-custom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!--城市选择-->
+		<script type="text/javascript" src="https://lquan529.github.io/cityPicker/js/citydata.min.js"></script>
+		<script type="text/javascript" src="../../assets/js/city/cityPicker-2.0.3.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="../../assets/js/GlobalVariables.js"></script>
+		<script src="../../assets/js/GlobalMethod.js"></script>
+		<script src="../../assets/js/getUrlParam.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../assets/js/file-uploader/bootstrap-fileupload.js" type="text/javascript" charset="utf-8"></script>	
+   
+</body>
+<script>
+	function	getCity(){
+		// 模拟城市-无联动/无搜索
+			var selector2 = $('#city-picker-selector2').cityPicker({
+				dataJson: cityData,
+				renderMode: true,
+				search: false,
+				autoSelected: true,
+				code: 'cityCode',
+				level: 3,
+				onChoiceEnd: function() {
+					var cityobj  = this.values;
+					var city = "";
+					for(var key in cityobj){
+							city+=cityobj[key].name;
+						}
+					app.nurse.nurseCity = city;
+				}
+			});
+
+			// 设置城市
+			//selector2.setCityVal('广东省, 广州市, 天河区');
+	}
+	
+    let app = new Vue({
+        el: "#app",
+        data: {
+            nurse: {},
+        },
+        methods:{
+           
+        },
+       	mounted(){
+       		getCity(),
+        	getNurse()
+        },
+        
+    });
+    
+     function getNurse() {
+        let nurseid= getUrlParam('nurseid');
+				if(nurseid==null||nurseid==undefined){
+					alert("未能获取到月嫂详情，请重新选择");
+					window.location.href = 'nurse_list.html';
+				}
+        $.ajax({
+            url: "http://" + host + "/Admin/nurse/getNurseById",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            data:{
+            		nurseId:nurseid,
+            },
+            success: function (result) {
+            	 if(result.status != "200"){
+            	 	alert("获取月嫂信息失败，请重试");
+          	 		window.location.href = 'nurse_list.html'
+            	 }
+                console.log(result)
+                app.nurse = result.data;
+            }
+        });
+    }
+    
+    //更新数据
+    function updateNurse() {
+    	
+    	var flag = $('#nurseform').valid();
+    	
+    	if(flag!=true){
+    			alert("请正确填写表单信息！");
+    			return;
+    	}
+    	else{
+    		
+    		$.ajax({
+            url: "http://" + host + "/Admin/nurse/updateNurse",
+            method:"put",
+            data:JSON.stringify(app.nurse),
+            dataType: "json",
+            contentType: "application/json;charset-UTF-8",
+            xhrFields:{
+                withCredentials:true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if(result.status == "200"){
+                    alert("修改成功")
+                  	window.location.href = 'nurse_info.html?nurseid='+app.nurse.nurseId;
+                }
+            }
+        });
+        
+    	}
+        
+    }
+</script>
+</html>

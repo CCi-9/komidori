@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <title></title>
+   	<!--<link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>-->
+   	<link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+     <!--End  Page Level  CSS -->
+    <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+
+    <!--Start left side Menu-->
+    <header>
+		<div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="../index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+        </div>
+				<div class="logo-icon text-center">
+            <a href="../index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+            	
+                <li class="menu-list">
+                	<a href="#"><i class="fa fa-home"></i> 
+                		<span>主页</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                    <li><a href="../index.html"> 主页</a></li>
+                  </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-user"></i> 
+                		<span>个人中心</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../mine/admin_info.html"> 个人信息</a></li>
+                        <li><a href="../mine/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-people"></i> 
+                		<span>平台用户管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../user/mat_list.html"> 孕产妇管理</a></li>
+                        <li><a href="../user/doc_list.html"> 入驻医生管理</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-microphone"></i> 
+                		<span>线上服务管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                    		<li><a href="../online_service/online_list.html">线上咨询情况</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-paper-clip"></i> 
+                		<span>线下服务管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../offline_service/doc_offline_list.html"> 医生线下服务情况</a></li>
+                        <li><a href="../offline_service/nurse_offline_list.html"> 月嫂线下服务情况</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-book-open"></i> 
+                		<span>经验社区管理</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../public_service/essay_list.html"> 孕产妇帖子管理</a></li>
+                        <li><a href="../public_service/course_list.html"> 医生课程管理</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-user-female"></i> 
+                		<span>入驻月嫂管理</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../nurse_management/add_nurse.html"> 添加入驻月嫂</a></li>
+                        <li><a href="../nurse_management/nurse_list.html"> 入驻月嫂列表</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list nav-active">
+                	<a href="#"><i class="icon-envelope-letter"></i> 
+                		<span>我的消息盒子</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
+                    </ul>
+                </li>
+         
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+	</header>
+    <!--End left side menu-->
+
+
+    <!-- main content start-->
+    <div class="main-content" id="app">
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                  <li>
+                  	<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                  		<i class="fa fa-bell-o"></i>
+                  		<span class="badge">{{noteSize}}</span>
+                  	</a>
+                  	<div class="dropdown-menu dropdown-menu-head pull-right">
+                  		<h5 class="title">消息</h5>
+                  		<ul class="dropdown-list normal-list">
+                  			<li class="message-list message-scroll-list">
+                  				<a href="#" v-for="note in noteList">
+                  					<span class="photo"> <img src="../../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                  					<span class="subject">{{note.emailFromId}}</span>
+                  					<p class="message hiddencontent">{{note.emailContent}}</p>
+                  					<span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
+                  				</a>
+                  			</li>
+                  			<li class="last">
+                  				<a href="inbox/inbox.html">所有消息</a>
+                  			</li>
+                  		</ul>
+                  	</div>
+               	 	</li>
+                    
+                  <li>
+                  	<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  		<img src="../../assets/images/admin.jpg" alt="" /> Admin：{{admin.adminName}}
+                  		<span class="caret"></span>
+                  	</a>
+                  	<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                  		<li>
+                  			<a href="../mine/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                  		</li>
+                  		<li>
+                  			<a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                  		</li>
+                  	</ul>
+                  </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+              
+              <!--Start Page Title-->
+               <div class="page-title-box">
+                    <h4 class="page-title">您好 , 菜玉溪医生 !</h4>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="../index.html">主页</a>
+                        </li>
+                        <li>
+                            <a href="#">我的消息盒子</a>
+                        </li>
+                        <li class="active">
+                            	消息盒子
+                        </li>
+                    </ol>
+                    <div class="clearfix"></div>
+                 </div>
+                  <!--End Page Title-->          
+           
+									<div class="row">
+										<div class="col-md-12">
+											<div class="white-box">
+												<h2 class="header-title">
+													<a href="inbox.html" class="returnbtn">
+                      			<i class="fa fa-caret-left"> 返回</i>
+                      		</a>
+													消息详情
+												</h2>
+												<div class="mailbox-content">
+													
+													<div class="message-header">
+														<h3><strong>标题:</strong> {{email.emailTitle}}</h3>
+														<p class="message-date">{{formatDate(email.emailDate,'yyyy-mm-dd hh:MM:ss')}}</p>
+													</div>
+													
+													<div class="message-sender">
+														<p><strong>发件人:</strong> <span>{{email.emailFromId}}</span></p>
+													</div>
+													<div class="message-content">
+														<p><strong>消息内容</strong></p><br />
+														<p>您好 管理员!
+															<br><br>
+															<!--审核医生：点击后带id转跳到docinfo-->
+															<p v-if="email.validateType==1">有新医生【{{email.doctorInfo.doctorName}}】注册啦！请您审核。
+																<a href="javascript:void(0)" @click="changetoDocinfo()" class="link">点击查看</a>
+															</p>
+															
+															<!--审核课程：点击后带id转跳到courseinfo-->
+															<p v-if="email.validateType==2">有医生发布新课程【{{email.courseInfo.courseTitle}}】啦！请您审核。
+																<a href="javascript:void(0)" @click="changetoCourseinfo()" class="link">点击查看</a>
+															</p>
+															
+														</p>
+										
+													</div>
+													
+													<div class="message-options">
+														<button v-if="email.emailStatus==0" id="read" class="btn btn-theme" @click="alreadyRead()">
+															<i class="fa fa-eye"></i> 标记已读
+														</button>
+														<!--<a href="#" class="btn btn-link"><i class="fa fa-arrow-right m-r-5"></i>Forward</a>-->
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										
+                	</div>
+               
+            </div>
+      <!-- End Wrapper-->
+
+
+        <!--Start  Footer -->
+        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
+         <!--End footer -->
+
+       </div>
+      <!--End main content -->
+    
+
+
+    <!--Begin core plugin -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script  src="../../assets/js/jquery.slimscroll.js"></script>
+    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+    <script src="../../assets/js/functions.js"></script>
+    <!-- End core plugin -->
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+		<script src="../../assets/js/inbox/inbox.js"></script>
+		<script src="../../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../assets/js/GlobalMethod.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../assets/js/getUrlParam.js" type="text/javascript" charset="utf-8"></script>
+</body>
+<script type="text/javascript">
+	
+	let app = new Vue({
+        el: "#app",
+        data: {
+            email: [],
+        },
+        mounted() {
+//          returnSignin()
+//	          init()
+            getList()
+        },
+        methods: {
+        			changetoDocinfo(){
+                window.location.href = '../user/doc_info.html?docid='+app.email.validateDocId;
+            },
+        			changetoCourseinfo(){
+                window.location.href = '../public_service/course_info.html?courseid='+app.email.validateCourseId;
+            },
+            	alreadyRead(){
+            	
+            	$.ajax({
+            url: "http://" + host + "/Admin/changeEmailStatus",
+            method: "get",
+            data:{
+						emailId:app.email.emailId,
+						},
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status != "200") {
+                    alert(result.message);
+//                  window.location.href = 'inbox.html';
+                    return;
+                } 
+                alert("标记已读");
+                $("#read").hide();
+                
+            }
+        			});//ajax end
+        			
+            					},
+        }
+    })
+	
+	function getList() {
+				let emailid = getUrlParam('emailid');
+				let type = getUrlParam('valtype');
+				if(emailid==null||emailid==undefined){
+					alert("未能获取到课程详情，请重新选择");
+					window.location.href = 'inbox.html';
+				}
+			
+        $.ajax({
+            url: "http://" + host + "/Admin/getEmailById",
+            method: "get",
+            data:{
+						emailId:emailid,
+						type:type
+						},
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status != "200") {
+                    alert(result.message);
+                    window.location.href = 'inbox.html';
+                    return;
+                } 
+                app.email = result.data;
+                
+            }
+        });
+    }
+	
+</script>
+</html>

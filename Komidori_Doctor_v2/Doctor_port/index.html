@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--<link rel="icon" href="assets/images/favicon.png" type="image/png">-->
+
+    <title>Home</title>
+
+    <!--Begin  Page Level  CSS -->
+    <link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <!--End  Page Level  CSS -->
+    <link href="../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css"/>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/doc_index.css/doc_index.css"/>-->
+
+
+</head>
+
+<body class="sticky-header">
+
+<header>
+    <div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="index.html"><img src="../assets/images/l3.jpg" alt=""></a>
+        </div>
+        <div class="logo-icon text-center">
+            <a href="index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+
+                <li class="menu-list nav-active">
+                    <a href="index.html"><i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                </li>
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-user"></i>
+                        <span>个人中心</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="user/personal_info.html"> 隐私信息</a></li>
+                        <li><a href="user/doc_profile.html"> 个人Profile</a></li>
+                        <li><a href="user/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-microphone"></i>
+                        <span>线上咨询管理</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="online_consult/consult_setting.html">线上服务设置</a></li>
+                        <li><a href="online_consult/consult_list.html"> 线上服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-paper-clip"></i>
+                        <span>线下预约管理</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="offline_book/offline_setting.html"> 设置预约信息</a></li>
+                        <li><a href="offline_book/offline_service_list.html"> 线下服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-people"></i>
+                        <span>经验社区</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="course_management/mycourse_list.html"> 我的课程</a></li>
+                        <li><a href="course_management/publish_course.html"> 发布课程</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-envelope-letter"></i>
+                        <span>我的消息盒子</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="inbox/inbox.html"> 消息盒子</a></li>
+                        <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
+                    </ul>
+                </li>
+
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+</header>
+<!--Start 左侧导航栏-->
+
+<!--End left side menu-->
+
+<!-- main content start-->
+<div class="main-content">
+
+    <!-- header section start-->
+    <div class="header-section">
+
+        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+        <!--<form class="searchform">
+            <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+        </form>-->
+
+        <!--notification menu start -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge">4</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">消息</h5>
+                        <ul class="dropdown-list normal-list">
+
+                            <li class="message-list message-scroll-list">
+
+                                <a href="#">
+                                    <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
+                                                              alt="img"></span>
+                                    <span class="subject">管理员</span>
+                                    <span class="message"> 您的课程已经审核通过！</span>
+                                    <span class="time">15 minutes ago</span>
+                                </a>
+
+                                <a href="#">
+                                    <span class="photo"> <img src="../assets/images/system.jpg" class="img-circle"
+                                                              alt="img"></span>
+                                    <span class="subject">系统</span>
+                                    <span class="message"> 有用户关注您啦！</span>
+                                    <span class="time">10 minutes ago</span>
+                                </a>
+
+                                <a href="#">
+                                    <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
+                                                              alt="img"></span>
+                                    <span class="subject">管理员</span>
+                                    <span class="message"> 您的课程已经审核通过</span>
+                                    <span class="time">20 minutes ago</span>
+                                </a>
+
+
+                            </li>
+                            <li class="last"><a href="inbox/inbox.html">所有消息</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <img src="../assets/images/heads.jpg" alt=""/>
+                        蔡翠翠
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <!--<li> <a href="#"> <i class="fa fa-user"></i> 设置 </a> </li>-->
+                        <li><a href="user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a></li>
+                        <li><a href="doc_signin.html"> <i class="fa fa-lock"></i> 退出登陆 </a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!--notification menu end -->
+
+    </div>
+    <!-- header section end-->
+
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+
+        <!--Start Page Title-->
+        <div class="page-title-box">
+            <h5 class="page-title">您好 , 菜玉溪医生 ! </h5>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <a href="index.html">主页</a>
+                </li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+        <!--End Page Title-->
+
+        <!--Start row-->
+        <div class="row">
+            <div class="container">
+                <div class="analytics-box">
+
+                </div>
+            </div>
+        </div>
+        <!--End row-->
+
+        <!--Start row-->
+        <div class="row">
+            <!--Start info box-->
+            <div class="col-md-3 col-sm-6">
+                <div class="info-box-main">
+                    <div class="info-stats grid">
+                        <p>15</p>
+                        <span>线上服务总人数 </span>
+                    </div>
+                    <div class="info-icon text-primary ">
+                        <i class="fa fa-archive"></i>
+                    </div>
+                    <div class="info-box-progress">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped active"
+                                 role="progressbar" aria-valuenow="15" aria-valuemin="0"
+                                 aria-valuemax="50" style="width: 30%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End info box-->
+
+            <!--Start info box-->
+            <div class="col-md-3 col-sm-6">
+                <div class="info-box-main">
+                    <div class="info-stats">
+                        <p>13</p>
+                        <span>线下服务总人数</span>
+                    </div>
+                    <div class="info-icon text-info">
+                        <i class="mdi mdi-account-multiple"></i>
+                    </div>
+                    <div class="info-box-progress">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-purple progress-bar-striped
+                              	active" role="progressbar" aria-valuenow="13" aria-valuemin="0"
+                                 aria-valuemax="50" style="width: 26%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End info box-->
+
+            <!--Start info box-->
+            <div class="col-md-3 col-sm-6">
+                <div class="info-box-main">
+                    <div class="info-stats">
+                        <p>12</p>
+                        <span>发表文章数</span>
+                    </div>
+                    <div class="info-icon text-warning">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <div class="info-box-progress">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped
+                              	active" role="progressbar" aria-valuenow="12" aria-valuemin="0"
+                                 aria-valuemax="50" style="width: 24%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End info box-->
+
+            <!--Start info box-->
+            <div class="col-md-3 col-sm-6">
+                <div class="info-box-main">
+                    <div class="info-stats">
+                        <p>￥1555</p>
+                        <span>总收入</span>
+                    </div>
+                    <div class="info-icon text-danger">
+                        <i class="fa fa-dollar"></i>
+                    </div>
+                    <div class="info-box-progress">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger progress-bar-striped
+                              	active" role="progressbar" aria-valuenow="1555" aria-valuemin="0"
+                                 aria-valuemax="5000" style="width: 30%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End info box-->
+
+        </div>
+        <!--End row-->
+
+
+        <!--Start row-->
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="white-box">
+                    <h2 class="header-title">我的基本信息</h2>
+                    <div class="table-responsive">
+                        <table id="doc_data_list" class="table table-striped table-hover table-bordered doc_data_list">
+                            <tr>
+                                <th>Id</th>
+                                <td>20201515</td>
+                            </tr>
+                            <tr>
+                                <th>姓名</th>
+                                <td>菜总裁</td>
+                            </tr>
+                            <tr>
+                                <th>性别</th>
+                                <td>妹子</td>
+                            </tr>
+                            <tr>
+                                <th>年龄</th>
+                                <td>如花似玉的18岁</td>
+                            </tr>
+                            <tr>
+                                <th>手机</th>
+                                <td>13307758258</td>
+                            </tr>
+                            <tr>
+                                <th>邮箱</th>
+                                <td>502015889@qq.com</td>
+                            </tr>
+                            <tr>
+                                <th>城市</th>
+                                <td>广东省汕头市憨憨区</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="white-box">
+                    <h2 class="header-title">Profile</h2>
+                    <div class="table-responsive">
+                        <table id="doc_data_list" class="table table-striped table-hover table-bordered doc_data_list">
+                            <tr>
+                                <th>所属医院</th>
+                                <td>汕头大憨憨医生</td>
+                            </tr>
+                            <tr>
+                                <th>部门</th>
+                                <td>傻贼科</td>
+                            </tr>
+                            <tr>
+                                <th>职称</th>
+                                <td>特大憨憨</td>
+                            </tr>
+                            <tr>
+                                <th>关注量</th>
+                                <td><span class="label label-info">555</span></td>
+                            </tr>
+                            <tr>
+                                <th>好评量</th>
+                                <td><span class="label label-danger">559</span></td>
+                            </tr>
+                            <tr>
+                                <th>课程数量</th>
+                                <td><span class="label label-success">34</span></td>
+                            </tr>
+                            <tr>
+                                <th>擅长方向</th>
+                                <td>
+                                    <p class="hiddencontent">大扎好，我系渣渣熙，探挽懒月，介系里没有挽过的船新版板，里挤需体验三番钟，里造会干我一样，爱象介锅铝上C。</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--End row-->
+
+    </div>
+    <!-- End Wrapper-->
+
+
+    <!--Start  Footer -->
+    <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>
+    <!--End footer -->
+
+</div>
+<!--End main content -->
+
+
+<!--Begin core plugin -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<!--<script src="assets/plugins/moment/moment.js"></script>-->
+<script src="../assets/js/jquery.slimscroll.js"></script>
+<script src="../assets/js/chat/jquery.nicescroll.min.js"></script>
+<script src="../assets/js/functions.js"></script>
+<!-- End core plugin -->
+<!--table-->
+
+<script src="../assets/js/GlobalVariables.js"></script>
+<script src="../assets/js/GlobalMethod.js"></script>
+<script src="../assets/js/jquery.params.js"></script>
+
+<script src="../assets/js/doctorGetMessage.js"></script>
+
+</body>
+<script>
+    doctorGetMsg()
+</script>
+</html>

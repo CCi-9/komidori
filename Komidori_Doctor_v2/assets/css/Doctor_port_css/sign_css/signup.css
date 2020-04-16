@@ -32,7 +32,7 @@
 	margin-top: 10px;
 }
 /*验证码*/
-.yzm,.city{
+.yzm,.cityinput{
 	border-radius: 4px;
 	width:80%;
 	height:34px;
@@ -46,7 +46,7 @@
 	display: inline-block;
 	width:20%;
 }
-.sendbox button,.citybox button{
+.sendbox button,.citybox .btn{
 				width: 100%;
 				height: 34px;  
 				font-size: 14px;
@@ -59,7 +59,7 @@
 				line-height: 20px;
 				font-weight: bold;
 }
-.sendbox button:hover,.citybox button:hover{
+.sendbox button:hover,.citybox .btn:hover{
 	color: #71C671;
 }
 
@@ -72,14 +72,6 @@
 }
 }
 
-#city-picker3{
-	width: auto;
-	min-width: 200px;
-}
-
-.modal-dialog{
-	margin-top: 100px;
-}
 #doc_city_picker{
 	width: 350px;
 }
@@ -89,4 +81,27 @@
 .agreement{
 	color: #6F9E75;
 	font-weight: bold;
+}
+#acceptTerms{
+	margin-top: 20px;
+}
+
+/*模态框*/
+
+.modal-body{
+	height:auto;
+}
+
+/*图片预览*/
+.fileupload-preview{
+	max-width: 200px; 
+	max-height: 150px; 
+	line-height: 20px;
+}
+.fileupload-new .thumbnail{
+	width: 200px; 
+	height: 150px;
+}
+.fileupload-new{
+	
 }

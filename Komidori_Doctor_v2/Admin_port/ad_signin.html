@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>登陆</title>
+<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+  
+  	<link href="../assets/css/Base.css" rel="stylesheet" />
+		
+	</head>
+<body>
+	
+<!-- header -->
+ 		<!-- Start header 最顶部：登陆、注册、医生端 -->
+        <div id="head"></div>
+<!-- //header -->
+
+<!-- banner -->
+		<section class="inner-banner-top">
+			<div class="container">
+			</div>
+		</section>
+<!-- //banner -->
+
+
+<!-- 登陆 -->
+<section class="signin py-5">
+	<div class="container">
+		<div class="row main-content-agile">
+			
+			<div class="col-md-6 mx-auto col-md-push-3">	
+				<div class="sub-main-w3 text-center">	
+					<h3>Admin端登陆</h3>
+					<!--提示-->
+					<p class="mt-2 mb-4">请输入账号和密码登陆</p>
+					<form action="#" onsubmit="return false">
+						<!--账号-->
+						<div class="icon1">
+							<label for="tel">账号</label>
+							<input placeholder="手机号码" id="ad_username" name="ad_username" type="text" required="">
+						</div>
+						<!--密码-->
+						<div class="icon2">
+							<label for="password">密码</label>
+							<input  placeholder="密码" id="ad_password" name="ad_password" type="password" required="">
+						</div>
+						<!--验证区域-->						
+						<div id="slider" class="">
+						        <div id="slider_bg"></div>
+						        <span id="label">>></span> 
+						        <span id="labelTip">拖动滑块验证</span>
+						</div>
+						   						
+						<label class="anim">
+						<input type="checkbox" class="checkbox">
+							<span>记住我</span> 
+							<a href="forget_pwd.html">忘记密码</a>
+						</label> 
+							<div class="clearfix"></div>
+						<input type="submit" onclick="signin()" class="submit" value="登陆">
+					</form>
+				</div>
+			</div>			
+			<div style="width:100%;height: 10px;"></div>
+			<div class="col-lg-1"></div>
+			
+		</div>
+	</div>
+</section>
+<!-- //signin -->
+
+		<section class="inner-banner">
+			<div class="container">
+			</div>
+		</section>
+
+<!-- footer -->
+        <div id="foot"></div>
+<!-- //footer -->
+	
+	</div>
+
+
+    <!-- js -->
+	<!-- All JavaScript files
+    ================================================== -->
+   <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    
+    <!--bootstrap-->
+		<script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Plugins for this template -->
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="../assets/js/script.js"></script>
+    
+    <!--滑动-->
+	<script src="../assets/js/smoothscroll.js" ></script>
+
+	<script src="../assets/js/jquery.slideunlock.js"></script> 
+	<!--<script src="../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+$("#head").load("ad_logobar.html");
+$("#foot").load("low_footer.html");	
+	
+  function signin() {
+  	
+	var username = $("#ad_username").val();
+	var password = $("#ad_password").val();
+
+	if((username == "") || (password == "")){
+		return
+	}
+	$.ajax({
+		url: "http://" + host + "/Admin/loginAdmin",
+		method:"post",
+		data:{
+			username:username,
+			password:password,
+		},
+		xhrFields:{
+			withCredentials:true  //带上cookie信息，解决sessionid不一致
+		},
+		success: function (result) {
+			var message = result.message
+			if(message != "success"){
+				alert(message)
+			} else {
+				window.location.href = 'index.html'
+			}
+		}
+	});
+}  
+    
+    
+    
+
+</script> 
+
+</body>
+</html>

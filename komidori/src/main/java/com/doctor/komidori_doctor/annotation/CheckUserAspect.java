@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 public class CheckUserAspect {
 
     @Around("@annotation(CheckUser)")
+    // @Around("com.doctor.komidori_doctor.Controller.*")
+
     public Object checkOK(ProceedingJoinPoint joinPoint) throws Throwable {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         //从获取RequestAttributes中获取HttpServletRequest的信息

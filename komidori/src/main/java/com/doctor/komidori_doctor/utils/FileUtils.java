@@ -3,36 +3,40 @@ package com.doctor.komidori_doctor.utils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 public class FileUtils {
-    private  static String path =  "E:\\komidori\\komidori\\src\\main\\resources\\static\\img";
+    private static String path = "E:/komidori/Komidori_Doctor_v2/assets/images/chatImg/";
+
     public static String savePngFile(MultipartFile file) {
 
-        //判断文件是否为空
-        if (!file.isEmpty()) {
-            try {
-                //创建每天生成的目录
-                String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
-                path=path+date+"/";
-                File filepath = new File(path);
-                if (!filepath.exists()){
-                    filepath.mkdirs();
-                }
-                //文件保存路径
-                //String filename = file.getOriginalFilename();
-                //重新生成文件名
-                String filename= "picture"+".png";
-                String savePath = path + filename;
-                //转存文件
-                File uploadFile = new File(savePath);
-                file.transferTo(uploadFile);
-                return date+"/"+filename;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        String fileName = file.getOriginalFilename();
+        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+
+        //生成随机文件名
+        String RandomFilename = "";
+        Random rand = new Random();//生成随机数
+        int random = rand.nextInt();
+
+        Calendar calCurrent = Calendar.getInstance();
+        int intDay = calCurrent.get(Calendar.DATE);
+        int intMonth = calCurrent.get(Calendar.MONTH) + 1;
+        int intYear = calCurrent.get(Calendar.YEAR);
+        String now = intYear + "_" + intMonth + "_" + intDay + "_";
+
+        RandomFilename = now + (random > 0 ? random : (-1) * random) + '.' + suffix;
+
+        File f = new File(path + RandomFilename);
+        try {
+            file.transferTo(f);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null;
+
+        return RandomFilename;
     }
 }

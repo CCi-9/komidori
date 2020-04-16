@@ -2,22 +2,22 @@ package com.doctor.komidori_doctor.Service.maternal.Impl;
 
 import com.doctor.komidori_doctor.Service.maternal.MaternalService;
 import com.doctor.komidori_doctor.mapper.*;
-import com.doctor.komidori_doctor.mapper.myMapper.MyConsultChartMapper;
-import com.doctor.komidori_doctor.mapper.myMapper.MyCourseInfoMapper;
-import com.doctor.komidori_doctor.mapper.myMapper.MyCourseOrderChartMapper;
-import com.doctor.komidori_doctor.mapper.myMapper.MyFollowChartMapper;
+import com.doctor.komidori_doctor.mapper.myMapper.*;
 import com.doctor.komidori_doctor.pojo.*;
 import com.doctor.komidori_doctor.utils.BabyUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("maternalService")
 public class MaternalServiceImpl implements MaternalService {
-    @Resource
-    private MaternalDao maternalDao;
+
 
     @Resource
     private BabyInfoMapper babyInfoMapper;
@@ -42,6 +42,9 @@ public class MaternalServiceImpl implements MaternalService {
 
     //-----------------------------  自己定义的mapper
     @Resource
+    private MaternalDao maternalDao;
+
+    @Resource
     private MyConsultChartMapper myConsultChartMapper;
 
     @Resource
@@ -53,6 +56,17 @@ public class MaternalServiceImpl implements MaternalService {
     @Resource
     private MyFollowChartMapper myFollowChartMapper;
 
+    @Resource
+    private MyPublicEssayChartMapper myPublicEssayChartMapper;
+
+    @Resource
+    private MyCollectionChartMapper myCollectionChartMapper;
+
+    @Resource
+    private MyBookNurseChartMapper myBookNurseChartMapper;
+
+    @Resource
+    private MyBookDoctorChartMapper myBookDoctorChartMapper;
 
     @Override
     public String registerMaternal(String username, String phone, String password, String yzm, HttpSession session) {
@@ -146,6 +160,67 @@ public class MaternalServiceImpl implements MaternalService {
             return "验证码已过期，请重新获取";
         }
         return "success";
+    }
+
+    @Override
+    public Map<String, Object> getMaternalAllMessage(HttpSession session) {
+        Map<String, Object> map = new HashMap<>();
+        Integer momId = (Integer) session.getAttribute("id");
+        String nickname = (String) session.getAttribute("nickname");
+
+        /**
+         *  我的服务部分
+         */
+        //基本信息
+        Maternal maternal = maternalDao.getMaternal("maternal_nickname", nickname);
+        map.put("maternal", maternal);
+
+        //我的宝宝
+        PageHelper.startPage(0, 3);
+        List<BabyInfo> babyList = getMyAllBaby(session);
+        map.put("babyList", babyList);
+
+        //我的文章
+        PageHelper.startPage(0, 3);
+        List<PublicEssayChart> myEssayList = myPublicEssayChartMapper.getMyBookList(momId);
+        map.put("myEssayList", myEssayList);
+
+        //育儿宝典
+        PageHelper.startPage(0, 3);
+        List<CollectionChart> myBookList = myCollectionChartMapper.getBookList(momId);
+        map.put("myBookList", myBookList);
+
+        //我的专家
+        PageHelper.startPage(0, 3);
+        List<FollowChart> expertList = myFollowChartMapper.getMyExpert(momId);
+        map.put("expertList", expertList);
+
+
+        /**
+         * 订单部分
+         */
+
+        //咨询记录
+        PageHelper.startPage(0, 3);
+        List<ConsultChart> consultList = myConsultChartMapper.getMyConsult(momId);
+        map.put("consultList", consultList);
+
+        //我的月嫂
+        PageHelper.startPage(0, 3);
+        List<BookNurseChart> nurseList = myBookNurseChartMapper.getMyBookNurse(momId);
+        map.put("nurseList", nurseList);
+
+        //我的课程
+        PageHelper.startPage(0, 3);
+        List<CourseOrderChart> courseList = myCourseOrderChartMapper.getMyCourse(momId);
+        map.put("courseList", courseList);
+
+        //我的预约医生
+        PageHelper.startPage(0, 3);
+        List<BookDoctorChart> myBookDoctorList = myBookDoctorChartMapper.getMyBookDoctor(momId);
+        map.put("myBookDoctorList", myBookDoctorList);
+
+        return map;
     }
 
     @Override
@@ -317,10 +392,11 @@ public class MaternalServiceImpl implements MaternalService {
     public List<BabyGrowthChart> getPrediction(HttpSession session) {
         BabyGrowthChartExample example = new BabyGrowthChartExample();
         List<BabyGrowthChart> list = babyGrowthChartMapper.selectByExample(example);
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             BabyUtil.setBabyGrowthMaxAndMin(list.get(i));
         }
         return list;
     }
+
 
 }

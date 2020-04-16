@@ -4,6 +4,7 @@ import com.doctor.komidori_doctor.pojo.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 public interface MaternalService {
     String registerMaternal(String username, String phone, String password, String yzm, HttpSession session);
@@ -47,4 +48,6 @@ public interface MaternalService {
     List<VaccineInfo> getVaccine(HttpSession session);
 
     List<BabyGrowthChart> getPrediction(HttpSession session);
+
+    Map<String, Object> getMaternalAllMessage(HttpSession session);
 }

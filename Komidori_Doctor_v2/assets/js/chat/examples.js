@@ -12,9 +12,9 @@ $(function () {
                 if (chat_body.length > 0) {
 
                     type = type ? type : '';
-                    message = message ? message : 'Lorem ipsum dolor sit amet.';
+                    message = message ? message : '你好';
 
-                    $('.layout .content .chat .chat-body .messages').append('<div class="message-item ' + type + '"><div class="message-content">' + message + '</div><div class="message-action">PM 14:25 ' + (type ? '<i class="ti-check"></i>' : '') + '</div></div>');
+                    $('.layout .content .chat .chat-body .messages').append('<div class="message-item ' + type + '"><div class="message-content">' + message + '</div><div class="message-action">' + formatDate(new Date(), "hh:mm") + (type ? '<i class="ti-check"></i>' : '') + '</div></div>');
 
                     chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({
                         cursorcolor: 'rgba(66, 66, 66, 0.20)',

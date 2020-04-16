@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <title>医生Profile</title>
+		<!--<link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>-->
+   	<link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+     <!--End  Page Level  CSS -->
+    <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/Doctor_port_css/user/doc_profile.css"/>
+		<link rel="stylesheet" type="text/css" href="../../assets/css/file-uploader/bootstrap-fileupload.css"/>
+</head>
+
+<body class="sticky-header">
+
+
+    <!--Start left side Menu-->
+    <header>
+		<div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+        </div>
+				<div class="logo-icon text-center">
+            <a href="index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+            	
+                <li class="menu-list nav-active">
+                	<a href="../index.html"><i class="fa fa-home"></i>
+                		<span>主页</span>
+                	</a>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-user"></i> 
+                		<span>个人中心</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../user/personal_info.html"> 隐私信息</a></li>
+                        <li><a href="../user/doc_profile.html"> 个人Profile</a></li>
+                        <li><a href="../user/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-microphone"></i> 
+                		<span>线上咨询管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                    		<li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
+                        <li><a href="../online_consult/consult_list.html"> 线上服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-paper-clip"></i> 
+                		<span>线下预约管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../offline_book/offline_setting.html"> 设置预约信息</a></li>
+                        <li><a href="../offline_book/offline_service_list.html"> 线下服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-people"></i> 
+                		<span>经验社区</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../course_management/mycourse_list.html"> 我的课程</a></li>
+                        <li><a href="../course_management/publish_course.html"> 发布课程</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-envelope-letter"></i> 
+                		<span>我的消息盒子</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
+                        <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
+                    </ul>
+                </li>
+         
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+	</header>
+    <!--End left side menu-->
+
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <!--<form class="searchform">
+                <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+            </form>-->
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                  <li>
+                        <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge">4</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-head pull-right">
+                         <h5 class="title">消息</h5>
+                        <ul class="dropdown-list normal-list">
+                        	
+											<li class="message-list message-scroll-list">
+												
+                          <a href="#">
+                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                              <span class="subject">管理员</span>
+                              <span class="message"> 您的课程已经审核通过！</span>
+                               <span class="time">15 minutes ago</span>
+                          </a>
+                          
+                          <a href="#">
+                              <span class="photo"> <img src="../assets/images/system.jpg" class="img-circle" alt="img"></span>
+                              <span class="subject">系统</span>
+                              <span class="message"> 有用户关注您啦！</span>
+                               <span class="time">10 minutes ago</span>
+                          </a>
+                        
+                          <a href="#">
+                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                               <span class="subject">管理员</span>
+                               <span class="message"> 您的课程已经审核通过</span>
+                              <span class="time">20 minutes ago</span>
+                          </a>
+                         
+                          
+											</li>
+											<li	 class="last"> <a  href="inbox/inbox.html">所有消息</a> </li>
+										</ul>
+                		</div>
+               	 	</li>
+                    
+                  <li>
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../assets/images/heads.jpg" alt="" />
+                            	蔡翠翠
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                          <!--<li> <a href="#"> <i class="fa fa-user"></i> 设置 </a> </li>-->
+                          <li> <a href="reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a> </li>
+                          <li> <a href="../doc_signin.html"> <i class="fa fa-lock"></i> 退出登陆 </a> </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+              
+              <!--Start Page Title-->
+               <div class="page-title-box">
+                    <h4 class="page-title">您好 , 菜玉溪医生 !</h4>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="../index.html">主页</a>
+                        </li>
+                        <li>
+                            <a href="#">个人中心</a>
+                        </li>
+                        <li class="active">
+                            	医生Profile
+                        </li>
+                    </ol>
+                    <div class="clearfix"></div>
+                 </div>
+                  <!--End Page Title-->          
+           
+           
+               <!--Start row-->
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="white-box">  
+                       <h2 class="header-title">医生Profile</h2>
+             
+                         <form class="js-validation-bootstrap form-horizontal" action="base_forms_validation.html" method="post">
+                          
+                          <div class="fileupload fileupload-new" data-provides="fileupload">
+													<h5>您的证件照 *</h5>
+													<div class="fileupload-new thumbnail" style="">
+														<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+														<!--<img src="../../assets/images/heads.jpg" alt="" />-->
+													</div>
+													
+													<div class="fileupload-preview fileupload-exists thumbnail" style=""></div>
+													
+													<div class="form-group">
+														<div id="">
+															<span class="btn btn-theme02 btn-file">
+												   			<span class="fileupload-new"><i class="fa fa-paperclip"></i> 选择照片</span>
+																<span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
+														
+																<input type="file" class="default" id="doc_img" name="doc_img" value=""/>
+														
+															</span>
+														</div>
+														
+													</div>
+													
+												</div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-hospital">所属医院 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input class="form-control" type="text" id="val-hospital" name="val-hospital" placeholder="Enter Hospital">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-dept">所属科室 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input class="form-control" type="text" id="val-dept" name="val-dept" placeholder="Enter Dept">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-rank">医生职称 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input class="form-control" type="text" id="val-rank" name="val-rank" placeholder="Enter Rank">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-price">线上咨询价格 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input class="form-control" type="number" id="val-price" name="val-price" placeholder="Enter Price">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-work-age">工作年龄 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <input class="form-control" type="number" id="val-work-age" name="val-work-age" placeholder="Enter Work Age" min="0">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-introduction">医生简介 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <textarea class="form-control" id="val-introduction" name="val-introduction" rows="12" placeholder="Enter Introduction"></textarea>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-strength">擅长方向 <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                              <textarea class="form-control" id="val-strength" name="val-strength" rows="5" placeholder="Enter Introduction"></textarea>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <div class="col-md-8 col-md-offset-3">
+                              <button class="btn  btn-theme" type="submit" id="">更新</button>
+                            </div>
+                          </div>
+                          
+                        </form>
+                       </div>
+                    </div>
+                </div>
+                 <!-- end row --> 
+ 
+            </div>
+      <!-- End Wrapper-->
+
+
+        <!--Start  Footer -->
+        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
+         <!--End footer -->
+
+       </div>
+      <!--End main content -->
+    
+
+
+    <!--Begin core plugin -->
+    <!--Begin core plugin -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script  src="../../assets/js/jquery.slimscroll.js"></script>
+    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+    <script src="../../assets/js/functions.js"></script>
+    <!-- End core plugin -->
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+		<script src="../../assets/js/jquery-validation/jquery.validate.min.js"></script>
+    <script src="../../assets/js/jquery-validation/validation-custom.js"></script>
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    
+    <!--fileupload-->
+    <script src="../../assets/js/file-uploader/bootstrap-fileupload.js" type="text/javascript" charset="utf-8"></script>	
+   
+
+</body>
+
+</html>

@@ -11,23 +11,20 @@ $(function () {
                 var chat_body = $('.layout .content .chat .chat-body');
                 if (chat_body.length > 0) {
 
-                    type = type ? type : '';
+   /*                 type = type ? type : '';
                     message = message ? message : '我爱李翠玉!';
 
-                    $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` + type + `">
-                        <div class="message-avatar">
-                            <figure class="avatar">
-                                <img src="../../assets/images/` + (type == 'outgoing-message' ? 'heads.jpg' : 'baby.jpg') + `" class="rounded-circle">
-                            </figure>
+                    $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` + 'outgoing-message' + `">
+                        <div class="message-avatar">"
                             <div>
-                                <h5>` + (type == 'outgoing-message' ? '李翠翠' : '菜熙熙') + `</h5>
-                                <div class="time">14:50 PM ` + (type == 'outgoing-message' ? '<i class="ti-check"></i>' : '') + `</div>
+                                
+                                <div class="time">` + formatDate(new Date(), "hh:mm") + `<i class="ti-check"></i> ` + `</div>
                             </div>
                         </div>
                         <div class="message-content">
                             ` + message + `
                         </div>
-                    </div>`);
+                    </div>`);*/
 
                     setTimeout(function () {
                         chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({

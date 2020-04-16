@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <title>我的课程列表</title>
+		<!--<link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>-->
+   	<link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+     <!--End  Page Level  CSS -->
+    <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+
+    <!--Start left side Menu-->
+    <header>
+		<div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+        </div>
+				<div class="logo-icon text-center">
+            <a href="index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+            	
+                <li class="menu-list nav-active">
+                	<a href="../index.html"><i class="fa fa-home"></i>
+                		<span>主页</span>
+                	</a>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-user"></i> 
+                		<span>个人中心</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../user/personal_info.html"> 隐私信息</a></li>
+                        <li><a href="../user/doc_profile.html"> 个人Profile</a></li>
+                        <li><a href="../user/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-microphone"></i> 
+                		<span>线上咨询管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                    		<li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
+                        <li><a href="../online_consult/consult_list.html"> 线上服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-paper-clip"></i> 
+                		<span>线下预约管理</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../offline_book/offline_setting.html"> 设置预约信息</a></li>
+                        <li><a href="../offline_book/offline_service_list.html"> 线下服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                	<a href="#"><i class="icon-people"></i> 
+                		<span>经验社区</span>
+                	</a>
+                  <ul class="sub-menu-list">
+                        <li><a href="../course_management/mycourse_list.html"> 我的课程</a></li>
+                        <li><a href="../course_management/publish_course.html"> 发布课程</a></li>
+                  </ul>
+                </li>
+                
+                <li class="menu-list">
+                	<a href="#"><i class="icon-envelope-letter"></i> 
+                		<span>我的消息盒子</span>
+                	</a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
+                        <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
+                    </ul>
+                </li>
+         
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+	</header>
+    <!--End left side menu-->
+
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <!--<form class="searchform">
+                <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+            </form>-->
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                  <li>
+                        <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge">4</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-head pull-right">
+                         <h5 class="title">消息</h5>
+                        <ul class="dropdown-list normal-list">
+                        	
+											<li class="message-list message-scroll-list">
+												
+                          <a href="#">
+                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                              <span class="subject">管理员</span>
+                              <span class="message"> 您的课程已经审核通过！</span>
+                               <span class="time">15 minutes ago</span>
+                          </a>
+                          
+                          <a href="#">
+                              <span class="photo"> <img src="../assets/images/system.jpg" class="img-circle" alt="img"></span>
+                              <span class="subject">系统</span>
+                              <span class="message"> 有用户关注您啦！</span>
+                               <span class="time">10 minutes ago</span>
+                          </a>
+                        
+                          <a href="#">
+                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
+                               <span class="subject">管理员</span>
+                               <span class="message"> 您的课程已经审核通过</span>
+                              <span class="time">20 minutes ago</span>
+                          </a>
+                         
+                          
+											</li>
+											<li	 class="last"> <a  href="inbox/inbox.html">所有消息</a> </li>
+										</ul>
+                		</div>
+               	 	</li>
+                    
+                  <li>
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../assets/images/heads.jpg" alt="" />
+                            	蔡翠翠
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                          <!--<li> <a href="#"> <i class="fa fa-user"></i> 设置 </a> </li>-->
+                          <li> <a href="../user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a> </li>
+                          <li> <a href="../doc_signin.html"> <i class="fa fa-lock"></i> 退出登陆 </a> </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+              
+              <!--Start Page Title-->
+               <div class="page-title-box">
+                    <h4 class="page-title">您好 , 菜玉溪医生 !</h4>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="../index.html">主页</a>
+                        </li>
+                        <li>
+                            <a href="#">经验社区</a>
+                        </li>
+                        <li class="active">
+                            	我的课程列表
+                        </li>
+                    </ol>
+                    <div class="clearfix"></div>
+                 </div>
+                  <!--End Page Title-->          
+           
+           
+               <!--Start row-->
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="white-box">  
+                       <h2 class="header-title">我的课程列表</h2>
+             						<div class="table-responsive">
+							        		<div id="toolbar" class="toolbar">
+							            	<button class="btn btn-theme02" onclick="" id="delbtn">批量删除</button>
+							        		</div>
+							        		<table id="mycourse_list" class="table table-hover"> 
+							        		</table>
+                       </div>
+                    </div>
+                </div>
+                 <!-- end row --> 
+ 
+            </div>
+            </div>
+      <!-- End Wrapper-->
+
+
+        <!--Start  Footer -->
+        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
+         <!--End footer -->
+
+       </div>
+      <!--End main content -->
+    
+
+
+    <!--Begin core plugin -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script  src="../../assets/js/jquery.slimscroll.js"></script>
+    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+    <script src="../../assets/js/functions.js"></script>
+    <!-- End core plugin -->
+
+   <!--table-->
+  	<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
+
+</body>
+<script type="text/javascript">
+	
+	$('#mycourse_list').bootstrapTable({
+        columns: [
+        		{
+                // radio: true, // 单选
+                checkbox: true,
+                width: 30,
+                halign:'center',//表头居中显示
+              	align:'center'
+            },
+            	{
+                field: 'id',
+                title: '序号',
+              	formatter: function (value, row, index) {
+                  return index+1;
+              																					},
+                halign:'center',
+                align:'center',
+                width: 50
+            },
+          	{
+              field: 'course_id',
+              title: '课程编号',
+              halign:'center',//表头居中显示
+              align:'center',
+              width: 80
+ 
+        		},
+          	{
+              field: 'course_title',
+              title: '课程标题',
+              halign:'center',//表头居中显示
+              align:'center',
+              width: 100
+ 
+        		},
+            {
+                field: 'course_type',
+                title: '课程类型',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: '30px',
+                formatter: function (value, row, index) {   //传入数据
+ 									if(value==1)
+        					return '<span class="label label-success">视频</span>';
+        					else if(value==2)
+        					return '<span class="label label-info">音频</span>';
+        					else
+        					return '<span class="label label-warning">文章</span>';
+        					
+    						},
+ 
+          	},
+            {
+                field: 'course_class_id',
+                title: '课程分类',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 60,
+ 
+          	},
+            {
+                field: 'course_date',
+                title: '发布时间',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 100
+ 
+          	},
+            {
+                field: 'course_good_review',
+                title: '好评',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 50,
+                formatter: function (value, row, index) {   //传入数据
+ 									
+        					return '<span class="badge badge-good">'+value+'</span>';
+        					
+        					
+    						},
+ 
+          	},
+            {
+                field: 'course_price',
+                title: '价格',
+                halign:'center',//表头居中显示
+                align:'center',
+                width: 50,
+                
+ 
+          	},
+							{
+                field: '',
+                title: '管理',
+                halign:'center',
+                align:'center',
+                width:'80px',
+                formatter: function (value, row, index) {   //传入数据
+        				return '<a class="btn btn-theme02 btn-sm" title="del" >删除</a>';
+    						},
+    						 events: {
+      					'click a[title=del]': function (e, value, row, index) {
+          				if(confirm('此操作不可逆，请确认是否删除？')){
+          					$('#mycourse_list').bootstrapTable('remove', 
+          					{ field:'course_id', values:[parseInt(row.course_id)] }); 
+          					$("#mycourse_list").bootstrapTable("refresh");
+          				}
+          				}
+      					},
+                
+            }],
+        data: [
+        {	
+        	'course_id':11,
+        	'course_title':'霸道玉溪爱上我',
+        	'course_type':1,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':12,
+        	'course_title':'玉溪和性感女上司的神秘夜晚',
+        	'course_type':2,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':13,
+        	'course_title':'过妻不候，高冷前夫菜少求放过',
+        	'course_type':3,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':14,
+        	'course_title':'娇妻在上，玉溪轻轻亲',
+        	'course_type':3,
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':15,
+        	'course_type':2,
+        	'course_title':'天价逃妻，玉溪哪里跑！',
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        {	
+        	'course_id':16,
+        	'course_type':3,
+        	'course_title':'熙妃攻略',
+        	'course_date':'2018-05-06 19:15:33',
+        	'course_price':58,
+        	'course_class_id':'怀孕*生活',
+        	'course_good_review':'555'
+        },
+        
+        
+        ],
+        url:'',
+        method: 'post',
+        pagination:true,  //设置为 true 会在表格底部显示分页条。
+        paginationLoop:false, //设置为 true 启用分页条无限循环的功能。
+        pageSize:5,//每页初始显示的条数
+        pageList:[5,10,15],
+        toolbar:'#toolbar',//工具栏
+        toolbarAlign:'right',//工具栏的位置
+        search: true,
+        showRefresh: true,
+        showColumns: true,
+        clickToSelect: true,   //是否启用点击选中行
+//      height:400
+//      sidePagination: "client"
+ 
+    });
+	
+	$("#mycourse_list").bootstrapTable('hideLoading');
+	$("#delbtn").on("click", function () {
+            // $("#table").bootstrapTable('getSelections');为bootstrapTable自带的，所以说一定要使用bootstrapTable显示表格,#table：为table的id
+            var rows = $("#mycourse_list").bootstrapTable('getSelections');
+            console.log(rows);
+            if (rows.length == 0) {// rows 主要是为了判断是否选中，下面的else内容才是主要
+                alert("请先选择要删除的记录!");
+                return;
+            } else {
+                var arrays = new Array();// 声明一个数组
+                $(rows).each(function () {// 通过获得别选中的来进行遍历
+                    arrays.push(this.id);// cid为获得到的整条数据中的一列
+                });
+                var idcard = arrays.join(','); // 获得要删除的id
+                deleteMs(ids);
+            }
+        });
+		  function deleteMs(ids) {
+		        $.ajax({
+		            url : '',
+		            data : "ids=" + ids,
+		            type : "post",
+		            dataType : "json",
+		            success : function(data) {
+		                $("#mycourse_list").bootstrapTable("refresh");
+		            }
+		        });
+		    }
+	$("#mycourse_list")
+  .on('dbl-click-row.bs.table', function (e, row, ele,field) {
+  				//转跳到当前目录的下的mycourse_info
+  				alert("课程"+row.course_id+"的详情页");
+            });          
+	
+
+</script>
+</html>

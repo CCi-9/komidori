@@ -134,7 +134,7 @@ public class DoctorServiceImpl implements DoctorService {
         }
 
         System.out.println("id:" + matId);
-        //根据客户的id获取他的预约月嫂记录
+        //根据客户的id获取他的预约医生记录
         List<BookDoctorChart> list = myBookDoctorChartMapper.getMyBookDoctor(matId);
         return list;
     }
