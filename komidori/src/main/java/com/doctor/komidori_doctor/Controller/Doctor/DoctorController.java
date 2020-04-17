@@ -24,6 +24,15 @@ public class DoctorController {
     @Resource(name = "doctorServiceImpl")
     private DoctorService doctorService;
 
+    /**
+     *  获得所有医生
+     * @param page
+     * @param city
+     * @param dept
+     * @param strengthId
+     * @param type
+     * @return
+     */
     @Transactional
     @RequestMapping(value = "getDoctor",method = RequestMethod.GET)
     public ResponseWrapper<Map<String,Object>> getDoctor(int page, String city, String dept, Integer strengthId, String type){

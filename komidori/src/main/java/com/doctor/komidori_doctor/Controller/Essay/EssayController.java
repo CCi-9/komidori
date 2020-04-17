@@ -134,6 +134,23 @@ public class EssayController {
         HttpSession session = request.getSession();
         String result = essayService.collectEssay(essayId, session);
 
+        if (!result.equals("收藏成功")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+
+        return new ResponseWrapper<>(ResponseStatus.OK, result);
+    }
+
+    /**
+     * 用户点赞其她妈妈文章
+     */
+
+    @CheckUser
+    @RequestMapping(value = "maternal/thumbUpEssay", method = RequestMethod.POST)
+    public ResponseWrapper<String> thumbUpEssay(@RequestParam Integer essayId, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String result = essayService.thumbUpEssay(essayId, session);
+
         if (!result.equals("success")) {
             return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
         }
@@ -163,7 +180,7 @@ public class EssayController {
     }
 
     /**
-     * 用户文章点赞
+     * 用户给专家文章点赞
      */
     @CheckUser
     @RequestMapping(value = "maternal/thumbUpCourse", method = RequestMethod.POST)

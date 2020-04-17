@@ -138,7 +138,7 @@
                 and ci.course_class_id = #{strengthId}
             </if>
 
-            and ${type} = 1
+            and ${type} = 1 and doctor_verify = 1
         </trim>
     </select>
 

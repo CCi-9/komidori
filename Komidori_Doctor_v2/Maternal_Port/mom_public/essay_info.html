@@ -204,7 +204,7 @@
                                 <li>{{essay.essayDate}}</li>
                             </ul>
                             <h2>{{essay.essayTitle}}</h2>
-                            <p>{{essay.essayContent}}</p>
+                            <p v-html="essay.essayContent"></p>
                         </div>
 
                         <!--分享-->
@@ -251,7 +251,7 @@
                                             </button>
                                         </li>
                                         <li>
-                                            <button id="thumbup" class="btn btn-theme"><i class="fa fa-thumbs-up"></i>
+                                            <button @click="thumbup" id="thumbup" class="btn btn-theme"><i class="fa fa-thumbs-up"></i>
                                                 点赞
                                             </button>
                                         </li>
@@ -532,6 +532,26 @@
             }
         });
     }
+
+    function thumbUpEssay() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/essay/maternal/thumbUpEssay",
+            method: "post",
+            data: {
+                essayId: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    $(this).css({"background-color": "#EBCCD1", "border-color": "indianred", "color": "white!"});
+                }
+
+            }
+        });
+    }
 </script>
 <script>
     let app = new Vue({
@@ -548,8 +568,11 @@
         methods: {
             collect() {
                 collectEssay()
-
             },
+
+            thumbup(){
+                thumbUpEssay()
+            }
         }
     })
 </script>

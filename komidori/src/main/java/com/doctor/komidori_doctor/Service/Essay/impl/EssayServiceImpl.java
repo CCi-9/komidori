@@ -214,4 +214,20 @@ public class EssayServiceImpl implements EssayService {
         return "success";
     }
 
+    @Override
+    public String thumbUpEssay(Integer essayId, HttpSession session) {
+        PublicEssayChart chart = publicEssayChartMapper.selectByPrimaryKey(essayId);
+
+        if (chart == null) {
+            return "点赞失败";
+        }
+
+        int good = chart.getEssayGoodReview();
+        good += 1;
+        chart.setEssayGoodReview(good);
+
+        publicEssayChartMapper.updateByPrimaryKey(chart);
+        return "success";
+    }
+
 }

@@ -206,7 +206,7 @@
                             <a href="#" class="author-name"><strong>{{doctor.doctorName}}</strong></a>
                             <span class="">{{"| " + doctor.doctorRank}}</span>
                             <p v-if="course.courseType == 3"><strong>课程内容 : </strong>
-                                <span>{{course.courseContent}}</span>
+                                <span v-html="course.courseContent"></span>
                             </p>
                             <p style="margin-top: -10px;"><strong>发布时间 : </strong> <span class="date">{{formatDate(course.courseDate, 'yyyy-MM-dd hh:mm')}}</span>
                             </p>
