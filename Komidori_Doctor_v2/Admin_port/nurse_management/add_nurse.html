@@ -228,7 +228,7 @@
                    		
                    		<form id="nurseform" class="js-validation-bootstrap form-horizontal" onsubmit="return false">
                           
-                           <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
 													<h5>证件照 *</h5>
 													<div class="fileupload-new thumbnail" style="">
 														<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
@@ -419,7 +419,7 @@
 					for(var key in cityobj){
 							city+=cityobj[key].name;
 						}
-					$("#val-city").val(city);
+					app.nurse.nurseCity = city;
 				}
 			});
 
@@ -445,9 +445,10 @@
             },
         },
        	mounted(){
-       		getCity()
+       		checkAdmin()
        		getAdminMsg(this)
        		getNoteMsg(this)
+       		getCity()
 
         },
         
@@ -481,7 +482,7 @@
                 		window.location.href = 'nurse_info.html?nurseid='+result.data;
                 }
                 else{
-                		alert("添加失败请重试！");
+                		alert(result.message);
                 }
             }
         });

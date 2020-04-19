@@ -277,9 +277,9 @@
         });
 
         //文本编辑
-     /*   $(document).ready(function () {
-            $('#summernote').summernote();
-        });*/
+        /*   $(document).ready(function () {
+               $('#summernote').summernote();
+           });*/
         $('#summernote').summernote({
             height: 300,                 // 定义编辑框高度
             minHeight: null,             // 定义编辑框最低的高度
@@ -289,26 +289,26 @@
                 $('.note-editor').attr({'data-error-prop': 'true', 'name': 'body'});
             },
             callbacks: {
-                onImageUpload: function(file,editor,$editable) {
+                onImageUpload: function (file, editor, $editable) {
                     var formData = new FormData();
                     //‘picture’为后台获取的文件名，file[0]是要上传的文件
                     formData.append("file", file[0]);
                     $.ajax({
-                        type:'post',
+                        type: 'post',
                         url: "http://" + host + "/index/fileUpload",
                         cache: false,
-                        data:formData,
+                        data: formData,
                         processData: false,
                         contentType: false,
-                        success: function(result) {
+                        success: function (result) {
                             console.log(result)
                             let fileName = result.message
                             console.log(fileName)
                             let path = '../../assets/images/chatImg/' + fileName
                             console.log(path)
-                            $('#summernote').summernote('insertImage',path);
+                            $('#summernote').summernote('insertImage', path);
                         },
-                        error:function(){
+                        error: function () {
                             alert("上传失败");
                         }
                     });

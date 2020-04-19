@@ -130,7 +130,7 @@
     <!--End left side menu-->
     
     <!-- main content start-->
-    <div class="main-content" >
+    <div class="main-content" id="app">
 
         <!-- header section start-->
         <div class="header-section">
@@ -212,7 +212,7 @@
                  </div>
                  <!--End row-->
            			
-           			<div class="row" id="app">
+           			<div class="row" >
                    
                   	<div class="col-md-12">
                    		<div class="white-box">
@@ -367,9 +367,9 @@
             noteSize:0
         },
         mounted() {
-//          returnSignin()
-//          init()
-            getDoctor()
+						getDoctor()
+						getAdminMsg(this)
+       			getNoteMsg(this)
         },
         methods: {
         		passDoc(){
@@ -392,9 +392,6 @@
                 }
                 app.Doctor.doctorVerify = 1;
                 alert("审核通过该医生，已通过邮件通知");
-//              $("#pass").hide();
-//              $("#unpass").hide();
-                
                 
             }
         			});//ajax end
@@ -430,10 +427,10 @@
 	
 	function getDoctor() {
 				let docid = getUrlParam('docid');
-				if(docid==null||docid==undefined){
-					alert("未能获取到用户详情，请重新选择");
-					window.location.href = 'doc_list.html';
-				}
+//				if(docid==null||docid==undefined){
+//					alert("未能获取到用户详情，请重新选择");
+//					window.location.href = 'doc_list.html';
+//				}
         $.ajax({
             url: "http://" + host + "/Admin/doctor/getDoctorById",
             method: "get",
@@ -444,14 +441,19 @@
                 withCredentials: true  //带上cookie信息，解决sessionid不一致
             },
             success: function (result) {
-                console.log(result)
-                if (result.status != "200") {
+                	console.log(result)
+                
+                if (result.status == "401") {
                     alert(result.message);
-                    window.location.href = 'doc_list.html';
+                   	window.location.href = '../ad_signin.html';
+                   	return;
+                }
+                else if(result.status == "400"){
+                		alert(result.message);
+                	 	window.location.href = 'doc_list.html';
                     return;
                 }
                 app.Doctor = result.data;
-                //initTable();
             }
         });
     }

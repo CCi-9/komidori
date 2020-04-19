@@ -8,4 +8,6 @@ public interface IndexService {
     String getYZM(String phone, HttpServletRequest request);
 
     String fileUpload(MultipartFile file);
+
+    String upLoadFile(MultipartFile file, Integer type);
 }

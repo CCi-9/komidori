@@ -12,6 +12,43 @@
     <result column="bdoc_remark" property="bdocRemark" jdbcType="VARCHAR" />
     <result column="bdoc_status" property="bdocStatus" jdbcType="INTEGER" />
   </resultMap>
+
+  <resultMap id="MyResultMap" type="com.doctor.komidori_doctor.pojo.BookDoctorChart" >
+    <id column="bdoc_order_id" property="bdocOrderId" jdbcType="INTEGER" />
+    <result column="bdoc_mat_id" property="bdocMatId" jdbcType="INTEGER" />
+    <result column="bdoc_doc_id" property="bdocDocId" jdbcType="INTEGER" />
+    <result column="bdoc_service_date" property="bdocServiceDate" jdbcType="TIMESTAMP" />
+    <result column="bdoc_book_date" property="bdocBookDate" jdbcType="TIMESTAMP" />
+    <result column="bdoc_addr" property="bdocAddr" jdbcType="VARCHAR" />
+    <result column="bdoc_price" property="bdocPrice" jdbcType="REAL" />
+    <result column="bdoc_remark" property="bdocRemark" jdbcType="VARCHAR" />
+    <result column="bdoc_status" property="bdocStatus" jdbcType="INTEGER" />
+    <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+      <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+      <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+      <result column="offline_price" property="offlinePrice" jdbcType="REAL"/>
+    </association>
+    <association property="maternalInfo" javaType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+      <id column="maternal_id" property="maternalId" jdbcType="INTEGER"/>
+      <result column="maternal_name" property="maternalName" jdbcType="VARCHAR"/>
+    </association>
+  </resultMap>
+
+  <!--BY lcy-->
+  <select id="getAllBookDocList" resultMap="MyResultMap">
+        select * from book_doctor_chart
+        inner join doctor_info on book_doctor_chart.bdoc_doc_id = doctor_info.doctor_id
+        inner join maternal_info on book_doctor_chart.bdoc_mat_id = maternal_info.maternal_id
+  </select>
+
+  <select id="getAllBookDocListByDid" resultMap="MyResultMap">
+        select * from book_doctor_chart
+        inner join doctor_info on book_doctor_chart.bdoc_doc_id = doctor_info.doctor_id
+        inner join maternal_info on book_doctor_chart.bdoc_mat_id = maternal_info.maternal_id
+        where book_doctor_chart.bdoc_doc_id = #{doctorId}
+  </select>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

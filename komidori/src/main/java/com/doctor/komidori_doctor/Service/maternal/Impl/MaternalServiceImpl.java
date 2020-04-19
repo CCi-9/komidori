@@ -267,6 +267,17 @@ public class MaternalServiceImpl implements MaternalService {
     }
 
     @Override
+    public Maternal getMaternalById(Integer matID) {
+        Maternal maternal = maternalDao.getMaternal("maternal_id", matID.toString());
+        return maternal;
+    }
+
+    @Override
+    public String quitConsult(Integer doctorId, Integer maternalId) {
+        return null;
+    }
+
+    @Override
     public Maternal getMyServer(HttpSession session) {
         String nickname = (String) session.getAttribute("nickname");
         Maternal maternal = maternalDao.getMaternal("maternal_nickname", nickname);

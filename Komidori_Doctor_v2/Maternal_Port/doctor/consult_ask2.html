@@ -131,15 +131,15 @@
                     <li data-toggle="tooltip" title="User menu" data-placement="right">
                         <a href="./login.html" data-toggle="dropdown">
                             <figure class="avatar">
-                                <img :src="doctor.doctorImg" class="rounded-circle" alt="image">
+                                <img :src="maternal.maternal_img" class="rounded-circle" alt="image">
                             </figure>
                         </a>
                         <div class="dropdown-menu">
 
-                            <a href="#" class="dropdown-item" data-navigation-target="contact-information">医生简介</a>
+                            <a href="#" class="dropdown-item" data-navigation-target="my-information">我的信息</a>
                             <!--<a href="#" class="dropdown-item" data-toggle="modal" data-target="#settingModal">Settings</a>-->
                             <div class="dropdown-divider"></div>
-                            <a href="../index.html" class="dropdown-item text-danger">退出聊天</a>
+                            <a onclick="quitConsult()" href="javascript:void (0)" class="dropdown-item text-danger">退出聊天</a>
                         </div>
                     </li>
                 </ul>
@@ -195,9 +195,9 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="#" data-navigation-target="contact-information"
                                        class="dropdown-item">个人信息</a>
-                                    <a href="#" class="dropdown-item">关注</a>
+                                    <!--<a href="#" class="dropdown-item">关注</a>-->
                                     <div class="dropdown-divider"></div>
-                                    <a href="#" class="dropdown-item text-danger">投诉</a>
+                                    <a onclick="quitConsult()" href="javascript:void (0)" class="dropdown-item text-danger">退出咨询</a>
                                 </div>
                             </li>
                         </ul>
@@ -307,7 +307,7 @@
                 <div class="chat-footer">
                     <form id="form_table" enctype="multipart/form-data" action="" onsubmit="return false">
 
-                        <input id="inputbox" type="text" class="form-control" placeholder="Write a message." >
+                        <input id="inputbox" type="text" class="form-control" placeholder="Write a message.">
 
                         <div class="form-buttons">
 
@@ -344,7 +344,7 @@
                         <div class="pl-4 pr-4">
                             <div class="text-center">
                                 <figure class="avatar avatar-xl mb-4">
-                                    <img src="../../assets/images/heads.jpg" class="rounded-circle" alt="image">
+                                    <img :src="doctor.doctorImg" class="rounded-circle" alt="image">
                                 </figure>
                                 <h5 class="mb-1">{{doctor.doctorName}}</h5>
                                 <small class="text-muted ">在线</small>
@@ -382,6 +382,93 @@
                                         <h6>Email</h6>
                                         <p>
                                             <a href="#">{{doctor.doctorEmail}}</a>
+                                        </p>
+                                    </div>
+
+
+                                    <!--<div class="mt-4 mb-4">
+                                        <h6 class="mb-3">Settings</h6>
+                                        <div class="form-group">
+                                            <div class="form-item custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch11">
+                                                <label class="custom-control-label" for="customSwitch11">Block</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-item custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" checked=""
+                                                       id="customSwitch12">
+                                                <label class="custom-control-label" for="customSwitch12">Mute</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-item custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch13">
+                                                <label class="custom-control-label" for="customSwitch13">Get
+                                                    notification</label>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="my-information" class="sidebar">
+                    <header>
+                        <span>我的信息</span>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="#" class="btn btn-outline-light text-danger sidebar-close">
+                                    <i data-feather="x"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </header>
+
+                    <div class="sidebar-body">
+                        <div class="pl-4 pr-4">
+                            <div class="text-center">
+                                <figure class="avatar avatar-xl mb-4">
+                                    <img :src="maternal.maternal_img" class="rounded-circle" alt="image">
+                                </figure>
+                                <h5 class="mb-1">{{maternal.maternal_nickname}}</h5>
+                                <small class="text-muted " v-if="maternal.maternal_status == 1">在孕中</small>
+                                <small class="text-muted " v-if="maternal.maternal_status == 2">已产</small>
+                                <small class="text-muted " v-if="maternal.maternal_status == 3">备孕</small>
+                                <small class="text-muted " v-if="maternal.maternal_status == 0">未知</small>
+                                <ul class="nav nav-tabs justify-content-center mt-5" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#home"
+                                           role="tab"
+                                           aria-controls="home" aria-selected="true">基本信息</a>
+                                    </li>
+                                    <!--<li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                           aria-controls="profile" aria-selected="false">相关</a>
+                                    </li>-->
+                                </ul>
+
+                            </div>
+
+                            <div class="tab-content">
+
+                                <div class="tab-pane fade show active" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <div class="mt-4 mb-4">
+                                        <h6>Phone</h6>
+                                        <p class="text-muted">{{maternal.maternal_tel}}</p>
+                                    </div>
+                                    <div class="mt-4 mb-4">
+                                        <h6>怀孕周期</h6>
+                                        <p class="text-muted">{{maternal.maternal_preg_week}}</p>
+                                    </div>
+                                    <div class="mt-4 mb-4">
+                                        <h6>Email</h6>
+                                        <p>
+                                            <a href="#">{{maternal.maternal_email}}</a>
                                         </p>
                                     </div>
 
@@ -524,9 +611,22 @@
 
         }
 
-        function closeWebSocket() {
-            websocket.close();
-        }
+
+        websocket.close = function (e) {
+            $.ajax({
+                url: "http://" + host + "/maternal/getMyMessage",
+                method: "get",
+                async: false,
+                xhrFields: {
+                    withCredentials: true  //带上cookie信息，解决sessionid不一致
+                },
+                success: function (result) {
+                    console.log(result)
+                }
+            });
+            console.log(e);
+
+        };
 
 
     })
@@ -538,7 +638,7 @@
             websocket.send(JSON.stringify({'message': message, 'type': 'text', 'to': app.doctor.doctorId}));
         }
         let data = `<div class="message-content">` + message + `</div>`
-        insertMsg(data,'outgoing-message',app.maternal.maternal_name, app.maternal.maternal_img)
+        insertMsg(data, 'outgoing-message', app.maternal.maternal_name, app.maternal.maternal_img)
 
 
         let pro = $("#file").val();
@@ -553,7 +653,7 @@
         let fd = new FormData($("#form_table")[0]);
         $.ajax({
             type: "POST",
-            url: "http://" + host + "/index/fileUpload",
+            url: "http://" + host + "/index/uploadImage",
             data: fd,
             processData: false,
             contentType: false,
@@ -561,17 +661,18 @@
                 let fileName = result.message
                 websocket.send(JSON.stringify({'message': fileName, 'type': 'image', 'to': app.doctor.doctorId}));
                 let data = '<figure><img class="w-60 img-fluid rounded" alt="image" src=" ../../assets/images/chatImg/' + fileName + '"></figure>'
-                insertMsg(data,'outgoing-message',app.maternal.maternal_name, app.maternal.maternal_img)
+                insertMsg(data, 'outgoing-message', app.maternal.maternal_name, app.maternal.maternal_img)
             }
         });
     }
 
 
     function insertMsg(data, type, name, imgPath) {
-        $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` +  type  +` " '>
+        var chat_body = $('.layout .content .chat .chat-body');
+        $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` + type + ` " '>
                         <div class="message-avatar">
                             <figure class="avatar">
-                                <img src=" ` + imgPath +`" class="rounded-circle">
+                                <img src=" ` + imgPath + `" class="rounded-circle">
                             </figure>
                             <div>
                                 <h5>` + name + `</h5>
@@ -581,7 +682,32 @@
                          ` + data + `
 
                     </div>`);
+        setTimeout(function () {
+            chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({
+                cursorcolor: 'rgba(66, 66, 66, 0.20)',
+                cursorwidth: "4px",
+                cursorborder: '0px'
+            }).resize();
+        }, 200);
+    }
 
+    function quitConsult() {
+        $.ajax({
+            type: "POST",
+            url: "http://" + host + "/doctor/quitConsult",
+            data: {
+                doctorId: to,
+                maternalId: fromId,
+            },
+            success: function (result) {
+                if (result.status == '200'){
+                    window.location.href ="../index.html"
+                } else {
+                    alert(result.message)
+                }
+
+            }
+        });
     }
 </script>
 
@@ -590,7 +716,7 @@
         el: "#app",
         data: {
             doctor: {},
-            maternal:{},
+            maternal: {},
         }
     })
 </script>

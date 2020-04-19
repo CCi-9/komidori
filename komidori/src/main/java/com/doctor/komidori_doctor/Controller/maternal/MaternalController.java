@@ -5,6 +5,7 @@ import com.doctor.komidori_doctor.ResponseModel.ResponseWrapper;
 import com.doctor.komidori_doctor.Service.maternal.MaternalService;
 import com.doctor.komidori_doctor.annotation.CheckUser;
 import com.doctor.komidori_doctor.pojo.*;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -67,6 +68,22 @@ public class MaternalController {
 
         return new ResponseWrapper<>(ResponseStatus.OK, maternalMsg);
     }
+
+
+
+
+    /**
+     * 根据id获取个人信息
+     *
+     * @return
+     */
+    // @CheckUser
+    @RequestMapping(value = "getMaternalById", method = RequestMethod.GET)
+    public ResponseWrapper<Maternal> getMaternalById(@RequestParam Integer matID) {
+        Maternal maternal = maternalService.getMaternalById(matID);
+        return new ResponseWrapper<>(ResponseStatus.OK, maternal);
+    }
+
 
     /**
      * 获得个人信息
@@ -226,6 +243,7 @@ public class MaternalController {
         return new ResponseWrapper<>(ResponseStatus.OK, result);
 
     }
+
 
 
     /**

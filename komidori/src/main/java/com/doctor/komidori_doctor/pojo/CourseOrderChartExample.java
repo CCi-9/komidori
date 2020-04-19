@@ -1,9 +1,11 @@
 package com.doctor.komidori_doctor.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@Component
 public class CourseOrderChartExample {
     protected String orderByClause;
 

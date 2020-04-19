@@ -1,11 +1,12 @@
 package com.doctor.komidori_doctor.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
+@Component
 public class BookNurseChart {
     private Integer bnurseOrderId;
 
@@ -31,6 +32,16 @@ public class BookNurseChart {
     private LocalDateTime bnurseDate;
 
     private NurseInfo nurseInfo;
+
+    private  MaternalInfo maternalInfo;
+
+    public void setMaternalInfo(MaternalInfo maternalInfo) {
+        this.maternalInfo = maternalInfo;
+    }
+
+    public MaternalInfo getMaternalInfo() {
+        return maternalInfo;
+    }
 
     public NurseInfo getNurseInfo() {
         return nurseInfo;

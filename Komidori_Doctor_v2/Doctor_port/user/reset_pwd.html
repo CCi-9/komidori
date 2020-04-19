@@ -1,298 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
-  <title>重置密码</title>
-   	<link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
-     <!--End  Page Level  CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <title>重置密码</title>
+    <link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <!--End  Page Level  CSS -->
     <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
     <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../../assets/css/lcy_css.css"/>
-		<link rel="stylesheet" type="text/css" href="../../assets/css/loginstyle.css"/>
-		<link rel="stylesheet" type="text/css" href="../../assets/css/pwd_rank_style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/lcy_css.css"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/loginstyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/pwd_rank_style.css"/>
 </head>
 
 <body class="sticky-header">
+<!-- call modal -->
+<div id="modal">
+    <div class="modal call fade" id="call" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="call">
+                        <!--<div class="call-background" style="background: url(../assets/images/call-bg.png)"></div>-->
+                        <div>
+                            <figure class="mb-4 avatar avatar-xl">
+                                <img src="../../assets/images/heads.jpg" class="img-circle">
+                            </figure>
+                            <h4 class="text-center">【<span id="mat_name"></span>】正在咨询您 ...</h4>
+                            <div class="action-button">
+                                <a onclick="jumpToConsult()" type="button" class="btn btn-success btn-floating btn-lg"
+                                   :href="'../online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-pulse btn-floating btn-lg"
+                                        data-dismiss="modal">
+                                    <i class="ti-close"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ call modal -->
 
-
-    <!--Start left side Menu-->
-    <header>
-		<div class="left-side sticky-left-side">
+<!--Start left side Menu-->
+<header>
+    <div class="left-side sticky-left-side">
 
         <!--logo-->
         <div class="logo">
-            <a href="index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+            <a href="../index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
         </div>
-				<div class="logo-icon text-center">
-            <a href="index.html"><i class="fa fa-user"></i></a>
+        <div class="logo-icon text-center">
+            <a href="../index.html"><i class="fa fa-user"></i></a>
         </div>
         <div class="left-side-inner">
             <!--左侧 导航-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-            	
-                <li class="menu-list nav-active">
-                	<a href="../index.html"><i class="fa fa-home"></i>
-                		<span>主页</span>
-                	</a>
-                </li>
 
                 <li class="menu-list">
-                	<a href="#"><i class="icon-user"></i> 
-                		<span>个人中心</span>
-                	</a>
+                    <a href="#"><i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li class=""><a href="../index.html"> 主页</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list nav-active">
+                    <a href="#"><i class="icon-user"></i>
+                        <span>个人中心</span>
+                    </a>
                     <ul class="sub-menu-list">
                         <li><a href="../user/personal_info.html"> 隐私信息</a></li>
                         <li><a href="../user/doc_profile.html"> 个人Profile</a></li>
-                        <li><a href="../user/reset_pwd.html"> 重置密码</a></li>
+                        <li class="active"><a href="../user/reset_pwd.html"> 重置密码</a></li>
                     </ul>
                 </li>
-                
-                <li class="menu-list">
-                	<a href="#"><i class="icon-microphone"></i> 
-                		<span>线上咨询管理</span>
-                	</a>
+
+                <li class="menu-list" id="online">
+                    <a href="#"><i class="icon-microphone"></i>
+                        <span>线上咨询管理</span>
+                    </a>
                     <ul class="sub-menu-list">
-                    		<li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
+                        <li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
                         <li><a href="../online_consult/consult_list.html"> 线上服务订单</a></li>
                     </ul>
                 </li>
 
-                <li class="menu-list">
-                	<a href="#"><i class="icon-paper-clip"></i> 
-                		<span>线下预约管理</span>
-                	</a>
+                <li class="menu-list" id="offline">
+                    <a href="#"><i class="icon-paper-clip"></i>
+                        <span>线下预约管理</span>
+                    </a>
                     <ul class="sub-menu-list">
                         <li><a href="../offline_book/offline_setting.html"> 设置预约信息</a></li>
                         <li><a href="../offline_book/offline_service_list.html"> 线下服务订单</a></li>
                     </ul>
                 </li>
 
-                <li class="menu-list">
-                	<a href="#"><i class="icon-people"></i> 
-                		<span>经验社区</span>
-                	</a>
-                  <ul class="sub-menu-list">
+                <li class="menu-list" id="course">
+                    <a href="#"><i class="icon-people"></i>
+                        <span>经验社区</span>
+                    </a>
+                    <ul class="sub-menu-list">
                         <li><a href="../course_management/mycourse_list.html"> 我的课程</a></li>
                         <li><a href="../course_management/publish_course.html"> 发布课程</a></li>
-                  </ul>
+                    </ul>
                 </li>
-                
+
                 <li class="menu-list">
-                	<a href="#"><i class="icon-envelope-letter"></i> 
-                		<span>我的消息盒子</span>
-                	</a>
+                    <a href="#"><i class="icon-envelope-letter"></i>
+                        <span>我的消息盒子</span>
+                    </a>
                     <ul class="sub-menu-list">
                         <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
                         <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
                     </ul>
                 </li>
-         
+
             </ul>
             <!--End sidebar nav-->
 
         </div>
     </div>
-	</header>
-    <!--End left side menu-->
+</header>
+<!--End left side menu-->
 
-    
-    <!-- main content start-->
-    <div class="main-content" >
 
-        <!-- header section start-->
-        <div class="header-section">
+<!-- main content start-->
+<div class="main-content">
 
-            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+    <!-- header section start-->
+    <div class="header-section" id="apps">
 
-            <!--<form class="searchform">
-                <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
-            </form>-->
+        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
 
-            <!--notification menu start -->
-            <div class="menu-right">
-                <ul class="notification-menu">
-                    
-                  <li>
-                        <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="badge">4</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-head pull-right">
-                         <h5 class="title">消息</h5>
+        <!--notification menu start -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+                <li v-if="messageCount != 0">
+                    <a onclick="jumpToConsult()"
+                       :href="'../online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId"
+                       class="btn btn-default dropdown-toggle info-number consultbtn">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge">1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge">{{noteSize}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">消息</h5>
                         <ul class="dropdown-list normal-list">
-                        	
-											<li class="message-list message-scroll-list">
-												
-                          <a href="#">
-                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
-                              <span class="subject">管理员</span>
-                              <span class="message"> 您的课程已经审核通过！</span>
-                               <span class="time">15 minutes ago</span>
-                          </a>
-                          
-                          <a href="#">
-                              <span class="photo"> <img src="../assets/images/system.jpg" class="img-circle" alt="img"></span>
-                              <span class="subject">系统</span>
-                              <span class="message"> 有用户关注您啦！</span>
-                               <span class="time">10 minutes ago</span>
-                          </a>
-                        
-                          <a href="#">
-                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
-                               <span class="subject">管理员</span>
-                               <span class="message"> 您的课程已经审核通过</span>
-                              <span class="time">20 minutes ago</span>
-                          </a>
-                         
-                          
-											</li>
-											<li	 class="last"> <a  href="inbox/inbox.html">所有消息</a> </li>
-										</ul>
-                		</div>
-               	 	</li>
-                    
-                  <li>
-                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../assets/images/heads.jpg" alt="" />
-                            	蔡翠翠
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                          <!--<li> <a href="#"> <i class="fa fa-user"></i> 设置 </a> </li>-->
-                          <li> <a href="reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a> </li>
-                          <li> <a href="../doc_signin.html"> <i class="fa fa-lock"></i> 退出登陆 </a> </li>
+                            <li class="message-list message-scroll-list">
+                                <a href="#" v-for="note in noteList">
+                                    <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
+                                                              alt="img"></span>
+                                    <span class="subject">{{note.emailFromId}}</span>
+                                    <p class="message hiddencontent">{{note.emailContent}}</p>
+                                    <span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="inbox/inbox.html">所有消息</a>
+                            </li>
                         </ul>
-                    </li>
-
-                </ul>
-            </div>
-            <!--notification menu end -->
-
-        </div>
-        <!-- header section end-->
-
-        <!--body wrapper start-->
-        <div class="wrapper">
-              
-              <!--Start Page Title-->
-               <div class="page-title-box">
-                    <h4 class="page-title">您好 , 菜玉溪医生 !</h4>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="../index.html">主页</a>
-                        </li>
-                        <li>
-                            <a href="#">个人中心</a>
-                        </li>
-                        <li class="active">
-                            	重置密码
-                        </li>
-                    </ol>
-                    <div class="clearfix"></div>
-                 </div>
-                  <!--End Page Title-->          
-           
-           
-               <!--Start row-->
-               <div class="row">
-                   <div class="col-md-12">
-                       <div class="white-box white-box-reset">  
-                       	<section class="signin py-5">
-                       			<div class="row main-content-agile">
-                       				<div class="col-md-6 mx-auto col-md-push-3 col-xs-12">
-                       					<div class="sub-main-w3 text-center">
-                       						<h3>重置密码</h3>
-                       						<!--提示-->
-                       						<p class="mt-2 mb-4">请重新设置密码</p>
-                       						<form action="#" method="post">
-                       	
-                       							<div id="app">
-                       								<!--新密码-->
-                       								<div class="icon1">
-                       									<div class="input_container">
-                       										<label for="tel">密码</label>
-                       										<input @input="p_len" v-model="password" placeholder="密码" name="pwd" type="password" required="">
-                       										<span v-bind:class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span>
-                       									</div>
-                       								</div>
-                       								<!--重复密码-->
-                       								<div class="icon1">
-                       									<label for="tel">重复</label>
-                       									<input name="pwd2" type="password" required="required" placeholder="确认密码" />
-                       									<span hidden="hidden">密码不一致</span>
-                       								</div>
-                       								<!--密码强度-->
-                       								<div class="lnu_container" id="pwdrank">
-                       									<p v-bind:class="{ lovercase_valid: contains_lovercase }">Lowercase</p>
-                       									<p v-bind:class="{ number_valid: contains_number }">Number</p>
-                       									<p v-bind:class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
-                       								</div>
-                       								<!--密码是否通过-->
-                       								<div class="valid_password_container" v-bind:class="{show_valid_password_container : valid_password }">
-                       									<svg width="100%" height="100%" viewBox="0 0 140 100">
-                       										<path class="tick" v-bind:class="{checked: valid_password }" d="M10,50 l25,40 l95,-70" />
-                       									</svg>
-                       								</div>
-                       	
-                       							</div>
-                       	
-                       							<input type="submit" class="submit" value="重置">
-                       						</form>
-                       					</div>
-                       				</div>
-                       				<div style="width:100%;height: 10px;"></div>
-                       				<!--图片-->
-                       	
-                       			</div>
-                       		
-                       	</section>
-                         
-                       </div>
                     </div>
+                </li>
+
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <img :src="doctor.doctorImg" alt=""/>
+                        <span v-if="doctor.doctorStatus==1" class="label label-success">在线</span>
+                        <span v-if="doctor.doctorStatus==0" class="label label-default">离线</span>
+                        {{doctor.doctorName}}
+                        <span id="verify" class="hidden">0</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li>
+                            <a href="user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!--notification menu end -->
+
+    </div>
+    <!-- header section end-->
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+
+        <!--Start Page Title-->
+        <div class="page-title-box">
+            <h4 class="page-title">您好 !</h4>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="../index.html">主页</a>
+                </li>
+                <li>
+                    <a href="#">个人中心</a>
+                </li>
+                <li class="active">
+                    重置密码
+                </li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+        <!--End Page Title-->
+
+
+        <!--Start row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box white-box-reset">
+                    <section class="signin py-5">
+                        <div class="row main-content-agile">
+                            <div class="col-md-6 mx-auto col-md-push-3 col-xs-12">
+                                <div class="sub-main-w3 text-center">
+                                    <h3>重置密码</h3>
+                                    <!--提示-->
+                                    <p class="mt-2 mb-4">请重新设置密码</p>
+                                    <form action="#" onsubmit="return false">
+
+                                        <div id="app">
+                                            <!--新密码-->
+                                            <div class="icon1">
+                                                <div class="input_container">
+                                                    <label for="pwd">密码</label>
+                                                    <input @input="p_len" v-model="password" id="pwd" placeholder="密码"
+                                                           name="pwd" type="password" required="">
+                                                    <span :class="{ valid_password_length: valid_password_length , show_password_length: typed}"
+                                                          class="password_length">{{password_length}}</span>
+                                                </div>
+                                            </div>
+                                            <!--重复密码-->
+                                            <div class="icon1">
+                                                <label for="pwd2">重复</label>
+                                                <input name="pwd2" type="password" id="pwd2" v-model="password2"
+                                                       required="required" placeholder="确认密码"/>
+                                                <span hidden="hidden">密码不一致</span>
+                                            </div>
+                                            <!--密码强度-->
+                                            <div class="lnu_container" id="pwdrank">
+                                                <p :class="{ lovercase_valid: contains_lovercase }">Lowercase</p>
+                                                <p :class="{ number_valid: contains_number }">Number</p>
+                                                <p :class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
+                                            </div>
+                                            <!--密码是否通过-->
+                                            <div class="valid_password_container"
+                                                 :class="{show_valid_password_container : valid_password }">
+                                                <svg width="100%" height="100%" viewBox="0 0 140 100">
+                                                    <path class="tick" :class="{checked: valid_password }"
+                                                          d="M10,50 l25,40 l95,-70"/>
+                                                </svg>
+                                            </div>
+
+                                        </div>
+
+                                        <input type="submit" class="submit" value="重置" onclick="resetPwd()">
+                                    </form>
+                                </div>
+                            </div>
+                            <div style="width:100%;height: 10px;"></div>
+                            <!--图片-->
+
+                        </div>
+
+                    </section>
+
                 </div>
-                 <!-- end row --> 
- 
             </div>
-      <!-- End Wrapper-->
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- End Wrapper-->
 
 
-        <!--Start  Footer -->
-        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
-         <!--End footer -->
+    <!--Start  Footer -->
+    <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>
+    <!--End footer -->
 
-       </div>
-      <!--End main content -->
-    
+</div>
+<!--End main content -->
 
 
-    <!--Begin core plugin -->
-    <!--Begin core plugin -->
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <script  src="../../assets/js/jquery.slimscroll.js"></script>
-    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
-    <script src="../../assets/js/functions.js"></script>
-    <!-- End core plugin -->
+<!--Begin core plugin -->
+<!--Begin core plugin -->
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/jquery.slimscroll.js"></script>
+<script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+<script src="../../assets/js/functions.js"></script>
+<!-- End core plugin -->
 
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-		<script src="../../assets/js/jquery-validation/jquery.validate.min.js"></script>
-    <script src="../../assets/js/jquery-validation/validation-custom.js"></script>
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    
-    <!--fileupload-->
-    <script src="../../assets/js/file-uploader/bootstrap-fileupload.js" type="text/javascript" charset="utf-8"></script>	
-   	
-   	<!--密码等级-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="../../assets/js/pwd_rank.js"></script>
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="../../assets/js/jquery-validation/jquery.validate.min.js"></script>
+<script src="../../assets/js/jquery-validation/validation-custom.js"></script>
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<!--fileupload-->
+
+<!--密码等级-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../../assets/js/pwd_rank.js"></script>
+
+<script src="../../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/GlobalMethod.js" type="text/javascript" charset="utf-8"></script>
 
 </body>
+<script type="text/javascript">
 
+    let apps = new Vue({
+        el: "#apps",
+        data: {
+            doctorId: '',
+            maternalId: '',
+            messageCount: 0,
+            doctor: {},
+            noteList: [],
+            noteSize: 0
+        },
+        methods: {
+            formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
+        },
+        mounted() {
+
+            checkDoctor()
+            getDoctorMsg2(this, '#verify')
+            getDocNoteMsg(this)
+        },
+    });
+
+
+    let modal = new Vue({
+        el: "#modal",
+        data: {
+            doctorId: '',
+            maternalId: '',
+        }
+    });
+
+
+    function resetPwd() {
+        if (app.valid_password == false) {
+            if (app.password == "")
+                return;
+            alert("密码格式不正确")
+            return
+        }
+
+        if (app.password != app.password2) {
+            if (app.password2 == "") return;
+            alert("密码不一致")
+            return
+        }
+
+        $.ajax({
+            url: "http://" + host + "/DocPort/doc_resetPwd",
+            method: "post",
+            data: {
+                password: app.password,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                let message = result.message
+                if (message == "401") {
+                    alert(message);
+                    window.location.href = '../doc_signin.html'
+                } else if (message == "400") {
+                    alert(message);
+                } else {
+                    alert("修改密码成功，请重新登录");
+                    window.location.href = '../doc_signin.html'
+                }
+            }
+        });
+
+    }
+</script>
 </html>

@@ -1,6 +1,8 @@
 package com.doctor.komidori_doctor.pojo;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDateTime;
 
 public class EmailInfo {
     private Integer emailId;
@@ -17,13 +19,32 @@ public class EmailInfo {
 
     private Integer emailStatus;
 
-    private Date emailDate;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime emailDate;
 
     private Integer validateType;
 
     private Integer validateCourseId;
 
     private Integer validateDocId;
+
+    private DoctorInfo doctorInfo;
+
+    private AdminInfo adminInfo;
+
+    private CourseInfo courseInfo;
+
+    public DoctorInfo getDoctorInfo() {
+        return doctorInfo;
+    }
+
+    public AdminInfo getAdminInfo() {
+        return adminInfo;
+    }
+
+    public CourseInfo getCourseInfo() {
+        return courseInfo;
+    }
 
     public Integer getEmailId() {
         return emailId;
@@ -81,11 +102,11 @@ public class EmailInfo {
         this.emailStatus = emailStatus;
     }
 
-    public Date getEmailDate() {
+    public LocalDateTime getEmailDate() {
         return emailDate;
     }
 
-    public void setEmailDate(Date emailDate) {
+    public void setEmailDate(LocalDateTime emailDate) {
         this.emailDate = emailDate;
     }
 

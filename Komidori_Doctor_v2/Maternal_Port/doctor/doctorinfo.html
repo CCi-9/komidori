@@ -233,9 +233,9 @@
                         <button class="btn btn-theme" @click="bookDoc(doctor.doctorId)" v-if="type == 1"><i
                                 class="ti-book"></i> 马上预约
                         </button>
-                        <button class="btn btn-theme" @click="askDoc(doctor.doctorId)" v-if="type == 0"><i
-                                class="ti-envelope"></i> 马上咨询
-                        </button>
+                        <a class="btn btn-theme" v-if="type == 0" data-toggle="modal" data-target="#consult">
+                            <i class="ti-envelope"></i> 马上咨询
+                        </a>
                         <span class="label label-default">{{doctor.onlinePrice}}￥/次</span>
                     </p>
                 </div>
@@ -491,6 +491,37 @@
     <!--页尾-->
     <div id="foot"></div>
 
+    <!--购买咨询-->
+    <div class="modal fade" id="consult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style="height: 470px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" >咨询付款</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>作者信息</h4>
+                    <p>医生姓名：<span>菜玉溪</span></p>
+                    <p>所属医院：<span>湛江市中心人民医院</span></p>
+                    <p>职称：<span>主任医师</span></p>
+
+                    <h4>费用</h4>
+                    <p>价格:<span class="price"> 39.9￥ </span></p>
+
+                    <h4>温馨提示</h4>
+                    <p>tip:<span class="price">进入咨询界面后请不要轻易退出，请完成咨询后再推出咨询界面。^_^</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="sa-buy" type="button" class="btn btn-default" data-dismiss="modal" @click="askDoc(doctor.doctorId)">
+                        确认购买
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
 </div>
 </body>
 
@@ -604,6 +635,28 @@
             }
         });
     }
+    
+    function consultDoc() {
+        let id = $.query.get("id")
+        $.ajax({
+            url: "http://" + host + "/doctor/consultDoc",
+            method: "post",
+            data: {
+                doctorId: id,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status == "200") {
+                    window.location.href = 'consult_ask2.html?id=' + id
+                } else {
+                    alert(result.message)
+                }
+
+            }
+        });
+    }
 </script>
 <script>
     let app = new Vue({
@@ -635,8 +688,9 @@
             findMoreCourse(id) {
                 window.location.href = 'doc_more_course_list.html?id=' + id
             },
-            askDoc(id) {
-                window.location.href = 'consult_ask2.html?id=' + id
+            askDoc() {
+                consultDoc()
+                
             },
             bookDoc(id) {
                 window.location.href = 'book_doc.html?id=' + id

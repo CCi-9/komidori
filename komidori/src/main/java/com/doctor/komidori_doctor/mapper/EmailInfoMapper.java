@@ -5,6 +5,8 @@ import com.doctor.komidori_doctor.pojo.EmailInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import javax.validation.constraints.Email;
+
 public interface EmailInfoMapper {
     int countByExample(EmailInfoExample example);
 
@@ -27,4 +29,15 @@ public interface EmailInfoMapper {
     int updateByPrimaryKeySelective(EmailInfo record);
 
     int updateByPrimaryKey(EmailInfo record);
+
+    //lcy
+    //     管理员
+    List<EmailInfo> ad_getEmailList();
+    EmailInfo ad_getEmailById_course(Integer emailId);
+    EmailInfo ad_getEmailById_doc(Integer emailId);
+    //    医生
+    EmailInfo doc_getEmailById_course(Integer emailId);
+    EmailInfo doc_getEmailById_doc(Integer emailId);
+    List<EmailInfo> doc_getEmailListById(Integer doctorId);
+
 }

@@ -54,4 +54,8 @@ public interface MaternalService {
     String followDoctor(Integer doctorID, HttpSession session);
 
     boolean findFollow(Integer doctorId, HttpSession session);
+
+    Maternal getMaternalById(Integer matID);
+
+    String quitConsult(Integer doctorId, Integer maternalId);
 }

@@ -265,11 +265,15 @@
         el: "#app",
         data: {
             nurseList: [],
+            admin:{}, noteList:[], noteSize:0
         },
         mounted() {
 //          returnSignin()
-            init()
-            getList()
+						init()
+						getList()
+						getAdminMsg(this)
+       			getNoteMsg(this)
+            
         },
         methods: {}
     });
@@ -296,8 +300,8 @@
                 console.log(result)
                 if (result.status != "200") {
                     alert(result.message)
-                    window.location.href = '../signin.html'
-                    return
+                    window.location.href = '../ad_signin.html'
+                    return;
                 }
                 app.nurseList = result.data;
                 initTable();
@@ -399,7 +403,7 @@
     						},
     						 events: {
       					'click a[title=del]': function (e, value, row, index) {
-          				
+          				if(confirm('此操作不可逆，请确认是否删除？')){
           				$.ajax
       						({
       						url: "http://" + host + "/Admin/course/deleteCourse",
@@ -424,7 +428,7 @@
       						
       						}
       						});//ajax end
-          				
+          			}
           				}
       					},
                 

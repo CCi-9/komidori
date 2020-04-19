@@ -1,9 +1,12 @@
 package com.doctor.komidori_doctor.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class CommentChartExample {
     protected String orderByClause;
 
@@ -285,6 +288,76 @@ public class CommentChartExample {
             return (Criteria) this;
         }
 
+        public Criteria andCommentContentIsNull() {
+            addCriterion("comment_content is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentIsNotNull() {
+            addCriterion("comment_content is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentEqualTo(String value) {
+            addCriterion("comment_content =", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentNotEqualTo(String value) {
+            addCriterion("comment_content <>", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentGreaterThan(String value) {
+            addCriterion("comment_content >", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentGreaterThanOrEqualTo(String value) {
+            addCriterion("comment_content >=", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentLessThan(String value) {
+            addCriterion("comment_content <", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentLessThanOrEqualTo(String value) {
+            addCriterion("comment_content <=", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentLike(String value) {
+            addCriterion("comment_content like", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentNotLike(String value) {
+            addCriterion("comment_content not like", value, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentIn(List<String> values) {
+            addCriterion("comment_content in", values, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentNotIn(List<String> values) {
+            addCriterion("comment_content not in", values, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentBetween(String value1, String value2) {
+            addCriterion("comment_content between", value1, value2, "commentContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentContentNotBetween(String value1, String value2) {
+            addCriterion("comment_content not between", value1, value2, "commentContent");
+            return (Criteria) this;
+        }
+
         public Criteria andCommentStatusIsNull() {
             addCriterion("comment_status is null");
             return (Criteria) this;
@@ -402,6 +475,146 @@ public class CommentChartExample {
 
         public Criteria andCommentDateNotBetween(Date value1, Date value2) {
             addCriterion("comment_date not between", value1, value2, "commentDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameIsNull() {
+            addCriterion("comment_user_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameIsNotNull() {
+            addCriterion("comment_user_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameEqualTo(String value) {
+            addCriterion("comment_user_name =", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotEqualTo(String value) {
+            addCriterion("comment_user_name <>", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameGreaterThan(String value) {
+            addCriterion("comment_user_name >", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameGreaterThanOrEqualTo(String value) {
+            addCriterion("comment_user_name >=", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameLessThan(String value) {
+            addCriterion("comment_user_name <", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameLessThanOrEqualTo(String value) {
+            addCriterion("comment_user_name <=", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameLike(String value) {
+            addCriterion("comment_user_name like", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotLike(String value) {
+            addCriterion("comment_user_name not like", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameIn(List<String> values) {
+            addCriterion("comment_user_name in", values, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotIn(List<String> values) {
+            addCriterion("comment_user_name not in", values, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameBetween(String value1, String value2) {
+            addCriterion("comment_user_name between", value1, value2, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotBetween(String value1, String value2) {
+            addCriterion("comment_user_name not between", value1, value2, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgIsNull() {
+            addCriterion("comment_user_Img is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgIsNotNull() {
+            addCriterion("comment_user_Img is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgEqualTo(String value) {
+            addCriterion("comment_user_Img =", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgNotEqualTo(String value) {
+            addCriterion("comment_user_Img <>", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgGreaterThan(String value) {
+            addCriterion("comment_user_Img >", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgGreaterThanOrEqualTo(String value) {
+            addCriterion("comment_user_Img >=", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgLessThan(String value) {
+            addCriterion("comment_user_Img <", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgLessThanOrEqualTo(String value) {
+            addCriterion("comment_user_Img <=", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgLike(String value) {
+            addCriterion("comment_user_Img like", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgNotLike(String value) {
+            addCriterion("comment_user_Img not like", value, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgIn(List<String> values) {
+            addCriterion("comment_user_Img in", values, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgNotIn(List<String> values) {
+            addCriterion("comment_user_Img not in", values, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgBetween(String value1, String value2) {
+            addCriterion("comment_user_Img between", value1, value2, "commentUserImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserImgNotBetween(String value1, String value2) {
+            addCriterion("comment_user_Img not between", value1, value2, "commentUserImg");
             return (Criteria) this;
         }
     }

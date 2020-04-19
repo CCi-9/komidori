@@ -372,11 +372,12 @@
             },
         },
        	mounted(){
-       		getAdminMsg(this),
-       		getMatNum(),
-       		getDocNum(),
-       		getNurseNum(),
+       		checkAdmin()
+       		getAdminMsg(this)
        		getNoteMsg(this)
+       		getMatNum()
+       		getDocNum()
+       		getNurseNum()
         },
         
     });
@@ -390,7 +391,7 @@
             },
             success: function (result) {
             	 if(result.status != "200"){
-            	 	alert("mat信息获取失败");
+            	 	//alert("mat信息获取失败");
             	 		//window.location.href = 'ad_signin.html'
             	 }
                 console.log(result)
@@ -408,7 +409,7 @@
             },
             success: function (result) {
             	 if(result.status != "200"){
-            	 	alert("doc信息获取失败");
+            	 	//alert("doc信息获取失败");
             	 		//window.location.href = 'ad_signin.html'
             	 }
                 console.log(result)
@@ -425,7 +426,7 @@
             },
             success: function (result) {
             	 if(result.status != "200"){
-            	 	alert("nurse信息获取失败");
+            	 	//alert("nurse信息获取失败");
             	 		//window.location.href = 'ad_signin.html'
             	 }
                 console.log(result)

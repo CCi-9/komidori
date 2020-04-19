@@ -5,6 +5,7 @@ import com.doctor.komidori_doctor.pojo.BookDoctorChartExample;
 import com.doctor.komidori_doctor.pojo.CourseInfo;
 import com.doctor.komidori_doctor.pojo.DoctorInfo;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -27,4 +28,11 @@ public interface DoctorService {
     boolean findFollow(String doctorID, HttpSession session);
 
     String thumbUpDoctor(Integer doctorID);
+
+
+    String quitConsult(Integer doctorId, Integer maternalId);
+
+    String consultDoc(Integer doctorId, HttpSession session);
+
+    String exitConsult(Integer doctorId);
 }

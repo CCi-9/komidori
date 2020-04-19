@@ -298,11 +298,17 @@
         el: "#app",
         data: {
             admin: {},
+            noteList:[],
+            noteSize:0
         },
         methods:{
-           
+           formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
         },
        	mounted(){
+       		getNoteMsg(this)
         	getAdmin()
         },
         
@@ -317,9 +323,10 @@
                 withCredentials: true  //带上cookie信息，解决sessionid不一致
             },
             success: function (result) {
-            	 if(result.status != "200"){
-            	 	alert("获取用户失败，请重新登录");
-            	 		window.location.href = '../ad_signin.html'
+            	 if(result.status != "400"){
+            	 		alert(result.message);
+            	 		window.location.href = '../ad_signin.html';
+            	 		return;
             	 }
                 console.log(result)
                 app.admin = result.data;
@@ -349,9 +356,11 @@
             },
             success: function (result) {
                 console.log(result)
-                if(result.status == "200"){
-                    alert("更改成功")
-//                  window.location.href = '../index.html'
+                if(result.status != "200"){
+                    alert(result.message)
+                }
+                else{
+                		alert("更改成功");
                 }
             }
         });

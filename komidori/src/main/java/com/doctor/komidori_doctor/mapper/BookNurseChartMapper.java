@@ -27,4 +27,7 @@ public interface BookNurseChartMapper {
     int updateByPrimaryKeySelective(BookNurseChart record);
 
     int updateByPrimaryKey(BookNurseChart record);
+
+    //lcy
+    List<BookNurseChart> getAllBookNurseList();
 }

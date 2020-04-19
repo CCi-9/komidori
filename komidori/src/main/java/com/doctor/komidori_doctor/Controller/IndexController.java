@@ -3,6 +3,8 @@ package com.doctor.komidori_doctor.Controller;
 import com.doctor.komidori_doctor.ResponseModel.ResponseStatus;
 import com.doctor.komidori_doctor.ResponseModel.ResponseWrapper;
 import com.doctor.komidori_doctor.Service.IndexService;
+import com.doctor.komidori_doctor.annotation.CheckAdmin;
+import com.doctor.komidori_doctor.annotation.CheckDoctor;
 import com.doctor.komidori_doctor.annotation.CheckUser;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,20 +51,32 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = "fileUpload",method = RequestMethod.POST)
-    public ResponseWrapper<String> fileUpload(@RequestParam("file") MultipartFile file){
-        String path = indexService.fileUpload(file);
-      /*  String fileName = file.getOriginalFilename();
-
-
-        System.out.println("fileName:" + fileName);
-        FileUtils utils = FileUtils.getInstance();
-        Map<String, Object> message = utils.uploadFile(file, localPath, fileName, user);
-        if ((int) message.get("code") == 0) {
-
-        }
-*/
+    //上传图片
+    @RequestMapping(value = "uploadImage",method = RequestMethod.POST)
+    public ResponseWrapper<String> uploadImage(@RequestParam("file") MultipartFile media){
+        String path = indexService.fileUpload(media);
         return new ResponseWrapper<>(ResponseStatus.OK,path);
+    }
+
+
+    //上传图片
+    @RequestMapping(value = "upLoadFile",method = RequestMethod.POST)
+    public ResponseWrapper<String> upLoadFile(@RequestParam("media") MultipartFile file, Integer type){
+        String path = indexService.upLoadFile(file,type);
+        return new ResponseWrapper<>(ResponseStatus.OK,path);
+    }
+
+
+    @CheckAdmin
+    @RequestMapping(value = "CheckAdmin",method = RequestMethod.GET)
+    public ResponseWrapper<String> CheckAdmin(){
+        return new ResponseWrapper<>(ResponseStatus.OK,"success");
+    }
+
+    @CheckDoctor
+    @RequestMapping(value = "CheckDoctor",method = RequestMethod.GET)
+    public ResponseWrapper<String> CheckDoctor(){
+        return new ResponseWrapper<>(ResponseStatus.OK,"success");
     }
 
 

@@ -31,6 +31,7 @@ public class CourseInfo {
 
     private DoctorInfo doctorInfo;
 
+
     public PublicCategoryChart getPublicCategoryChart() {
         return publicCategoryChart;
     }
@@ -141,5 +142,25 @@ public class CourseInfo {
 
     public void setCourseStatus(Integer courseStatus) {
         this.courseStatus = courseStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseInfo{" +
+                "courseId=" + courseId +
+                ", courseType=" + courseType +
+                ", courseDocId=" + courseDocId +
+                ", courseClassId=" + courseClassId +
+                ", courseDate=" + courseDate +
+                ", courseGoodReview=" + courseGoodReview +
+                ", coursePrice=" + coursePrice +
+                ", courseImg='" + courseImg + '\'' +
+                ", courseTitle='" + courseTitle + '\'' +
+                ", courseContent='" + courseContent + '\'' +
+                ", courseIntroduction='" + courseIntroduction + '\'' +
+                ", courseStatus=" + courseStatus +
+                ", publicCategoryChart=" + publicCategoryChart +
+                ", doctorInfo=" + doctorInfo +
+                '}';
     }
 }

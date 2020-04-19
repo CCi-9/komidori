@@ -120,10 +120,10 @@
 	</header>
     
     <!-- main content start-->
-    <div class="main-content" id="app" >
+    <div class="main-content">
 
         <!-- header section start-->
-        <div class="header-section">
+        <div class="header-section" id="apps">
 
             <a class="toggle-btn"><i class="fa fa-bars"></i></a>
 
@@ -181,7 +181,7 @@
               
               <!--Start Page Title-->
                <div class="page-title-box">
-                    <h4 class="page-title">您好 , 管理员Lcy !</h4>
+                    <h4 class="page-title">您好 , 管理员 <span id="admin_name"></span> !</h4>
                     <ol class="breadcrumb">
                         <li>
                             <a href="../index.html">主页</a>
@@ -211,7 +211,7 @@
                        						<p class="mt-2 mb-4">请重新设置密码</p>
                        						<form action="#" onsubmit="return false">
                        	
-                       							<div>
+                       							<div id="app">
 												 						<!--新密码-->
 																		 <div class="icon1">
 																			<div class="input_container">
@@ -292,10 +292,33 @@
 		
 		<script src="../../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
- 
+ 		<script src="../../assets/js/GlobalMethod.js" type="text/javascript" charset="utf-8"></script>
+
 </body>
 <script>
 	
+	let apps = new Vue({
+        el: "#apps",
+        data: {
+            admin: {},
+            noteList:[],
+            noteSize:0
+        },
+        methods:{
+           formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
+        },
+       	mounted(){
+       		checkAdmin()
+       		getAdminMsg(this)
+       		getNoteMsg(this)
+        },
+        
+    });
+	
+
 	
 	function resetPwd() {
         if (app.valid_password == false) {

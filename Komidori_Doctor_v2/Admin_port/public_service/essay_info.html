@@ -320,10 +320,10 @@
 	
 	function getList() {
 				let essayid = getUrlParam('essayid');
-				if(essayid==null||essayid==undefined){
-					alert("未能获取到课程详情，请重新选择");
-					window.location.href = 'essay_list.html';
-				}
+//				if(essayid==null||essayid==undefined){
+//					alert("未能获取到课程详情，请重新选择");
+//					window.location.href = 'essay_list.html';
+//				}
         $.ajax({
             url: "http://" + host + "/Admin/maternal/getEssayById",
             method: "get",
@@ -335,13 +335,18 @@
             },
             success: function (result) {
                 console.log(result)
-                if (result.status != "200") {
+                 if (result.status == "401") {
                     alert(result.message);
-                    window.location.href = 'essay_list.html';
+                   	window.location.href = '../ad_signin.html';
+                   	return;
+                }
+                else if(result.status == "400"){
+                		alert(result.message);
+                	 	window.location.href = 'essay_list.html';
                     return;
                 }
                 app.Essay = result.data;
-                 app.publicCategoryName = result.data.publicCategoryChart.publicCategoryName;
+                app.publicCategoryName = result.data.publicCategoryChart.publicCategoryName;
                 
             }
         });

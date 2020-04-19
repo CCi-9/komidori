@@ -2,6 +2,7 @@ package com.doctor.komidori_doctor.Service.Doctor.impl;
 
 import com.doctor.komidori_doctor.Service.Doctor.DoctorService;
 import com.doctor.komidori_doctor.mapper.BookDoctorChartMapper;
+import com.doctor.komidori_doctor.mapper.ConsultChartMapper;
 import com.doctor.komidori_doctor.mapper.DoctorInfoMapper;
 import com.doctor.komidori_doctor.mapper.FollowChartMapper;
 import com.doctor.komidori_doctor.mapper.myMapper.MyBookDoctorChartMapper;
@@ -14,6 +15,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -42,6 +44,9 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Resource
     private FollowChartMapper followChartMapper;
+
+    @Resource
+    private ConsultChartMapper consultChartMapper;
 
     @Override
     public Map<String, Object> getDoctor(int page, String city, String dept, Integer strengthId, String type) {
@@ -160,7 +165,7 @@ public class DoctorServiceImpl implements DoctorService {
             momId = 0;
         }
 
-        FollowChartExample f = new  FollowChartExample();
+        FollowChartExample f = new FollowChartExample();
         FollowChartExample.Criteria criteria = f.createCriteria();
         criteria.andFollowDocIdEqualTo(Integer.valueOf(doctorID));
         criteria.andFollowMatIdEqualTo(momId);
@@ -187,5 +192,74 @@ public class DoctorServiceImpl implements DoctorService {
 
         return "success";
     }
+
+    @Override
+    public String quitConsult(Integer doctorId, Integer maternalId) {
+        ConsultChartExample example = new ConsultChartExample();
+        ConsultChartExample.Criteria criteria = example.createCriteria();
+        criteria.andMatIdEqualTo(maternalId);
+        criteria.andDocIdEqualTo(doctorId);
+        criteria.andConsultStatusEqualTo(0);
+
+        List<ConsultChart> list = consultChartMapper.selectByExample(example);
+        ConsultChart consultChart = list.get(0);
+        if(consultChart != null){
+            consultChart.setConsultStatus(1);
+            consultChartMapper.updateByPrimaryKey(consultChart);
+            return "订单已完成";
+        }
+
+        return "fail";
+    }
+
+    @Override
+    public String exitConsult(Integer doctorId) {
+        DoctorInfo doctorInfo = doctorInfoMapper.selectByPrimaryKey(doctorId);
+        if (doctorInfo != null){
+            doctorInfo.setDoctorStatus(1);
+            doctorInfoMapper.updateByPrimaryKey(doctorInfo);
+            return "success";
+        }
+
+        return "fail";
+    }
+
+    @Override
+    public String consultDoc(Integer doctorId, HttpSession session) {
+        DoctorInfo doctorInfo = doctorInfoMapper.selectByPrimaryKey(doctorId);
+
+        Integer status = doctorInfo.getDoctorStatus();
+
+        if (status == null || status != 1) {
+            return "该医生正与其他客户聊天，请稍等";
+        }
+
+        Integer momId = (Integer) session.getAttribute("id");
+        if (momId == null) {
+            return "支付失败，请重新登陆";
+        }
+
+        //创建新的订单
+        ConsultChart consultChart = new ConsultChart();
+        consultChart.setConsultDate(new Date());
+        consultChart.setDocId(doctorId);
+        consultChart.setMatId(momId);
+        consultChart.setConsultPrice(doctorInfo.getOnlinePrice());
+        consultChart.setConsultStatus(0);
+
+        Integer i = consultChartMapper.insert(consultChart);
+        Integer consultId = consultChart.getConsultId();
+        System.out.println("consultId:" + consultId);
+        if (i == 0) {
+            return "支付失败，请重新支付";
+        } else {
+            //支付成功，进入聊天界面，然后改变医生的状态
+            doctorInfo.setDoctorStatus(2);
+            doctorInfoMapper.updateByPrimaryKey(doctorInfo);
+        }
+
+        return "success";
+    }
+
 
 }

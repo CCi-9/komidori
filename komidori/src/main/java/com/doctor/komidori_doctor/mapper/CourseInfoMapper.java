@@ -27,4 +27,10 @@ public interface CourseInfoMapper {
     int updateByPrimaryKeySelective(CourseInfo record);
 
     int updateByPrimaryKey(CourseInfo record);
+
+//   多表bylcy
+    List<CourseInfo> getAllCourses();
+    List<CourseInfo> getAllCoursesByDid(Integer did);
+    CourseInfo getCourseByCid(Integer courseID);
+
 }

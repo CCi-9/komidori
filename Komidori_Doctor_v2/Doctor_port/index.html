@@ -19,12 +19,46 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/Doctor_port_css/style.css" rel="stylesheet">
     <link href="../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/chat/soho.min.css"/>-->
     <!--<link rel="stylesheet" type="text/css" href="../assets/css/Doctor_port_css/doc_index.css/doc_index.css"/>-->
 
 
 </head>
 
 <body class="sticky-header">
+<!-- call modal -->
+<div id="modal">
+    <div class="modal call fade" id="call" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="call">
+                        <!--<div class="call-background" style="background: url(../assets/images/call-bg.png)"></div>-->
+                        <div>
+                            <figure class="mb-4 avatar avatar-xl">
+                                <img src="../assets/images/heads.jpg" class="img-circle">
+                            </figure>
+                            <h4 class="text-center">【<span id="mat_name"></span>】正在咨询您 ...</h4>
+                            <div class="action-button">
+                                <a onclick="jumpToConsult()" type="button" class="btn btn-success btn-floating btn-lg"
+                                   :href="'online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-pulse btn-floating btn-lg"
+                                        data-dismiss="modal">
+                                    <i class="ti-close"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ call modal -->
+
 
 <header>
     <div class="left-side sticky-left-side">
@@ -41,9 +75,12 @@
             <ul class="nav nav-pills nav-stacked custom-nav">
 
                 <li class="menu-list nav-active">
-                    <a href="index.html"><i class="fa fa-home"></i>
+                    <a href="#"><i class="fa fa-home"></i>
                         <span>主页</span>
                     </a>
+                    <ul class="sub-menu-list">
+                        <li class="active"><a href="index.html"> 主页</a></li>
+                    </ul>
                 </li>
 
                 <li class="menu-list">
@@ -57,7 +94,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-list">
+                <li class="menu-list" id="online">
                     <a href="#"><i class="icon-microphone"></i>
                         <span>线上咨询管理</span>
                     </a>
@@ -67,7 +104,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-list">
+                <li class="menu-list" id="offline">
                     <a href="#"><i class="icon-paper-clip"></i>
                         <span>线下预约管理</span>
                     </a>
@@ -77,7 +114,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-list">
+                <li class="menu-list" id="course">
                     <a href="#"><i class="icon-people"></i>
                         <span>经验社区</span>
                     </a>
@@ -93,7 +130,6 @@
                     </a>
                     <ul class="sub-menu-list">
                         <li><a href="inbox/inbox.html"> 消息盒子</a></li>
-                        <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
                     </ul>
                 </li>
 
@@ -108,73 +144,63 @@
 <!--End left side menu-->
 
 <!-- main content start-->
-<div class="main-content">
+<div class="main-content" id="app">
+
 
     <!-- header section start-->
     <div class="header-section">
 
         <a class="toggle-btn"><i class="fa fa-bars"></i></a>
 
-        <!--<form class="searchform">
-            <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
-        </form>-->
-
         <!--notification menu start -->
         <div class="menu-right">
             <ul class="notification-menu">
-
+                <li v-if="messageCount != 0">
+                    <a onclick="jumpToConsult()" :href="'online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId" class="btn btn-default dropdown-toggle info-number consultbtn">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge">1</span>
+                    </a>
+                </li>
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="badge">4</span>
+                        <span class="badge">{{noteSize}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-head pull-right">
                         <h5 class="title">消息</h5>
                         <ul class="dropdown-list normal-list">
-
                             <li class="message-list message-scroll-list">
-
-                                <a href="#">
+                                <a href="#" v-for="note in noteList">
                                     <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
                                                               alt="img"></span>
-                                    <span class="subject">管理员</span>
-                                    <span class="message"> 您的课程已经审核通过！</span>
-                                    <span class="time">15 minutes ago</span>
+                                    <span class="subject">{{note.emailFromId}}</span>
+                                    <p class="message hiddencontent">{{note.emailContent}}</p>
+                                    <span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
                                 </a>
-
-                                <a href="#">
-                                    <span class="photo"> <img src="../assets/images/system.jpg" class="img-circle"
-                                                              alt="img"></span>
-                                    <span class="subject">系统</span>
-                                    <span class="message"> 有用户关注您啦！</span>
-                                    <span class="time">10 minutes ago</span>
-                                </a>
-
-                                <a href="#">
-                                    <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
-                                                              alt="img"></span>
-                                    <span class="subject">管理员</span>
-                                    <span class="message"> 您的课程已经审核通过</span>
-                                    <span class="time">20 minutes ago</span>
-                                </a>
-
-
                             </li>
-                            <li class="last"><a href="inbox/inbox.html">所有消息</a></li>
+                            <li class="last">
+                                <a href="inbox/inbox.html">所有消息</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
 
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="../assets/images/heads.jpg" alt=""/>
-                        蔡翠翠
+                        <img :src="doctor.doctorImg" alt=""/>
+                        <span v-if="doctor.doctorStatus==1" class="label label-success">在线</span>
+                        <span v-if="doctor.doctorStatus==0" class="label label-default">离线</span>
+                        {{doctor.doctorName}}
+                        <span id="verify" class="hidden">0</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <!--<li> <a href="#"> <i class="fa fa-user"></i> 设置 </a> </li>-->
-                        <li><a href="user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a></li>
-                        <li><a href="doc_signin.html"> <i class="fa fa-lock"></i> 退出登陆 </a></li>
+                        <li>
+                            <a href="user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -191,7 +217,7 @@
 
         <!--Start Page Title-->
         <div class="page-title-box">
-            <h5 class="page-title">您好 , 菜玉溪医生 ! </h5>
+            <h5 class="page-title">您好 , 【{{doctor.doctorName}}】医生 ! </h5>
             <ol class="breadcrumb">
                 <li class="active">
                     <a href="index.html">主页</a>
@@ -214,11 +240,11 @@
         <!--Start row-->
         <div class="row">
             <!--Start info box-->
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="info-box-main">
                     <div class="info-stats grid">
-                        <p>15</p>
-                        <span>线上服务总人数 </span>
+                        <p>{{OnlineNum}}</p>
+                        <span>线上服务总数 </span>
                     </div>
                     <div class="info-icon text-primary ">
                         <i class="fa fa-archive"></i>
@@ -236,11 +262,11 @@
             <!--End info box-->
 
             <!--Start info box-->
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="info-box-main">
                     <div class="info-stats">
-                        <p>13</p>
-                        <span>线下服务总人数</span>
+                        <p>{{OfflineNum}}</p>
+                        <span>线下服务总数</span>
                     </div>
                     <div class="info-icon text-info">
                         <i class="mdi mdi-account-multiple"></i>
@@ -258,10 +284,10 @@
             <!--End info box-->
 
             <!--Start info box-->
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="info-box-main">
                     <div class="info-stats">
-                        <p>12</p>
+                        <p>{{CourseNum}}</p>
                         <span>发表文章数</span>
                     </div>
                     <div class="info-icon text-warning">
@@ -272,28 +298,6 @@
                             <div class="progress-bar progress-bar-warning progress-bar-striped
                               	active" role="progressbar" aria-valuenow="12" aria-valuemin="0"
                                  aria-valuemax="50" style="width: 24%;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End info box-->
-
-            <!--Start info box-->
-            <div class="col-md-3 col-sm-6">
-                <div class="info-box-main">
-                    <div class="info-stats">
-                        <p>￥1555</p>
-                        <span>总收入</span>
-                    </div>
-                    <div class="info-icon text-danger">
-                        <i class="fa fa-dollar"></i>
-                    </div>
-                    <div class="info-box-progress">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-danger progress-bar-striped
-                              	active" role="progressbar" aria-valuenow="1555" aria-valuemin="0"
-                                 aria-valuemax="5000" style="width: 30%;">
                             </div>
                         </div>
                     </div>
@@ -312,34 +316,34 @@
                 <div class="white-box">
                     <h2 class="header-title">我的基本信息</h2>
                     <div class="table-responsive">
-                        <table id="doc_data_list" class="table table-striped table-hover table-bordered doc_data_list">
+                        <table class="table table-striped table-hover table-bordered doc_data_list">
                             <tr>
                                 <th>Id</th>
-                                <td>20201515</td>
+                                <td>{{doctor.doctorId}}</td>
                             </tr>
                             <tr>
                                 <th>姓名</th>
-                                <td>菜总裁</td>
+                                <td>{{doctor.doctorName}}</td>
                             </tr>
                             <tr>
                                 <th>性别</th>
-                                <td>妹子</td>
+                                <td>{{doctor.doctorSex}}</td>
                             </tr>
                             <tr>
                                 <th>年龄</th>
-                                <td>如花似玉的18岁</td>
+                                <td>{{doctor.doctorAge}}</td>
                             </tr>
                             <tr>
                                 <th>手机</th>
-                                <td>13307758258</td>
+                                <td>{{doctor.doctorTel}}</td>
                             </tr>
                             <tr>
                                 <th>邮箱</th>
-                                <td>502015889@qq.com</td>
+                                <td>{{doctor.doctorEmail}}</td>
                             </tr>
                             <tr>
                                 <th>城市</th>
-                                <td>广东省汕头市憨憨区</td>
+                                <td>{{doctor.doctorCity}}</td>
                             </tr>
                         </table>
                     </div>
@@ -353,32 +357,33 @@
                         <table id="doc_data_list" class="table table-striped table-hover table-bordered doc_data_list">
                             <tr>
                                 <th>所属医院</th>
-                                <td>汕头大憨憨医生</td>
+                                <td>{{doctor.doctorHospital}}</td>
                             </tr>
                             <tr>
                                 <th>部门</th>
-                                <td>傻贼科</td>
+                                <td>{{doctor.doctorDept}}</td>
                             </tr>
                             <tr>
                                 <th>职称</th>
-                                <td>特大憨憨</td>
+                                <td>{{doctor.doctorRank}}</td>
                             </tr>
                             <tr>
                                 <th>关注量</th>
-                                <td><span class="label label-info">555</span></td>
+                                <td>
+                                    <span class="label label-info">{{doctor.doctorGoodReview}}</span></td>
                             </tr>
                             <tr>
                                 <th>好评量</th>
-                                <td><span class="label label-danger">559</span></td>
+                                <td><span class="label label-danger">{{doctor.doctorFollow}}</span></td>
                             </tr>
                             <tr>
                                 <th>课程数量</th>
-                                <td><span class="label label-success">34</span></td>
+                                <td><span class="label label-success">{{CourseNum}}</span></td>
                             </tr>
                             <tr>
                                 <th>擅长方向</th>
                                 <td>
-                                    <p class="hiddencontent">大扎好，我系渣渣熙，探挽懒月，介系里没有挽过的船新版板，里挤需体验三番钟，里造会干我一样，爱象介锅铝上C。</p>
+                                    <p class="hiddencontent">{{doctor.dcotorStrength}}</p>
                                 </td>
                             </tr>
                         </table>
@@ -409,16 +414,127 @@
 <script src="../assets/js/chat/jquery.nicescroll.min.js"></script>
 <script src="../assets/js/functions.js"></script>
 <!-- End core plugin -->
-<!--table-->
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="../assets/js/GlobalVariables.js"></script>
 <script src="../assets/js/GlobalMethod.js"></script>
-<script src="../assets/js/jquery.params.js"></script>
-
 <script src="../assets/js/doctorGetMessage.js"></script>
+
+<!--<script src="../assets/js/chat/soho.min.js" type="text/javascript" charset="utf-8"></script>-->
+
 
 </body>
 <script>
-    doctorGetMsg()
+    let app = new Vue({
+        el: "#app",
+        data: {
+            doctor: {},
+            doctorId: '',
+            maternalId: '',
+//          doctorVerify : 0,
+            OnlineNum: 0,
+            OfflineNum: 0,
+            CourseNum: 0,
+            noteList: [],
+            noteSize: 0,
+            messageCount:0,
+
+        },
+        methods: {
+            formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
+        },
+        created() {
+
+            checkDoctor()
+            getOnlineNum()
+            getOfflineNum()
+            getCourseNum()
+            getDoctorMsg2(this, '#verify')
+            getDocNoteMsg(this)
+        },
+
+    });
+
+
+    let modal = new Vue({
+        el: "#modal",
+        data: {
+            doctorId: '',
+            maternalId: '',
+        }
+    });
+
+    //		function modal(){
+    //		 var modal = $('#call');
+    //		 var name = "菜玉溪";
+    //		 //设置模态框中请求咨询的用户名字
+    //	 modal.find("#mat_name").text( name);
+    //
+    //		//自动弹出
+    //		setTimeout(function () {
+    //      $('#call').modal('show');
+    //  }, 2000);
+    //
+    //  //手动弹出
+    //  	//$('#call').modal('show');
+    //		}
+
+    function getOnlineNum() {
+        $.ajax({
+            url: "http://" + host + "/DocPort/online/getOnlineNum",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status != "200") {
+                    //alert("mat信息获取失败");
+                    //window.location.href = 'ad_signin.html'
+                }
+                console.log(result)
+                app.OnlineNum = result.data
+            }
+        });
+    }
+
+    function getOfflineNum() {
+        $.ajax({
+            url: "http://" + host + "/DocPort/offline/getOfflineNum",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status != "200") {
+                    //alert("doc信息获取失败");
+                    //window.location.href = 'ad_signin.html'
+                }
+                console.log(result)
+                app.OfflineNum = result.data;
+            }
+        });
+    }
+
+    function getCourseNum() {
+        $.ajax({
+            url: "http://" + host + "/DocPort/course/getCourseNum",
+            method: "get",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                if (result.status != "200") {
+                    //alert("nurse信息获取失败");
+                    //window.location.href = 'ad_signin.html'
+                }
+                console.log(result)
+                app.CourseNum = result.data;
+            }
+        });
+    }
+
+
 </script>
 </html>

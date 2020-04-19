@@ -41,47 +41,40 @@
 					<h3>重置密码</h3>
 					<!--提示-->
 					<p class="mt-2 mb-4">请重新设置密码</p>
-					<form action="#" method="post">	
+					<form action="#" onsubmit="return false">	
 						
 					<div id="app">
  						<!--新密码-->
 						 <div class="icon1">
 							<div class="input_container">
-								<label for="tel">密码</label>
-								<input @input="p_len" v-model="password" placeholder="密码" name="pwd" type="password"  required="">
-								<span v-bind:class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span> 
+								<label for="pwd">密码</label>
+								<input @input="p_len" v-model="password" id="pwd" placeholder="密码" name="pwd" type="password"  required="">
+								<span :class="{ valid_password_length: valid_password_length , show_password_length: typed}" class="password_length">{{password_length}}</span>
 							</div>
 						 </div>
  						<!--重复密码--> 						
 						<div class="icon1">
-							<label for="tel">重复</label>
-							<input name="pwd2" type="password"  required="required" placeholder="确认密码" />
+							<label for="pwd2">重复</label>
+							<input name="pwd2" type="password" id="pwd2" v-model="password2" required="required" placeholder="确认密码" />
 							<span hidden="hidden">密码不一致</span> 	
 						</div>
  						<!--密码强度-->
 						<div class="lnu_container" id="pwdrank">
-						    <p v-bind:class="{ lovercase_valid: contains_lovercase }">Lowercase</p>
-						    <p v-bind:class="{ number_valid: contains_number }">Number</p>
-						    <p v-bind:class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
+						    <p :class="{ lovercase_valid: contains_lovercase }">Lowercase</p>
+						    <p :class="{ number_valid: contains_number }">Number</p>
+						    <p :class="{ uppercase_valid: contains_uppercase }">Uppercase</p>
 						</div>
 						<!--密码是否通过-->  
-						<div class="valid_password_container" v-bind:class="{show_valid_password_container : valid_password }">
+						<div class="valid_password_container" :class="{show_valid_password_container : valid_password }">
 						    <svg width="100%" height="100%" viewBox="0 0 140 100">
-						      <path class="tick" v-bind:class="{checked: valid_password }" 
+						      <path class="tick" :class="{checked: valid_password }"
 						          d="M10,50 l25,40 l95,-70" />
 						    </svg>
 						</div>
 						
 					</div>
 					
-						<!--验证区域-->						
-						<div id="slider" class="">
-						        <div id="slider_bg"></div>
-						        <span id="label">>></span> 
-						        <span id="labelTip">拖动滑块验证</span>
-						</div>
-						   						
-						<input type="submit" class="submit" value="重置">
+						<input type="submit" class="submit" value="重置" onclick="resetPwd()">
 					</form>
 				</div>
 			</div>
@@ -99,9 +92,7 @@
 </section>
 
 <!-- footer -->
-<!-- start site-footer -->
-        <div id="foot"></div>
-        <!-- end site-footer -->
+  <div id="foot"></div>
 <!-- //footer -->
 
 
@@ -128,29 +119,51 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="../assets/js/pwd_rank.js"></script>
     
-    <script type="text/javascript" src="../assets/js/jquery.slideunlock.js"></script> 
-    <!-- //js -->
-	
+		<script src="../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
 	
 
 <script>
 	$("#head").load("doc_logobar.html");
 	$("#foot").load("low_footer.html");
-$(function () {
-    var slider = new SliderUnlock("#slider",{
-			successLabelTip : "验证成功"	
-		},function(){
-			alert("验证成功,即将跳转至#");
-        	window.location.href="#";
-			//以下四行设置恢复初始，不需要可以删除
-			setTimeout(function(){
-		        $("#labelTip").html("拖动滑块验证");
-				$("#labelTip").css("color","#787878");
-				},2000);
-			slider.init();
-		});
-    slider.init();
-})
+	
+function resetPwd() {
+        if (app.valid_password == false) {
+            if (app.password == "")
+                return;
+            alert("密码格式不正确")
+            return
+        }
+
+        if (app.password != app.password2) {
+            if (app.password2 == "") return;
+            alert("密码不一致")
+            return
+        }
+
+        $.ajax({
+            url: "http://" + host + "/DocPort/resetPwd",
+            method:"post",
+            data:{
+                password:app.password,
+            },
+            xhrFields:{
+                withCredentials:true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                let message = result.message
+                if(message != "success"){
+                    alert(message)
+                    window.location.href = 'forget_pwd.html'
+                } else {
+                	alert("修改密码成功，请登录");
+                    window.location.href = 'doc_signin.html'
+                }
+            }
+        });
+
+    }
+</script> 
 </script> 
 
 </body>

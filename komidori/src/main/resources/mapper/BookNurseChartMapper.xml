@@ -13,6 +13,36 @@
     <result column="bnurse_remark" property="bnurseRemark" jdbcType="VARCHAR" />
     <result column="bnurse_date" property="bnurseDate" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="MyResultMap" type="com.doctor.komidori_doctor.pojo.BookNurseChart" >
+    <id column="bnurse_order_id" property="bnurseOrderId" jdbcType="INTEGER" />
+    <result column="bnurse_nurse_id" property="bnurseNurseId" jdbcType="INTEGER" />
+    <result column="bnurse_mat_id" property="bnurseMatId" jdbcType="INTEGER" />
+    <result column="bnurse_start_date" property="bnurseStartDate" jdbcType="DATE" />
+    <result column="bnurse_end_date" property="bnurseEndDate" jdbcType="DATE" />
+    <result column="bnurse_price" property="bnursePrice" jdbcType="REAL" />
+    <result column="bnurse_addr" property="bnurseAddr" jdbcType="VARCHAR" />
+    <result column="bnurse_status" property="bnurseStatus" jdbcType="INTEGER" />
+    <result column="bnurse_remark" property="bnurseRemark" jdbcType="VARCHAR" />
+    <result column="bnurse_date" property="bnurseDate" jdbcType="TIMESTAMP" />
+    <association property="maternalInfo" javaType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+      <id column="maternal_id" property="maternalId" jdbcType="INTEGER"/>
+      <result column="maternal_name" property="maternalName" jdbcType="VARCHAR"/>
+    </association>
+    <association property="nurseInfo" javaType="com.doctor.komidori_doctor.pojo.NurseInfo">
+    <id column="nurse_id" property="nurseId" jdbcType="INTEGER"/>
+    <result column="nurse_name" property="nurseName" jdbcType="VARCHAR"/>
+    <result column="nurse_price" property="nursePrice" jdbcType="REAL"/>
+  </association>
+  </resultMap>
+
+  <!--BY lcy-->
+  <select id="getAllBookNurseList" resultMap="MyResultMap">
+        select * from book_nurse_chart
+        inner join nurse_info on book_nurse_chart.bnurse_nurse_id = nurse_info.nurse_id
+        inner join maternal_info on book_nurse_chart.bnurse_mat_id = maternal_info.maternal_id
+  </select>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

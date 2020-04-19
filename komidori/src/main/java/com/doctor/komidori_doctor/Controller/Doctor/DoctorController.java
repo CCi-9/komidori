@@ -130,4 +130,52 @@ public class DoctorController {
         return new ResponseWrapper<>(ResponseStatus.Fail_400, "删除失败");
 
     }
+
+    //进入咨询
+
+    @RequestMapping(value = "consultDoc", method = RequestMethod.POST)
+    public ResponseWrapper<String> consultDoc(@RequestParam Integer doctorId, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String result = doctorService.consultDoc(doctorId, session);
+
+     //   String result =
+
+        if (!result.equals("success")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+
+        return new ResponseWrapper<>(ResponseStatus.OK, result);
+
+    }
+
+
+
+    //用户退出咨询
+
+    @RequestMapping(value = "quitConsult", method = RequestMethod.POST)
+    public ResponseWrapper<String> quitConsult(@RequestParam Integer doctorId, @RequestParam Integer maternalId) {
+        String result = doctorService.quitConsult(doctorId, maternalId);
+
+        if (!result.equals("订单已完成")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+
+        return new ResponseWrapper<>(ResponseStatus.OK, result);
+
+    }
+
+    //医生退出咨询
+
+    @RequestMapping(value = "exitConsult", method = RequestMethod.POST)
+    public ResponseWrapper<String> exitConsult(@RequestParam Integer doctorId) {
+        String result = doctorService.exitConsult(doctorId);
+
+        if (!result.equals("success")) {
+            return new ResponseWrapper<>(ResponseStatus.Fail_400, result);
+        }
+
+        return new ResponseWrapper<>(ResponseStatus.OK, result);
+
+    }
+
 }

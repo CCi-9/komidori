@@ -10,6 +10,43 @@
     <result column="consult_content" property="consultContent" jdbcType="VARCHAR" />
     <result column="consult_status" property="consultStatus" jdbcType="INTEGER" />
   </resultMap>
+
+  <resultMap id="MyResultMap" type="com.doctor.komidori_doctor.pojo.ConsultChart" >
+    <id column="consult_id" property="consultId" jdbcType="INTEGER" />
+    <result column="doc_id" property="docId" jdbcType="INTEGER" />
+    <result column="mat_id" property="matId" jdbcType="INTEGER" />
+    <result column="consult_date" property="consultDate" jdbcType="TIMESTAMP" />
+    <result column="consult_price" property="consultPrice" jdbcType="REAL" />
+    <result column="consult_content" property="consultContent" jdbcType="VARCHAR" />
+    <result column="consult_status" property="consultStatus" jdbcType="INTEGER" />
+
+    <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+      <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+      <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+      <result column="online_price" property="onlinePrice" jdbcType="REAL"/>
+    </association>
+    <association property="maternalInfo" javaType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+      <id column="maternal_id" property="maternalId" jdbcType="INTEGER"/>
+      <result column="maternal_name" property="maternalName" jdbcType="VARCHAR"/>
+    </association>
+  </resultMap>
+
+  <!--BY lcy-->
+  <select id="getAllConsultList" resultMap="MyResultMap">
+        select * from consult_chart
+        inner join doctor_info on consult_chart.doc_id = doctor_info.doctor_id
+        inner join maternal_info on consult_chart.mat_id = maternal_info.maternal_id
+  </select>
+
+  <select id="getAllConsultListByDid" resultMap="MyResultMap">
+        select * from consult_chart
+        inner join doctor_info on consult_chart.doc_id = doctor_info.doctor_id
+        inner join maternal_info on consult_chart.mat_id = maternal_info.maternal_id
+        where consult_chart.doc_id = #{doctorId}
+  </select>
+
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

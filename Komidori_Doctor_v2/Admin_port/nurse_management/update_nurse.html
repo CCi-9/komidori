@@ -225,29 +225,30 @@
                    		
                    		<form id="nurseform" class="js-validation-bootstrap form-horizontal" onsubmit="return false">
                           
-                          <div class="fileupload fileupload-new" data-provides="fileupload">
-													<h5>证件照 *</h5>
-													<div class="fileupload-new thumbnail" style="">
-														<img :src="nurse.nurseImg" alt="" />
-													</div>
-													
-													<div class="fileupload-preview fileupload-exists thumbnail" style=""></div>
-													
-													<div class="form-group">
-														<div id="">
-															
-															<span class="btn btn-theme02 btn-file">
-												   			<span class="fileupload-new"><i class="fa fa-paperclip"></i> 选择照片</span>
-																<span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
-																<input type="file" class="default" id="nurse_img"  value=""/>
-															</span>
-															
-															<span class="" style="margin-left:5px;"></span>
-														</div>
-														
-													</div>
-													
-												</div>
+                   			<div class="fileupload fileupload-new" data-provides="fileupload">
+                   				<h5>证件照 *</h5>
+                   				<div class="fileupload-new thumbnail" style="">
+                   					<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
+                   					<!--<img src="../../assets/images/heads.jpg" alt="" />-->
+                   				</div>
+                   			
+                   				<div class="fileupload-preview fileupload-exists thumbnail" style=""></div>
+                   			
+                   				<div class="form-group">
+                   					<div id="">
+                   			
+                   						<span class="btn btn-theme02 btn-file">
+                   															   			<span class="fileupload-new"><i class="fa fa-paperclip"></i> 选择照片</span>
+                   						<span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
+                   						<input v-on="nurse.nurseImg" type="file" class="default" id="nurse_img" name="nurse_img" value="" />
+                   						</span>
+                   			
+                   						<span class="" style="margin-left:5px;"></span>
+                   					</div>
+                   			
+                   				</div>
+                   			
+                   			</div>
                           
                           <div class="form-group">
                             <label class="col-md-3 control-label" for="nurse-username">月嫂姓名 <span class="text-danger">*</span></label>
@@ -425,23 +426,29 @@
         el: "#app",
         data: {
             nurse: {},
+            admin:{}, noteList:[], noteSize:0
         },
         methods:{
-           
+           formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
         },
        	mounted(){
-       		getCity(),
-        	getNurse()
+       		getAdminMsg(this)
+       		getNoteMsg(this)
+       		getNurse()
+       		getCity()
         },
         
     });
     
      function getNurse() {
         let nurseid= getUrlParam('nurseid');
-				if(nurseid==null||nurseid==undefined){
-					alert("未能获取到月嫂详情，请重新选择");
-					window.location.href = 'nurse_list.html';
-				}
+//				if(nurseid==null||nurseid==undefined){
+//					alert("未能获取到月嫂详情，请重新选择");
+//					window.location.href = 'nurse_list.html';
+//				}
         $.ajax({
             url: "http://" + host + "/Admin/nurse/getNurseById",
             method: "get",
@@ -452,10 +459,16 @@
             		nurseId:nurseid,
             },
             success: function (result) {
-            	 if(result.status != "200"){
-            	 	alert("获取月嫂信息失败，请重试");
-          	 		window.location.href = 'nurse_list.html'
-            	 }
+            	  if (result.status == "401") {
+                    alert(result.message);
+                   	window.location.href = '../ad_signin.html';
+                   	return;
+                }
+                else if(result.status == "400"){
+                		alert(result.message);
+                	 	window.location.href = 'nurse_list.html';
+                    return;
+                }
                 console.log(result)
                 app.nurse = result.data;
             }

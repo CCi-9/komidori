@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
-  <title></title>
-		<link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>
-   	<link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
-     <!--End  Page Level  CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>
+    <link href="../../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <!--End  Page Level  CSS -->
     <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
@@ -20,327 +19,457 @@
 </head>
 
 <body class="sticky-header">
+<!-- call modal -->
+<div id="modal">
+    <div class="modal call fade" id="call" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="call">
+                        <!--<div class="call-background" style="background: url(../assets/images/call-bg.png)"></div>-->
+                        <div>
+                            <figure class="mb-4 avatar avatar-xl">
+                                <img src="../../assets/images/heads.jpg" class="img-circle">
+                            </figure>
+                            <h4 class="text-center">【<span id="mat_name"></span>】正在咨询您 ...</h4>
+                            <div class="action-button">
+                                <a onclick="jumpToConsult()" type="button" class="btn btn-success btn-floating btn-lg"
+                                   :href="'../online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-pulse btn-floating btn-lg"
+                                        data-dismiss="modal">
+                                    <i class="ti-close"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ call modal -->
 
-
-    <!--Start left side Menu-->
-    <header>
-		<div class="left-side sticky-left-side">
+<!--Start left side Menu-->
+<header>
+    <div class="left-side sticky-left-side">
 
         <!--logo-->
         <div class="logo">
             <a href="index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
         </div>
-				<div class="logo-icon text-center">
+        <div class="logo-icon text-center">
             <a href="index.html"><i class="fa fa-user"></i></a>
         </div>
         <div class="left-side-inner">
             <!--左侧 导航-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-            	
-                <li class="menu-list nav-active">
-                	<a href="../index.html"><i class="fa fa-home"></i>
-                		<span>主页</span>
-                	</a>
-                </li>
 
                 <li class="menu-list">
-                	<a href="#"><i class="icon-user"></i> 
-                		<span>个人中心</span>
-                	</a>
+                    <a href="#"><i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
                     <ul class="sub-menu-list">
-                        <li><a href="../user/personal_info.html"> 隐私信息</a></li>
+                        <li class=""><a href="../index.html"> 主页</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list  nav-active">
+                    <a href="#"><i class="icon-user"></i>
+                        <span>个人中心</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li class="active"><a href="../user/personal_info.html"> 隐私信息</a></li>
                         <li><a href="../user/doc_profile.html"> 个人Profile</a></li>
                         <li><a href="../user/reset_pwd.html"> 重置密码</a></li>
                     </ul>
                 </li>
-                
-                <li class="menu-list">
-                	<a href="#"><i class="icon-microphone"></i> 
-                		<span>线上咨询管理</span>
-                	</a>
+
+                <li id="online" class="menu-list">
+                    <a href="#"><i class="icon-microphone"></i>
+                        <span>线上咨询管理</span>
+                    </a>
                     <ul class="sub-menu-list">
-                    		<li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
+                        <li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
                         <li><a href="../online_consult/consult_list.html"> 线上服务订单</a></li>
                     </ul>
                 </li>
 
-                <li class="menu-list">
-                	<a href="#"><i class="icon-paper-clip"></i> 
-                		<span>线下预约管理</span>
-                	</a>
+                <li id="offline" class="menu-list">
+                    <a href="#"><i class="icon-paper-clip"></i>
+                        <span>线下预约管理</span>
+                    </a>
                     <ul class="sub-menu-list">
                         <li><a href="../offline_book/offline_setting.html"> 设置预约信息</a></li>
                         <li><a href="../offline_book/offline_service_list.html"> 线下服务订单</a></li>
                     </ul>
                 </li>
 
-                <li class="menu-list">
-                	<a href="#"><i class="icon-people"></i> 
-                		<span>经验社区</span>
-                	</a>
-                  <ul class="sub-menu-list">
+                <li id="course" class="menu-list">
+                    <a href="#"><i class="icon-people"></i>
+                        <span>经验社区</span>
+                    </a>
+                    <ul class="sub-menu-list">
                         <li><a href="../course_management/mycourse_list.html"> 我的课程</a></li>
                         <li><a href="../course_management/publish_course.html"> 发布课程</a></li>
-                  </ul>
+                    </ul>
                 </li>
-                
+
                 <li class="menu-list">
-                	<a href="#"><i class="icon-envelope-letter"></i> 
-                		<span>我的消息盒子</span>
-                	</a>
+                    <a href="#"><i class="icon-envelope-letter"></i>
+                        <span>我的消息盒子</span>
+                    </a>
                     <ul class="sub-menu-list">
                         <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
                         <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
                     </ul>
                 </li>
-         
+
             </ul>
             <!--End sidebar nav-->
 
         </div>
     </div>
-	</header>
-    <!--End left side menu-->
+</header>
+<!--End left side menu-->
 
-    
-    <!-- main content start-->
-    <div class="main-content" >
 
-        <!-- header section start-->
-        <div class="header-section">
+<!-- main content start-->
+<div class="main-content" id="app">
 
-            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+    <!-- header section start-->
+    <div class="header-section">
 
-            <!--<form class="searchform">
-                <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
-            </form>-->
+        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
 
-            <!--notification menu start -->
-            <div class="menu-right">
-                <ul class="notification-menu">
-                    
-                  <li>
-                        <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="badge">4</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-head pull-right">
-                         <h5 class="title">消息</h5>
+        <!--notification menu start -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+                <li v-if="messageCount != 0">
+                    <a onclick="jumpToConsult()" :href="'../online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId" class="btn btn-default dropdown-toggle info-number consultbtn">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge">1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge">{{noteSize}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">消息</h5>
                         <ul class="dropdown-list normal-list">
-                        	
-											<li class="message-list message-scroll-list">
-												
-                          <a href="#">
-                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
-                              <span class="subject">管理员</span>
-                              <span class="message"> 您的课程已经审核通过！</span>
-                               <span class="time">15 minutes ago</span>
-                          </a>
-                          
-                          <a href="#">
-                              <span class="photo"> <img src="../assets/images/system.jpg" class="img-circle" alt="img"></span>
-                              <span class="subject">系统</span>
-                              <span class="message"> 有用户关注您啦！</span>
-                               <span class="time">10 minutes ago</span>
-                          </a>
-                        
-                          <a href="#">
-                              <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle" alt="img"></span>
-                               <span class="subject">管理员</span>
-                               <span class="message"> 您的课程已经审核通过</span>
-                              <span class="time">20 minutes ago</span>
-                          </a>
-                         
-                          
-											</li>
-											<li	 class="last"> <a  href="inbox/inbox.html">所有消息</a> </li>
-										</ul>
-                		</div>
-               	 	</li>
-                    
-                  <li>
-                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../assets/images/heads.jpg" alt="" />
-                            	蔡翠翠
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                          <!--<li> <a href="#"> <i class="fa fa-user"></i> 设置 </a> </li>-->
-                          <li> <a href="reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a> </li>
-                          <li> <a href="../doc_signin.html"> <i class="fa fa-lock"></i> 退出登陆 </a> </li>
+                            <li class="message-list message-scroll-list">
+                                <a href="#" v-for="note in noteList">
+                                    <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
+                                                              alt="img"></span>
+                                    <span class="subject">{{note.emailFromId}}</span>
+                                    <p class="message hiddencontent">{{note.emailContent}}</p>
+                                    <span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="inbox/inbox.html">所有消息</a>
+                            </li>
                         </ul>
-                    </li>
+                    </div>
+                </li>
 
-                </ul>
-            </div>
-            <!--notification menu end -->
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <img :src="doctor.doctorImg" alt=""/>
+                        <span v-if="doctor.doctorStatus==1" class="label label-success">在线</span>
+                        <span v-if="doctor.doctorStatus==0" class="label label-default">离线</span>
+                        {{doctor.doctorName}}
+                        <span id="verify" class="hidden">0</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li>
+                            <a href="user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                        </li>
+                    </ul>
+                </li>
 
+            </ul>
         </div>
-        <!-- header section end-->
+        <!--notification menu end -->
 
-        <!--body wrapper start-->
-        <div class="wrapper">
-              
-              <!--Start Page Title-->
-               <div class="page-title-box">
-                    <h4 class="page-title">您好 , 菜玉溪医生 !</h4>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="../index.html">主页</a>
-                        </li>
-                        <li>
-                            <a href="#">个人中心</a>
-                        </li>
-                        <li class="active">
-                            	隐私信息
-                        </li>
-                    </ol>
-                    <div class="clearfix"></div>
-                 </div>
-                  <!--End Page Title-->          
-           
-           
-               <!--Start row-->
-               <div class="row">
-                   <div class="col-md-12">
-                       <div class="white-box">  
-                       <h2 class="header-title">隐私信息</h2>
-                         <form class="js-validation-bootstrap form-horizontal" action="" method="post">
-                          
-                          <div class="form-group">
-                            <label class="col-md-3 control-label" for="val-username">真实姓名 <span class="text-danger">*</span></label>
+    </div>
+    <!-- header section end-->
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+
+        <!--Start Page Title-->
+        <div class="page-title-box">
+            <h4 class="page-title">您好 , 【{{doctor.doctorName}}】医生 !</h4>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="../index.html">主页</a>
+                </li>
+                <li>
+                    <a href="#">个人中心</a>
+                </li>
+                <li class="active">
+                    隐私信息
+                </li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+        <!--End Page Title-->
+
+        <!--Start row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h2 class="header-title">隐私信息</h2>
+
+                    <form id="docform" class="js-validation-bootstrap form-horizontal" onsubmit="return false">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-username">真实姓名 <span
+                                    class="text-danger">*</span></label>
                             <div class="col-md-9">
-                              <input class="form-control" type="text" id="val-username" name="val-username" placeholder="Enter User Name">
+                                <input v-model="doctor.doctorName" class="form-control" type="text" id="val-username"
+                                       name="val-username" placeholder="Enter User Name">
                             </div>
-                          </div>
-                          
-                          <div class="form-group">
-                            <label class="col-md-3 control-label" for="val-sex">性别 <span class="text-danger">*</span></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-sex">性别 <span
+                                    class="text-danger">*</span></label>
                             <div class="col-md-9">
-                            	<label for="val-male">男</label>
-                              <input class="" type="radio" id="val-male" name="val-sex" placeholder="" checked="checked">
-                              <label for="val-female">女</label>
-                              <input class="" type="radio" id="val-female" name="val-sex" placeholder="">
+                                <label for="val-male">男</label>
+                                <input class="" type="radio" id="val-male" name="val-sex" value="男" checked="checked"
+                                       @click="getSex" v-model="doctor.doctorSex">
+                                <label for="val-female">女</label>
+                                <input class="" type="radio" id="val-female" name="val-sex" value="女" @click="getSex"
+                                       v-model="doctor.doctorSex">
                             </div>
-                          </div>
-                          
-                          <div class="form-group">
-                            <label class="col-md-3 control-label" for="val-age">年龄 <span class="text-danger">*</span></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-age">年龄 <span
+                                    class="text-danger">*</span></label>
                             <div class="col-md-9">
-                              <input class="form-control" type="number" id="val-age" name="val-age" placeholder="Enter User Age">
+                                <input v-model="doctor.doctorAge" class="form-control" type="number" id="val-age"
+                                       name="val-age" placeholder="Enter User Age">
                             </div>
-                          </div>
-                          
-                          <div class="form-group">
-                            <label class="col-md-3 control-label" for="val-tel">手机 <span class="text-danger">*</span></label>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-md-3 control-label" for="val-tel">手机 <span
+                                    class="text-danger">*</span></label>
                             <div class="col-md-9">
-                              <input class="form-control" type="text" id="val-tel" name="val-tel" placeholder="Enter User Tel">
+                                <input v-model="doctor.doctorTel" @change="checkTel" class="form-control" type="text"
+                                       id="val-tel" name="val-tel" placeholder="Enter User Tel">
+                                <span class="text-danger" id="teltip"></span>
                             </div>
-                          </div>
-                          
-                          <div class="form-group">
-                            <label class="col-md-3 control-label" for="val-idcard">身份证 <span class="text-danger">*</span></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="val-idcard">身份证 <span
+                                    class="text-danger">*</span></label>
                             <div class="col-md-9">
-                              <input class="form-control" type="text" id="val-idcard" name="val-idcard" placeholder="Enter User Id Card Number">
+                                <input v-model="doctor.doctorIdcard" class="form-control" type="text" id="val-idcard"
+                                       name="val-idcard" placeholder="Enter User Id Card Number">
                             </div>
-                          </div>
-                          
-                          <div class="form-group">
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-3 control-label" for="val-email">邮箱 <span class="text-danger">*</span></label>
                             <div class="col-md-9">
-                              <input class="form-control" type="text" id="val-email" name="val-email" placeholder="Enter your  email">
+                                <input v-model="doctor.doctorEmail" class="form-control" type="text" id="val-email"
+                                       name="val-email" placeholder="Enter your  email">
                             </div>
-                          </div>
-                          
-                          <div class="form-group">
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-3 control-label" for="val-city">所在城市 <span class="text-danger">*</span></label>
                             <div class="col-md-9">
-                              <input class="form-control" type="text" id="val-city" name="val-city" value="广东省广州市天河区" >
-                            	<div class="dome-main">
-																<div class="city-picker-selector" id="city-picker-selector2"></div>
-															</div>
+                                <input v-model="doctor.doctorCity" class="form-control" type="text" id="val-city"
+                                       name="val-city">
+                                <div class="dome-main">
+                                    <div class="city-picker-selector" id="city-picker-selector2"></div>
+                                </div>
                             </div>
-                            
-                          </div>
-                          
-                          <!--<div class="form-group">
-                            <label class="col-md-3 control-label" for="val-bookable">是否接受线下预约服务 <span class="text-danger">*</span></label>
-                            <div class="col-md-9">
-                              <select class="form-control" id="val-bookable" name="val-bookable">
-                                <option value="1">是</option>
-                                <option value="0" selected="selected">否</option>
-                              </select>
-                            </div>
-                          </div>-->
-                   
-                          <div class="form-group">
+
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-8 col-md-offset-3">
-                              <button class="btn btn-theme02" type="submit" id="">更新</button>
+                                <button class="btn btn-theme02" type="submit" id="" onclick="updateMsg()">更新</button>
                             </div>
-                          </div>
-                          
-                        </form>
-                       </div>
-                    </div>
+                        </div>
+
+                    </form>
                 </div>
-                 <!-- end row --> 
- 
             </div>
-      <!-- End Wrapper-->
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- End Wrapper-->
 
 
-        <!--Start  Footer -->
-        <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>	
-         <!--End footer -->
+    <!--Start  Footer -->
+    <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>
+    <!--End footer -->
 
-       </div>
-      <!--End main content -->
-    
+</div>
+<!--End main content -->
 
 
-    <!--Begin core plugin -->
-    <!--Begin core plugin -->
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <script  src="../../assets/js/jquery.slimscroll.js"></script>
-    <script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
-    <script src="../../assets/js/functions.js"></script>
-    <!-- End core plugin -->
+<!--Begin core plugin -->
+<!--Begin core plugin -->
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/jquery.slimscroll.js"></script>
+<script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+<script src="../../assets/js/functions.js"></script>
+<!-- End core plugin -->
 
-    <!--验证-->
-		<script src="../../assets/js/jquery-validation/jquery.validate.min.js"></script>
-    <script src="../../assets/js/jquery-validation/validation-custom.js"></script>
-    
-    <!--城市选择-->
-		<script type="text/javascript" src="https://lquan529.github.io/cityPicker/js/citydata.min.js"></script>
-		<script type="text/javascript" src="../../assets/js/city/cityPicker-2.0.3.js"></script>
+<!--验证-->
+<script src="../../assets/js/jquery-validation/jquery.validate.min.js"></script>
+<script src="../../assets/js/jquery-validation/validation-custom.js"></script>
+
+<!--城市选择-->
+<script type="text/javascript" src="https://lquan529.github.io/cityPicker/js/citydata.min.js"></script>
+<script type="text/javascript" src="../../assets/js/city/cityPicker-2.0.3.js"></script>
+
+<script src="../../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/GlobalMethod.js" type="text/javascript" charset="utf-8"></script>
+
 
 </body>
 <script type="text/javascript">
-		$(function () {
-			// 模拟城市-无联动/无搜索
-			var selector2 = $('#city-picker-selector2').cityPicker({
-				dataJson: cityData,
-				renderMode: true,
-				search: false,
-				autoSelected: true,
-				code: 'cityCode',
-				level: 3,
-				onChoiceEnd: function() {
-					var cityobj  = this.values;
-					var city = "";
-					for(var key in cityobj){
-							city+=cityobj[key].name;
-						}
-					$("#val-city").val(city);
-				}
-			});
 
-			// 设置城市
-			selector2.setCityVal('广东省, 广州市, 天河区');
-			
-		});
-		
-		
-	</script>
+    function getCity() {
+        // 模拟城市-无联动/无搜索
+        var selector2 = $('#city-picker-selector2').cityPicker({
+            dataJson: cityData,
+            renderMode: true,
+            search: false,
+            autoSelected: true,
+            code: 'cityCode',
+            level: 3,
+            onChoiceEnd: function () {
+                var cityobj = this.values;
+                var city = "";
+                for (var key in cityobj) {
+                    city += cityobj[key].name;
+                }
+                app.doctor.doctorCity = city;
+            }
+        });
+
+        // 设置城市
+//			selector2.setCityVal('广东省, 广州市, 天河区');
+    }
+
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            doctorId: '',
+            maternalId:'',
+            messageCount:0,
+            doctor: {},
+            noteList: [],
+            noteSize: 0
+        },
+        methods: {
+            formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
+            getSex(obj) {
+                this.doctor.doctorSex = obj.target.value
+            },
+            checkTel() {
+                $.ajax({
+                    url: "http://" + host + "/DocPort/checkTel",
+                    method: "get",
+                    data: {
+                        tel: app.doctor.doctorTel,
+                    },
+                    xhrFields: {
+                        withCredentials: true  //带上cookie信息，解决sessionid不一致
+                    },
+                    success: function (result) {
+                        if (result.data != 0) {
+                            $("#teltip").text("*手机号已被注册");
+                        } else {
+                            $("#teltip").text("");
+                        }
+                    }
+                });
+            }
+        },
+        mounted() {
+
+            checkDoctor()
+            getDoctorMsg(this)
+            getDoctorMsg2(this, '#verify')
+            getCity()
+        },
+
+    });
+
+    let modal = new Vue({
+        el: "#modal",
+        data: {
+            doctorId: '',
+            maternalId: '',
+        }
+    });
+
+
+    //更新数据
+    function updateMsg() {
+
+        var flag = $('#docform').valid();
+        var teltip = $("#teltip").text();
+        if (flag != true) {
+            alert("请正确填写表单！");
+            return;
+        }
+
+        if (teltip == "手机号已被注册") {
+            alert("手机号已被注册");
+            return;
+        }
+
+        $.ajax({
+            url: "http://" + host + "/DocPort/updateMyMsg",
+            method: "put",
+            data: JSON.stringify(app.doctor),
+            dataType: "json",
+            contentType: "application/json;charset-UTF-8",
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status != "200") {
+                    alert(result.message)
+                } else {
+                    alert("更改成功");
+                }
+            }
+        });
+
+
+    }
+
+
+</script>
 </html>

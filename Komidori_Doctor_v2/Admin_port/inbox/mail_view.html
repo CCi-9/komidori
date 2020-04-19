@@ -285,13 +285,18 @@
         el: "#app",
         data: {
             email: [],
+            admin:{}, noteList:[], noteSize:0
         },
         mounted() {
-//          returnSignin()
-//	          init()
-            getList()
+						getList()
+						getAdminMsg(this)
+       			getNoteMsg(this)
         },
         methods: {
+        		formatDate(thistime, fmt) {
+                fmt = formatDate(thistime, fmt)
+                return fmt
+            },
         			changetoDocinfo(){
                 window.location.href = '../user/doc_info.html?docid='+app.email.validateDocId;
             },
@@ -300,7 +305,7 @@
             },
             	alreadyRead(){
             	
-            	$.ajax({
+            $.ajax({
             url: "http://" + host + "/Admin/changeEmailStatus",
             method: "get",
             data:{
@@ -313,9 +318,8 @@
                 console.log(result)
                 if (result.status != "200") {
                     alert(result.message);
-//                  window.location.href = 'inbox.html';
-                    return;
-                } 
+                   	return;
+                }
                 alert("标记已读");
                 $("#read").hide();
                 
@@ -330,7 +334,7 @@
 				let emailid = getUrlParam('emailid');
 				let type = getUrlParam('valtype');
 				if(emailid==null||emailid==undefined){
-					alert("未能获取到课程详情，请重新选择");
+					alert("未能获取到邮件详情，请重新选择");
 					window.location.href = 'inbox.html';
 				}
 			
@@ -346,11 +350,16 @@
             },
             success: function (result) {
                 console.log(result)
-                if (result.status != "200") {
+                 if (result.status == "401") {
                     alert(result.message);
-                    window.location.href = 'inbox.html';
+                   	window.location.href = '../ad_signin.html';
+                   	return;
+                }
+                else if(result.status == "400"){
+                		alert(result.message);
+                	 	window.location.href = 'inbox.html';
                     return;
-                } 
+                }
                 app.email = result.data;
                 
             }

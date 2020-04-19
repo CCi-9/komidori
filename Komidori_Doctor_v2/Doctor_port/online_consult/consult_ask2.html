@@ -131,15 +131,16 @@
                     <li data-toggle="tooltip" title="User menu" data-placement="right">
                         <a href="./login.html" data-toggle="dropdown">
                             <figure class="avatar">
-                                <img src="../../assets/images/heads.jpg" class="rounded-circle" alt="image">
+                                <img :src="doctor.doctorImg" class="rounded-circle" alt="image">
                             </figure>
                         </a>
                         <div class="dropdown-menu">
 
-                            <a href="#" class="dropdown-item" data-navigation-target="contact-information">Profile</a>
+                            <a href="#" class="dropdown-item" data-navigation-target="my-information">我的信息</a>
                             <!--<a href="#" class="dropdown-item" data-toggle="modal" data-target="#settingModal">Settings</a>-->
                             <div class="dropdown-divider"></div>
-                            <a href="../index.html" class="dropdown-item text-danger">退出聊天</a>
+                            <a onclick="exitConsult()" href="javascript:void (0)"
+                               class="dropdown-item text-danger">退出聊天</a>
                         </div>
                     </li>
                 </ul>
@@ -157,16 +158,19 @@
                 <div class="chat-header">
                     <div class="chat-header-user">
                         <figure class="">
-                            <img src="../../assets/images/heads.jpg" class="rounded-circle" alt="image">
+                            <img :src="maternal.maternal_img" class="rounded-circle" alt="image">
                         </figure>
                         <div>
                             <h5>菜玉溪
-                                <small class="doc_rank">
-                                    <span>主任医师</span>
+                                <small class="user_status">
+                                    <span v-if="maternal.maternal_status == 1" style="color: #6C6C6C;">在孕中</span>
+                                    <span v-if="maternal.maternal_status == 2" style="color: #6C6C6C;">已产</span>
+                                    <span v-if="maternal.maternal_status == 3" style="color: #6C6C6C;">备孕</span>
+                                    <span v-if="maternal.maternal_status == 4" style="color: #6C6C6C;">未知</span>
                                 </small>
                             </h5>
-                            <p class="hospital">湛江市中心人民医生</p>
-                            <p class="dept">妇产科</p>
+
+                            <p>{{maternal.maternal_city}}</p>
                         </div>
                     </div>
                     <div class="chat-header-action">
@@ -195,9 +199,9 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="#" data-navigation-target="contact-information"
                                        class="dropdown-item">个人信息</a>
-                                    <a href="#" class="dropdown-item">关注</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="#" class="dropdown-item text-danger">投诉</a>
+                                    <!--<a href="#" class="dropdown-item">关注</a>-->
+                                    <!-- <div class="dropdown-divider"></div>
+                                     <a href="#" class="dropdown-item text-danger">投诉</a>-->
                                 </div>
                             </li>
                         </ul>
@@ -330,7 +334,7 @@
             <div class="sidebar-group">
                 <div id="contact-information" class="sidebar">
                     <header>
-                        <span>Profile</span>
+                        <span>用户信息</span>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <a href="#" class="btn btn-outline-light text-danger sidebar-close">
@@ -344,14 +348,16 @@
                         <div class="pl-4 pr-4">
                             <div class="text-center">
                                 <figure class="avatar avatar-xl mb-4">
-                                    <img src="../../assets/images/heads.jpg" class="rounded-circle" alt="image">
+                                    <img :src="maternal.maternal_img" class="rounded-circle" alt="image">
                                 </figure>
-                                <h5 class="mb-1">李翠翠</h5>
-                                <small class="text-muted ">在线</small>
-
-                                <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
+                                <h5 class="mb-1">{{maternal.maternal_nickname}}</h5>
+                                <small class="text-muted " v-if="maternal.maternal_status == 1">在孕中</small>
+                                <small class="text-muted " v-if="maternal.maternal_status == 2">已产</small>
+                                <small class="text-muted " v-if="maternal.maternal_status == 3">备孕</small>
+                                <small class="text-muted " v-if="maternal.maternal_status == 0">未知</small>
+                                <ul class="nav nav-tabs justify-content-center mt-5" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                        <a class="nav-link active" data-toggle="tab" href="#home"
                                            role="tab"
                                            aria-controls="home" aria-selected="true">基本信息</a>
                                     </li>
@@ -363,34 +369,27 @@
 
                             </div>
 
-                            <div class="tab-content" id="myTabContent">
+                            <div class="tab-content">
 
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                <div class="tab-pane fade show active" role="tabpanel"
                                      aria-labelledby="home-tab">
-                                    <p class="text-muted">
-                                        Lorem ipsum is a pseudo-Latin text used in web design, typography,
-                                        layout, and printing in place of English to emphasise design elements over
-                                        content.
-                                        It's also called placeholder (or filler) text. It's a convenient tool for
-                                        mock-ups.
-                                    </p>
                                     <div class="mt-4 mb-4">
                                         <h6>Phone</h6>
-                                        <p class="text-muted">(555) 555 55 55</p>
+                                        <p class="text-muted">{{maternal.maternal_tel}}</p>
                                     </div>
                                     <div class="mt-4 mb-4">
-                                        <h6>City</h6>
-                                        <p class="text-muted">Germany / Berlin</p>
+                                        <h6>怀孕周期</h6>
+                                        <p class="text-muted">{{maternal.maternal_preg_week}}</p>
                                     </div>
                                     <div class="mt-4 mb-4">
-                                        <h6>Website</h6>
+                                        <h6>Email</h6>
                                         <p>
-                                            <a href="#">www.franshanscombe.com</a>
+                                            <a href="#">{{maternal.maternal_email}}</a>
                                         </p>
                                     </div>
 
 
-                                    <div class="mt-4 mb-4">
+                                    <!--<div class="mt-4 mb-4">
                                         <h6 class="mb-3">Settings</h6>
                                         <div class="form-group">
                                             <div class="form-item custom-control custom-switch">
@@ -412,7 +411,95 @@
                                                     notification</label>
                                             </div>
                                         </div>
+                                    </div>-->
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="my-information" class="sidebar">
+                    <header>
+                        <span>我的信息</span>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="#" class="btn btn-outline-light text-danger sidebar-close">
+                                    <i data-feather="x"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </header>
+
+                    <div class="sidebar-body">
+                        <div class="pl-4 pr-4">
+                            <div class="text-center">
+                                <figure class="avatar avatar-xl mb-4">
+                                    <img :src="doctor.doctorImg" class="rounded-circle" alt="image">
+                                </figure>
+                                <h5 class="mb-1">{{doctor.doctorName}}</h5>
+                                <small class="text-muted ">在线</small>
+
+                                <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                           role="tab"
+                                           aria-controls="home" aria-selected="true">基本信息</a>
+                                    </li>
+                                    <!--<li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                           aria-controls="profile" aria-selected="false">相关</a>
+                                    </li>-->
+                                </ul>
+
+                            </div>
+
+                            <div class="tab-content" id="myTabContent">
+
+                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <p class="text-muted">
+                                        {{doctor.doctorIntroduction}}
+                                    </p>
+                                    <div class="mt-4 mb-4">
+                                        <h6>Phone</h6>
+                                        <p class="text-muted">{{doctor.doctorTel}}</p>
                                     </div>
+                                    <div class="mt-4 mb-4">
+                                        <h6>City</h6>
+                                        <p class="text-muted">{{doctor.doctorCity}}</p>
+                                    </div>
+                                    <div class="mt-4 mb-4">
+                                        <h6>Email</h6>
+                                        <p>
+                                            <a href="#">{{doctor.doctorEmail}}</a>
+                                        </p>
+                                    </div>
+
+
+                                    <!--<div class="mt-4 mb-4">
+                                        <h6 class="mb-3">Settings</h6>
+                                        <div class="form-group">
+                                            <div class="form-item custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch11">
+                                                <label class="custom-control-label" for="customSwitch11">Block</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-item custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" checked=""
+                                                       id="customSwitch12">
+                                                <label class="custom-control-label" for="customSwitch12">Mute</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-item custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch13">
+                                                <label class="custom-control-label" for="customSwitch13">Get
+                                                    notification</label>
+                                            </div>
+                                        </div>
+                                    </div>-->
                                 </div>
 
 
@@ -453,10 +540,45 @@
 </script>
 
 <script>
-    let fromId = 20201000;
+    let fromId = $.query.get("docId");
     let websocket;
-    let to = $.query.get("id")
+    let to = $.query.get("matId")
     $(function () {
+
+        $.ajax({
+            url: "http://" + host + "/doctor/getDoctorByID",
+            method: "get",
+            data: {
+                doctorID: fromId,
+            },
+            async: false,
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                app.doctor = result.data
+            }
+        });
+
+        $.ajax({
+            url: "http://" + host + "/maternal/getMaternalById",
+            method: "get",
+            async: false,
+            data: {
+                matID: to,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+
+                app.maternal = result.data
+            }
+        });
+
+
         let url = "ws://" + host + "/webSocket/" + fromId + "/" + "doctor"
         websocket = new WebSocket(url);
 
@@ -476,22 +598,7 @@
             } else {
                 data = `<div class="message-content">` + event.data.split(':')[2] + `</div>`
             }
-            insertMsg(data, '', app.doctor.doctorName, app.doctor.doctorImg)
-
-            /*else {
-                let reader = new FileReader();
-                reader.οnlοad = function (eve) {
-                    if (eve.target.readyState == FileReader.DONE) {
-                        $('.layout .content .chat .chat-body .messages').append('' +
-                            '<div class="message-item ' + '">' +
-                            '   <div  class="message-content">' + '<img src=" ' + this.result + '">' + '</div>' +
-                            '<div class="message-action">' + formatDate(new Date(), "hh:mm") + '</div></div>');
-
-                        // document.getElementById("plane").appendChild(img);
-                    }
-                };
-                reader.readAsDataURL(event.data);
-            }*/
+            insertMsg(data, '', app.maternal.maternal_name, app.maternal.maternal_img)
 
         }
 
@@ -506,10 +613,10 @@
         let message = document.getElementById('inputbox').value;
         //message作为发送的信息，role作为发送的对象标识，socketId是此次会话的标识
         if (message != null && message != '') {
-            websocket.send(JSON.stringify({'message': message, 'type': 'text', 'to': 10001001}));
+            websocket.send(JSON.stringify({'message': message, 'type': 'text', 'to': to}));
         }
         let data = `<div class="message-content">` + message + `</div>`
-        insertMsg(data, 'outgoing-message', '', '')
+        insertMsg(data, 'outgoing-message', app.doctor.doctorName, app.doctor.doctorImg)
 
 
         let pro = $("#file").val();
@@ -524,25 +631,26 @@
         let fd = new FormData($("#form_table")[0]);
         $.ajax({
             type: "POST",
-            url: "http://" + host + "/index/fileUpload",
+            url: "http://" + host + "/index/uploadImage",
             data: fd,
             processData: false,
             contentType: false,
             success: function (result) {
                 let fileName = result.message
-                websocket.send(JSON.stringify({'message': fileName, 'type': 'image', 'to': 10001001}));
+                websocket.send(JSON.stringify({'message': fileName, 'type': 'image', 'to': to}));
                 let data = '<figure><img class="w-60 img-fluid rounded" alt="image" src=" ../../assets/images/chatImg/' + fileName + '"></figure>'
-                insertMsg(data,'outgoing-message','', '')
+                insertMsg(data, 'outgoing-message', app.doctor.doctorName, app.doctor.doctorImg)
             }
         });
     }
 
 
     function insertMsg(data, type, name, imgPath) {
-        $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` +  type  +` " '>
+        var chat_body = $('.layout .content .chat .chat-body');
+        $('.layout .content .chat .chat-body .messages').append(`<div class="message-item ` + type + ` " '>
                         <div class="message-avatar">
                             <figure class="avatar">
-                                <img src=" ` + imgPath +`" class="rounded-circle">
+                                <img src=" ` + imgPath + `" class="rounded-circle">
                             </figure>
                             <div>
                                 <h5>` + name + `</h5>
@@ -552,7 +660,33 @@
                          ` + data + `
 
                     </div>`);
+        setTimeout(function () {
+            chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({
+                cursorcolor: 'rgba(66, 66, 66, 0.20)',
+                cursorwidth: "4px",
+                cursorborder: '0px'
+            }).resize();
+        }, 200);
 
+    }
+
+
+    function exitConsult() {
+        $.ajax({
+            type: "POST",
+            url: "http://" + host + "/doctor/exitConsult",
+            data: {
+                doctorId: fromId,
+            },
+            success: function (result) {
+                if (result.status == '200') {
+                    window.location.href = "../index.html"
+                } else {
+                    alert(result.message)
+                }
+
+            }
+        });
     }
 </script>
 
@@ -561,6 +695,7 @@
         el: "#app",
         data: {
             doctor: {},
+            maternal: {},
         }
     })
 </script>

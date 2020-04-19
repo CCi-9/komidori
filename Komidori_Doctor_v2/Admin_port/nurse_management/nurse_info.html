@@ -336,10 +336,10 @@
 	
 	function getList() {
 				let nurseid= getUrlParam('nurseid');
-				if(nurseid==null||nurseid==undefined){
-					alert("未能获取到月嫂详情，请重新选择");
-					window.location.href = 'nurse_list.html';
-				}
+//				if(nurseid==null||nurseid==undefined){
+//					alert("未能获取到月嫂详情，请重新选择");
+//					window.location.href = 'nurse_list.html';
+//				}
         $.ajax({
             url: "http://" + host + "/Admin/nurse/getNurseById",
             method: "get",
@@ -351,9 +351,14 @@
             },
             success: function (result) {
                 console.log(result)
-                if (result.status != "200") {
+                 if (result.status == "401") {
                     alert(result.message);
-                    window.location.href = 'nurse_list.html';
+                   	window.location.href = '../ad_signin.html';
+                   	return;
+                }
+                else if(result.status == "400"){
+                		alert(result.message);
+                	 	window.location.href = 'nurse_list.html';
                     return;
                 }
                 app.Nurse = result.data;

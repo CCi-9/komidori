@@ -27,4 +27,8 @@ public interface BookDoctorChartMapper {
     int updateByPrimaryKeySelective(BookDoctorChart record);
 
     int updateByPrimaryKey(BookDoctorChart record);
+
+    public List<BookDoctorChart> getAllBookDocList();
+    public List<BookDoctorChart> getAllBookDocListByDid(Integer doctorId);
+
 }

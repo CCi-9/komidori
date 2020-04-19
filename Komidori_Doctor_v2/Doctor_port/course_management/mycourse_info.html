@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <title>我的课程列表</title>
+    <!--<link rel="stylesheet" type="text/css" href="../../assets/css/city/index.css"/>-->
+    <link href="../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+    <!--End  Page Level  CSS -->
+    <link href="../../assets/css/Doctor_port_css/icons.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/style.css" rel="stylesheet">
+    <link href="../../assets/css/Doctor_port_css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+<!-- call modal -->
+<div id="modal">
+    <div class="modal call fade" id="call" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="call">
+                        <!--<div class="call-background" style="background: url(../assets/images/call-bg.png)"></div>-->
+                        <div>
+                            <figure class="mb-4 avatar avatar-xl">
+                                <img src="../../assets/images/heads.jpg" class="img-circle">
+                            </figure>
+                            <h4 class="text-center">【<span id="mat_name"></span>】正在咨询您 ...</h4>
+                            <div class="action-button">
+                                <a onclick="jumpToConsult()" type="button" class="btn btn-success btn-floating btn-lg"
+                                   :href="'../online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                                <button type="button" class="btn btn-danger btn-pulse btn-floating btn-lg"
+                                        data-dismiss="modal">
+                                    <i class="ti-close"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ call modal -->
+
+<!--Start left side Menu-->
+<header>
+    <div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="../index.html"><img src="../../assets/images/l3.jpg" alt=""></a>
+        </div>
+        <div class="logo-icon text-center">
+            <a href="../index.html"><i class="fa fa-user"></i></a>
+        </div>
+        <div class="left-side-inner">
+            <!--左侧 导航-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+
+                <li class="menu-list">
+                    <a href="#"><i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li class=""><a href="../index.html"> 主页</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-user"></i>
+                        <span>个人中心</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../user/personal_info.html"> 隐私信息</a></li>
+                        <li><a href="../user/doc_profile.html"> 个人Profile</a></li>
+                        <li><a href="../user/reset_pwd.html"> 重置密码</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list" id="online">
+                    <a href="#"><i class="icon-microphone"></i>
+                        <span>线上咨询管理</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../online_consult/consult_setting.html">线上服务设置</a></li>
+                        <li><a href="../online_consult/consult_list.html"> 线上服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list" id="offline">
+                    <a href="#"><i class="icon-paper-clip"></i>
+                        <span>线下预约管理</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../offline_book/offline_setting.html"> 设置预约信息</a></li>
+                        <li><a href="../offline_book/offline_service_list.html"> 线下服务订单</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list nav-active" id="course">
+                    <a href="#"><i class="icon-people"></i>
+                        <span>经验社区</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../course_management/mycourse_list.html"> 我的课程</a></li>
+                        <li><a href="../course_management/publish_course.html"> 发布课程</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list">
+                    <a href="#"><i class="icon-envelope-letter"></i>
+                        <span>我的消息盒子</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                        <li><a href="../inbox/inbox.html"> 消息盒子</a></li>
+                        <!--<li><a href="icon-simple-lineicon.html">Simple Line Icon</a></li>-->
+                    </ul>
+                </li>
+
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+</header>
+<!--End left side menu-->
+
+
+<!-- main content start-->
+<div class="main-content" id="app">
+
+    <!-- header section start-->
+    <div class="header-section">
+
+        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+        <!--notification menu start -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+                <li v-if="messageCount != 0">
+                    <a onclick="jumpToConsult()" :href="'../online_consult/consult_ask2.html?docId=' + doctorId + '&matId=' + maternalId" class="btn btn-default dropdown-toggle info-number consultbtn">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge">1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge">{{noteSize}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">消息</h5>
+                        <ul class="dropdown-list normal-list">
+                            <li class="message-list message-scroll-list">
+                                <a href="#" v-for="note in noteList">
+                                    <span class="photo"> <img src="../assets/images/admin.jpg" class="img-circle"
+                                                              alt="img"></span>
+                                    <span class="subject">{{note.emailFromId}}</span>
+                                    <p class="message hiddencontent">{{note.emailContent}}</p>
+                                    <span class="time">{{formatDate(note.emailDate,"yyyy-MM-dd hh:mm-ss")}}</span>
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="inbox/inbox.html">所有消息</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <img :src="doctor.doctorImg" alt=""/>
+                        <span v-if="doctor.doctorStatus==1" class="label label-success">在线</span>
+                        <span v-if="doctor.doctorStatus==0" class="label label-default">离线</span>
+                        {{doctor.doctorName}}
+                        <span id="verify" class="hidden">0</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li>
+                            <a href="user/reset_pwd.html"> <i class="fa fa-exchange"></i> 更改密码 </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="logout()"> <i class="fa fa-lock"></i> 退出登陆 </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!--notification menu end -->
+
+    </div>
+    <!-- header section end-->
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+
+        <!--Start Page Title-->
+        <div class="page-title-box">
+            <h4 class="page-title">您好 , 【{{doctor.doctorName}}】医生 !</h4>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="../index.html">主页</a>
+                </li>
+                <li>
+                    <a href="#">经验社区</a>
+                </li>
+                <li class="active">
+                    我的课程详情
+                </li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+        <!--End Page Title-->
+
+
+        <!--Start row-->
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h2 class="header-title">
+                        <a href="mycourse_list.html" class="returnbtn">
+                            <i class="fa fa-caret-left"> 返回</i>
+                        </a>
+                        我的课程详情
+                    </h2>
+                    <div class="message-header">
+                        <h3><strong>标题:</strong> {{Course.courseTitle}}</h3>
+
+                        <span class="badge badge-good">
+                 					<i class="fa fa-thumbs-up"></i>
+                 					 {{Course.courseGoodReview}}
+                 				</span>
+
+                        <p class="message-date">{{formatDate(Course.courseDate,'yyyy-mm-dd hh:MM:ss')}}</p>
+
+                    </div>
+
+                    <div class="message-sender">
+                        <p><strong>课程类型 </strong>
+                            <span v-if="Course.courseType==1" class="label label-warning">视频</span>
+                            <span v-if="Course.courseType==2" class="label label-info">音频</span>
+                            <span v-if="Course.courseType==3" class="label label-success">文章</span>
+                        </p>
+
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <p><strong>课程分类 </strong>
+                            <span class="label label-primary">{{publicCategoryName}}</span>
+                        </p>
+
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <p><strong>价格 </strong> <span class="label label-default">￥{{Course.coursePrice}}</span></p>
+                    </div>
+
+                    <div class="message-content">
+                        <p><strong>课程简介</strong></p>
+                        <p>{{Course.courseIntroduction}}</p>
+                        <br/>
+                        <p><strong>课程内容</strong></p>
+
+                        <!--视频-->
+                        <div class="media" v-if="Course.courseType == 1">
+                            <video id="video1" class="video_size" controls="controls">
+                                <source :src="'../../assets/video/' + Course.courseContent" type="video/mp4">
+                                <source src="mov_bbb.ogg" type="video/ogg">
+                                您的浏览器不支持 HTML5 video 标签。
+                            </video>
+                        </div>
+                        <!--音频-->
+                        <div class="media" v-if="Course.courseType == 2">
+                            <audio controls class="">
+                                <source :src="'../../assets/music/' + Course.courseContent" type="audio/mp3">
+                                <source src="horse.ogg" type="audio/ogg">
+                                您的浏览器不支持 audio 元素。
+                            </audio>
+                        </div>
+
+                        <!--文章-->
+                        <div class="post" v-if="Course.courseType == 3">
+                            <p v-html="course.courseContent"></p>
+                            <!--<p>1.我要是让你哭我他妈的就不是人，除了让你流下幸福的眼泪。2.该死，女人，我喜不喜欢你你不知道吗3.女人！该死的！额头怎么这么烫！居然生病了！你们给我治好她，不然全都去陪葬。</p>
+                            <blockquote>茹果汰暧壹个魜 *`话′最後受伤dě始终媞自鱾﹊āā.祇想问伱.﹊āā.伤害我.﹎.﹊　āā.﹊伱﹎会﹎āā.﹎訫疼吗﹎�籹朲侑泪 娚朲侑嶵 懂bu ?</blockquote>
+                            <p>4.该死，明明别的女人脱光了站在我面前我都没感觉，这女人只要一个眼神我就心动了？难道我是爱上她了？不，她只是一个玩物！5.除了爱情，我什么都能满足你 </p>-->
+                        </div>
+
+                    </div>
+
+                    <div class="message-options" id="course_validation">
+
+                        <!--<button v-if="Course.courseStatus==0" id="pass" class="btn btn-theme" @click="passCourse()">
+                            <i class="fa fa-eye"></i>审核通过
+                        </button>
+                        <button v-if="Course.courseStatus==0" id="unpass" class="btn btn-theme" @click="unpassCourse()">
+                            <i class="fa fa-eye-slash"></i>不通过
+                        </button>-->
+                        <!--<a href="#" class="btn btn-link"><i class="fa fa-arrow-right m-r-5"></i>Forward</a>-->
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div>
+    </div>
+    <!-- End Wrapper-->
+
+
+    <!--Start  Footer -->
+    <footer class="footer-main">Copyright &copy; 2019 Komidori. All rights reserved.</footer>
+    <!--End footer -->
+
+</div>
+<!--End main content -->
+
+
+<!--Begin core plugin -->
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/jquery.slimscroll.js"></script>
+<script src="../../assets/js/chat/jquery.nicescroll.min.js"></script>
+<script src="../../assets/js/functions.js"></script>
+<!-- End core plugin -->
+
+<script src="../../assets/js/vue/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/GlobalVariables.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/GlobalMethod.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../assets/js/getUrlParam.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+<script type="text/javascript">
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            Course: [],
+            publicCategoryName: "",
+            doctorId: '',
+            maternalId: '',
+            messageCount:0,
+            doctor: {}, noteList: [], noteSize: 0
+        },
+        mounted() {
+            getList()
+            getDoctorMsg2(this, '#verify')
+            getDocNoteMsg(this)
+
+        },
+        methods: {}
+    })
+
+    let modal = new Vue({
+        el: "#modal",
+        data: {
+            doctorId: '',
+            maternalId: '',
+        }
+    });
+
+    function getList() {
+        let courseid = getUrlParam('courseid');
+//				if(courseid==null||courseid==undefined){
+//					alert("未能获取到课程详情，请重新选择");
+//					window.location.href = 'course_list.html';
+//				}
+        $.ajax({
+            url: "http://" + host + "/DocPort/course/getCourseById",
+            method: "get",
+            data: {
+                courseId: courseid,
+            },
+            xhrFields: {
+                withCredentials: true  //带上cookie信息，解决sessionid不一致
+            },
+            success: function (result) {
+                console.log(result)
+                if (result.status == "401") {
+                    alert(result.message);
+                    window.location.href = '../doc_signin.html';
+                    return;
+                } else if (result.status == "400") {
+                    alert(result.message);
+                    window.location.href = 'mycourse_list.html';
+                    return;
+                }
+                app.Course = result.data;
+                app.publicCategoryName = result.data.publicCategoryChart.publicCategoryName;
+            }
+        });
+    }
+
+</script>
+</html>

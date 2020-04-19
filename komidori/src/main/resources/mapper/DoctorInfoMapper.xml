@@ -124,7 +124,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo" >
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.DoctorInfo" keyProperty="doctorId" useGeneratedKeys="true">
     insert into doctor_info (doctor_id, doctor_name, doctor_sex, 
       doctor_age, doctor_pwd, doctor_tel, 
       doctor_idcard, doctor_status, doctor_city, 

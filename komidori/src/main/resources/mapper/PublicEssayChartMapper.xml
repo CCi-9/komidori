@@ -11,6 +11,41 @@
     <result column="essay_content" property="essayContent" jdbcType="VARCHAR" />
     <result column="essay_status" property="essayStatus" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="MyResultMap" type="com.doctor.komidori_doctor.pojo.PublicEssayChart" >
+    <id column="essay_id" property="essayId" jdbcType="INTEGER" />
+    <result column="essay_title" property="essayTitle" jdbcType="VARCHAR" />
+    <result column="essay_author_id" property="essayAuthorId" jdbcType="INTEGER" />
+    <result column="essay_date" property="essayDate" jdbcType="TIMESTAMP" />
+    <result column="essay_category" property="essayCategory" jdbcType="INTEGER" />
+    <result column="essay_good_review" property="essayGoodReview" jdbcType="INTEGER" />
+    <result column="essay_content" property="essayContent" jdbcType="VARCHAR" />
+    <result column="essay_status" property="essayStatus" jdbcType="INTEGER" />
+
+    <association property="maternalInfo" javaType="com.doctor.komidori_doctor.pojo.MaternalInfo">
+      <id column="maternal_id" property="maternalId" jdbcType="INTEGER"/>
+      <result column="maternal_name" property="maternalName" jdbcType="VARCHAR"/>
+    </association>
+    <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
+      <id column="public_category_id" property="publicCategoryId" jdbcType="INTEGER"/>
+      <result column="public_category_name" property="publicCategoryName" jdbcType="VARCHAR"/>
+    </association>
+  </resultMap>
+
+  <!--BY lcy-->
+  <select id="getAllEssayList" resultMap="MyResultMap">
+        select * from public_essay_chart
+        inner join maternal_info on public_essay_chart.essay_author_id = maternal_info.maternal_id
+        inner join public_category_chart on public_essay_chart.essay_category = public_category_chart.public_category_id
+  </select>
+
+  <select id="getEssayById" resultMap="MyResultMap">
+        select * from public_essay_chart
+        inner join maternal_info on public_essay_chart.essay_author_id = maternal_info.maternal_id
+        inner join public_category_chart on public_category_chart.public_category_id = public_category_chart.public_category_id
+        where public_essay_chart.essay_id = #{essayId}
+  </select>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

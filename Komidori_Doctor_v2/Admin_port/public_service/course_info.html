@@ -219,7 +219,7 @@
                  				<a href="course_list.html" class="returnbtn">
                  					<i class="fa fa-caret-left"> 返回</i>
                  				</a>
-                 				我的课程详情
+                 				课程详情
                  				</h2>
                  			<div class="message-header">
                  				<h3><strong>标题:</strong> {{Course.courseTitle}}</h3>
@@ -247,6 +247,12 @@
                  				
                  				&nbsp;&nbsp;|&nbsp;&nbsp;
                  				<p><strong>价格 </strong> <span class="label label-default">￥{{Course.coursePrice}}</span></p>
+                 			
+                 				&nbsp;&nbsp;|&nbsp;&nbsp;
+                 				<p><strong>作者 </strong> {{doctorName}}</p>
+                 			
+                 			
+                 			
                  			</div>
                  
                  			<div class="message-content">
@@ -333,11 +339,10 @@
         data: {
             Course: [],
             publicCategoryName:"",
+            doctorName:"",
             admin:{}, noteList:[], noteSize:0
         },
         mounted() {
-//          returnSignin()
-//          init()
             getList()
             getAdminMsg(this)
        			getNoteMsg(this)
@@ -372,7 +377,7 @@
         		},
         		unpassCourse(){
         			
-        			$.ajax({
+        		$.ajax({
             url: "http://" + host + "/Admin/course/changeCourseStatus",
             method: "get",
             data:{
@@ -400,10 +405,10 @@
 	
 	function getList() {
 				let courseid = getUrlParam('courseid');
-				if(courseid==null||courseid==undefined){
-					alert("未能获取到课程详情，请重新选择");
-					window.location.href = 'course_list.html';
-				}
+//				if(courseid==null||courseid==undefined){
+//					alert("未能获取到课程详情，请重新选择");
+//					window.location.href = 'course_list.html';
+//				}
         $.ajax({
             url: "http://" + host + "/Admin/course/getCourseById",
             method: "get",
@@ -415,14 +420,19 @@
             },
             success: function (result) {
                 console.log(result)
-                if (result.status != "200") {
+                if (result.status == "401") {
                     alert(result.message);
-                    window.location.href = 'course_list.html';
+                   	window.location.href = '../ad_signin.html';
+                   	return;
+                }
+                else if(result.status == "400"){
+                		alert(result.message);
+                	 	window.location.href = 'course_list.html';
                     return;
                 }
                 app.Course = result.data;
                 app.publicCategoryName = result.data.publicCategoryChart.publicCategoryName;
-                
+                app.doctorName = result.data.doctorInfo.doctorName;
             }
         });
     }

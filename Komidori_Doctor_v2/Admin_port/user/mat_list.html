@@ -286,8 +286,8 @@
                 console.log(result)
                 if (result.status != "200") {
                     alert(result.message)
-                    window.location.href = '../signin.html'
-                    return
+                    window.location.href = '../ad_signin.html'
+                    return;
                 }
                 app.allMatList = result.data;
                 initTable();
@@ -304,7 +304,7 @@
             noteSize:0
         },
         mounted() {
-//          returnSignin()
+//						checkAdmin()
             init()
             getAllMatList()
             getAdminMsg(this)
@@ -447,34 +447,5 @@
 	
 	}
     
-    function getNote(){
-
-    	$.ajax({
-            url: "http://" + host + "/Admin/getNote",
-            method: "get",
-            xhrFields: {
-                withCredentials: true  //带上cookie信息，解决sessionid不一致
-            },
-            success: function (result) {
-            	 if(result.status == "401"){
-            	 		alert("session过期，请重新登录");
-            	 		window.location.href = '../ad_signin.html'
-            	 }
-            	 else if(result.status == "400"){
-            	 		alert("未读消息获取失败。");
-            	 }
-            	 else{//200
-            	 	 	console.log(result)
-                	app.noteList = result.data;
-                	app.noteSize = app.noteList.length;
-            	 }
-               
-            }
-        });
-    }
-    
-    
-    
-   
 </script>
 </html>

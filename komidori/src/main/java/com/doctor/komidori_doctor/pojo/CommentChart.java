@@ -1,7 +1,12 @@
 package com.doctor.komidori_doctor.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
+@Component
 public class CommentChart {
     private Integer commentId;
 
@@ -9,11 +14,16 @@ public class CommentChart {
 
     private Integer commentUserId;
 
+    private String commentContent;
+
     private Integer commentStatus;
 
-    private Date commentDate;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime commentDate;
 
-    private String commentContent;
+    private String commentUserName;
+
+    private String commentUserImg;
 
     public Integer getCommentId() {
         return commentId;
@@ -39,6 +49,14 @@ public class CommentChart {
         this.commentUserId = commentUserId;
     }
 
+    public String getCommentContent() {
+        return commentContent;
+    }
+
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent == null ? null : commentContent.trim();
+    }
+
     public Integer getCommentStatus() {
         return commentStatus;
     }
@@ -47,19 +65,27 @@ public class CommentChart {
         this.commentStatus = commentStatus;
     }
 
-    public Date getCommentDate() {
+    public LocalDateTime getCommentDate() {
         return commentDate;
     }
 
-    public void setCommentDate(Date commentDate) {
+    public void setCommentDate(LocalDateTime commentDate) {
         this.commentDate = commentDate;
     }
 
-    public String getCommentContent() {
-        return commentContent;
+    public String getCommentUserName() {
+        return commentUserName;
     }
 
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent == null ? null : commentContent.trim();
+    public void setCommentUserName(String commentUserName) {
+        this.commentUserName = commentUserName == null ? null : commentUserName.trim();
+    }
+
+    public String getCommentUserImg() {
+        return commentUserImg;
+    }
+
+    public void setCommentUserImg(String commentUserImg) {
+        this.commentUserImg = commentUserImg == null ? null : commentUserImg.trim();
     }
 }

@@ -56,6 +56,11 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public String fileUpload(MultipartFile file) {
-        return FileUtils.savePngFile(file);
+        return FileUtils.savePngFile(file,0);
+    }
+
+    @Override
+    public String upLoadFile(MultipartFile file, Integer type) {
+        return FileUtils.savePngFile(file,type);
     }
 }

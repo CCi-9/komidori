@@ -19,6 +19,16 @@ public class ConsultChart {
 
     private DoctorInfo doctorInfo;
 
+    private MaternalInfo maternalInfo;
+
+    public MaternalInfo getMaternalInfo() {
+        return maternalInfo;
+    }
+
+    public void setMaternalInfo(MaternalInfo maternalInfo) {
+        this.maternalInfo = maternalInfo;
+    }
+
     public DoctorInfo getDoctorInfo() {
         return doctorInfo;
     }

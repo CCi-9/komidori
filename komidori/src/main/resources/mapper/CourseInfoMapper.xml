@@ -15,6 +15,52 @@
     <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR" />
     <result column="course_status" property="courseStatus" jdbcType="INTEGER" />
   </resultMap>
+
+  <resultMap id="MyResultMap" type="com.doctor.komidori_doctor.pojo.CourseInfo" >
+    <id column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="course_type" property="courseType" jdbcType="INTEGER" />
+    <result column="course_doc_id" property="courseDocId" jdbcType="INTEGER" />
+    <result column="course_class_id" property="courseClassId" jdbcType="INTEGER" />
+    <result column="course_date" property="courseDate" jdbcType="TIMESTAMP" />
+    <result column="course_good_review" property="courseGoodReview" jdbcType="INTEGER" />
+    <result column="course_price" property="coursePrice" jdbcType="REAL" />
+    <result column="course_img" property="courseImg" jdbcType="VARCHAR" />
+    <result column="course_title" property="courseTitle" jdbcType="VARCHAR" />
+    <result column="course_content" property="courseContent" jdbcType="VARCHAR" />
+    <result column="course_introduction" property="courseIntroduction" jdbcType="VARCHAR" />
+    <result column="course_status" property="courseStatus" jdbcType="INTEGER" />
+    <association property="publicCategoryChart" javaType="com.doctor.komidori_doctor.pojo.PublicCategoryChart">
+      <id column="public_category_id" property="publicCategoryId" jdbcType="INTEGER"/>
+      <result column="public_category_name" property="publicCategoryName" jdbcType="VARCHAR"/>
+    </association>
+    <association property="doctorInfo" javaType="com.doctor.komidori_doctor.pojo.DoctorInfo">
+      <id column="doctor_id" property="doctorId" jdbcType="INTEGER"/>
+      <result column="doctor_name" property="doctorName" jdbcType="VARCHAR"/>
+    </association>
+  </resultMap>
+
+<!--BY lcy-->
+  <select id="getAllCourses" resultMap="MyResultMap">
+        select * from course_info
+        inner join public_category_chart on course_info.course_class_id = public_category_chart.public_category_id
+
+  </select>
+
+  <select id="getAllCoursesByDid" resultMap="MyResultMap">
+        select * from course_info
+        inner join public_category_chart on course_info.course_class_id = public_category_chart.public_category_id
+        inner join doctor_info on course_info.course_doc_id = doctor_info.doctor_id
+        where doctor_info.doctor_id = #{did}
+  </select>
+
+  <select id="getCourseByCid" resultMap="MyResultMap">
+        select * from course_info
+        inner join public_category_chart on course_info.course_class_id = public_category_chart.public_category_id
+        inner join doctor_info on course_info.course_doc_id = doctor_info.doctor_id
+        where course_info.course_id = #{courseID}
+  </select>
+  <!--BY lcy end-->
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -107,7 +153,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo" >
+  <insert id="insert" parameterType="com.doctor.komidori_doctor.pojo.CourseInfo">
+    <selectKey resultType="java.lang.Integer" keyProperty="courseId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into course_info (course_id, course_type, course_doc_id, 
       course_class_id, course_date, course_good_review, 
       course_price, course_img, course_title, 

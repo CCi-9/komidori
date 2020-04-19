@@ -271,11 +271,11 @@
             noteSize:0
         },
         mounted() {
-//          returnSignin()
+						//checkAdmin()
+						getAllDocList()
 						getAdminMsg(this)
        			getNoteMsg(this)
             init()
-            getAllDocList()
         },
         methods: {}
     });
@@ -302,7 +302,7 @@
                 console.log(result)
                 if (result.status != "200") {
                     alert(result.message)
-                    window.location.href = '../signin.html'
+                    window.location.href = '../ad_signin.html'
                     return
                 }
                 app.allDocList = result.data;

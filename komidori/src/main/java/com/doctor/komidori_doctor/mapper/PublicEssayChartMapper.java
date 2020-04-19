@@ -27,4 +27,11 @@ public interface PublicEssayChartMapper {
     int updateByPrimaryKeySelective(PublicEssayChart record);
 
     int updateByPrimaryKey(PublicEssayChart record);
+
+    //lcy
+    List<PublicEssayChart> getAllEssayList();
+
+    PublicEssayChart getEssayById(Integer essayId);
+
+
 }

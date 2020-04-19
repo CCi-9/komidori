@@ -7,10 +7,7 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
@@ -61,9 +58,12 @@ public class WebSocketOneToOne {
 
         if (status.equals("doctor")) {
             status = "otherPage";
-            connections.put(fromID, doctorSpare.get(fromID));
-            doctorSpare.remove(fromID);
-            System.out.println(fromID + "医生已经退出聊天，进入其他界面");
+            if(doctorSpare.get(fromID) != null){
+                connections.put(fromID, doctorSpare.get(fromID));
+                doctorSpare.remove(fromID);
+                System.out.println(fromID + "医生已经退出聊天，进入其他界面");
+            }
+
         } else {
             connections.remove(fromID);
             System.out.println(fromID + "用户已经退出");
@@ -88,7 +88,7 @@ public class WebSocketOneToOne {
         Integer to = null;      //发送对象的id
 
 
-       if (json.has("message")) {
+        if (json.has("message")) {
             content = (String) json.get("message");
         }
         if (json.has("to")) {
@@ -102,20 +102,7 @@ public class WebSocketOneToOne {
         System.out.println("内容:" + content);
         System.out.println("接收人:" + to);
 
-    //    send(content,to);
-
-/*
-
-        if (type.equals("text")) {
-            send(content, to);
-        } else {
-
-        }
-
-*/
-
     }
-
 
 
     /**
@@ -132,15 +119,23 @@ public class WebSocketOneToOne {
 
 
     //发送给指定角色
-    public void send(String content,  String type, Integer to) {
+    public void send(String content, String type, Integer to) {
         try {
             //to指定用户
             WebSocketOneToOne con = connections.get(to);
             if (con != null) {
+                //医生还没进入聊天页面，给客户自动回复
+                if (con.status.equals("otherPage")) {
+                    this.session.getBasicRemote().sendText("系统回复"+ ":" + "text" + ":" + "系统消息：对方暂时不在，请稍后");
+                }
+
+                //医生和客户通用的发送消息
                 con.session.getBasicRemote().sendText(fromID + ":" + type + ":" + content);
                 System.out.println("消息已发送");
+
+
             } else {
-                this.session.getBasicRemote().sendText("系统消息：对方暂时不在，请稍后");
+                this.session.getBasicRemote().sendText("系统回复" + ":" + "text" + ":" + "系统消息：对方已下线");
             }
             /*
             //from具体用户

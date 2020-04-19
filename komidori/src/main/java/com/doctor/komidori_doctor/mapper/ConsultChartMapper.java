@@ -27,4 +27,8 @@ public interface ConsultChartMapper {
     int updateByPrimaryKeySelective(ConsultChart record);
 
     int updateByPrimaryKey(ConsultChart record);
+
+    //多表lcy
+    List<ConsultChart> getAllConsultList();
+    List<ConsultChart> getAllConsultListByDid(Integer doctorId);
 }

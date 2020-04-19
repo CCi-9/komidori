@@ -21,7 +21,17 @@ public class BookDoctorChart {
 
     private Integer bdocStatus;
 
+    private MaternalInfo maternalInfo;
+
     private DoctorInfo doctorInfo;
+
+    public MaternalInfo getMaternalInfo() {
+        return maternalInfo;
+    }
+
+    public void setMaternalInfo(MaternalInfo maternalInfo) {
+        this.maternalInfo = maternalInfo;
+    }
 
     public DoctorInfo getDoctorInfo() {
         return doctorInfo;

@@ -59,6 +59,28 @@ a:focus, a:active, a:hover {
 	width: 140px;
 	height: 140px;
 }
+.forgetPwd{
+	cursor: pointer;
+}
+/*模态框*/
+
+#call figure img{
+	/*position: relative;
+	left: 50%;
+	margin-left:-75px ;*/
+	width: 150px;
+	height: 150px;
+}
+#call .modal-body{
+	text-align: center;
+}
+
+.action-button .btn-floating{
+	display: inline-block;
+	border-radius:30px;
+}
+/*modal end*/
+
 h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
     color: #2b2b2b;
